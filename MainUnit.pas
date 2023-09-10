@@ -175,7 +175,7 @@ type
     edqtPrevQuestID: TJvComboEdit;
     edqtNextQuestID: TJvComboEdit;
     edqtExclusiveGroup: TLabeledEdit;
-    edqtBreadcrumbForQuestId: TLabeledEdit;
+//    edqtBreadcrumbForQuestId: TLabeledEdit;
     edqtRewardNextQuest: TJvComboEdit;
     gbQuestSorting: TGroupBox;
     gbFlags: TGroupBox;
@@ -461,17 +461,21 @@ type
     tsCreatureLocation: TTabSheet;
     lvclCreatureLocation: TJvListView;
     edclguid: TLabeledEdit;
-    edclid: TLabeledEdit;
+    edclid1: TLabeledEdit;
+    edclid2: TLabeledEdit;
+    edclid3: TLabeledEdit;
+    edclequipment_id: TLabeledEdit;
     edclposition_x: TLabeledEdit;
     edclposition_y: TLabeledEdit;
     edclposition_z: TLabeledEdit;
     edclorientation: TLabeledEdit;
     edclspawntimesecs: TLabeledEdit;
-    edclspawndist: TLabeledEdit;
+    edclwander_distance: TLabeledEdit;
     edclcurrentwaypoint: TLabeledEdit;
     edclcurhealth: TLabeledEdit;
     edclcurmana: TLabeledEdit;
     edclMovementType: TLabeledEdit;
+    edclCreateObject: TLabeledEdit;
     btScriptCreatureLocation: TButton;
     btScriptCreatureLocationCustomToAll: TButton;
     tsCreatureLoot: TTabSheet;
@@ -1124,8 +1128,6 @@ type
     lbqtOfferRewardEmote3: TLabel;
     lbqtOfferRewardEmote4: TLabel;
     lbcaemote: TLabel;
-    edclequipment_id: TLabeledEdit;
-    edclmodelid: TLabeledEdit;
     tsCreatureModelInfo: TTabSheet;
     tsCreatureEquipTemplate: TTabSheet;
     Panel23: TPanel;
@@ -2619,7 +2621,7 @@ begin
 		edqtPrevQuestID.Text := MyQuery.FieldByName('PrevQuestID').AsString;
 		edqtNextQuestID.Text := MyQuery.FieldByName('NextQuestID').AsString;
 		edqtExclusiveGroup.Text := MyQuery.FieldByName('ExclusiveGroup').AsString;
-		edqtBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
+	//	edqtBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
 		edqtRewardMailTemplateID.Text := MyQuery.FieldByName('RewardMailTemplateID').AsString;
 		edqtRewardMailDelay.Text := MyQuery.FieldByName('RewardMailDelay').AsString;
 		edqtRequiredSkillID.Text := MyQuery.FieldByName('RequiredSkillID').AsString;
@@ -3117,7 +3119,7 @@ var
 begin
   if objtype = 'creature' then
   begin
-    SQLText := Format('SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id`=%s)',[entry]);
+    SQLText := Format('SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry]);
     lbLocationOrLoot.Caption := dmMain.Text[17]; //'Creature location'
   end
   else
@@ -3258,7 +3260,7 @@ var
   SQLText: string;
 begin
   if objtype = 'creature' then
-    SQLText := Format('SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id`=%s)',[entry])
+    SQLText := Format('SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry])
   else
   if objtype = 'gameobject' then
     SQLText := Format('SELECT `guid`, `id`, `map`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''gameobject'' as `table` FROM `gameobject` WHERE (`id`=%s)',[entry])
@@ -4103,7 +4105,7 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT *,(SELECT count(guid) from `creature` where creature.id = ct.entry) as `Count` FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.entry=lc.entry %s',[WhereStr]);
+  QueryStr := Format('SELECT *,(SELECT count(guid) from `creature` where creature.id1 = ct.entry) as `Count` FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.entry=lc.entry %s',[WhereStr]);
   MyQuery.SQL.Text := QueryStr;
   lvSearchCreature.Items.BeginUpdate;
   try
@@ -4355,7 +4357,7 @@ begin
   MyQuery.Open;
   try
     if (MyQuery.Eof=true) then
-      raise Exception.Create(Format(dmMain.Text[81], [Entry]));  //'Error: Creature (entry = %d) not found'
+      raise Exception.Create(Format(dmMain.Text[81], [entry]));  //'Error: Creature (entry = %d) not found'
     edctEntry.Text := IntToStr(Entry);
     FillFields(MyQuery, PFX_CREATURE_TEMPLATE);
 
@@ -4373,11 +4375,10 @@ begin
 
     if MyQuery.FieldByName('entry').AsInteger <> 0 then isEquip:= true else isEquip:= false;
 
-    MyQuery.Close;
+   // MyQuery.Close;
 
-    LoadQueryToListView(Format('SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `position_x`,'+
-      ' `position_y`,`position_z`,`orientation` FROM `creature` WHERE (`id`=%d)',
-      [Entry]),lvclCreatureLocation);
+    LoadQueryToListView(Format('SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `position_x`,'+
+      ' `position_y`,`position_z`,`orientation` FROM `creature` WHERE (`id1`=%d)', [entry]),lvclCreatureLocation);
 
     LoadQueryToListView(Format('SELECT clt.*, i.`name` FROM `creature_loot_template`'+
      ' clt LEFT OUTER JOIN `item_template` i ON i.`entry` = clt.`Item`'+
@@ -4398,7 +4399,7 @@ begin
       [Entry]),lvcvNPCVendor);
 	end;
 
-    if (isEquip=true) then 
+    if (isEquip=true) then
 	begin
 		LoadCreatureEquip(StrToIntDef(edctentry.Text,0));
 	end;
@@ -4418,8 +4419,10 @@ begin
     tsNPCVendor.TabVisible := isvendor;
     tsNPCTrainer.TabVisible := istrainer;
     LoadCreatureTemplateAddon(Entry);
-	LoadCreatureTemplateMovement(Entry);
-    edclid.Text := IntToStr(Entry);
+	  LoadCreatureTemplateMovement(Entry);
+    edclid1.Text := IntToStr(Entry);
+    edclid2.Text := IntToStr(Entry);
+    edclid3.Text := IntToStr(Entry);
     edcoEntry.Text := edctlootid.Text;
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
@@ -4621,10 +4624,6 @@ var
   model: string;
 begin
   model := '';
-  if Assigned(lvclCreatureLocation.Selected) and (StrToIntDef(edclmodelid.Text,0)<>0) then
-    model := edclmodelid.Text
-  else
-  begin
     if (edctmodelid1.Text <> '') and (edctmodelid1.Text <> '0')  then
       model := edctmodelid1.Text;
     if (edctmodelid2.Text <> '') and (edctmodelid2.Text <> '0')  then
@@ -4633,7 +4632,6 @@ begin
         model := Format('%s,%s',[model, edctmodelid2.Text])
       else
         model := edctmodelid2.Text;
-    end;
   end;
   if model <> '' then
   begin
@@ -7424,7 +7422,7 @@ end;
 procedure TMainForm.btFullScriptCreatureLocationClick(Sender: TObject);
 begin
   PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-  mectScript.Text := FullScript('creature', 'id', edctEntry.Text);
+  mectScript.Text := FullScript('creature', 'id1', edctEntry.Text);
 end;
 
 function TMainForm.FullScript(TableName, KeyName, KeyValue: string): string;

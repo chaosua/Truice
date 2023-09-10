@@ -169,7 +169,7 @@ begin
         if (MyQuery.FieldByName('npcflag').AsInteger and 2) <> 2 then
           Add(1, dmMain.Text[28], [cid]); //'Error: quest giver is creature with entry = %d, but (`npcflag` & 2) <> 2 '
         MyQuery.Close;
-        MyQuery.SQL.Text:=Format('SELECT * FROM `creature` WHERE `id`=%d',[cid]);
+        MyQuery.SQL.Text:=Format('SELECT * FROM `creature` WHERE `id1`=%d',[cid]);
         MyQuery.Open;
         if not MyQuery.Eof then
         begin
@@ -358,7 +358,7 @@ begin
           Add(1, dmMain.Text[36], [cid]); //'Error: quest taker is creature with entry = %d, but (`npcflag` & 2) <> 2 '
         end;
         MyQuery.Close;
-        MyQuery.SQL.Text:=Format('SELECT * FROM `creature` WHERE `id`=%d',[cid]);
+        MyQuery.SQL.Text:=Format('SELECT * FROM `creature` WHERE `id1`=%d',[cid]);
         MyQuery.Open;
         if not MyQuery.Eof then
         begin
@@ -626,7 +626,7 @@ begin
                 begin
                   while not MyTempQuery.Eof do
                   begin
-                    MyLootQuery.SQL.Text:=Format('SELECT `guid` FROM `creature` WHERE `id` = %d',[
+                    MyLootQuery.SQL.Text:=Format('SELECT `guid` FROM `creature` WHERE `id1` = %d',[
                       MyTempQuery.FieldByName('entry').AsInteger]);
                     MyLootQuery.Open;
                     if MyLootQuery.Eof then
@@ -683,7 +683,8 @@ begin
       begin
         // location check
         MyTempQuery.Close;
-        MyTempQuery.SQL.Text:=Format('SELECT `guid` FROM `creature` WHERE `id`=%d',[cid]);
+        MyTempQuery.SQL.Text:=Format('SELECT `guid` FROM `creature` WHERE `id1`=%d ',[cid]);
+       // MyTempQuery.SQL.Text:=Format('SELECT `guid` FROM `creature` WHERE `id1`=%d OR `id2`=%d OR `id3`=%d',[cid]);
         MyTempQuery.Open;
         if MyTempQuery.Eof then
           Add(1, dmMain.Text[70], [i, cid]); //'Error: ReqCreatureOrGOId%d = %d, Location for creature not exists'

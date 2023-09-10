@@ -33,7 +33,8 @@ unit About;
 interface
 
 uses Windows, SysUtils, Forms,  Classes, Graphics, Dialogs, Math,
-     Controls, StdCtrls, ExtCtrls, ActnList, ExtActns, Registry, JvExControls, JvPoweredBy;
+     Controls, StdCtrls, ExtCtrls, ActnList, ExtActns, Registry, JvExControls, JvPoweredBy,
+  System.Actions;
 
 type
   TAboutBox = class(TForm)
@@ -57,6 +58,8 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure FormShow(Sender: TObject);
     procedure LinkSiteClick(Sender: TObject);
   private
