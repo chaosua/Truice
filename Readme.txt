@@ -1,4 +1,4 @@
-Truice
+Truice WoTLK 335
 
 Truice is a database editor specifically for Trinity.
 It is a fork of Quice, which was made for MaNGoS.
