@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 880
   Top = 334
   Caption = 'Truice'
-  ClientHeight = 708
-  ClientWidth = 980
+  ClientHeight = 704
+  ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,7 +11,6 @@ object MainForm: TMainForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Menu = MainMenu
-  OldCreateOrder = False
   Position = poDesigned
   Scaled = False
   ShowHint = True
@@ -19,14 +18,13 @@ object MainForm: TMainForm
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 980
-    Height = 708
-    ActivePage = tsQuest
+    Width = 964
+    Height = 704
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -41,7 +39,7 @@ object MainForm: TMainForm
       object pnQuestTop: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -50,9 +48,9 @@ object MainForm: TMainForm
       object PageControl2: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
-        ActivePage = tsSearch
+        Width = 956
+        Height = 651
+        ActivePage = tsScriptTab
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -70,12 +68,12 @@ object MainForm: TMainForm
           object pnSearch: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              964
+              948
               105)
             object lbQuestStarterSearch: TLabel
               Left = 8
@@ -87,7 +85,7 @@ object MainForm: TMainForm
             object lbQuestEnderSearch: TLabel
               Left = 136
               Top = 50
-              Width = 65
+              Width = 59
               Height = 13
               Caption = 'Quest Ender'
             end
@@ -102,6 +100,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'QuestId'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchChange
             end
             object edQuestTitle: TLabeledEdit
@@ -113,6 +112,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'LogTitle'
               TabOrder = 1
+              Text = ''
               OnChange = edSearchChange
             end
             object edQuestStarterSearch: TJvComboEdit
@@ -196,7 +196,7 @@ object MainForm: TMainForm
               OnChange = edSearchChange
             end
             object btSearch: TBitBtn
-              Left = 865
+              Left = 845
               Top = 25
               Width = 75
               Height = 25
@@ -251,7 +251,7 @@ object MainForm: TMainForm
               OnClick = btSearchClick
             end
             object btClear: TBitBtn
-              Left = 865
+              Left = 845
               Top = 56
               Width = 75
               Height = 25
@@ -404,6 +404,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'PrevQuestId'
               ParentCtl3D = False
               TabOrder = 8
+              Text = ''
               OnChange = edSearchChange
             end
             object edNextQuestIdSearch: TLabeledEdit
@@ -417,14 +418,15 @@ object MainForm: TMainForm
               EditLabel.Caption = 'NextQuestId'
               ParentCtl3D = False
               TabOrder = 9
+              Text = ''
               OnChange = edSearchChange
             end
           end
           object lvQuest: TJvListView
             Left = 0
             Top = 105
-            Width = 964
-            Height = 461
+            Width = 948
+            Height = 457
             Hint = 'Browse URL'
             Align = alClient
             BorderStyle = bsNone
@@ -465,13 +467,13 @@ object MainForm: TMainForm
           end
           object Panel2: TPanel
             Left = 0
-            Top = 566
-            Width = 964
+            Top = 562
+            Width = 948
             Height = 61
             Align = alBottom
             TabOrder = 2
             DesignSize = (
-              964
+              948
               61)
             object btEditQuest: TBitBtn
               Left = 112
@@ -779,7 +781,7 @@ object MainForm: TMainForm
               OnClick = btCheckQuestClick
             end
             object btCheckAll: TBitBtn
-              Left = 837
+              Left = 817
               Top = 10
               Width = 110
               Height = 25
@@ -845,7 +847,7 @@ object MainForm: TMainForm
             object StatusBar: TStatusBar
               Left = 1
               Top = 41
-              Width = 962
+              Width = 946
               Height = 19
               Panels = <
                 item
@@ -1102,6 +1104,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ExclusiveGroup'
               TabOrder = 3
+              Text = ''
             end
             object edqtRewardNextQuest: TJvComboEdit
               Left = 9
@@ -1167,6 +1170,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardXPDifficulty'
               TabOrder = 5
+              Text = ''
             end
             object edqtBreadcrumbForQuestId: TLabeledEdit
               Left = 8
@@ -1180,6 +1184,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'BreadcrumbForQId'
               TabOrder = 6
+              Text = ''
             end
           end
           object gbQuestSorting: TGroupBox
@@ -1378,6 +1383,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'QuestInfoID'
               TabOrder = 8
+              Text = ''
             end
           end
           object gbFlags: TGroupBox
@@ -1411,6 +1417,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'TimeAllowed'
               TabOrder = 2
+              Text = ''
             end
             object edqtQuestType: TJvComboEdit
               Left = 8
@@ -1545,6 +1552,7 @@ object MainForm: TMainForm
               EditLabel.Caption = '...Value'
               EditLabel.ParentBiDiMode = False
               TabOrder = 3
+              Text = ''
             end
             object edqtRequiredMinRepFaction: TJvComboEdit
               Left = 8
@@ -1673,6 +1681,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Value'
               TabOrder = 5
+              Text = ''
             end
             object edqtRequiredSkillPoints: TLabeledEdit
               Left = 143
@@ -1686,6 +1695,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ReqSkillPoints'
               TabOrder = 1
+              Text = ''
             end
             object edqtAllowableClasses: TJvComboEdit
               Left = 93
@@ -1762,6 +1772,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ProvidedItemCount'
               TabOrder = 1
+              Text = ''
             end
             object edqtStartItem: TJvComboEdit
               Left = 8
@@ -1894,6 +1905,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'LogTitle'
               TabOrder = 0
+              Text = ''
             end
             object edqtQuestDescription: TMemo
               Left = 3
@@ -1957,6 +1969,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText1'
               TabOrder = 6
+              Text = ''
             end
             object edqtObjectiveText2: TLabeledEdit
               Left = 581
@@ -1967,6 +1980,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText2'
               TabOrder = 7
+              Text = ''
             end
             object edqtObjectiveText3: TLabeledEdit
               Left = 582
@@ -1977,6 +1991,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText3'
               TabOrder = 8
+              Text = ''
             end
             object edqtObjectiveText4: TLabeledEdit
               Left = 581
@@ -1987,6 +2002,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText4'
               TabOrder = 9
+              Text = ''
             end
             object edqtQuestCompletionLog: TLabeledEdit
               Left = 581
@@ -1997,6 +2013,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'QuestCompletionLog'
               TabOrder = 10
+              Text = ''
             end
             object edqtAreaDescription: TLabeledEdit
               Left = 400
@@ -2008,6 +2025,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Area Description'
               TabOrder = 11
+              Text = ''
             end
           end
         end
@@ -2089,6 +2107,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ReqItemCount1..'
               TabOrder = 1
+              Text = ''
             end
             object edqtRequiredItemCount2: TLabeledEdit
               Left = 96
@@ -2096,10 +2115,11 @@ object MainForm: TMainForm
               Width = 85
               Height = 21
               Hint = 'RequiredItemCount2'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 118
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtRequiredItemCount2'
               TabOrder = 3
+              Text = ''
             end
             object edqtRequiredItemCount3: TLabeledEdit
               Left = 96
@@ -2107,10 +2127,11 @@ object MainForm: TMainForm
               Width = 85
               Height = 21
               Hint = 'RequiredItemCount3'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 118
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtRequiredItemCount3'
               TabOrder = 5
+              Text = ''
             end
             object edqtRequiredItemCount4: TLabeledEdit
               Left = 96
@@ -2118,10 +2139,11 @@ object MainForm: TMainForm
               Width = 85
               Height = 21
               Hint = 'RequiredItemCount4'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 118
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtRequiredItemCount4'
               TabOrder = 7
+              Text = ''
             end
             object edqtRequiredNpcOrGoCount4: TLabeledEdit
               Left = 144
@@ -2135,6 +2157,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count4'
               TabOrder = 23
+              Text = ''
             end
             object edqtRequiredNpcOrGoCount3: TLabeledEdit
               Left = 144
@@ -2148,6 +2171,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count3'
               TabOrder = 21
+              Text = ''
             end
             object edqtRequiredNpcOrGoCount2: TLabeledEdit
               Left = 144
@@ -2161,6 +2185,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count2'
               TabOrder = 19
+              Text = ''
             end
             object edqtRequiredNpcOrGoCount1: TLabeledEdit
               Left = 144
@@ -2174,6 +2199,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count1'
               TabOrder = 17
+              Text = ''
             end
             object edqtItemDropQuantity1: TLabeledEdit
               Left = 319
@@ -2185,6 +2211,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ItemDropQuantity..'
               TabOrder = 9
+              Text = ''
             end
             object edqtItemDropQuantity2: TLabeledEdit
               Left = 319
@@ -2194,10 +2221,11 @@ object MainForm: TMainForm
               Hint = 
                 'Maximum number of items in ItemDrop2 that can be picked up (and ' +
                 'dropped by the core).'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 109
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtItemDropQuantity2'
               TabOrder = 11
+              Text = ''
             end
             object edqtItemDropQuantity3: TLabeledEdit
               Left = 319
@@ -2207,10 +2235,11 @@ object MainForm: TMainForm
               Hint = 
                 'Maximum number of items in ItemDrop3 that can be picked up (and ' +
                 'dropped by the core).'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 109
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtItemDropQuantity3'
               TabOrder = 13
+              Text = ''
             end
             object edqtItemDropQuantity4: TLabeledEdit
               Left = 319
@@ -2220,10 +2249,11 @@ object MainForm: TMainForm
               Hint = 
                 'Maximum number of items in ItemDrop4 that can be picked up (and ' +
                 'dropped by the core).'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 109
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtItemDropQuantity4'
               TabOrder = 15
+              Text = ''
             end
             object edqtRequiredItemId1: TJvComboEdit
               Left = 8
@@ -2758,6 +2788,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredFactionValue1'
               TabOrder = 27
+              Text = ''
             end
             object edqtRequiredFactionId1: TJvComboEdit
               Left = 320
@@ -2842,10 +2873,11 @@ object MainForm: TMainForm
               Width = 85
               Height = 21
               Hint = 'RequiredItemCount5'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 118
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtRequiredItemCount5'
               TabOrder = 31
+              Text = ''
             end
             object edqtRequiredItemCount6: TLabeledEdit
               Left = 96
@@ -2853,10 +2885,11 @@ object MainForm: TMainForm
               Width = 85
               Height = 21
               Hint = 'RequiredItemCount6'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 118
+              EditLabel.Height = 13
+              EditLabel.Caption = 'edqtRequiredItemCount6'
               TabOrder = 24
+              Text = ''
             end
             object edqtRequiredItemId6: TJvComboEdit
               Left = 8
@@ -2906,6 +2939,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredFactionValue2'
               TabOrder = 28
+              Text = ''
             end
             object edqtRequiredFactionId2: TJvComboEdit
               Left = 320
@@ -3075,6 +3109,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count1'
               TabOrder = 1
+              Text = ''
             end
             object edqtRewardChoiceItemQuantity2: TLabeledEdit
               Left = 108
@@ -3086,6 +3121,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count2'
               TabOrder = 3
+              Text = ''
             end
             object edqtRewardChoiceItemQuantity3: TLabeledEdit
               Left = 108
@@ -3097,6 +3133,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count3'
               TabOrder = 5
+              Text = ''
             end
             object edqtRewardChoiceItemQuantity4: TLabeledEdit
               Left = 108
@@ -3108,6 +3145,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count4'
               TabOrder = 7
+              Text = ''
             end
             object edqtRewardChoiceItemQuantity5: TLabeledEdit
               Left = 108
@@ -3119,6 +3157,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count5'
               TabOrder = 9
+              Text = ''
             end
             object edqtRewardChoiceItemQuantity6: TLabeledEdit
               Left = 108
@@ -3130,6 +3169,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count6'
               TabOrder = 11
+              Text = ''
             end
             object edqtRewardAmount1: TLabeledEdit
               Left = 301
@@ -3141,6 +3181,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count1'
               TabOrder = 13
+              Text = ''
             end
             object edqtRewardAmount2: TLabeledEdit
               Left = 301
@@ -3152,6 +3193,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count2'
               TabOrder = 15
+              Text = ''
             end
             object edqtRewardAmount3: TLabeledEdit
               Left = 301
@@ -3163,6 +3205,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count3'
               TabOrder = 17
+              Text = ''
             end
             object edqtRewardAmount4: TLabeledEdit
               Left = 301
@@ -3174,6 +3217,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Count4'
               TabOrder = 19
+              Text = ''
             end
             object edqtRewardFactionValue1: TLabeledEdit
               Left = 108
@@ -3189,6 +3233,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Value1'
               TabOrder = 23
+              Text = ''
             end
             object edqtRewardFactionValue2: TLabeledEdit
               Left = 108
@@ -3204,6 +3249,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Value2'
               TabOrder = 25
+              Text = ''
             end
             object edqtRewardMoney: TLabeledEdit
               Left = 198
@@ -3217,6 +3263,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardMoney'
               TabOrder = 20
+              Text = ''
             end
             object edqtRewardBonusMoney: TLabeledEdit
               Left = 198
@@ -3228,6 +3275,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewBonusMoney'
               TabOrder = 21
+              Text = ''
             end
             object edqtRewardFactionValue3: TLabeledEdit
               Left = 108
@@ -3243,6 +3291,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Value3'
               TabOrder = 27
+              Text = ''
             end
             object edqtRewardFactionValue4: TLabeledEdit
               Left = 108
@@ -3258,6 +3307,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Value4'
               TabOrder = 29
+              Text = ''
             end
             object edqtRewardFactionValue5: TLabeledEdit
               Left = 107
@@ -3273,6 +3323,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = '...Value5'
               TabOrder = 31
+              Text = ''
             end
             object edqtRewardChoiceItemID1: TJvComboEdit
               Left = 8
@@ -3906,6 +3957,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardMailTemplateID'
               TabOrder = 33
+              Text = ''
             end
             object edqtRewardMailDelay: TLabeledEdit
               Left = 387
@@ -3916,6 +3968,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardMailDelay'
               TabOrder = 34
+              Text = ''
             end
             object edqtRewardHonor: TLabeledEdit
               Left = 396
@@ -3932,6 +3985,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardHonor'
               TabOrder = 35
+              Text = ''
             end
             object edqtRewardKillHonor: TLabeledEdit
               Left = 303
@@ -3943,6 +3997,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardKillHonor'
               TabOrder = 36
+              Text = ''
             end
             object edqtRewardFactionOverride1: TLabeledEdit
               Left = 198
@@ -3954,6 +4009,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr1'
               TabOrder = 37
+              Text = ''
             end
             object edqtRewardFactionOverride2: TLabeledEdit
               Left = 198
@@ -3965,6 +4021,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr2'
               TabOrder = 38
+              Text = ''
             end
             object edqtRewardFactionOverride3: TLabeledEdit
               Left = 198
@@ -3976,6 +4033,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr3'
               TabOrder = 39
+              Text = ''
             end
             object edqtRewardFactionOverride4: TLabeledEdit
               Left = 198
@@ -3987,6 +4045,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr4'
               TabOrder = 40
+              Text = ''
             end
             object edqtRewardFactionOverride5: TLabeledEdit
               Left = 197
@@ -3998,6 +4057,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr5'
               TabOrder = 41
+              Text = ''
             end
             object edqtRewardArenaPoints: TLabeledEdit
               Left = 303
@@ -4009,6 +4069,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardArenaPnts'
               TabOrder = 42
+              Text = ''
             end
             object edqtRewardDisplaySpell: TLabeledEdit
               Left = 396
@@ -4020,6 +4081,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardDisplaySpell'
               TabOrder = 43
+              Text = ''
             end
             object edqtRewardTitle: TLabeledEdit
               Left = 396
@@ -4030,6 +4092,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardTitle'
               TabOrder = 45
+              Text = ''
             end
             object edqtRewardTalents: TLabeledEdit
               Left = 303
@@ -4041,6 +4104,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardTalents'
               TabOrder = 44
+              Text = ''
             end
           end
           object gbOther: TGroupBox
@@ -4129,6 +4193,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'PointX'
               TabOrder = 0
+              Text = ''
             end
             object edqtPointY: TLabeledEdit
               Left = 179
@@ -4139,6 +4204,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'PointY'
               TabOrder = 1
+              Text = ''
             end
             object edqtPointOption: TLabeledEdit
               Left = 280
@@ -4149,6 +4215,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'PointOption'
               TabOrder = 2
+              Text = ''
             end
             object edqtEmoteOnIncomplete: TJvComboEdit
               Left = 95
@@ -4547,6 +4614,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'DetailsEmoteDelay1'
               EditLabel.Caption = 'DetailsEmoteDelay1'
               TabOrder = 13
+              Text = ''
             end
             object edqtDetailsEmoteDelay2: TLabeledEdit
               Left = 77
@@ -4559,6 +4627,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'DetailsEmoteDelay2'
               EditLabel.Caption = 'DetailsEmoteDelay2'
               TabOrder = 14
+              Text = ''
             end
             object edqtDetailsEmoteDelay3: TLabeledEdit
               Left = 77
@@ -4571,6 +4640,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'DetailsEmoteDelay3'
               EditLabel.Caption = 'DetailsEmoteDelay1'
               TabOrder = 15
+              Text = ''
             end
             object edqtDetailsEmoteDelay4: TLabeledEdit
               Left = 77
@@ -4583,6 +4653,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'DetailsEmoteDelay4'
               EditLabel.Caption = 'DetailsEmoteDelay1'
               TabOrder = 16
+              Text = ''
             end
             object edqtOfferRewardEmoteDelay1: TLabeledEdit
               Left = 280
@@ -4595,6 +4666,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'OfferRewardEmoteDelay1'
               EditLabel.Caption = 'OfferRewardEmoteDelay1'
               TabOrder = 19
+              Text = ''
             end
             object edqtOfferRewardEmoteDelay2: TLabeledEdit
               Left = 280
@@ -4607,6 +4679,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'OfferRewardEmoteDelay2'
               EditLabel.Caption = 'OfferRewardEmoteDelay2'
               TabOrder = 18
+              Text = ''
             end
             object edqtOfferRewardEmoteDelay3: TLabeledEdit
               Left = 280
@@ -4619,6 +4692,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'OfferRewardEmoteDelay3'
               EditLabel.Caption = 'OfferRewardEmoteDelay3'
               TabOrder = 17
+              Text = ''
             end
             object edqtOfferRewardEmoteDelay4: TLabeledEdit
               Left = 280
@@ -4631,6 +4705,7 @@ object MainForm: TMainForm
               EditLabel.Hint = 'OfferRewardEmoteDelay4'
               EditLabel.Caption = 'OfferRewardEmoteDelay4'
               TabOrder = 20
+              Text = ''
             end
           end
           object gbAreatrigger: TGroupBox
@@ -4750,6 +4825,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'SuggestedGroupNr'
               TabOrder = 2
+              Text = ''
             end
             object edqtMethod: TLabeledEdit
               Left = 393
@@ -4763,6 +4839,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Method'
               TabOrder = 3
+              Text = ''
             end
             object edqtRequiredPlayerKills: TLabeledEdit
               Left = 287
@@ -4774,6 +4851,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredPlayerKills'
               TabOrder = 4
+              Text = ''
             end
             object edqtVerifiedBuild: TLabeledEdit
               Left = 424
@@ -4785,6 +4863,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 5
+              Text = ''
             end
             object edqtUnknown0: TLabeledEdit
               Left = 441
@@ -4795,6 +4874,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Unknown0'
               TabOrder = 6
+              Text = ''
             end
             object edqtPOIContinent: TJvComboEdit
               Left = 8
@@ -4847,6 +4927,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'POIx'
               TabOrder = 8
+              Text = ''
             end
             object edqtPOIy: TLabeledEdit
               Left = 151
@@ -4858,6 +4939,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'POIy'
               TabOrder = 9
+              Text = ''
             end
             object edqtPOIPriority: TLabeledEdit
               Left = 217
@@ -4869,6 +4951,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'POIPriority'
               TabOrder = 10
+              Text = ''
             end
           end
         end
@@ -4876,8 +4959,8 @@ object MainForm: TMainForm
           Caption = 'Quest Starters'
           ImageIndex = 3
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbQuestStarterInfo: TLabel
             Left = 8
             Top = 37
@@ -5016,7 +5099,7 @@ object MainForm: TMainForm
           object lvqtStarterTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 918
+            Width = 898
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5058,7 +5141,7 @@ object MainForm: TMainForm
           object lvqtStarterLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 918
+            Width = 898
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5130,8 +5213,8 @@ object MainForm: TMainForm
           Caption = 'Quest enders'
           ImageIndex = 4
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbQuestEnderInfo: TLabel
             Left = 8
             Top = 37
@@ -5270,7 +5353,7 @@ object MainForm: TMainForm
           object lvqtTenderTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 918
+            Width = 898
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5312,7 +5395,7 @@ object MainForm: TMainForm
           object lvqtTenderLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 918
+            Width = 898
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5435,6 +5518,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Title'
               TabOrder = 0
+              Text = ''
             end
             object edlqDetails: TMemo
               Left = 3
@@ -5496,6 +5580,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText1'
               TabOrder = 6
+              Text = ''
             end
             object edlqObjectiveText2: TLabeledEdit
               Left = 584
@@ -5506,6 +5591,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText2'
               TabOrder = 7
+              Text = ''
             end
             object edlqObjectiveText3: TLabeledEdit
               Left = 584
@@ -5516,6 +5602,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText3'
               TabOrder = 8
+              Text = ''
             end
             object edlqObjectiveText4: TLabeledEdit
               Left = 584
@@ -5526,6 +5613,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ObjectiveText4'
               TabOrder = 9
+              Text = ''
             end
             object edlqCompletedText: TLabeledEdit
               Left = 583
@@ -5536,6 +5624,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'CompletedText'
               TabOrder = 10
+              Text = ''
             end
             object edlqlocale: TLabeledEdit
               Left = 583
@@ -5546,6 +5635,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'locale'
               TabOrder = 11
+              Text = ''
             end
             object edlqVerifiedBuild: TLabeledEdit
               Left = 760
@@ -5556,6 +5646,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 12
+              Text = ''
             end
           end
           object btlqShowFullLocalesScript: TButton
@@ -5573,10 +5664,10 @@ object MainForm: TMainForm
           ImageIndex = 2
           OnShow = tsScriptTabShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btCopyToClipboard: TButton
-            Left = 789
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -5586,7 +5677,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardClick
           end
           object btExecuteScript: TButton
-            Left = 789
+            Left = 769
             Top = 540
             Width = 137
             Height = 25
@@ -5598,7 +5689,7 @@ object MainForm: TMainForm
           object meqtLog: TMemo
             Left = 8
             Top = 472
-            Width = 766
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -5607,7 +5698,7 @@ object MainForm: TMainForm
           object meqtScript: TMemo
             Left = 3
             Top = 9
-            Width = 919
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -5628,9 +5719,9 @@ object MainForm: TMainForm
       object PageControl3: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
-        ActivePage = tsSearchCreature
+        Width = 956
+        Height = 651
+        ActivePage = tsCreatureLocation
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -5639,12 +5730,12 @@ object MainForm: TMainForm
           object Panel4: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              964
+              948
               105)
             object edSearchCreatureEntry: TLabeledEdit
               Left = 8
@@ -5657,6 +5748,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'Entry'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object edSearchCreatureName: TLabeledEdit
@@ -5668,10 +5760,11 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Name'
               TabOrder = 1
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object btSearchCreature: TBitBtn
-              Left = 880
+              Left = 856
               Top = 23
               Width = 75
               Height = 25
@@ -5726,7 +5819,7 @@ object MainForm: TMainForm
               OnClick = btSearchCreatureClick
             end
             object btClearSearchCreature: TBitBtn
-              Left = 879
+              Left = 855
               Top = 56
               Width = 75
               Height = 25
@@ -5744,6 +5837,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'SubName'
               TabOrder = 2
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object gbnpcflag: TGroupBox
@@ -5828,6 +5922,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'KillCredit1'
               ParentCtl3D = False
               TabOrder = 6
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object edSearchKillCredit2: TLabeledEdit
@@ -5841,14 +5936,15 @@ object MainForm: TMainForm
               EditLabel.Caption = 'KillCredit2'
               ParentCtl3D = False
               TabOrder = 7
+              Text = ''
               OnChange = edSearchCreatureChange
             end
           end
           object lvSearchCreature: TJvListView
             Left = 0
             Top = 105
-            Width = 964
-            Height = 443
+            Width = 948
+            Height = 439
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -5909,8 +6005,8 @@ object MainForm: TMainForm
           end
           object Panel5: TPanel
             Left = 0
-            Top = 548
-            Width = 964
+            Top = 544
+            Width = 948
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -6159,7 +6255,7 @@ object MainForm: TMainForm
             object StatusBarCreature: TStatusBar
               Left = 1
               Top = 41
-              Width = 962
+              Width = 946
               Height = 19
               Panels = <
                 item
@@ -6306,6 +6402,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'modelid1'
               TabOrder = 3
+              Text = ''
             end
             object edctmodelid2: TLabeledEdit
               Left = 176
@@ -6317,6 +6414,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'modelid2'
               TabOrder = 19
+              Text = ''
             end
             object edctname: TLabeledEdit
               Left = 8
@@ -6328,6 +6426,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'name'
               TabOrder = 1
+              Text = ''
             end
             object edctsubname: TLabeledEdit
               Left = 8
@@ -6339,6 +6438,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'subname '
               TabOrder = 2
+              Text = ''
             end
             object edctminlevel: TLabeledEdit
               Left = 176
@@ -6352,6 +6452,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'minlevel'
               TabOrder = 9
+              Text = ''
             end
             object edctmaxlevel: TLabeledEdit
               Left = 256
@@ -6365,6 +6466,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'maxlevel'
               TabOrder = 10
+              Text = ''
             end
             object edctHealthModifier: TLabeledEdit
               Left = 8
@@ -6376,6 +6478,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'HealthModifier'
               TabOrder = 20
+              Text = ''
             end
             object edctManaModifier: TLabeledEdit
               Left = 88
@@ -6387,6 +6490,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ManaModifier'
               TabOrder = 5
+              Text = ''
             end
             object edctmingold: TLabeledEdit
               Left = 8
@@ -6398,6 +6502,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'mingold'
               TabOrder = 7
+              Text = ''
             end
             object edctmaxgold: TLabeledEdit
               Left = 88
@@ -6409,6 +6514,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'maxgold'
               TabOrder = 8
+              Text = ''
             end
             object edctmodelid4: TLabeledEdit
               Left = 256
@@ -6420,6 +6526,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'modelid4'
               TabOrder = 6
+              Text = ''
             end
             object edctmodelid3: TLabeledEdit
               Left = 88
@@ -6431,6 +6538,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'modelid3'
               TabOrder = 4
+              Text = ''
             end
             object edctIconName: TLabeledEdit
               Left = 176
@@ -6441,6 +6549,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'IconName'
               TabOrder = 11
+              Text = ''
             end
             object edctdifficulty_entry_1: TJvComboEdit
               Left = 88
@@ -6506,6 +6615,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'KillCredit1'
               TabOrder = 13
+              Text = ''
             end
             object edctKillCredit2: TLabeledEdit
               Left = 178
@@ -6517,6 +6627,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'KillCredit2'
               TabOrder = 14
+              Text = ''
             end
             object edctdifficulty_entry_2: TJvComboEdit
               Left = 178
@@ -6639,6 +6750,7 @@ object MainForm: TMainForm
               EditLabel.Transparent = True
               ParentDoubleBuffered = False
               TabOrder = 17
+              Text = ''
             end
             object edctexp: TLabeledEdit
               Left = 256
@@ -6655,6 +6767,7 @@ object MainForm: TMainForm
               EditLabel.Transparent = True
               ParentDoubleBuffered = False
               TabOrder = 18
+              Text = ''
             end
           end
           object gbCreature2: TGroupBox
@@ -6737,6 +6850,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'baseattacktime'
               TabOrder = 0
+              Text = ''
             end
             object edctrangeattacktime: TLabeledEdit
               Left = 297
@@ -6748,6 +6862,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'rangeattacktime'
               TabOrder = 1
+              Text = ''
             end
             object edctfaction: TJvComboEdit
               Left = 296
@@ -6955,6 +7070,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'dmgschool'
               TabOrder = 2
+              Text = ''
             end
             object edctRegenHealth: TLabeledEdit
               Left = 3
@@ -6965,6 +7081,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RegenHealth'
               TabOrder = 3
+              Text = ''
             end
             object edctunit_flags: TJvComboEdit
               Left = 107
@@ -7127,6 +7244,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'unit_class'
               TabOrder = 12
+              Text = ''
             end
             object edctVerifiedBuild: TLabeledEdit
               Left = 391
@@ -7137,6 +7255,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 13
+              Text = ''
             end
           end
           object gbLoot: TGroupBox
@@ -7159,6 +7278,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'lootid'
               TabOrder = 0
+              Text = ''
             end
             object edctpickpocketloot: TLabeledEdit
               Left = 8
@@ -7173,6 +7293,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'pickpocketloot'
               TabOrder = 1
+              Text = ''
             end
             object edctskinloot: TLabeledEdit
               Left = 8
@@ -7187,6 +7308,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'skinloot'
               TabOrder = 2
+              Text = ''
             end
           end
           object gbResistance: TGroupBox
@@ -7206,6 +7328,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'resistance1'
               TabOrder = 0
+              Text = ''
             end
             object edctresistance2: TLabeledEdit
               Left = 8
@@ -7217,6 +7340,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'resistance2'
               TabOrder = 1
+              Text = ''
             end
             object edctresistance3: TLabeledEdit
               Left = 8
@@ -7228,6 +7352,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'resistance3'
               TabOrder = 2
+              Text = ''
             end
             object edctresistance4: TLabeledEdit
               Left = 112
@@ -7239,6 +7364,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'resistance4'
               TabOrder = 3
+              Text = ''
             end
             object edctresistance5: TLabeledEdit
               Left = 112
@@ -7250,6 +7376,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'resistance5'
               TabOrder = 4
+              Text = ''
             end
             object edctresistance6: TLabeledEdit
               Left = 112
@@ -7261,6 +7388,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'resistance6'
               TabOrder = 5
+              Text = ''
             end
           end
           object gbSpells: TGroupBox
@@ -7726,6 +7854,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'AIName'
               TabOrder = 0
+              Text = ''
             end
             object edctScriptName: TLabeledEdit
               Left = 8
@@ -7737,6 +7866,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ScriptName'
               TabOrder = 3
+              Text = ''
             end
             object edctMovementType: TJvComboEdit
               Left = 9
@@ -7826,6 +7956,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'movementId'
               TabOrder = 4
+              Text = ''
             end
             object edctgossip_menu_id: TJvComboEdit
               Left = 8
@@ -7892,6 +8023,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'HoverHeight'
               TabOrder = 6
+              Text = ''
             end
           end
           object gbTrainer: TGroupBox
@@ -8111,6 +8243,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ArmorModifier'
               TabOrder = 0
+              Text = ''
             end
             object edctspeed_walk: TLabeledEdit
               Left = 3
@@ -8122,6 +8255,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'speed_walk'
               TabOrder = 1
+              Text = ''
             end
             object edctscale: TLabeledEdit
               Left = 80
@@ -8133,6 +8267,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'scale'
               TabOrder = 2
+              Text = ''
             end
             object edctspeed_run: TLabeledEdit
               Left = 72
@@ -8144,6 +8279,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'speed_run'
               TabOrder = 3
+              Text = ''
             end
             object edctDamageModifier: TLabeledEdit
               Left = 3
@@ -8154,6 +8290,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'DamageModifier'
               TabOrder = 5
+              Text = ''
             end
             object edctExperienceModifier: TLabeledEdit
               Left = 3
@@ -8165,6 +8302,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ExpModifier'
               TabOrder = 7
+              Text = ''
             end
             object edctRangeVariance: TLabeledEdit
               Left = 80
@@ -8176,6 +8314,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RangeVariance'
               TabOrder = 4
+              Text = ''
             end
             object edctBaseVariance: TLabeledEdit
               Left = 3
@@ -8187,6 +8326,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'BaseVariance'
               TabOrder = 6
+              Text = ''
             end
           end
           object btScriptCreatureTemplate: TButton
@@ -8253,6 +8393,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'PetSpellDataId'
             TabOrder = 11
+            Text = ''
           end
           object edctflags_extra: TJvComboEdit
             Left = 240
@@ -8311,6 +8452,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem1'
               TabOrder = 0
+              Text = ''
             end
             object edctquestItem2: TLabeledEdit
               Left = 112
@@ -8321,6 +8463,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem2'
               TabOrder = 1
+              Text = ''
             end
             object edctquestItem3: TLabeledEdit
               Left = 8
@@ -8331,6 +8474,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem3'
               TabOrder = 2
+              Text = ''
             end
             object edctquestItem4: TLabeledEdit
               Left = 112
@@ -8341,6 +8485,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem4'
               TabOrder = 3
+              Text = ''
             end
             object edctquestItem5: TLabeledEdit
               Left = 8
@@ -8351,6 +8496,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem5'
               TabOrder = 4
+              Text = ''
             end
             object edctquestItem6: TLabeledEdit
               Left = 112
@@ -8361,6 +8507,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem6'
               TabOrder = 5
+              Text = ''
             end
           end
         end
@@ -8368,8 +8515,8 @@ object MainForm: TMainForm
           Caption = 'Creature Location'
           ImageIndex = 2
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object lbclCreatureLocationHint: TLabel
             Left = 8
             Top = 8
@@ -8415,9 +8562,9 @@ object MainForm: TMainForm
             Caption = 'dynamicflags'
           end
           object lvclCreatureLocation: TJvListView
-            Left = 3
-            Top = 26
-            Width = 918
+            Left = 10
+            Top = 27
+            Width = 898
             Height = 350
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -8485,17 +8632,19 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'guid'
             TabOrder = 1
+            Text = ''
           end
-          object edclid: TLabeledEdit
+          object edclid1: TLabeledEdit
             Left = 96
             Top = 400
             Width = 79
             Height = 21
             Hint = 'The id is the same as creature_template.entry'
-            EditLabel.Width = 8
+            EditLabel.Width = 14
             EditLabel.Height = 13
-            EditLabel.Caption = 'id'
+            EditLabel.Caption = 'id1'
             TabOrder = 2
+            Text = ''
           end
           object edclposition_x: TLabeledEdit
             Left = 8
@@ -8507,6 +8656,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'position_x'
             TabOrder = 10
+            Text = ''
           end
           object edclposition_y: TLabeledEdit
             Left = 96
@@ -8518,6 +8668,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'position_y'
             TabOrder = 11
+            Text = ''
           end
           object edclposition_z: TLabeledEdit
             Left = 181
@@ -8529,6 +8680,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'position_z'
             TabOrder = 12
+            Text = ''
           end
           object edclorientation: TLabeledEdit
             Left = 266
@@ -8543,6 +8695,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'orientation'
             TabOrder = 13
+            Text = ''
           end
           object edclspawntimesecs: TLabeledEdit
             Left = 340
@@ -8550,12 +8703,13 @@ object MainForm: TMainForm
             Width = 74
             Height = 21
             Hint = 'Delay before creature respawns in seconds'
-            EditLabel.Width = 72
+            EditLabel.Width = 92
             EditLabel.Height = 13
-            EditLabel.Caption = 'spawntimesecs'
+            EditLabel.Caption = 'edclspawntimesecs'
             TabOrder = 25
+            Text = ''
           end
-          object edclspawndist: TLabeledEdit
+          object edclwander_distance: TLabeledEdit
             Left = 418
             Top = 443
             Width = 81
@@ -8564,10 +8718,11 @@ object MainForm: TMainForm
               'Spawndist[ance] means how far the mob/npc can walk around, '#13#10'and' +
               ' in what range it can spawn.'#13#10'MovementType must be set to 1, if ' +
               'any value higher then 0 is given.'
-            EditLabel.Width = 47
+            EditLabel.Width = 101
             EditLabel.Height = 13
-            EditLabel.Caption = 'spawndist'
+            EditLabel.Caption = 'edclwander_distance'
             TabOrder = 15
+            Text = ''
           end
           object edclcurrentwaypoint: TLabeledEdit
             Left = 505
@@ -8579,6 +8734,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'currentwaypoint'
             TabOrder = 16
+            Text = ''
           end
           object edclcurhealth: TLabeledEdit
             Left = 592
@@ -8590,6 +8746,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'curhealth'
             TabOrder = 17
+            Text = ''
           end
           object edclcurmana: TLabeledEdit
             Left = 680
@@ -8601,6 +8758,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'curmana'
             TabOrder = 18
+            Text = ''
           end
           object edclMovementType: TLabeledEdit
             Left = 767
@@ -8611,6 +8769,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MovementType'
             TabOrder = 27
+            Text = ''
           end
           object btScriptCreatureLocation: TButton
             Left = 3
@@ -8635,7 +8794,7 @@ object MainForm: TMainForm
             OnClick = btScriptCreatureLocationCustomToAllClick
           end
           object btFullScriptCreatureLocation: TButton
-            Left = 711
+            Left = 691
             Top = 568
             Width = 210
             Height = 25
@@ -8656,17 +8815,19 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'equipment_id'
             TabOrder = 9
+            Text = ''
             OnDblClick = edclequipment_idDblClick
           end
-          object edclmodelid: TLabeledEdit
+          object edclCreateObject: TLabeledEdit
             Left = 645
             Top = 400
             Width = 100
             Height = 21
-            EditLabel.Width = 36
+            EditLabel.Width = 82
             EditLabel.Height = 13
-            EditLabel.Caption = 'modelid'
+            EditLabel.Caption = 'edclCreateObject'
             TabOrder = 8
+            Text = ''
           end
           object edclmap: TJvComboEdit
             Left = 188
@@ -8716,6 +8877,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'phaseMask'
             TabOrder = 7
+            Text = ''
           end
           object edclzoneId: TLabeledEdit
             Left = 274
@@ -8726,6 +8888,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'zoneId'
             TabOrder = 4
+            Text = ''
           end
           object edclareaId: TLabeledEdit
             Left = 373
@@ -8736,6 +8899,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'areaId'
             TabOrder = 5
+            Text = ''
           end
           object edclScriptName: TLabeledEdit
             Left = 274
@@ -8746,6 +8910,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ScriptName'
             TabOrder = 23
+            Text = ''
           end
           object edclVerifiedBuild: TLabeledEdit
             Left = 418
@@ -8756,6 +8921,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'VerifiedBuild'
             TabOrder = 24
+            Text = ''
           end
           object edclspawnMask: TJvComboEdit
             Left = 472
@@ -8903,18 +9069,42 @@ object MainForm: TMainForm
             Text = ''
             OnButtonClick = GetCreatureDynamicFlags
           end
+          object edclid2: TLabeledEdit
+            Left = 505
+            Top = 488
+            Width = 79
+            Height = 21
+            Hint = 'The id is the same as creature_template.entry'
+            EditLabel.Width = 14
+            EditLabel.Height = 13
+            EditLabel.Caption = 'id2'
+            TabOrder = 28
+            Text = ''
+          end
+          object edclid3: TLabeledEdit
+            Left = 590
+            Top = 488
+            Width = 79
+            Height = 21
+            Hint = 'The id is the same as creature_template.entry'
+            EditLabel.Width = 14
+            EditLabel.Height = 13
+            EditLabel.Caption = 'id3'
+            TabOrder = 29
+            Text = ''
+          end
         end
         object tsCreatureModelInfo: TTabSheet
           Caption = 'Model Info'
           ImageIndex = 13
           OnShow = tsCreatureModelInfoShow
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object lvCreatureModelSearch: TJvListView
             Left = 11
             Top = 50
-            Width = 914
+            Width = 894
             Height = 223
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -8960,16 +9150,16 @@ object MainForm: TMainForm
           object Panel24: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 50
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             DesignSize = (
-              964
+              948
               50)
             object btCreatureModelSearch: TBitBtn
-              Left = 850
+              Left = 830
               Top = 16
               Width = 75
               Height = 25
@@ -9035,6 +9225,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'DisplayID'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchCreatureChange
             end
           end
@@ -9056,6 +9247,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'DisplayID'
             TabOrder = 2
+            Text = ''
           end
           object edciBoundingRadius: TLabeledEdit
             Left = 138
@@ -9066,6 +9258,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'BoundingRadius'
             TabOrder = 3
+            Text = ''
           end
           object edciCombatReach: TLabeledEdit
             Left = 265
@@ -9076,6 +9269,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'CombatReach'
             TabOrder = 4
+            Text = ''
           end
           object edciGender: TLabeledEdit
             Left = 392
@@ -9086,6 +9280,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Gender'
             TabOrder = 5
+            Text = ''
           end
           object edciDisplayID_Other_Gender: TLabeledEdit
             Left = 519
@@ -9096,6 +9291,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'DisplayID_Other_Gender'
             TabOrder = 6
+            Text = ''
           end
         end
         object tsCreatureEquipTemplate: TTabSheet
@@ -9105,7 +9301,7 @@ object MainForm: TMainForm
           object Panel23: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 50
             Align = alTop
             BevelOuter = bvNone
@@ -9142,6 +9338,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'CreatureID'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object edceid: TLabeledEdit
@@ -9155,6 +9352,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'ID'
               ParentCtl3D = False
               TabOrder = 1
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object edceVerifiedBuild: TLabeledEdit
@@ -9166,6 +9364,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 5
+              Text = ''
             end
             object btShowCreatureEquipmentScript: TButton
               Left = 9
@@ -9296,8 +9495,8 @@ object MainForm: TMainForm
           Caption = 'Creature Loot'
           ImageIndex = 4
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object lbcoitem: TLabel
             Left = 79
             Top = 476
@@ -9497,7 +9696,7 @@ object MainForm: TMainForm
           object lvcoCreatureLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 918
+            Width = 898
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9587,6 +9786,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edcoReference: TLabeledEdit
             Left = 149
@@ -9597,6 +9797,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 3
+            Text = ''
           end
           object edcoChance: TLabeledEdit
             Left = 235
@@ -9607,6 +9808,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 4
+            Text = ''
           end
           object edcoQuestRequired: TLabeledEdit
             Left = 293
@@ -9617,6 +9819,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 5
+            Text = ''
           end
           object edcoGroupId: TLabeledEdit
             Left = 465
@@ -9627,6 +9830,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 7
+            Text = ''
           end
           object edcoMinCount: TLabeledEdit
             Left = 9
@@ -9637,6 +9841,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 8
+            Text = ''
           end
           object edcoMaxCount: TLabeledEdit
             Left = 95
@@ -9647,6 +9852,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 9
+            Text = ''
           end
           object edcoComment: TLabeledEdit
             Left = 181
@@ -9657,6 +9863,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 10
+            Text = ''
           end
           object btScriptCreatureLoot: TButton
             Left = 8
@@ -9757,8 +9964,8 @@ object MainForm: TMainForm
           Caption = 'Pickpocket Loot'
           ImageIndex = 7
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object lbcpitem: TLabel
             Left = 79
             Top = 476
@@ -9958,7 +10165,7 @@ object MainForm: TMainForm
           object lvcoPickpocketLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 918
+            Width = 898
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10038,6 +10245,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edcpReference: TLabeledEdit
             Left = 149
@@ -10048,6 +10256,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 3
+            Text = ''
           end
           object edcpChance: TLabeledEdit
             Left = 235
@@ -10058,6 +10267,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 4
+            Text = ''
           end
           object edcpQuestRequired: TLabeledEdit
             Left = 293
@@ -10068,6 +10278,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 5
+            Text = ''
           end
           object edcpGroupId: TLabeledEdit
             Left = 465
@@ -10078,6 +10289,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 7
+            Text = ''
           end
           object edcpMinCount: TLabeledEdit
             Left = 9
@@ -10088,6 +10300,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 8
+            Text = ''
           end
           object edcpMaxCount: TLabeledEdit
             Left = 95
@@ -10098,6 +10311,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 9
+            Text = ''
           end
           object edcpComment: TLabeledEdit
             Left = 181
@@ -10108,6 +10322,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 10
+            Text = ''
           end
           object btScriptPickpocketLoot: TButton
             Left = 8
@@ -10208,8 +10423,8 @@ object MainForm: TMainForm
           Caption = 'Skin Loot'
           ImageIndex = 8
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object lbcsitem: TLabel
             Left = 79
             Top = 476
@@ -10409,7 +10624,7 @@ object MainForm: TMainForm
           object lvcoSkinLoot: TJvListView
             Left = 3
             Top = 32
-            Width = 918
+            Width = 898
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10488,6 +10703,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edcsReference: TLabeledEdit
             Left = 149
@@ -10498,6 +10714,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 3
+            Text = ''
           end
           object edcsChance: TLabeledEdit
             Left = 235
@@ -10508,6 +10725,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 4
+            Text = ''
           end
           object edcsQuestRequired: TLabeledEdit
             Left = 293
@@ -10518,6 +10736,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 5
+            Text = ''
           end
           object edcsGroupId: TLabeledEdit
             Left = 465
@@ -10528,6 +10747,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 7
+            Text = ''
           end
           object edcsMinCount: TLabeledEdit
             Left = 9
@@ -10538,6 +10758,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 8
+            Text = ''
           end
           object edcsMaxCount: TLabeledEdit
             Left = 95
@@ -10548,6 +10769,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 9
+            Text = ''
           end
           object edcsComment: TLabeledEdit
             Left = 181
@@ -10558,6 +10780,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 10
+            Text = ''
           end
           object btScriptSkinLoot: TButton
             Left = 8
@@ -10658,8 +10881,8 @@ object MainForm: TMainForm
           Caption = 'NPC Vendor'
           ImageIndex = 5
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object lbcvitem: TLabel
             Left = 192
             Top = 474
@@ -10856,7 +11079,7 @@ object MainForm: TMainForm
           object lvcvNPCVendor: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10919,6 +11142,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'entry'
             TabOrder = 1
+            Text = ''
           end
           object edcvslot: TLabeledEdit
             Left = 97
@@ -10929,6 +11153,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'slot'
             TabOrder = 2
+            Text = ''
           end
           object edcvitem: TJvComboEdit
             Left = 192
@@ -10977,6 +11202,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'maxcount'
             TabOrder = 4
+            Text = ''
           end
           object edcvincrtime: TLabeledEdit
             Left = 374
@@ -10987,6 +11213,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'incrtime'
             TabOrder = 5
+            Text = ''
           end
           object edcvExtendedCost: TJvComboEdit
             Left = 464
@@ -11035,6 +11262,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'VerifiedBuild'
             TabOrder = 7
+            Text = ''
           end
           object btScriptNPCVendor: TButton
             Left = 8
@@ -11059,8 +11287,8 @@ object MainForm: TMainForm
           Caption = 'NPC Trainer'
           ImageIndex = 6
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object SpellID: TLabel
             Left = 96
             Top = 479
@@ -11257,7 +11485,7 @@ object MainForm: TMainForm
           object lvcrNPCTrainer: TJvListView
             Left = 3
             Top = 27
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -11315,6 +11543,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ID'
             TabOrder = 1
+            Text = ''
           end
           object edcrSpellID: TJvComboEdit
             Left = 96
@@ -11363,6 +11592,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MoneyCost'
             TabOrder = 3
+            Text = ''
           end
           object edcrReqSkillRank: TLabeledEdit
             Left = 376
@@ -11373,6 +11603,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ReqSkillRank'
             TabOrder = 5
+            Text = ''
           end
           object edcrreqlevel: TLabeledEdit
             Left = 464
@@ -11383,6 +11614,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ReqLevel'
             TabOrder = 6
+            Text = ''
           end
           object edcrReqSkillLine: TJvComboEdit
             Left = 288
@@ -11448,8 +11680,8 @@ object MainForm: TMainForm
           object cttSearchCreatureText: TJvListView
             Left = 0
             Top = 89
-            Width = 964
-            Height = 302
+            Width = 948
+            Height = 298
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -11545,15 +11777,15 @@ object MainForm: TMainForm
           object cttGroupBox: TGroupBox
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 89
             Align = alTop
             TabOrder = 1
             DesignSize = (
-              964
+              948
               89)
             object cttClearSearchCreatureText: TBitBtn
-              Left = 867
+              Left = 847
               Top = 56
               Width = 75
               Height = 25
@@ -11563,7 +11795,7 @@ object MainForm: TMainForm
               OnClick = btClearSearchCreatureClick
             end
             object btSearchCreatureText: TBitBtn
-              Left = 867
+              Left = 847
               Top = 24
               Width = 75
               Height = 25
@@ -11626,6 +11858,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Text'
               TabOrder = 1
+              Text = ''
             end
             object edSearchCreatureTextCreatureID: TLabeledEdit
               Left = 8
@@ -11636,18 +11869,19 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'CreatureID'
               TabOrder = 0
+              Text = ''
             end
           end
           object cttPanel13: TPanel
             Left = 0
-            Top = 391
-            Width = 964
+            Top = 387
+            Width = 948
             Height = 218
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
             DesignSize = (
-              964
+              948
               218)
             object edcttCreatureId: TLabeledEdit
               Left = 8
@@ -11658,6 +11892,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'CreatureID'
               TabOrder = 0
+              Text = ''
             end
             object edcttGroupID: TLabeledEdit
               Left = 87
@@ -11668,6 +11903,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'GroupID'
               TabOrder = 1
+              Text = ''
             end
             object edcttText: TLabeledEdit
               Left = 243
@@ -11678,6 +11914,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Text'
               TabOrder = 2
+              Text = ''
             end
             object btScriptCreatureText: TButton
               Left = 867
@@ -11698,6 +11935,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ID'
               TabOrder = 4
+              Text = ''
             end
             object edcttType: TLabeledEdit
               Left = 8
@@ -11708,6 +11946,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Type'
               TabOrder = 5
+              Text = ''
             end
             object edcttLanguage: TLabeledEdit
               Left = 85
@@ -11718,6 +11957,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Language'
               TabOrder = 6
+              Text = ''
             end
             object edcttProbability: TLabeledEdit
               Left = 166
@@ -11728,6 +11968,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Probability'
               TabOrder = 7
+              Text = ''
             end
             object edcttEmote: TLabeledEdit
               Left = 243
@@ -11738,6 +11979,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Emote'
               TabOrder = 8
+              Text = ''
             end
             object edcttDuration: TLabeledEdit
               Left = 320
@@ -11748,6 +11990,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Duration'
               TabOrder = 9
+              Text = ''
             end
             object edcttSound: TLabeledEdit
               Left = 397
@@ -11758,6 +12001,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Sound'
               TabOrder = 10
+              Text = ''
             end
             object edcttBroadcastTextId: TLabeledEdit
               Left = 474
@@ -11768,6 +12012,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'BroadcastTextId'
               TabOrder = 11
+              Text = ''
             end
             object edcttTextRange: TLabeledEdit
               Left = 560
@@ -11778,6 +12023,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'TextRange'
               TabOrder = 12
+              Text = ''
             end
             object edcttcomment: TLabeledEdit
               Left = 8
@@ -11788,6 +12034,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'comment'
               TabOrder = 13
+              Text = ''
             end
           end
         end
@@ -11820,6 +12067,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'entry'
             TabOrder = 0
+            Text = ''
           end
           object btScriptCreatureTemplateAddon: TButton
             Left = 8
@@ -11839,6 +12087,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'auras'
             TabOrder = 5
+            Text = ''
           end
           object edcdbytes1: TLabeledEdit
             Left = 286
@@ -11850,6 +12099,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'bytes1'
             TabOrder = 2
+            Text = ''
           end
           object edcdmount: TLabeledEdit
             Left = 148
@@ -11863,6 +12113,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'mount'
             TabOrder = 1
+            Text = ''
           end
           object edcdbytes2: TLabeledEdit
             Left = 413
@@ -11874,6 +12125,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'bytes2'
             TabOrder = 3
+            Text = ''
           end
           object edcdemote: TJvComboEdit
             Left = 540
@@ -11925,6 +12177,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'path_id'
             TabOrder = 7
+            Text = ''
           end
           object edcdvisibilityDistanceType: TLabeledEdit
             Left = 667
@@ -11935,6 +12188,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'visibilityDistanceType'
             TabOrder = 8
+            Text = ''
           end
         end
         object rea: TTabSheet
@@ -11966,6 +12220,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'guid'
             TabOrder = 0
+            Text = ''
           end
           object edcamount: TLabeledEdit
             Left = 148
@@ -11979,6 +12234,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'mount'
             TabOrder = 1
+            Text = ''
           end
           object edcabytes1: TLabeledEdit
             Left = 286
@@ -11990,6 +12246,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'bytes1'
             TabOrder = 2
+            Text = ''
           end
           object edcabytes2: TLabeledEdit
             Left = 413
@@ -12001,6 +12258,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'bytes2'
             TabOrder = 3
+            Text = ''
           end
           object edcaemote: TJvComboEdit
             Left = 540
@@ -12049,6 +12307,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'auras'
             TabOrder = 5
+            Text = ''
           end
           object btScriptCreatureAddon: TButton
             Left = 8
@@ -12080,6 +12339,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'visibilityDistanceType'
             TabOrder = 8
+            Text = ''
           end
         end
         object tsCreatureTemplateMovement: TTabSheet
@@ -12100,7 +12360,7 @@ object MainForm: TMainForm
             Width = 209
             Height = 25
             Caption = 'Show FULL Creature Movement Script'
-            TabOrder = 6
+            TabOrder = 8
             OnClick = btFullCreatureMovementScriptClick
           end
           object edcmcreatureid: TLabeledEdit
@@ -12112,6 +12372,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'CreatureId'
             TabOrder = 1
+            Text = ''
           end
           object edcmground: TLabeledEdit
             Left = 143
@@ -12122,6 +12383,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Ground'
             TabOrder = 2
+            Text = ''
           end
           object edcmswim: TLabeledEdit
             Left = 270
@@ -12132,6 +12394,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Swim'
             TabOrder = 3
+            Text = ''
           end
           object edcmflight: TLabeledEdit
             Left = 397
@@ -12142,6 +12405,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Flight'
             TabOrder = 4
+            Text = ''
           end
           object edcmrooted: TLabeledEdit
             Left = 524
@@ -12152,26 +12416,29 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Rooted'
             TabOrder = 5
+            Text = ''
           end
           object edcmChase: TLabeledEdit
             Left = 651
             Top = 408
             Width = 121
             Height = 21
-            EditLabel.Width = 35
+            EditLabel.Width = 30
             EditLabel.Height = 13
             EditLabel.Caption = 'Chase'
             TabOrder = 6
+            Text = ''
           end
           object edcmRandom: TLabeledEdit
             Left = 778
             Top = 408
             Width = 121
             Height = 21
-            EditLabel.Width = 35
+            EditLabel.Width = 40
             EditLabel.Height = 13
             EditLabel.Caption = 'Random'
             TabOrder = 7
+            Text = ''
           end
         end
         object tsCreatureOnKillReputation: TTabSheet
@@ -12201,6 +12468,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'RewOnKillRepValue1'
             TabOrder = 2
+            Text = ''
           end
           object edckRewOnKillRepFaction1: TJvComboEdit
             Left = 16
@@ -12289,6 +12557,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'RewOnKillRepValue2'
             TabOrder = 6
+            Text = ''
           end
           object edckMaxStanding1: TLabeledEdit
             Left = 288
@@ -12299,6 +12568,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxStanding1'
             TabOrder = 3
+            Text = ''
           end
           object edckMaxStanding2: TLabeledEdit
             Left = 288
@@ -12309,6 +12579,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxStanding2'
             TabOrder = 7
+            Text = ''
           end
           object cbckIsTeamAward1: TCheckBox
             Left = 424
@@ -12352,6 +12623,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'creature_id'
             TabOrder = 0
+            Text = ''
           end
         end
         object tsCreatureUsed: TTabSheet
@@ -12361,7 +12633,7 @@ object MainForm: TMainForm
           object pcCreatureInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 964
+            Width = 948
             Height = 417
             ActivePage = tsCreatureStarts
             Align = alTop
@@ -12371,7 +12643,7 @@ object MainForm: TMainForm
               object lvCreatureStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12427,7 +12699,7 @@ object MainForm: TMainForm
               object lvCreatureEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12483,7 +12755,7 @@ object MainForm: TMainForm
               object lvCreatureObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12536,7 +12808,7 @@ object MainForm: TMainForm
           object Panel20: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -12571,12 +12843,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsCreatureScriptShow
           DesignSize = (
-            964
-            609)
+            948
+            605)
           object mectScript: TMemo
             Left = 13
             Top = 9
-            Width = 919
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -12591,14 +12863,14 @@ object MainForm: TMainForm
           object mectLog: TMemo
             Left = 8
             Top = 472
-            Width = 766
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardCreature: TButton
-            Left = 789
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -12612,7 +12884,7 @@ object MainForm: TMainForm
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -12625,7 +12897,7 @@ object MainForm: TMainForm
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -12634,8 +12906,8 @@ object MainForm: TMainForm
       object PageControl4: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsGOLoot
         Align = alClient
         TabOrder = 1
@@ -12644,12 +12916,12 @@ object MainForm: TMainForm
           object Panel6: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              964
+              948
               105)
             object lbSearchGOtype: TLabel
               Left = 264
@@ -12676,6 +12948,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'Entry'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchGOChange
             end
             object edSearchGOName: TLabeledEdit
@@ -12687,10 +12960,11 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'name'
               TabOrder = 1
+              Text = ''
               OnChange = edSearchGOChange
             end
             object btSearchGO: TBitBtn
-              Left = 879
+              Left = 855
               Top = 24
               Width = 75
               Height = 25
@@ -12745,7 +13019,7 @@ object MainForm: TMainForm
               OnClick = btSearchGOClick
             end
             object btClearSearchGO: TBitBtn
-              Left = 879
+              Left = 855
               Top = 56
               Width = 75
               Height = 25
@@ -12843,6 +13117,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data0'
               TabOrder = 6
+              Text = ''
               OnChange = edSearchGOChange
             end
             object edSearchGOdata1: TLabeledEdit
@@ -12854,6 +13129,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data1'
               TabOrder = 7
+              Text = ''
               OnChange = edSearchGOChange
             end
             object edSearchGOdata2: TLabeledEdit
@@ -12865,14 +13141,15 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data2'
               TabOrder = 8
+              Text = ''
               OnChange = edSearchGOChange
             end
           end
           object lvSearchGO: TJvListView
             Left = 0
             Top = 105
-            Width = 964
-            Height = 461
+            Width = 948
+            Height = 457
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -12916,8 +13193,8 @@ object MainForm: TMainForm
           end
           object Panel7: TPanel
             Left = 0
-            Top = 566
-            Width = 964
+            Top = 562
+            Width = 948
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -13166,7 +13443,7 @@ object MainForm: TMainForm
             object StatusBarGO: TStatusBar
               Left = 1
               Top = 41
-              Width = 962
+              Width = 946
               Height = 19
               Panels = <
                 item
@@ -13299,6 +13576,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'name'
               TabOrder = 1
+              Text = ''
             end
             object edgtdisplayId: TLabeledEdit
               Left = 8
@@ -13310,6 +13588,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'displayId'
               TabOrder = 4
+              Text = ''
             end
             object edgtsize: TLabeledEdit
               Left = 333
@@ -13323,6 +13602,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'size'
               TabOrder = 3
+              Text = ''
             end
             object edgtScriptName: TLabeledEdit
               Left = 333
@@ -13334,6 +13614,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ScriptName'
               TabOrder = 7
+              Text = ''
             end
             object edgtfaction: TJvComboEdit
               Left = 88
@@ -13462,6 +13743,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'castBarCaption'
               TabOrder = 8
+              Text = ''
             end
             object edgtIconName: TLabeledEdit
               Left = 8
@@ -13472,6 +13754,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'IconName'
               TabOrder = 9
+              Text = ''
             end
             object edgtunk1: TLabeledEdit
               Left = 220
@@ -13482,6 +13765,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'unk1'
               TabOrder = 10
+              Text = ''
             end
             object edgtVerifiedBuild: TLabeledEdit
               Left = 292
@@ -13492,6 +13776,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 11
+              Text = ''
             end
             object edgtAIName: TLabeledEdit
               Left = 356
@@ -13502,6 +13787,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'AIName'
               TabOrder = 12
+              Text = ''
             end
           end
           object btScriptGOTemplate: TButton
@@ -13532,6 +13818,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data0'
               TabOrder = 0
+              Text = ''
             end
             object edgtdata1: TLabeledEdit
               Left = 120
@@ -13542,6 +13829,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data1'
               TabOrder = 1
+              Text = ''
             end
             object edgtdata2: TLabeledEdit
               Left = 232
@@ -13552,6 +13840,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data2'
               TabOrder = 2
+              Text = ''
             end
             object edgtdata3: TLabeledEdit
               Left = 344
@@ -13562,6 +13851,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data3'
               TabOrder = 3
+              Text = ''
             end
             object edgtdata4: TLabeledEdit
               Left = 8
@@ -13572,6 +13862,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data4'
               TabOrder = 4
+              Text = ''
             end
             object edgtdata5: TLabeledEdit
               Left = 120
@@ -13582,6 +13873,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data5'
               TabOrder = 5
+              Text = ''
             end
             object edgtdata6: TLabeledEdit
               Left = 232
@@ -13592,6 +13884,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data6'
               TabOrder = 6
+              Text = ''
             end
             object edgtdata7: TLabeledEdit
               Left = 344
@@ -13602,6 +13895,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data7'
               TabOrder = 7
+              Text = ''
             end
             object edgtdata8: TLabeledEdit
               Left = 8
@@ -13612,6 +13906,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data8'
               TabOrder = 8
+              Text = ''
             end
             object edgtdata9: TLabeledEdit
               Left = 120
@@ -13622,6 +13917,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data9'
               TabOrder = 9
+              Text = ''
             end
             object edgtdata10: TLabeledEdit
               Left = 232
@@ -13632,6 +13928,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data10'
               TabOrder = 10
+              Text = ''
             end
             object edgtdata12: TLabeledEdit
               Left = 8
@@ -13642,6 +13939,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data12'
               TabOrder = 12
+              Text = ''
             end
             object edgtdata13: TLabeledEdit
               Left = 120
@@ -13652,6 +13950,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data13'
               TabOrder = 13
+              Text = ''
             end
             object edgtdata14: TLabeledEdit
               Left = 232
@@ -13662,6 +13961,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data14'
               TabOrder = 14
+              Text = ''
             end
             object edgtdata15: TLabeledEdit
               Left = 344
@@ -13672,6 +13972,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data15'
               TabOrder = 15
+              Text = ''
             end
             object edgtdata16: TLabeledEdit
               Left = 8
@@ -13682,6 +13983,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data16'
               TabOrder = 16
+              Text = ''
             end
             object edgtdata17: TLabeledEdit
               Left = 120
@@ -13692,6 +13994,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data17'
               TabOrder = 17
+              Text = ''
             end
             object edgtdata18: TLabeledEdit
               Left = 232
@@ -13702,6 +14005,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data18'
               TabOrder = 18
+              Text = ''
             end
             object edgtdata19: TLabeledEdit
               Left = 344
@@ -13712,6 +14016,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data19'
               TabOrder = 19
+              Text = ''
             end
             object edgtdata11: TLabeledEdit
               Left = 344
@@ -13722,6 +14027,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data11'
               TabOrder = 11
+              Text = ''
             end
             object edgtdata20: TLabeledEdit
               Left = 8
@@ -13732,6 +14038,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data20'
               TabOrder = 20
+              Text = ''
             end
             object edgtdata21: TLabeledEdit
               Left = 120
@@ -13742,6 +14049,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data21'
               TabOrder = 21
+              Text = ''
             end
             object edgtdata22: TLabeledEdit
               Left = 232
@@ -13752,6 +14060,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data22'
               TabOrder = 22
+              Text = ''
             end
             object edgtdata23: TLabeledEdit
               Left = 344
@@ -13762,6 +14071,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'data23'
               TabOrder = 23
+              Text = ''
             end
           end
           object gbGOQuestItems: TGroupBox
@@ -13780,6 +14090,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem1'
               TabOrder = 0
+              Text = ''
             end
             object edgtquestItem2: TLabeledEdit
               Left = 128
@@ -13790,6 +14101,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem2'
               TabOrder = 1
+              Text = ''
             end
             object edgtquestItem3: TLabeledEdit
               Left = 7
@@ -13800,6 +14112,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem3'
               TabOrder = 2
+              Text = ''
             end
             object edgtquestItem4: TLabeledEdit
               Left = 128
@@ -13810,6 +14123,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem4'
               TabOrder = 3
+              Text = ''
             end
             object edgtquestItem5: TLabeledEdit
               Left = 7
@@ -13820,6 +14134,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem5'
               TabOrder = 4
+              Text = ''
             end
             object edgtquestItem6: TLabeledEdit
               Left = 128
@@ -13830,6 +14145,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'questItem6'
               TabOrder = 5
+              Text = ''
             end
           end
         end
@@ -13837,8 +14153,8 @@ object MainForm: TMainForm
           Caption = 'GO Location'
           ImageIndex = 2
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbglGOLocationHint: TLabel
             Left = 8
             Top = 8
@@ -13865,7 +14181,7 @@ object MainForm: TMainForm
           object lvglGOLocation: TJvListView
             Left = 3
             Top = 27
-            Width = 918
+            Width = 898
             Height = 390
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -13923,6 +14239,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'guid'
             TabOrder = 1
+            Text = ''
           end
           object edglid: TLabeledEdit
             Left = 96
@@ -13934,6 +14251,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'id'
             TabOrder = 2
+            Text = ''
           end
           object edglposition_x: TLabeledEdit
             Left = 613
@@ -13945,6 +14263,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'position_x'
             TabOrder = 8
+            Text = ''
           end
           object edglposition_y: TLabeledEdit
             Left = 698
@@ -13956,6 +14275,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'position_y'
             TabOrder = 9
+            Text = ''
           end
           object edglposition_z: TLabeledEdit
             Left = 783
@@ -13967,6 +14287,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'position_z'
             TabOrder = 10
+            Text = ''
           end
           object edglorientation: TLabeledEdit
             Left = 8
@@ -13981,6 +14302,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'orientation'
             TabOrder = 11
+            Text = ''
           end
           object btScriptGOLocation: TButton
             Left = 3
@@ -14000,6 +14322,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'rotation0'
             TabOrder = 12
+            Text = ''
           end
           object edglrotation1: TLabeledEdit
             Left = 181
@@ -14010,6 +14333,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'rotation1'
             TabOrder = 13
+            Text = ''
           end
           object edglrotation2: TLabeledEdit
             Left = 269
@@ -14020,6 +14344,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'rotation2'
             TabOrder = 14
+            Text = ''
           end
           object edglrotation3: TLabeledEdit
             Left = 357
@@ -14030,6 +14355,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'rotation3'
             TabOrder = 15
+            Text = ''
           end
           object edglspawntimesecs: TLabeledEdit
             Left = 444
@@ -14040,6 +14366,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'spawntimesecs'
             TabOrder = 22
+            Text = ''
           end
           object edglanimprogress: TLabeledEdit
             Left = 531
@@ -14050,6 +14377,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'animprogress'
             TabOrder = 17
+            Text = ''
           end
           object edglstate: TLabeledEdit
             Left = 618
@@ -14060,9 +14388,10 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'state'
             TabOrder = 18
+            Text = ''
           end
           object btFullScriptGOLocation: TButton
-            Left = 742
+            Left = 722
             Top = 584
             Width = 201
             Height = 25
@@ -14119,6 +14448,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'phaseMask'
             TabOrder = 7
+            Text = ''
           end
           object edglZoneId: TLabeledEdit
             Left = 272
@@ -14129,6 +14459,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'zoneId'
             TabOrder = 4
+            Text = ''
           end
           object edglareaId: TLabeledEdit
             Left = 357
@@ -14139,6 +14470,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'areaId'
             TabOrder = 5
+            Text = ''
           end
           object edglScriptName: TLabeledEdit
             Left = 705
@@ -14149,6 +14481,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ScriptName'
             TabOrder = 19
+            Text = ''
           end
           object edglVerifiedBuild: TLabeledEdit
             Left = 8
@@ -14159,6 +14492,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'VerifiedBuild'
             TabOrder = 20
+            Text = ''
           end
           object edglspawnMask: TJvComboEdit
             Left = 442
@@ -14204,8 +14538,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsGOLootShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbgoitem: TLabel
             Left = 97
             Top = 494
@@ -14402,7 +14736,7 @@ object MainForm: TMainForm
           object lvgoGOLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 953
+            Width = 933
             Height = 449
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -14492,6 +14826,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edgoChance: TLabeledEdit
             Left = 293
@@ -14502,6 +14837,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 3
+            Text = ''
           end
           object edgoGroupId: TLabeledEdit
             Left = 116
@@ -14512,6 +14848,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 4
+            Text = ''
           end
           object edgoMinCount: TLabeledEdit
             Left = 225
@@ -14522,6 +14859,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 5
+            Text = ''
           end
           object edgoMaxCount: TLabeledEdit
             Left = 338
@@ -14532,6 +14870,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 6
+            Text = ''
           end
           object edgoItem: TJvComboEdit
             Left = 97
@@ -14636,6 +14975,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 10
+            Text = ''
           end
           object edgoQuestRequired: TLabeledEdit
             Left = 441
@@ -14646,6 +14986,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 11
+            Text = ''
           end
           object edgoComment: TLabeledEdit
             Left = 441
@@ -14656,6 +14997,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 12
+            Text = ''
           end
         end
         object tsGOInvolvedIn: TTabSheet
@@ -14665,7 +15007,7 @@ object MainForm: TMainForm
           object pcGameObjectInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 964
+            Width = 948
             Height = 417
             ActivePage = tsGOStarts
             Align = alTop
@@ -14675,7 +15017,7 @@ object MainForm: TMainForm
               object lvGameObjectStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -14730,7 +15072,7 @@ object MainForm: TMainForm
               object lvGameObjectEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -14785,7 +15127,7 @@ object MainForm: TMainForm
               object lvGameObjectObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -14838,7 +15180,7 @@ object MainForm: TMainForm
           object Panel21: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -14873,12 +15215,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsGOScriptShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object megoScript: TMemo
             Left = 8
             Top = 8
-            Width = 919
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -14893,14 +15235,14 @@ object MainForm: TMainForm
           object megoLog: TMemo
             Left = 8
             Top = 472
-            Width = 766
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardGO: TButton
-            Left = 789
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -14910,7 +15252,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardGOClick
           end
           object btExecuteGOScript: TButton
-            Left = 789
+            Left = 769
             Top = 540
             Width = 137
             Height = 25
@@ -14928,7 +15270,7 @@ object MainForm: TMainForm
       object Panel9: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -14937,8 +15279,8 @@ object MainForm: TMainForm
       object PageControl5: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsItemTemplate
         Align = alClient
         TabOrder = 1
@@ -14947,12 +15289,12 @@ object MainForm: TMainForm
           object Panel10: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              964
+              948
               105)
             object lbSearchItemSubClass: TLabel
               Left = 308
@@ -15007,6 +15349,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'Entry'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchItemChange
             end
             object edSearchItemName: TLabeledEdit
@@ -15018,10 +15361,11 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Name'
               TabOrder = 1
+              Text = ''
               OnChange = edSearchItemChange
             end
             object btSearchItem: TBitBtn
-              Left = 879
+              Left = 855
               Top = 24
               Width = 75
               Height = 25
@@ -15076,7 +15420,7 @@ object MainForm: TMainForm
               OnClick = btSearchItemClick
             end
             object btClearSearchItem: TBitBtn
-              Left = 879
+              Left = 855
               Top = 56
               Width = 75
               Height = 25
@@ -15327,14 +15671,15 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ItemLevel'
               TabOrder = 10
+              Text = ''
               OnChange = edSearchItemChange
             end
           end
           object lvSearchItem: TJvListView
             Left = 0
             Top = 105
-            Width = 964
-            Height = 461
+            Width = 948
+            Height = 457
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -15405,8 +15750,8 @@ object MainForm: TMainForm
           end
           object Panel11: TPanel
             Left = 0
-            Top = 566
-            Width = 964
+            Top = 562
+            Width = 948
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -15655,7 +16000,7 @@ object MainForm: TMainForm
             object StatusBarItem: TStatusBar
               Left = 1
               Top = 41
-              Width = 962
+              Width = 946
               Height = 19
               Panels = <
                 item
@@ -15803,6 +16148,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'name'
             TabOrder = 3
+            Text = ''
           end
           object editdisplayid: TLabeledEdit
             Left = 4
@@ -15813,6 +16159,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'displayid'
             TabOrder = 5
+            Text = ''
           end
           object editBuyCount: TLabeledEdit
             Left = 331
@@ -15824,6 +16171,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'BuyCount'
             TabOrder = 8
+            Text = ''
           end
           object editBuyPrice: TLabeledEdit
             Left = 397
@@ -15835,6 +16183,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'BuyPrice'
             TabOrder = 9
+            Text = ''
           end
           object editSellPrice: TLabeledEdit
             Left = 475
@@ -15848,6 +16197,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'SellPrice'
             TabOrder = 10
+            Text = ''
           end
           object editmaxcount: TLabeledEdit
             Left = 620
@@ -15864,6 +16214,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'maxcount'
             TabOrder = 12
+            Text = ''
           end
           object editstackable: TLabeledEdit
             Left = 708
@@ -15877,6 +16228,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'stackable'
             TabOrder = 13
+            Text = ''
           end
           object editContainerSlots: TLabeledEdit
             Left = 796
@@ -15888,6 +16240,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ContainerSlots'
             TabOrder = 14
+            Text = ''
           end
           object editdescription: TLabeledEdit
             Left = 530
@@ -15901,6 +16254,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'description'
             TabOrder = 4
+            Text = ''
           end
           object gbitspell: TGroupBox
             Left = 5
@@ -15936,6 +16290,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'charges'
               TabOrder = 1
+              Text = ''
             end
             object editspellcooldown_1: TLabeledEdit
               Left = 285
@@ -15947,6 +16302,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'cooldown'
               TabOrder = 2
+              Text = ''
             end
             object editspellcategory_1: TLabeledEdit
               Left = 349
@@ -15958,6 +16314,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'category_1'
               TabOrder = 3
+              Text = ''
             end
             object editspellcategorycooldown_1: TLabeledEdit
               Left = 403
@@ -15971,6 +16328,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'categorycooldown'
               EditLabel.ParentBiDiMode = False
               TabOrder = 4
+              Text = ''
             end
             object editspellcharges_2: TLabeledEdit
               Left = 156
@@ -15981,10 +16339,11 @@ object MainForm: TMainForm
                 'spellcharges_2'#13#10'Number of charges for this spell.'#13#10'0 = infinite ' +
                 'charges'#13#10'-X = X charges, item is expendable'#13#10'+X = X charges, ite' +
                 'm is kept when all charges are spent'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 88
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcharges_2'
               TabOrder = 6
+              Text = ''
             end
             object editspellcooldown_2: TLabeledEdit
               Left = 285
@@ -15992,10 +16351,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellcooldown_2'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 96
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcooldown_2'
               TabOrder = 7
+              Text = ''
             end
             object editspellcategory_2: TLabeledEdit
               Left = 349
@@ -16003,10 +16363,11 @@ object MainForm: TMainForm
               Width = 50
               Height = 21
               Hint = 'spellcategory_2'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 91
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategory_2'
               TabOrder = 8
+              Text = ''
             end
             object editspellcategorycooldown_2: TLabeledEdit
               Left = 403
@@ -16014,10 +16375,11 @@ object MainForm: TMainForm
               Width = 95
               Height = 21
               Hint = 'spellcategorycooldown_2'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 137
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategorycooldown_2'
               TabOrder = 9
+              Text = ''
             end
             object editspellcharges_3: TLabeledEdit
               Left = 156
@@ -16028,10 +16390,11 @@ object MainForm: TMainForm
                 'spellcharges_3'#13#10'Number of charges for this spell.'#13#10#13#10'0 = infinit' +
                 'e charges'#13#10'-X = X charges, item is expendable'#13#10'+X = X charges, i' +
                 'tem is kept when all charges are spent'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 88
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcharges_3'
               TabOrder = 11
+              Text = ''
             end
             object editspellcooldown_3: TLabeledEdit
               Left = 285
@@ -16039,10 +16402,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellcooldown_3'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 96
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcooldown_3'
               TabOrder = 12
+              Text = ''
             end
             object editspellcategory_3: TLabeledEdit
               Left = 349
@@ -16050,10 +16414,11 @@ object MainForm: TMainForm
               Width = 50
               Height = 21
               Hint = 'spellcategory_3'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 91
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategory_3'
               TabOrder = 13
+              Text = ''
             end
             object editspellcharges_4: TLabeledEdit
               Left = 156
@@ -16064,10 +16429,11 @@ object MainForm: TMainForm
                 'spellcharges_4'#13#10'Number of charges for this spell.'#13#10#13#10'0 = infinit' +
                 'e charges'#13#10'-X = X charges, item is expendable'#13#10'+X = X charges, i' +
                 'tem is kept when all charges are spent'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 88
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcharges_4'
               TabOrder = 16
+              Text = ''
             end
             object editspellcooldown_4: TLabeledEdit
               Left = 285
@@ -16075,10 +16441,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellcooldown_4'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 96
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcooldown_4'
               TabOrder = 17
+              Text = ''
             end
             object editspellcategory_4: TLabeledEdit
               Left = 349
@@ -16086,10 +16453,11 @@ object MainForm: TMainForm
               Width = 50
               Height = 21
               Hint = 'spellcategory_4'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 91
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategory_4'
               TabOrder = 18
+              Text = ''
             end
             object editspellcategorycooldown_4: TLabeledEdit
               Left = 403
@@ -16097,10 +16465,11 @@ object MainForm: TMainForm
               Width = 95
               Height = 21
               Hint = 'spellcategorycooldown_4'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 137
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategorycooldown_4'
               TabOrder = 19
+              Text = ''
             end
             object editspellcharges_5: TLabeledEdit
               Left = 156
@@ -16111,10 +16480,11 @@ object MainForm: TMainForm
                 'spellcharges_5'#13#10'Number of charges for this spell.'#13#10#13#10'0 = infinit' +
                 'e charges'#13#10'-X = X charges, item is expendable'#13#10'+X = X charges, i' +
                 'tem is kept when all charges are spent'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 88
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcharges_5'
               TabOrder = 21
+              Text = ''
             end
             object editspellcooldown_5: TLabeledEdit
               Left = 285
@@ -16122,10 +16492,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellcooldown_5'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 96
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcooldown_5'
               TabOrder = 22
+              Text = ''
             end
             object editspellcategory_5: TLabeledEdit
               Left = 349
@@ -16133,10 +16504,11 @@ object MainForm: TMainForm
               Width = 50
               Height = 21
               Hint = 'spellcategory_5'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 91
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategory_5'
               TabOrder = 23
+              Text = ''
             end
             object editspellcategorycooldown_5: TLabeledEdit
               Left = 403
@@ -16144,20 +16516,22 @@ object MainForm: TMainForm
               Width = 95
               Height = 21
               Hint = 'spellcategorycooldown_5'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 137
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategorycooldown_5'
               TabOrder = 24
+              Text = ''
             end
             object editspellcategorycooldown_3: TLabeledEdit
               Left = 403
               Top = 77
               Width = 95
               Height = 21
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 137
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellcategorycooldown_3'
               TabOrder = 14
+              Text = ''
             end
             object editspellid_1: TJvComboEdit
               Left = 12
@@ -16360,10 +16734,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellppmRate_5'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 93
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellppmRate_5'
               TabOrder = 25
+              Text = ''
             end
             object editspellppmRate_4: TLabeledEdit
               Left = 220
@@ -16371,10 +16746,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellppmRate_4'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 93
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellppmRate_4'
               TabOrder = 26
+              Text = ''
             end
             object editspellppmRate_3: TLabeledEdit
               Left = 220
@@ -16382,10 +16758,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellppmRate_3'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 93
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellppmRate_3'
               TabOrder = 27
+              Text = ''
             end
             object editspellppmRate_2: TLabeledEdit
               Left = 220
@@ -16393,10 +16770,11 @@ object MainForm: TMainForm
               Width = 60
               Height = 21
               Hint = 'spellppmRate_2'
-              EditLabel.Width = 0
-              EditLabel.Height = 0
-              EditLabel.Caption = ''
+              EditLabel.Width = 93
+              EditLabel.Height = 13
+              EditLabel.Caption = 'editspellppmRate_2'
               TabOrder = 28
+              Text = ''
             end
             object editspellppmRate_1: TLabeledEdit
               Left = 220
@@ -16408,6 +16786,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ppmRate'
               TabOrder = 29
+              Text = ''
             end
             object editspelltrigger_5: TJvComboEdit
               Left = 93
@@ -16629,6 +17008,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'dmg_min'
               TabOrder = 1
+              Text = ''
             end
             object editdmg_max1: TLabeledEdit
               Left = 117
@@ -16640,6 +17020,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'dmg_max'
               TabOrder = 2
+              Text = ''
             end
             object editdmg_min2: TLabeledEdit
               Left = 64
@@ -16651,6 +17032,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editdmg_min2'
               TabOrder = 4
+              Text = ''
             end
             object editdmg_max2: TLabeledEdit
               Left = 117
@@ -16662,6 +17044,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editdmg_max2'
               TabOrder = 5
+              Text = ''
             end
             object editdmg_type1: TJvComboEdit
               Left = 9
@@ -16768,6 +17151,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'stat_value'
               TabOrder = 1
+              Text = ''
             end
             object editstat_value2: TLabeledEdit
               Left = 73
@@ -16781,6 +17165,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value2'
               TabOrder = 3
+              Text = ''
             end
             object editstat_value3: TLabeledEdit
               Left = 73
@@ -16794,6 +17179,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value3'
               TabOrder = 5
+              Text = ''
             end
             object editstat_value4: TLabeledEdit
               Left = 73
@@ -16807,6 +17193,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value4'
               TabOrder = 7
+              Text = ''
             end
             object editstat_value5: TLabeledEdit
               Left = 73
@@ -16820,6 +17207,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value5'
               TabOrder = 9
+              Text = ''
             end
             object editstat_value6: TLabeledEdit
               Left = 73
@@ -16833,6 +17221,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value6'
               TabOrder = 11
+              Text = ''
             end
             object editstat_value7: TLabeledEdit
               Left = 73
@@ -16846,6 +17235,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value7'
               TabOrder = 13
+              Text = ''
             end
             object editstat_value8: TLabeledEdit
               Left = 73
@@ -16859,6 +17249,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value8'
               TabOrder = 15
+              Text = ''
             end
             object editstat_value9: TLabeledEdit
               Left = 73
@@ -16872,6 +17263,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value9'
               TabOrder = 17
+              Text = ''
             end
             object editstat_value10: TLabeledEdit
               Left = 73
@@ -16885,6 +17277,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'editstat_value10'
               TabOrder = 19
+              Text = ''
             end
             object editstat_type1: TJvComboEdit
               Left = 9
@@ -17308,6 +17701,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'ScalingStatDistribution'
               EditLabel.ParentBiDiMode = False
               TabOrder = 20
+              Text = ''
             end
             object editScalingStatValue: TLabeledEdit
               Left = 10
@@ -17321,6 +17715,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'ScalingStatValue'
               EditLabel.ParentBiDiMode = False
               TabOrder = 21
+              Text = ''
             end
           end
           object gbitResistance: TGroupBox
@@ -17340,6 +17735,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'holy_res'
               TabOrder = 0
+              Text = ''
             end
             object editfire_res: TLabeledEdit
               Left = 12
@@ -17351,6 +17747,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'fire_res'
               TabOrder = 2
+              Text = ''
             end
             object editnature_res: TLabeledEdit
               Left = 12
@@ -17362,6 +17759,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'nature_res'
               TabOrder = 4
+              Text = ''
             end
             object editfrost_res: TLabeledEdit
               Left = 76
@@ -17373,6 +17771,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'frost_res'
               TabOrder = 1
+              Text = ''
             end
             object editshadow_res: TLabeledEdit
               Left = 76
@@ -17384,6 +17783,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'shadow_res'
               TabOrder = 3
+              Text = ''
             end
             object editarcane_res: TLabeledEdit
               Left = 76
@@ -17395,6 +17795,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'arcane_res'
               TabOrder = 5
+              Text = ''
             end
           end
           object gbitsocket: TGroupBox
@@ -17428,6 +17829,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'socketColor'
               TabOrder = 0
+              Text = ''
             end
             object editsocketContent_1: TLabeledEdit
               Left = 76
@@ -17439,6 +17841,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'socketContent'
               TabOrder = 1
+              Text = ''
             end
             object editsocketColor_2: TLabeledEdit
               Left = 12
@@ -17450,6 +17853,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = ' '
               TabOrder = 2
+              Text = ''
             end
             object editsocketContent_2: TLabeledEdit
               Left = 76
@@ -17461,6 +17865,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = ' '
               TabOrder = 3
+              Text = ''
             end
             object editsocketColor_3: TLabeledEdit
               Left = 12
@@ -17472,6 +17877,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = ' '
               TabOrder = 4
+              Text = ''
             end
             object editsocketContent_3: TLabeledEdit
               Left = 76
@@ -17483,6 +17889,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = ' '
               TabOrder = 5
+              Text = ''
             end
             object editGemProperties: TJvComboEdit
               Left = 11
@@ -17620,6 +18027,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ItemLevel'
               TabOrder = 2
+              Text = ''
             end
             object editRequiredLevel: TLabeledEdit
               Left = 100
@@ -17631,6 +18039,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredLevel'
               TabOrder = 3
+              Text = ''
             end
             object editRequiredSkillRank: TLabeledEdit
               Left = 100
@@ -17642,6 +18051,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredSkillRank'
               TabOrder = 5
+              Text = ''
             end
             object editrequiredhonorrank: TLabeledEdit
               Left = 100
@@ -17653,6 +18063,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'requiredhonorrank'
               TabOrder = 7
+              Text = ''
             end
             object editRequiredCityRank: TLabeledEdit
               Left = 196
@@ -17663,6 +18074,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredCityRank'
               TabOrder = 10
+              Text = ''
             end
             object editRequiredDisenchantSkill: TLabeledEdit
               Left = 196
@@ -17673,6 +18085,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredDisenchantSkill'
               TabOrder = 11
+              Text = ''
             end
             object editAllowableRace: TJvComboEdit
               Left = 100
@@ -17948,6 +18361,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'armor'
               TabOrder = 2
+              Text = ''
             end
             object editdelay: TLabeledEdit
               Left = 12
@@ -17959,6 +18373,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'delay'
               TabOrder = 4
+              Text = ''
             end
             object editammo_type: TLabeledEdit
               Left = 12
@@ -17970,6 +18385,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ammo_type'
               TabOrder = 6
+              Text = ''
             end
             object editRangedModRange: TLabeledEdit
               Left = 100
@@ -17980,6 +18396,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RangedModRange'
               TabOrder = 5
+              Text = ''
             end
             object editblock: TLabeledEdit
               Left = 100
@@ -17991,6 +18408,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'block'
               TabOrder = 3
+              Text = ''
             end
             object editMaxDurability: TLabeledEdit
               Left = 100
@@ -18002,6 +18420,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'MaxDurability'
               TabOrder = 7
+              Text = ''
             end
             object editbonding: TJvComboEdit
               Left = 100
@@ -18171,6 +18590,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'DisenchantID'
               TabOrder = 13
+              Text = ''
             end
             object editArmorDamageModifier: TLabeledEdit
               Left = 452
@@ -18181,6 +18601,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ArmorDamageModifier'
               TabOrder = 16
+              Text = ''
             end
             object editstartquest: TLabeledEdit
               Left = 364
@@ -18192,6 +18613,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'startquest'
               TabOrder = 11
+              Text = ''
             end
             object editlockid: TLabeledEdit
               Left = 364
@@ -18202,6 +18624,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'lockid'
               TabOrder = 12
+              Text = ''
             end
             object editRandomSuffix: TLabeledEdit
               Left = 452
@@ -18212,6 +18635,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RandomSuffix'
               TabOrder = 15
+              Text = ''
             end
             object editRandomProperty: TLabeledEdit
               Left = 452
@@ -18222,6 +18646,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'RandomProperty'
               TabOrder = 14
+              Text = ''
             end
             object editTotemCategory: TLabeledEdit
               Left = 188
@@ -18232,6 +18657,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'TotemCategory'
               TabOrder = 7
+              Text = ''
             end
             object editScriptName: TLabeledEdit
               Left = 276
@@ -18243,6 +18669,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ScriptName'
               TabOrder = 10
+              Text = ''
             end
             object editLanguageID: TJvComboEdit
               Left = 100
@@ -18454,6 +18881,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'SoundOS'
               TabOrder = 2
+              Text = ''
             end
             object editPageText: TJvComboEdit
               Left = 100
@@ -18582,6 +19010,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'maxMoneyLoot'
               TabOrder = 19
+              Text = ''
             end
             object editminMoneyLoot: TLabeledEdit
               Left = 568
@@ -18592,6 +19021,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'minMoneyLoot'
               TabOrder = 18
+              Text = ''
             end
             object editarea: TJvComboEdit
               Left = 276
@@ -18640,6 +19070,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Duration'
               TabOrder = 20
+              Text = ''
             end
             object editItemLimitCategory: TLabeledEdit
               Left = 13
@@ -18650,6 +19081,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'ItemLimitCategory'
               TabOrder = 21
+              Text = ''
             end
             object editHolidayId: TLabeledEdit
               Left = 188
@@ -18660,6 +19092,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'HolidayId'
               TabOrder = 22
+              Text = ''
             end
             object editVerifiedBuild: TLabeledEdit
               Left = 277
@@ -18670,6 +19103,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 23
+              Text = ''
             end
             object editflagsCustom: TJvComboEdit
               Left = 367
@@ -18915,6 +19349,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'StatsCount'
             TabOrder = 24
+            Text = ''
           end
           object editFlagsExtra: TLabeledEdit
             Left = 268
@@ -18926,6 +19361,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'FlagsExtra'
             TabOrder = 25
+            Text = ''
           end
         end
         object tsItemLoot: TTabSheet
@@ -18933,8 +19369,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsItemLootShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbilitem: TLabel
             Left = 96
             Top = 484
@@ -19140,7 +19576,7 @@ object MainForm: TMainForm
           object lvitItemLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -19218,6 +19654,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edilChance: TLabeledEdit
             Left = 286
@@ -19228,6 +19665,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 3
+            Text = ''
           end
           object edilGroupId: TLabeledEdit
             Left = 94
@@ -19238,6 +19676,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 4
+            Text = ''
           end
           object edilMinCount: TLabeledEdit
             Left = 182
@@ -19248,6 +19687,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 5
+            Text = ''
           end
           object edilMaxCount: TLabeledEdit
             Left = 286
@@ -19258,6 +19698,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 6
+            Text = ''
           end
           object edilItem: TJvComboEdit
             Left = 96
@@ -19362,6 +19803,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 10
+            Text = ''
           end
           object edilQuestRequired: TLabeledEdit
             Left = 390
@@ -19372,6 +19814,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 11
+            Text = ''
           end
           object edilComment: TLabeledEdit
             Left = 390
@@ -19382,6 +19825,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 12
+            Text = ''
           end
         end
         object tsDisenchantLoot: TTabSheet
@@ -19389,8 +19833,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsDisenchantLootShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbiditem: TLabel
             Left = 112
             Top = 453
@@ -19596,7 +20040,7 @@ object MainForm: TMainForm
           object lvitDisLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 401
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -19675,6 +20119,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edidChance: TLabeledEdit
             Left = 408
@@ -19685,6 +20130,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 3
+            Text = ''
           end
           object edidGroupId: TLabeledEdit
             Left = 112
@@ -19695,6 +20141,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Groupid'
             TabOrder = 4
+            Text = ''
           end
           object edidMinCount: TLabeledEdit
             Left = 210
@@ -19705,6 +20152,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 5
+            Text = ''
           end
           object edidMaxCount: TLabeledEdit
             Left = 312
@@ -19715,6 +20163,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 6
+            Text = ''
           end
           object edidItem: TJvComboEdit
             Left = 112
@@ -19819,6 +20268,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 10
+            Text = ''
           end
           object edidQuestRequired: TLabeledEdit
             Left = 512
@@ -19829,6 +20279,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 11
+            Text = ''
           end
           object edidComment: TLabeledEdit
             Left = 408
@@ -19839,6 +20290,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 12
+            Text = ''
           end
         end
         object tsProspectingLoot: TTabSheet
@@ -19846,8 +20298,8 @@ object MainForm: TMainForm
           ImageIndex = 5
           OnShow = tsProspectingLootShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbipitem: TLabel
             Left = 96
             Top = 484
@@ -20053,7 +20505,7 @@ object MainForm: TMainForm
           object lvitProsLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20132,6 +20584,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Entry'
             TabOrder = 1
+            Text = ''
           end
           object edipChance: TLabeledEdit
             Left = 392
@@ -20142,6 +20595,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 3
+            Text = ''
           end
           object edipGroupId: TLabeledEdit
             Left = 94
@@ -20152,6 +20606,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 4
+            Text = ''
           end
           object edipMinCount: TLabeledEdit
             Left = 200
@@ -20162,6 +20617,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 5
+            Text = ''
           end
           object edipMaxCount: TLabeledEdit
             Left = 304
@@ -20172,6 +20628,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 6
+            Text = ''
           end
           object edipItem: TJvComboEdit
             Left = 96
@@ -20276,6 +20733,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edipReference'
             TabOrder = 10
+            Text = ''
           end
           object edipQuestRequired: TLabeledEdit
             Left = 496
@@ -20286,6 +20744,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edipQuestRequired'
             TabOrder = 11
+            Text = ''
           end
           object edipComment: TLabeledEdit
             Left = 392
@@ -20296,6 +20755,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edipComment'
             TabOrder = 12
+            Text = ''
           end
         end
         object tsMillingLoot: TTabSheet
@@ -20303,8 +20763,8 @@ object MainForm: TMainForm
           ImageIndex = 9
           OnShow = tsMillingLootShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object Label2: TLabel
             Left = 96
             Top = 484
@@ -20501,7 +20961,7 @@ object MainForm: TMainForm
           object lvitMillingLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20618,6 +21078,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'entry'
             TabOrder = 2
+            Text = ''
           end
           object edimChance: TLabeledEdit
             Left = 393
@@ -20628,6 +21089,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 3
+            Text = ''
           end
           object edimGroupId: TLabeledEdit
             Left = 96
@@ -20638,6 +21100,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 4
+            Text = ''
           end
           object edimMinCount: TLabeledEdit
             Left = 192
@@ -20648,6 +21111,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 5
+            Text = ''
           end
           object edimMaxCount: TLabeledEdit
             Left = 296
@@ -20658,6 +21122,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 6
+            Text = ''
           end
           object edimLootMode: TJvComboEdit
             Left = 8
@@ -20724,6 +21189,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edimReference'
             TabOrder = 10
+            Text = ''
           end
           object edimComment: TLabeledEdit
             Left = 393
@@ -20734,6 +21200,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edimComment'
             TabOrder = 11
+            Text = ''
           end
           object edimQuestRequired: TLabeledEdit
             Left = 496
@@ -20744,14 +21211,15 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edimQuestRequired'
             TabOrder = 12
+            Text = ''
           end
         end
         object tsReferenceLoot: TTabSheet
           Caption = 'Reference Loot'
           ImageIndex = 10
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object Label1: TLabel
             Left = 96
             Top = 484
@@ -20955,7 +21423,7 @@ object MainForm: TMainForm
           object lvitReferenceLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21072,6 +21540,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 2
+            Text = ''
           end
           object edirGroupId: TLabeledEdit
             Left = 96
@@ -21082,6 +21551,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 3
+            Text = ''
           end
           object edirMinCount: TLabeledEdit
             Left = 192
@@ -21092,6 +21562,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 4
+            Text = ''
           end
           object edirMaxCount: TLabeledEdit
             Left = 296
@@ -21102,6 +21573,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'maxcount'
             TabOrder = 5
+            Text = ''
           end
           object edirLootMode: TJvComboEdit
             Left = 8
@@ -21222,6 +21694,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edirReference'
             TabOrder = 10
+            Text = ''
           end
           object edirQuestRequired: TLabeledEdit
             Left = 489
@@ -21232,6 +21705,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edirQuestRequired'
             TabOrder = 11
+            Text = ''
           end
           object edirComment: TLabeledEdit
             Left = 393
@@ -21242,6 +21716,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edirComment'
             TabOrder = 12
+            Text = ''
           end
         end
         object tsEnchantment: TTabSheet
@@ -21249,8 +21724,8 @@ object MainForm: TMainForm
           ImageIndex = 6
           OnShow = tsEnchantmentShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btieEnchAdd: TSpeedButton
             Left = 736
             Top = 500
@@ -21444,7 +21919,7 @@ object MainForm: TMainForm
           object lvitEnchantment: TJvListView
             Left = 8
             Top = 32
-            Width = 935
+            Width = 915
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21482,6 +21957,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'entry'
             TabOrder = 1
+            Text = ''
           end
           object ediechance: TLabeledEdit
             Left = 200
@@ -21492,6 +21968,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'chance'
             TabOrder = 3
+            Text = ''
           end
           object btieShowScript: TButton
             Left = 8
@@ -21520,6 +21997,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ench'
             TabOrder = 2
+            Text = ''
           end
         end
         object tsItemLootedFrom: TTabSheet
@@ -21529,8 +22007,8 @@ object MainForm: TMainForm
           object lvitItemLootedFrom: TJvListView
             Left = 0
             Top = 0
-            Width = 964
-            Height = 627
+            Width = 948
+            Height = 623
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -21602,7 +22080,7 @@ object MainForm: TMainForm
           object Panel22: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -21611,7 +22089,7 @@ object MainForm: TMainForm
           object pcItemInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 964
+            Width = 948
             Height = 417
             ActivePage = tsItemRewardFrom
             Align = alTop
@@ -21621,7 +22099,7 @@ object MainForm: TMainForm
               object lvItemStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -21676,7 +22154,7 @@ object MainForm: TMainForm
               object lvItemObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -21731,7 +22209,7 @@ object MainForm: TMainForm
               object lvItemSourceFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -21786,7 +22264,7 @@ object MainForm: TMainForm
               object lvItemProvidedFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -21841,7 +22319,7 @@ object MainForm: TMainForm
               object lvItemRewardFrom: TJvListView
                 Left = 0
                 Top = 0
-                Width = 956
+                Width = 940
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -21897,12 +22375,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsItemScriptShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object meitScript: TMemo
             Left = 8
             Top = 8
-            Width = 936
+            Width = 916
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -21917,14 +22395,14 @@ object MainForm: TMainForm
           object meitLog: TMemo
             Left = 8
             Top = 472
-            Width = 783
+            Width = 763
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardItem: TButton
-            Left = 806
+            Left = 786
             Top = 508
             Width = 137
             Height = 25
@@ -21934,7 +22412,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardItemClick
           end
           object btExecuteItemScript: TButton
-            Left = 806
+            Left = 786
             Top = 540
             Width = 137
             Height = 25
@@ -21952,8 +22430,8 @@ object MainForm: TMainForm
       object PageControl9: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsSmartAI
         Align = alClient
         TabOrder = 0
@@ -21961,8 +22439,8 @@ object MainForm: TMainForm
           Caption = 'SmartAI'
           ImageIndex = 19
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btSmartAIAdd: TSpeedButton
             Left = 868
             Top = 315
@@ -22378,7 +22856,7 @@ object MainForm: TMainForm
           object lvcySmartAI: TJvListView
             Left = 3
             Top = 23
-            Width = 961
+            Width = 941
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -22455,7 +22933,6 @@ object MainForm: TMainForm
                 Width = 36
               end
               item
-                Width = 36
               end
               item
               end
@@ -22475,9 +22952,9 @@ object MainForm: TMainForm
             OnChange = lvcySmartAIChange
             OnSelectItem = lvcySmartAISelectItem
             ColumnsOrder = 
-              '0=36,1=36,2=36,3=36,4=36,5=36,6=36,7=36,8=36,9=36,10=36,11=36,12' +
-              '=36,13=36,14=36,15=36,16=36,17=36,18=36,19=36,20=36,21=36,22=36,' +
-              '23=36,24=50,25=50,26=50,27=50,28=50'
+              '1=36,2=36,3=36,4=36,5=36,6=36,7=36,8=36,9=36,10=36,11=36,12=36,1' +
+              '3=36,14=36,15=36,16=36,17=36,18=36,19=36,20=36,21=36,22=36,23=36' +
+              ',24=36,25=50,26=50,27=50,28=50,29=50,0=50'
             ExtendedColumns = <
               item
               end
@@ -22555,7 +23032,7 @@ object MainForm: TMainForm
             Width = 169
             Height = 25
             Caption = 'Show SmartAI Script'
-            TabOrder = 31
+            TabOrder = 33
             OnClick = btcyScriptSmartAIClick
           end
           object edcysource_type: TJvComboEdit
@@ -22987,10 +23464,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           OnShow = tsSmartAIScriptShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btCopyToClipboardSmartAI: TButton
-            Left = 817
+            Left = 797
             Top = 508
             Width = 137
             Height = 25
@@ -23000,7 +23477,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardSmartAIClick
           end
           object btExecuteSmartAIScript: TButton
-            Left = 817
+            Left = 797
             Top = 540
             Width = 137
             Height = 25
@@ -23012,7 +23489,7 @@ object MainForm: TMainForm
           object mecyScript: TMemo
             Left = 11
             Top = 10
-            Width = 947
+            Width = 927
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -23027,7 +23504,7 @@ object MainForm: TMainForm
           object mecyLog: TMemo
             Left = 11
             Top = 472
-            Width = 794
+            Width = 774
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -23038,7 +23515,7 @@ object MainForm: TMainForm
       object Panel25: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -23051,8 +23528,8 @@ object MainForm: TMainForm
       object PageControl10: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsConditions
         Align = alClient
         TabOrder = 0
@@ -23060,8 +23537,8 @@ object MainForm: TMainForm
           Caption = 'Conditions'
           ImageIndex = 19
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btConditionsAdd: TSpeedButton
             Left = 787
             Top = 315
@@ -23358,7 +23835,7 @@ object MainForm: TMainForm
           object lvcConditions: TJvListView
             Left = 3
             Top = 23
-            Width = 961
+            Width = 941
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -23600,6 +24077,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ScriptName'
             TabOrder = 18
+            Text = ''
           end
           object edcErrorType: TLabeledEdit
             Left = 127
@@ -23672,10 +24150,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           OnShow = tsConditionsScriptShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btCopyToClipboardConditions: TButton
-            Left = 817
+            Left = 797
             Top = 508
             Width = 137
             Height = 25
@@ -23685,7 +24163,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardConditionsClick
           end
           object btExecuteConditionsScript: TButton
-            Left = 817
+            Left = 797
             Top = 540
             Width = 137
             Height = 25
@@ -23697,7 +24175,7 @@ object MainForm: TMainForm
           object mecScript: TMemo
             Left = 11
             Top = 10
-            Width = 947
+            Width = 927
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -23712,7 +24190,7 @@ object MainForm: TMainForm
           object mecLog: TMemo
             Left = 11
             Top = 472
-            Width = 794
+            Width = 774
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -23723,7 +24201,7 @@ object MainForm: TMainForm
       object Panel26: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -23736,7 +24214,7 @@ object MainForm: TMainForm
       object Panel12: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -23745,8 +24223,8 @@ object MainForm: TMainForm
       object PageControl6: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsGameEvents
         Align = alClient
         TabOrder = 1
@@ -23754,8 +24232,8 @@ object MainForm: TMainForm
           Caption = 'Fishing Loot'
           ImageIndex = 4
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object lbotitem: TLabel
             Left = 96
             Top = 463
@@ -23966,7 +24444,7 @@ object MainForm: TMainForm
           object lvotFishingLoot: TJvListView
             Left = 8
             Top = 72
-            Width = 935
+            Width = 915
             Height = 385
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -24056,6 +24534,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Chance'
             TabOrder = 5
+            Text = ''
           end
           object edotGroupId: TLabeledEdit
             Left = 96
@@ -24066,6 +24545,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'GroupId'
             TabOrder = 6
+            Text = ''
           end
           object edotMinCount: TLabeledEdit
             Left = 200
@@ -24076,6 +24556,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MinCount'
             TabOrder = 7
+            Text = ''
           end
           object edotMaxCount: TLabeledEdit
             Left = 298
@@ -24086,6 +24567,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'MaxCount'
             TabOrder = 8
+            Text = ''
           end
           object edotItem: TJvComboEdit
             Left = 96
@@ -24275,6 +24757,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Reference'
             TabOrder = 12
+            Text = ''
           end
           object edotComment: TLabeledEdit
             Left = 394
@@ -24285,6 +24768,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
             TabOrder = 13
+            Text = ''
           end
           object edotQuestRequired: TLabeledEdit
             Left = 394
@@ -24295,6 +24779,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'QuestRequired'
             TabOrder = 14
+            Text = ''
           end
         end
         object tsPageText: TTabSheet
@@ -24303,8 +24788,8 @@ object MainForm: TMainForm
           object lvSearchPageText: TJvListView
             Left = 0
             Top = 89
-            Width = 964
-            Height = 320
+            Width = 948
+            Height = 316
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -24343,15 +24828,15 @@ object MainForm: TMainForm
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 89
             Align = alTop
             TabOrder = 1
             DesignSize = (
-              964
+              948
               89)
             object btClearSearchPageText: TBitBtn
-              Left = 867
+              Left = 847
               Top = 56
               Width = 75
               Height = 25
@@ -24361,7 +24846,7 @@ object MainForm: TMainForm
               OnClick = btClearClick
             end
             object btSearchPageText: TBitBtn
-              Left = 867
+              Left = 847
               Top = 24
               Width = 75
               Height = 25
@@ -24424,6 +24909,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'NextPageId'
               TabOrder = 2
+              Text = ''
             end
             object edSearchPageTextText: TLabeledEdit
               Left = 96
@@ -24434,6 +24920,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Text'
               TabOrder = 1
+              Text = ''
             end
             object edSearchPageTextEntry: TLabeledEdit
               Left = 8
@@ -24444,18 +24931,19 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Id'
               TabOrder = 0
+              Text = ''
             end
           end
           object Panel13: TPanel
             Left = 0
-            Top = 409
-            Width = 964
+            Top = 405
+            Width = 948
             Height = 218
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
             DesignSize = (
-              964
+              948
               218)
             object lbptId: TLabel
               Left = 8
@@ -24589,7 +25077,7 @@ object MainForm: TMainForm
             object edpttext: TMemo
               Left = 88
               Top = 33
-              Width = 837
+              Width = 817
               Height = 176
               Anchors = [akLeft, akTop, akRight, akBottom]
               ScrollBars = ssVertical
@@ -24614,6 +25102,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 4
+              Text = ''
             end
           end
         end
@@ -24623,15 +25112,15 @@ object MainForm: TMainForm
           object GroupBox2: TGroupBox
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 89
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              964
+              948
               89)
             object btClearSearchGameEvent: TBitBtn
-              Left = 879
+              Left = 855
               Top = 56
               Width = 75
               Height = 25
@@ -24641,7 +25130,7 @@ object MainForm: TMainForm
               OnClick = btClearClick
             end
             object btSearchGameEvent: TBitBtn
-              Left = 879
+              Left = 855
               Top = 24
               Width = 75
               Height = 25
@@ -24704,6 +25193,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Description'
               TabOrder = 2
+              Text = ''
             end
             object edSearchGameEventEntry: TLabeledEdit
               Left = 8
@@ -24714,18 +25204,19 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'eventEntry'
               TabOrder = 3
+              Text = ''
             end
           end
           object pnSelectedEventInfo: TPanel
             Left = 0
-            Top = 335
-            Width = 964
+            Top = 331
+            Width = 948
             Height = 292
             Align = alBottom
             Enabled = False
             TabOrder = 1
             DesignSize = (
-              964
+              948
               292)
             object edGameEventCreatureHint: TLabel
               Left = 8
@@ -25272,7 +25763,7 @@ object MainForm: TMainForm
               OnButtonClick = edgeGOguidButtonClick
             end
             object btScriptGameEvent: TButton
-              Left = 708
+              Left = 688
               Top = 256
               Width = 217
               Height = 25
@@ -25286,15 +25777,15 @@ object MainForm: TMainForm
           object Panel17: TPanel
             Left = 0
             Top = 89
-            Width = 964
-            Height = 246
+            Width = 948
+            Height = 242
             Align = alClient
             TabOrder = 2
             object lvSearchGameEvent: TJvListView
               Left = 1
               Top = 1
-              Width = 962
-              Height = 144
+              Width = 946
+              Height = 140
               Align = alClient
               BorderStyle = bsNone
               Columns = <
@@ -25369,8 +25860,8 @@ object MainForm: TMainForm
             end
             object Panel18: TPanel
               Left = 1
-              Top = 145
-              Width = 962
+              Top = 141
+              Width = 946
               Height = 100
               Align = alBottom
               BevelOuter = bvNone
@@ -25564,6 +26055,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'description'
                 TabOrder = 5
+                Text = ''
               end
               object edgelength: TLabeledEdit
                 Left = 379
@@ -25575,6 +26067,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'length'
                 TabOrder = 4
+                Text = ''
               end
               object edgeoccurence: TLabeledEdit
                 Left = 309
@@ -25586,6 +26079,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'occurence'
                 TabOrder = 3
+                Text = ''
               end
               object edgeend_time: TLabeledEdit
                 Left = 194
@@ -25621,6 +26115,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'eventEntry'
                 TabOrder = 0
+                Text = ''
               end
               object edgeholiday: TLabeledEdit
                 Left = 425
@@ -25631,6 +26126,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'holiday'
                 TabOrder = 6
+                Text = ''
               end
               object edgeworld_event: TLabeledEdit
                 Left = 450
@@ -25642,6 +26138,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'world_event'
                 TabOrder = 7
+                Text = ''
               end
               object edgeannounce: TLabeledEdit
                 Left = 521
@@ -25653,6 +26150,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'announce'
                 TabOrder = 8
+                Text = ''
               end
               object edgeholidayStage: TLabeledEdit
                 Left = 476
@@ -25664,6 +26162,7 @@ object MainForm: TMainForm
                 EditLabel.Height = 13
                 EditLabel.Caption = 'holidayStage'
                 TabOrder = 9
+                Text = ''
               end
             end
           end
@@ -25673,12 +26172,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsOtherScriptShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object meotScript: TMemo
             Left = 8
             Top = 8
-            Width = 919
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -25693,14 +26192,14 @@ object MainForm: TMainForm
           object meotLog: TMemo
             Left = 8
             Top = 472
-            Width = 766
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardOther: TButton
-            Left = 789
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -25710,7 +26209,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardOtherClick
           end
           object btExecuteOtherScript: TButton
-            Left = 789
+            Left = 769
             Top = 540
             Width = 137
             Height = 25
@@ -25728,7 +26227,7 @@ object MainForm: TMainForm
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -25738,8 +26237,8 @@ object MainForm: TMainForm
       object PageControl8: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsCharSearch
         Align = alClient
         TabOrder = 1
@@ -25748,12 +26247,12 @@ object MainForm: TMainForm
           object Panel16: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              964
+              948
               105)
             object edCharGuid: TLabeledEdit
               Left = 8
@@ -25766,6 +26265,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'Guid'
               ParentCtl3D = False
               TabOrder = 0
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object edCharName: TLabeledEdit
@@ -25777,10 +26277,11 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'Name'
               TabOrder = 1
+              Text = ''
               OnChange = edSearchCreatureChange
             end
             object btCharSearch: TBitBtn
-              Left = 879
+              Left = 855
               Top = 24
               Width = 75
               Height = 25
@@ -25835,7 +26336,7 @@ object MainForm: TMainForm
               OnClick = btCharSearchClick
             end
             object btCharClear: TBitBtn
-              Left = 879
+              Left = 855
               Top = 56
               Width = 75
               Height = 25
@@ -25855,14 +26356,15 @@ object MainForm: TMainForm
               EditLabel.Caption = 'Account'
               ParentCtl3D = False
               TabOrder = 4
+              Text = ''
               OnChange = edSearchCreatureChange
             end
           end
           object lvSearchChar: TJvListView
             Left = 0
             Top = 105
-            Width = 964
-            Height = 503
+            Width = 948
+            Height = 499
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -25913,8 +26415,8 @@ object MainForm: TMainForm
           end
           object StatusBarChar: TStatusBar
             Left = 0
-            Top = 608
-            Width = 964
+            Top = 604
+            Width = 948
             Height = 19
             Panels = <
               item
@@ -25969,6 +26471,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtaccount'
             TabOrder = 0
+            Text = ''
           end
           object edhtname: TLabeledEdit
             Left = 192
@@ -25979,6 +26482,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtname'
             TabOrder = 1
+            Text = ''
           end
           object edhtposition_x: TLabeledEdit
             Left = 103
@@ -25989,6 +26493,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtposition_x'
             TabOrder = 2
+            Text = ''
           end
           object edhtposition_y: TLabeledEdit
             Left = 185
@@ -25999,6 +26504,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtposition_y'
             TabOrder = 3
+            Text = ''
           end
           object edhtposition_z: TLabeledEdit
             Left = 261
@@ -26009,6 +26515,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtposition_z'
             TabOrder = 4
+            Text = ''
           end
           object edhtorientation: TLabeledEdit
             Left = 337
@@ -26019,6 +26526,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtorientation'
             TabOrder = 5
+            Text = ''
           end
           object edhttotaltime: TLabeledEdit
             Left = 385
@@ -26029,6 +26537,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhttotaltime'
             TabOrder = 6
+            Text = ''
           end
           object edhtleveltime: TLabeledEdit
             Left = 668
@@ -26039,6 +26548,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtleveltime'
             TabOrder = 7
+            Text = ''
           end
           object edhtlogout_time: TLabeledEdit
             Left = 495
@@ -26049,6 +26559,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtlogout_time'
             TabOrder = 8
+            Text = ''
           end
           object edhtrest_bonus: TLabeledEdit
             Left = 590
@@ -26059,6 +26570,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtrest_bonus'
             TabOrder = 9
+            Text = ''
           end
           object edhtresettalents_cost: TLabeledEdit
             Left = 547
@@ -26069,6 +26581,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtresettalents_cost'
             TabOrder = 10
+            Text = ''
           end
           object edhtresettalents_time: TLabeledEdit
             Left = 640
@@ -26079,6 +26592,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtresettalents_time'
             TabOrder = 11
+            Text = ''
           end
           object edhttrans_x: TLabeledEdit
             Left = 20
@@ -26089,6 +26603,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhttrans_x'
             TabOrder = 12
+            Text = ''
           end
           object edhttrans_y: TLabeledEdit
             Left = 103
@@ -26099,6 +26614,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhttrans_y'
             TabOrder = 13
+            Text = ''
           end
           object edhttrans_z: TLabeledEdit
             Left = 187
@@ -26109,6 +26625,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhttrans_z'
             TabOrder = 14
+            Text = ''
           end
           object edhttrans_o: TLabeledEdit
             Left = 265
@@ -26119,6 +26636,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhttrans_o'
             TabOrder = 15
+            Text = ''
           end
           object edhttransguid: TLabeledEdit
             Left = 343
@@ -26129,6 +26647,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhttransguid'
             TabOrder = 16
+            Text = ''
           end
           object edhtstable_slots: TLabeledEdit
             Left = 422
@@ -26139,6 +26658,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtstable_slots'
             TabOrder = 17
+            Text = ''
           end
           object edhtat_login: TLabeledEdit
             Left = 740
@@ -26149,6 +26669,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'edhtat_login'
             TabOrder = 18
+            Text = ''
           end
           object cbhtonline: TCheckBox
             Left = 760
@@ -26390,6 +26911,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'gender'
             TabOrder = 27
+            Text = ''
           end
           object edhtlevel: TLabeledEdit
             Left = 551
@@ -26400,6 +26922,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'level'
             TabOrder = 28
+            Text = ''
           end
           object edhtxp: TLabeledEdit
             Left = 607
@@ -26410,6 +26933,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'xp'
             TabOrder = 29
+            Text = ''
           end
           object edhtmoney: TLabeledEdit
             Left = 662
@@ -26420,6 +26944,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'money'
             TabOrder = 30
+            Text = ''
           end
           object edhtplayerBytes: TLabeledEdit
             Left = 19
@@ -26430,6 +26955,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'playerBytes'
             TabOrder = 31
+            Text = ''
           end
           object edhtplayerBytes2: TLabeledEdit
             Left = 105
@@ -26440,6 +26966,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'playerBytes2'
             TabOrder = 32
+            Text = ''
           end
           object edhtplayerFlags: TLabeledEdit
             Left = 192
@@ -26450,6 +26977,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'playerFlags'
             TabOrder = 33
+            Text = ''
           end
           object edhtinstance_id: TLabeledEdit
             Left = 261
@@ -26460,6 +26988,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'instance_id'
             TabOrder = 34
+            Text = ''
           end
           object edhtinstance_mode_mask: TLabeledEdit
             Left = 319
@@ -26470,6 +26999,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'instance_mode_mask'
             TabOrder = 35
+            Text = ''
           end
           object edhtextra_flags: TLabeledEdit
             Left = 735
@@ -26480,6 +27010,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'extra_flags'
             TabOrder = 36
+            Text = ''
           end
           object edhtdeath_expire_time: TLabeledEdit
             Left = 415
@@ -26490,6 +27021,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'death_expire_time'
             TabOrder = 37
+            Text = ''
           end
           object edhttaxi_path: TLabeledEdit
             Left = 530
@@ -26500,6 +27032,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'taxi_path'
             TabOrder = 38
+            Text = ''
           end
           object edhtarenaPoints: TLabeledEdit
             Left = 19
@@ -26510,6 +27043,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'arenaPoints'
             TabOrder = 39
+            Text = ''
           end
           object edhttotalHonorPoints: TLabeledEdit
             Left = 84
@@ -26520,6 +27054,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'totalHonorPoints'
             TabOrder = 40
+            Text = ''
           end
           object edhttodayHonorPoints: TLabeledEdit
             Left = 177
@@ -26530,6 +27065,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'todayHonorPoints'
             TabOrder = 41
+            Text = ''
           end
           object edhtyesterdayHonorPoints: TLabeledEdit
             Left = 264
@@ -26540,6 +27076,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'yesterdayHonorPoints'
             TabOrder = 42
+            Text = ''
           end
           object edhttotalKills: TLabeledEdit
             Left = 369
@@ -26550,6 +27087,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'totalKills'
             TabOrder = 43
+            Text = ''
           end
           object edhttodayKills: TLabeledEdit
             Left = 447
@@ -26560,6 +27098,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'todayKills'
             TabOrder = 44
+            Text = ''
           end
           object edhtyesterdayKills: TLabeledEdit
             Left = 519
@@ -26570,6 +27109,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'yesterdayKills'
             TabOrder = 45
+            Text = ''
           end
           object edhtchosenTitle: TLabeledEdit
             Left = 614
@@ -26580,6 +27120,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'chosenTitle'
             TabOrder = 46
+            Text = ''
           end
           object edhtknownCurrencies: TLabeledEdit
             Left = 589
@@ -26590,6 +27131,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'knownCurrencies'
             TabOrder = 47
+            Text = ''
           end
           object edhtwatchedFaction: TLabeledEdit
             Left = 687
@@ -26600,6 +27142,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'watchedFaction'
             TabOrder = 48
+            Text = ''
           end
           object edhtdrunk: TLabeledEdit
             Left = 703
@@ -26610,6 +27153,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'drunk'
             TabOrder = 49
+            Text = ''
           end
           object edhthealth: TLabeledEdit
             Left = 19
@@ -26620,6 +27164,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'health'
             TabOrder = 50
+            Text = ''
           end
           object edhtpower1: TLabeledEdit
             Left = 82
@@ -26630,6 +27175,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power1'
             TabOrder = 51
+            Text = ''
           end
           object edhtpower2: TLabeledEdit
             Left = 145
@@ -26640,6 +27186,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power2'
             TabOrder = 52
+            Text = ''
           end
           object edhtpower3: TLabeledEdit
             Left = 210
@@ -26650,6 +27197,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power3'
             TabOrder = 53
+            Text = ''
           end
           object edhtpower4: TLabeledEdit
             Left = 281
@@ -26660,6 +27208,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power4'
             TabOrder = 54
+            Text = ''
           end
           object edhtpower5: TLabeledEdit
             Left = 352
@@ -26670,6 +27219,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power5'
             TabOrder = 55
+            Text = ''
           end
           object edhtpower6: TLabeledEdit
             Left = 423
@@ -26680,6 +27230,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power6'
             TabOrder = 56
+            Text = ''
           end
           object edhtpower7: TLabeledEdit
             Left = 494
@@ -26690,6 +27241,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'power7'
             TabOrder = 57
+            Text = ''
           end
           object edhtlatency: TLabeledEdit
             Left = 565
@@ -26700,6 +27252,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'latency'
             TabOrder = 58
+            Text = ''
           end
           object edhtspeccount: TLabeledEdit
             Left = 639
@@ -26710,6 +27263,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'speccount'
             TabOrder = 59
+            Text = ''
           end
           object edhtactivespec: TLabeledEdit
             Left = 721
@@ -26720,6 +27274,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'activespec'
             TabOrder = 60
+            Text = ''
           end
           object edhtexploredZones: TLabeledEdit
             Left = 20
@@ -26730,6 +27285,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'exploredZones'
             TabOrder = 61
+            Text = ''
           end
           object edhtequipmentCache: TLabeledEdit
             Left = 19
@@ -26740,6 +27296,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'equipmentCache'
             TabOrder = 62
+            Text = ''
           end
           object edhtammoId: TLabeledEdit
             Left = 758
@@ -26750,6 +27307,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ammoId'
             TabOrder = 63
+            Text = ''
           end
           object edhtknownTitles: TLabeledEdit
             Left = 20
@@ -26760,6 +27318,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'knownTitles'
             TabOrder = 64
+            Text = ''
           end
           object edhtactionBars: TLabeledEdit
             Left = 468
@@ -26770,6 +27329,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'actionBars'
             TabOrder = 65
+            Text = ''
           end
           object edhtdeleteInfos_Account: TLabeledEdit
             Left = 19
@@ -26780,6 +27340,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'deleteInfos_Account'
             TabOrder = 66
+            Text = ''
           end
           object edhtdeleteInfos_Name: TLabeledEdit
             Left = 148
@@ -26790,6 +27351,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'deleteInfos_Name'
             TabOrder = 67
+            Text = ''
           end
           object edhtdeleteDate: TLabeledEdit
             Left = 275
@@ -26800,6 +27362,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'deleteDate'
             TabOrder = 68
+            Text = ''
           end
           object edhttaximask: TLabeledEdit
             Left = 20
@@ -26810,6 +27373,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'taximask'
             TabOrder = 69
+            Text = ''
           end
           object edhtis_logout_resting: TCheckBox
             Left = 635
@@ -26828,14 +27392,15 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'grantableLevels'
             TabOrder = 71
+            Text = ''
           end
         end
         object tsCharacterInventory: TTabSheet
           Caption = 'Inventory'
           ImageIndex = 3
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object btCharInvDel: TSpeedButton
             Left = 800
             Top = 499
@@ -27037,7 +27602,7 @@ object MainForm: TMainForm
           object lvCharacterInventory: TJvListView
             Left = 8
             Top = 32
-            Width = 918
+            Width = 898
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -27085,6 +27650,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'guid'
             TabOrder = 3
+            Text = ''
           end
           object edhibag: TLabeledEdit
             Left = 94
@@ -27095,6 +27661,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'bag'
             TabOrder = 4
+            Text = ''
           end
           object edhislot: TLabeledEdit
             Left = 183
@@ -27105,6 +27672,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'slot'
             TabOrder = 5
+            Text = ''
           end
           object edhiitem: TLabeledEdit
             Left = 269
@@ -27115,6 +27683,7 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'item'
             TabOrder = 6
+            Text = ''
           end
         end
         object tsCharacterScript: TTabSheet
@@ -27122,12 +27691,12 @@ object MainForm: TMainForm
           ImageIndex = 2
           OnShow = tsCharacterScriptShow
           DesignSize = (
-            964
-            627)
+            948
+            623)
           object mehtScript: TMemo
             Left = 8
             Top = 8
-            Width = 919
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -27142,14 +27711,14 @@ object MainForm: TMainForm
           object mehtLog: TMemo
             Left = 8
             Top = 472
-            Width = 766
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardChar: TButton
-            Left = 789
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -27159,7 +27728,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardCharClick
           end
           object btExecuteScriptChar: TButton
-            Left = 789
+            Left = 769
             Top = 540
             Width = 137
             Height = 25
@@ -27177,7 +27746,7 @@ object MainForm: TMainForm
       object Panel14: TPanel
         Left = 0
         Top = 0
-        Width = 972
+        Width = 956
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -27186,8 +27755,8 @@ object MainForm: TMainForm
       object PageControl7: TPageControl
         Left = 0
         Top = 25
-        Width = 972
-        Height = 655
+        Width = 956
+        Height = 651
         ActivePage = tsSQL1
         Align = alClient
         TabOrder = 1
@@ -27196,16 +27765,16 @@ object MainForm: TMainForm
           object Panel15: TPanel
             Left = 0
             Top = 0
-            Width = 964
+            Width = 948
             Height = 113
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             DesignSize = (
-              964
+              948
               113)
             object btSQLOpen: TBitBtn
-              Left = 852
+              Left = 832
               Top = 8
               Width = 75
               Height = 25
@@ -27217,7 +27786,7 @@ object MainForm: TMainForm
             object SQLEdit: TMemo
               Left = 8
               Top = 8
-              Width = 837
+              Width = 817
               Height = 89
               Anchors = [akLeft, akTop, akRight]
               Font.Charset = RUSSIAN_CHARSET
@@ -27238,8 +27807,8 @@ object MainForm: TMainForm
           object JvDBGrid1: TJvDBGrid
             Left = 0
             Top = 113
-            Width = 964
-            Height = 514
+            Width = 948
+            Height = 510
             Align = alClient
             Ctl3D = False
             DataSource = DataSource
@@ -27281,12 +27850,12 @@ object MainForm: TMainForm
   end
   object MyQuery: TFDQuery
     Connection = MyTrinityConnection
-    Left = 416
-    Top = 272
+    Left = 384
+    Top = 296
   end
   object pmQuest: TPopupMenu
-    Left = 613
-    Top = 273
+    Left = 637
+    Top = 305
     object nEditQuest: TMenuItem
       Caption = 'Edit Quest'
       OnClick = btEditQuestClick
@@ -27315,7 +27884,7 @@ object MainForm: TMainForm
   end
   object MainMenu: TMainMenu
     Left = 552
-    Top = 272
+    Top = 304
     object nFile: TMenuItem
       Caption = 'File'
       object nReconnect: TMenuItem
@@ -27393,8 +27962,8 @@ object MainForm: TMainForm
   end
   object MyTempQuery: TFDQuery
     Connection = MyTrinityConnection
-    Left = 480
-    Top = 280
+    Left = 472
+    Top = 304
   end
   object MyLootQuery: TFDQuery
     Connection = MyTrinityConnection
@@ -27535,8 +28104,8 @@ object MainForm: TMainForm
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
     ScreenCursor = gcrHourGlass
-    Left = 772
-    Top = 272
+    Left = 764
+    Top = 304
   end
   object FDScript1: TFDScript
     SQLScripts = <>
