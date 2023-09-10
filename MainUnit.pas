@@ -3447,7 +3447,7 @@ begin
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
     end;
-    // additionaly crear npcvendor and npctrainer fields
+    // additionaly clear npcvendor and npctrainer fields
     if s='c' then
     begin
         if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
@@ -4375,9 +4375,9 @@ begin
 
     if MyQuery.FieldByName('entry').AsInteger <> 0 then isEquip:= true else isEquip:= false;
 
-   // MyQuery.Close;
+    MyQuery.Close;
 
-    LoadQueryToListView(Format('SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `position_x`,'+
+    LoadQueryToListView(Format('SELECT `guid`, `id1`, `map`, `zoneId`, `areaId`, `position_x`,'+
       ' `position_y`,`position_z`,`orientation` FROM `creature` WHERE (`id1`=%d)', [entry]),lvclCreatureLocation);
 
     LoadQueryToListView(Format('SELECT clt.*, i.`name` FROM `creature_loot_template`'+
@@ -4421,8 +4421,8 @@ begin
     LoadCreatureTemplateAddon(Entry);
 	  LoadCreatureTemplateMovement(Entry);
     edclid1.Text := IntToStr(Entry);
-    edclid2.Text := IntToStr(Entry);
-    edclid3.Text := IntToStr(Entry);
+  //  edclid2.Text := IntToStr(Entry);
+  //  edclid3.Text := IntToStr(Entry);
     edcoEntry.Text := edctlootid.Text;
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
