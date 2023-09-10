@@ -3119,7 +3119,7 @@ var
 begin
   if objtype = 'creature' then
   begin
-    SQLText := Format('SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry]);
+    SQLText := Format('SELECT `guid`, `id1`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry]);
     lbLocationOrLoot.Caption := dmMain.Text[17]; //'Creature location'
   end
   else
@@ -3260,7 +3260,7 @@ var
   SQLText: string;
 begin
   if objtype = 'creature' then
-    SQLText := Format('SELECT `guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry])
+    SQLText := Format('SELECT `guid`, `id1`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry])
   else
   if objtype = 'gameobject' then
     SQLText := Format('SELECT `guid`, `id`, `map`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''gameobject'' as `table` FROM `gameobject` WHERE (`id`=%s)',[entry])
