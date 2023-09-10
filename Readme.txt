@@ -1,4 +1,4 @@
-Truice
+Truice cataclysm 434
 =============
 
 Truice is a database editor specifically made for TrinityCore. It is a fork of Quice, which was made for MaNGoS.
