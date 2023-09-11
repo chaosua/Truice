@@ -33,7 +33,8 @@ unit About;
 interface
 
 uses Windows, SysUtils, Forms,  Classes, Graphics, Dialogs, Math,
-     Controls, StdCtrls, ExtCtrls, ActnList, ExtActns, Registry, JvExControls, JvPoweredBy;
+     Controls, StdCtrls, ExtCtrls, ActnList, ExtActns, Registry, JvExControls, JvPoweredBy,
+  System.Actions;
 
 type
   TAboutBox = class(TForm)
@@ -57,8 +58,11 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    LinkSiteNew: TLabel;
+    Label7: TLabel;
     procedure FormShow(Sender: TObject);
     procedure LinkSiteClick(Sender: TObject);
+    procedure LinkSiteNewClick(Sender: TObject);
   private
     procedure InitializeCaptions;
     { Private declarations }
@@ -121,6 +125,12 @@ procedure TAboutBox.LinkSiteClick(Sender: TObject);
 begin
   BrowseURL1.URL:='https://github.com/Faq/Truice';
   BrowseURL1.Execute;
+end;
+
+procedure TAboutBox.LinkSiteNewClick(Sender: TObject);
+begin
+  BrowseURL2.URL:='https://github.com/chaosua/Truice';
+  BrowseURL2.Execute;
 end;
 
 constructor TAboutBox.MyCreate(AOwner: TComponent);
