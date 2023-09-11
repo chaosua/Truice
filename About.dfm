@@ -1,6 +1,6 @@
 object AboutBox: TAboutBox
-  Left = 367
-  Top = 190
+  Left = 572
+  Top = 228
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'About'
@@ -12,7 +12,7 @@ object AboutBox: TAboutBox
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  Position = poScreenCenter
+  Position = poDesigned
   OnShow = FormShow
   TextHeight = 13
   object Panel2: TPanel
@@ -1973,9 +1973,9 @@ object AboutBox: TAboutBox
       object lblVersion: TLabel
         Left = 19
         Top = 10
-        Width = 80
+        Width = 91
         Height = 13
-        Caption = 'Version: 2.1.6'
+        Caption = 'Version: 2.1.6.2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clGray
         Font.Height = -11
@@ -2102,9 +2102,9 @@ object AboutBox: TAboutBox
       object Label4: TLabel
         Left = 19
         Top = 60
-        Width = 108
+        Width = 204
         Height = 13
-        Caption = 'WoTLK 3.3.5a support'
+        Caption = 'Support WoTLK 3.3.5a DB for AzerothCore'
       end
       object Label5: TLabel
         Left = 19
@@ -2115,7 +2115,7 @@ object AboutBox: TAboutBox
       end
       object Label7: TLabel
         Left = 142
-        Top = 176
+        Top = 179
         Width = 117
         Height = 15
         AutoSize = False
@@ -2129,7 +2129,7 @@ object AboutBox: TAboutBox
         Transparent = True
         WordWrap = True
       end
-      object Label8: TLabel
+      object LinkSiteNew: TLabel
         Left = 100
         Top = 117
         Width = 157
@@ -2142,11 +2142,11 @@ object AboutBox: TAboutBox
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsUnderline]
         ParentFont = False
-        OnClick = LinkSiteClick
+        OnClick = LinkSiteNewClick
       end
     end
     object OKButton: TButton
-      Left = 320
+      Left = 308
       Top = 261
       Width = 75
       Height = 25
@@ -2156,7 +2156,7 @@ object AboutBox: TAboutBox
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 316
+      ExplicitLeft = 304
       ExplicitTop = 260
     end
   end

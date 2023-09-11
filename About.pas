@@ -39,7 +39,6 @@ uses Windows, SysUtils, Forms,  Classes, Graphics, Dialogs, Math,
 type
   TAboutBox = class(TForm)
     ActionList1: TActionList;
-    BrowseURL1: TBrowseURL;
     Panel2: TPanel;
     Bevel1: TBevel;
     OKButton: TButton;
@@ -47,8 +46,10 @@ type
     lblVersion: TLabel;
     lblAutorName: TLabel;
     LinkSite: TLabel;
-    Image1: TImage;
+    LinkSiteNew: TLabel;
+    BrowseURL1: TBrowseURL;
     BrowseURL2: TBrowseURL;
+    Image1: TImage;
     lbdbversion: TLabel;
     JvPoweredByJVCL1: TJvPoweredByJVCL;
     lbprojectwebsite: TLabel;
@@ -59,9 +60,9 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
     procedure FormShow(Sender: TObject);
     procedure LinkSiteClick(Sender: TObject);
+    procedure LinkSiteNewClick(Sender: TObject);
   private
     procedure InitializeCaptions;
     { Private declarations }
@@ -124,6 +125,12 @@ procedure TAboutBox.LinkSiteClick(Sender: TObject);
 begin
   BrowseURL1.URL:='https://github.com/Faq/Truice';
   BrowseURL1.Execute;
+end;
+
+procedure TAboutBox.LinkSiteNewClick(Sender: TObject);
+begin
+  BrowseURL2.URL:='https://github.com/chaosua/Truice';
+  BrowseURL2.Execute;
 end;
 
 constructor TAboutBox.MyCreate(AOwner: TComponent);
