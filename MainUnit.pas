@@ -1,5 +1,6 @@
 unit MainUnit;
-
+
+
 interface
 
 uses
@@ -21,7 +22,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '';
+  VERSION_4   = '3';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -44,7 +45,7 @@ const
   PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
   PFX_CREATURE_EQUIP_TEMPLATE       = 'ce';
   PFX_CREATURE_MODEL_INFO           = 'ci';
-  PFX_CREATURE_TEMPLATE_MOVEMENT	= 'cm';
+  PFX_CREATURE_TEMPLATE_MOVEMENT  	= 'cm';
   PFX_CREATURE_LOOT_TEMPLATE        = 'co';
   PFX_CREATURE_SMARTAI              = 'cy';
   PFX_CONDITIONS                    = 'c';
@@ -1630,6 +1631,7 @@ type
     FDScript1: TFDScript;
     edctspell_school_immune_mask: TJvComboEdit;
     lbctspell_school_immune_mask: TLabel;
+    btExecuteScriptCreature: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1780,6 +1782,7 @@ type
     procedure btSearchItemClick(Sender: TObject);
     procedure btCopyToClipboardItemClick(Sender: TObject);
     procedure btExecuteItemScriptClick(Sender: TObject);
+    procedure btExecuteCreatureScriptClick(Sender: TObject);
     procedure btScriptItemClick(Sender: TObject);
     procedure lvitItemLootChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
@@ -2443,7 +2446,6 @@ begin
     else
       WhereStr := Format('WHERE (qt.`NextQuestID`=%d)',[NextQuestId_]);
   end;
-
 
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
@@ -8433,6 +8435,12 @@ begin
     ExecuteScript(meitScript.Text, meitLog);
 end;
 
+procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
+begin
+  if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
+    ExecuteScript(mectScript.Text, meitLog);
+end;
+
 procedure TMainForm.btScriptItemClick(Sender: TObject);
 begin
   PageControl5.ActivePageIndex := SCRIPT_TAB_NO_ITEM;
@@ -9329,9 +9337,9 @@ begin
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
   Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
   Name := '%'+Name+'%';
-
   QueryStr := '';
   WhereStr := '';
+
   if CreatureID<>'' then
   begin
     if pos('-', CreatureID)=0 then
@@ -13391,6 +13399,8 @@ var
   FN: string;
 begin
   ShowHourGlassCursor;
+  //Of course, this assumes the TFDSQLScripts collection is clear, if not call Clear before. stackoverflow.com
+  FDScript1.SQLScripts.Clear;
   FDScript1.SQLScripts.Add.SQL.Text := script;
   try
     MyTrinityConnection.StartTransaction;
@@ -13622,4 +13632,4 @@ end;
 
 end.
 
-
+
