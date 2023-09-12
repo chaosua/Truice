@@ -1,5 +1,6 @@
 unit MainUnit;
-
+
+
 interface
 
 uses
@@ -21,7 +22,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '';
+  VERSION_4   = '4';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -1632,6 +1633,7 @@ type
     FDScript1: TFDScript;
     edctspell_school_immune_mask: TJvComboEdit;
     lbctspell_school_immune_mask: TLabel;
+    btExecuteCreatureScript: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1782,6 +1784,7 @@ type
     procedure btSearchItemClick(Sender: TObject);
     procedure btCopyToClipboardItemClick(Sender: TObject);
     procedure btExecuteItemScriptClick(Sender: TObject);
+    procedure btExecuteCreatureScriptClick(Sender: TObject);
     procedure btScriptItemClick(Sender: TObject);
     procedure lvitItemLootChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
@@ -2633,7 +2636,6 @@ begin
 		edqtProvidedItemCount.Text := MyQuery.FieldByName('ProvidedItemCount').AsString;
 		edqtSpecialFlags.Text := MyQuery.FieldByName('SpecialFlags').AsString;
     MyQuery.Close;
-
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then 
@@ -2641,7 +2643,6 @@ begin
 		edqtEmoteOnIncomplete.Text := MyQuery.FieldByName('EmoteOnIncomplete').AsString;
 		edqtCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
     MyQuery.Close;
-
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then 
@@ -2655,7 +2656,6 @@ begin
 		edqtOfferRewardEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
 		edqtRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
     MyQuery.Close;
-
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then 
@@ -2668,7 +2668,6 @@ begin
 		edqtDetailsEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
 		edqtDetailsEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
     MyQuery.Close;
-
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString else
@@ -3154,7 +3153,7 @@ begin
   loc:= LoadLocales();
   if (loc<>'enUS') then begin
   MyQuery.SQL.Text := Format('SELECT loc.locale, loc.Title, loc.Details, loc.Objectives, loc.EndText, loc.CompletedText, loc.ObjectiveText1, loc.ObjectiveText2, loc.ObjectiveText3, loc.ObjectiveText4, loc.VerifiedBuild, rl.RewardText, il.CompletionText '+
-  'FROM `quest_template_locale` loc LEFT OUTER JOIN quest_offer_reward_locale rl on rl.ID = loc.ID AND rl.locale = loc.locale LEFT OUTER JOIN quest_request_items_locale il on il.ID = loc.ID AND il.locale = loc.locale WHERE loc.ID=%d AND loc.locale="'+loc+'"',[QuestID]);
+  'FROM `quest_template_locale` loc LEFT OUTER JOIN quest_offer_reward_locale rl on rl.ID = loc.ID AND rl.locale = loc.locale LEFT OUTER JOIN quest_request_items_locale il on il.ID = loc.ID AND il.locale = loc.locale WHERE loc.ID=%d AND loc.locale="%s"',[QuestID, loc]);
   MyQuery.Open;
   edlqlocale.EditLabel.Caption:= 'locale';
   edlqTitle.EditLabel.Caption:= 'Title';
@@ -5174,7 +5173,6 @@ procedure TMainForm.GetSpellSchImmuneMask(Sender: TObject);
 begin
   GetSomeFlags(Sender, 'CreatureSpellsMechanic');
 end;
-
 function TMainForm.GetValueFromDBC(Name: string; id: Cardinal; idx_str: integer = 1): WideString;
 var
   i: integer;
@@ -5567,7 +5565,6 @@ begin
       raise Exception.Create(dmMain.Text[159]+#10#13+E.Message);
   end;
 end;
-
 procedure TMainForm.LoadCreatureAddon(GUID: integer);
 begin
   if GUID<1 then Exit;
@@ -8431,6 +8428,12 @@ begin
     ExecuteScript(meitScript.Text, meitLog);
 end;
 
+procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
+begin
+  if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
+    ExecuteScript(mectScript.Text, meitLog);
+end;
+
 procedure TMainForm.btScriptItemClick(Sender: TObject);
 begin
   PageControl5.ActivePageIndex := SCRIPT_TAB_NO_ITEM;
@@ -9231,7 +9234,6 @@ begin
       Selected := Items[0];
     end;
 end;
-
 procedure TMainForm.cttSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   if Selected then
@@ -9251,12 +9253,10 @@ begin
 	edcttcomment.Text := Item.SubItems[11];
   end;
 end;
-
 procedure TMainForm.btScriptCreatureTextClick(Sender: TObject);
 begin
   PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
 end;
-
 procedure TMainForm.CompleteCreatureTextScript;
 var
   CreatureID, Fields, Values: string;
@@ -9272,7 +9272,6 @@ begin
     ssUpdate: mectScript.Text := MakeUpdate('creature_text', PFX_CREATURE_TEXT, 'CreatureID', CreatureID) ;
   end;
 end;
-
 procedure TMainForm.btSearchPageTextClick(Sender: TObject);
 begin
   SearchPageText();
@@ -9327,7 +9326,6 @@ begin
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
   Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
   Name := '%'+Name+'%';
-
   QueryStr := '';
   WhereStr := '';
   if CreatureID<>'' then
@@ -9337,7 +9335,6 @@ begin
     else
       WhereStr := Format('WHERE (`CreatureID` >= %s) AND (`CreatureID` <= %s)',[MidStr(CreatureID,1,pos('-',creatureid)-1), MidStr(CreatureID,pos('-',creatureid)+1,length(creatureid))]);
   end;
-
   if Name<>'%%' then
   begin
     if WhereStr<> '' then
@@ -9345,12 +9342,9 @@ begin
     else
       WhereStr := Format('WHERE (`text` LIKE ''%s'')',[Name]);
   end;
-
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
-
   QueryStr := Format('SELECT * FROM `creature_text` %s',[WhereStr]);
-
   MyQuery.SQL.Text := QueryStr;
   cttSearchCreatureText.Items.BeginUpdate;
   try
@@ -9379,7 +9373,6 @@ begin
     MyQuery.Close;
   end;
 end;
-
 procedure TMainForm.SearchPageText;
 var
   i: integer;
@@ -13389,6 +13382,8 @@ var
   FN: string;
 begin
   ShowHourGlassCursor;
+  //Of course, this assumes the TFDSQLScripts collection is clear, if not call Clear before. stackoverflow.com
+  FDScript1.SQLScripts.Clear;
   FDScript1.SQLScripts.Add.SQL.Text := script;
   try
     MyTrinityConnection.StartTransaction;
@@ -13620,4 +13615,4 @@ end;
 
 end.
 
-
+

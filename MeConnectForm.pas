@@ -32,6 +32,8 @@ type
     lbcDatabase: TLabel;
     edrDatabase: TComboBox;
     lbrDatabase: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure btConnectClick(Sender: TObject);
     procedure edServerDropDown(Sender: TObject);
     procedure GetDataBases(Sender: TObject);
