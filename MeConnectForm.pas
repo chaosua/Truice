@@ -32,6 +32,8 @@ type
     lbcDatabase: TLabel;
     edrDatabase: TComboBox;
     lbrDatabase: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure btConnectClick(Sender: TObject);
     procedure edServerDropDown(Sender: TObject);
     procedure GetDataBases(Sender: TObject);
@@ -85,6 +87,13 @@ begin
       MainForm.MyTempQuery.SQL.Text := Format('SET NAMES %s',[edCharSet.Text]);
       MainForm.MyTempQuery.ExecSQL;
     end;
+{    if Trim(edCharSet.Text) = '' then
+    begin
+      edCharSet.Text := 'utf8';
+      MainForm.MyTempQuery.SQL.Text := Format('SET NAMES %s',[edCharSet.Text]);
+      MainForm.MyTempQuery.ExecSQL;
+    end;
+}
     ModalResult := mrOk;
   except
     ModalResult := mrNone;
