@@ -22,7 +22,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '3';
+  VERSION_4   = '5';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -2776,11 +2776,21 @@ var
   Server: string;
   Port: Integer;
 begin
+if (MainForm.MyTrinityConnection.Connected=true) then
+begin
   Server := TFDPhysMySQLConnectionDefParams(MyTrinityConnection.ResultConnectionDef.Params).Server;
   Port := TFDPhysMySQLConnectionDefParams(MyTrinityConnection.ResultConnectionDef.Params).Port;
   Caption := Format('Truice %s - Connection: %s:%d / %s', [VERSION_EXE, Server, Port, GetDBVersion]);
 
   Application.Title := Caption;
+end else
+begin
+  if Server = '' then
+  begin
+      Server := 'NOT CONNECTED';
+      Port := 0;
+  end;
+end;
 end;
 
 procedure TMainForm.WMFreeQL(var Message: TMessage);
