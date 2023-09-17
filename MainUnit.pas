@@ -2783,13 +2783,6 @@ begin
   Caption := Format('Truice %s - Connection: %s:%d / %s', [VERSION_EXE, Server, Port, GetDBVersion]);
 
   Application.Title := Caption;
-end else
-begin
-  if Server = '' then
-  begin
-      Server := 'NOT CONNECTED';
-      Port := 0;
-  end;
 end;
 end;
 
