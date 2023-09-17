@@ -2780,10 +2780,8 @@ begin
   Server := TFDPhysMySQLConnectionDefParams(MyTrinityConnection.ResultConnectionDef.Params).Server;
   Port := TFDPhysMySQLConnectionDefParams(MyTrinityConnection.ResultConnectionDef.Params).Port;
   Caption := Format('Truice %s - Connection: %s:%d / %s', [VERSION_EXE, Server, Port, GetDBVersion]);
+
   Application.Title := Caption;
-end else  begin
-  if Server = '' then  Server := 'NOT CONNECTED';
-  if Port < 0 THEN Port := 0;
 end;
 end;
 

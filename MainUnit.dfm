@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 388
   Top = 145
   Caption = 'Truice'
-  ClientHeight = 700
-  ClientWidth = 948
+  ClientHeight = 699
+  ClientWidth = 944
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,8 +22,8 @@ object MainForm: TMainForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 948
-    Height = 700
+    Width = 944
+    Height = 699
     ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
@@ -39,7 +39,7 @@ object MainForm: TMainForm
       object pnQuestTop: TPanel
         Left = 0
         Top = 0
-        Width = 944
+        Width = 940
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -49,8 +49,8 @@ object MainForm: TMainForm
       object PageControl2: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsQuestPart1
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
@@ -71,12 +71,12 @@ object MainForm: TMainForm
           object pnSearch: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              932
+              928
               105)
             object lbQuestStarterSearch: TLabel
               Left = 8
@@ -199,7 +199,7 @@ object MainForm: TMainForm
               OnChange = edSearchChange
             end
             object btSearch: TBitBtn
-              Left = 821
+              Left = 817
               Top = 25
               Width = 75
               Height = 25
@@ -255,7 +255,7 @@ object MainForm: TMainForm
               ExplicitLeft = 837
             end
             object btClear: TBitBtn
-              Left = 821
+              Left = 817
               Top = 56
               Width = 75
               Height = 25
@@ -430,8 +430,8 @@ object MainForm: TMainForm
           object lvQuest: TJvListView
             Left = 0
             Top = 105
-            Width = 932
-            Height = 453
+            Width = 928
+            Height = 452
             Hint = 'Browse URL'
             Align = alClient
             BorderStyle = bsNone
@@ -470,20 +470,20 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 936
-            ExplicitHeight = 454
+            ExplicitWidth = 932
+            ExplicitHeight = 453
           end
           object Panel2: TPanel
             Left = 0
-            Top = 558
-            Width = 932
+            Top = 557
+            Width = 928
             Height = 61
             Align = alBottom
             TabOrder = 2
             ExplicitTop = 560
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               61)
             object btEditQuest: TBitBtn
               Left = 112
@@ -791,7 +791,7 @@ object MainForm: TMainForm
               OnClick = btCheckQuestClick
             end
             object btCheckAll: TBitBtn
-              Left = 793
+              Left = 789
               Top = 10
               Width = 110
               Height = 25
@@ -858,7 +858,7 @@ object MainForm: TMainForm
             object StatusBar: TStatusBar
               Left = 1
               Top = 41
-              Width = 930
+              Width = 926
               Height = 19
               Panels = <
                 item
@@ -4971,8 +4971,8 @@ object MainForm: TMainForm
           Caption = 'Quest Starters'
           ImageIndex = 3
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbQuestStarterInfo: TLabel
             Left = 8
             Top = 37
@@ -5111,7 +5111,7 @@ object MainForm: TMainForm
           object lvqtStarterTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 874
+            Width = 870
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5150,12 +5150,12 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object lvqtStarterLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 874
+            Width = 870
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5222,15 +5222,15 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
         end
         object tsQuestender: TTabSheet
           Caption = 'Quest enders'
           ImageIndex = 4
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbQuestEnderInfo: TLabel
             Left = 8
             Top = 37
@@ -5369,7 +5369,7 @@ object MainForm: TMainForm
           object lvqtTenderTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 874
+            Width = 870
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5408,12 +5408,12 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object lvqtTenderLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 874
+            Width = 870
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5480,7 +5480,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
         end
         object tsLocalesQuest: TTabSheet
@@ -5684,10 +5684,10 @@ object MainForm: TMainForm
           ImageIndex = 2
           OnShow = tsScriptTabShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btCopyToClipboard: TButton
-            Left = 745
+            Left = 741
             Top = 508
             Width = 137
             Height = 25
@@ -5698,7 +5698,7 @@ object MainForm: TMainForm
             ExplicitLeft = 761
           end
           object btExecuteScript: TButton
-            Left = 745
+            Left = 741
             Top = 540
             Width = 137
             Height = 25
@@ -5711,7 +5711,7 @@ object MainForm: TMainForm
           object meqtLog: TMemo
             Left = 8
             Top = 472
-            Width = 722
+            Width = 718
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -5721,7 +5721,7 @@ object MainForm: TMainForm
           object meqtScript: TMemo
             Left = 3
             Top = 9
-            Width = 875
+            Width = 871
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -5743,8 +5743,8 @@ object MainForm: TMainForm
       object PageControl3: TPageControl
         Left = 0
         Top = 25
-        Width = 940
-        Height = 647
+        Width = 936
+        Height = 646
         ActivePage = tsCreatureScript
         Align = alClient
         MultiLine = True
@@ -5754,12 +5754,12 @@ object MainForm: TMainForm
           object Panel4: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              932
+              928
               105)
             object edSearchCreatureEntry: TLabeledEdit
               Left = 8
@@ -5788,7 +5788,7 @@ object MainForm: TMainForm
               OnChange = edSearchCreatureChange
             end
             object btSearchCreature: TBitBtn
-              Left = 832
+              Left = 824
               Top = 23
               Width = 75
               Height = 25
@@ -5844,7 +5844,7 @@ object MainForm: TMainForm
               ExplicitLeft = 844
             end
             object btClearSearchCreature: TBitBtn
-              Left = 831
+              Left = 823
               Top = 56
               Width = 75
               Height = 25
@@ -5969,8 +5969,8 @@ object MainForm: TMainForm
           object lvSearchCreature: TJvListView
             Left = 0
             Top = 105
-            Width = 932
-            Height = 435
+            Width = 928
+            Height = 434
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -6029,13 +6029,13 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 936
-            ExplicitHeight = 436
+            ExplicitWidth = 932
+            ExplicitHeight = 435
           end
           object Panel5: TPanel
             Left = 0
-            Top = 540
-            Width = 932
+            Top = 539
+            Width = 928
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -8546,8 +8546,8 @@ object MainForm: TMainForm
           Caption = 'Creature Location'
           ImageIndex = 2
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object lbclCreatureLocationHint: TLabel
             Left = 8
             Top = 8
@@ -8595,7 +8595,7 @@ object MainForm: TMainForm
           object lvclCreatureLocation: TJvListView
             Left = 10
             Top = 27
-            Width = 874
+            Width = 870
             Height = 350
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -8653,7 +8653,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object edclguid: TLabeledEdit
             Left = 8
@@ -8827,7 +8827,7 @@ object MainForm: TMainForm
             OnClick = btScriptCreatureLocationCustomToAllClick
           end
           object btFullScriptCreatureLocation: TButton
-            Left = 667
+            Left = 663
             Top = 568
             Width = 210
             Height = 25
@@ -9133,12 +9133,12 @@ object MainForm: TMainForm
           ImageIndex = 13
           OnShow = tsCreatureModelInfoShow
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object lvCreatureModelSearch: TJvListView
             Left = 11
             Top = 50
-            Width = 870
+            Width = 866
             Height = 223
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9181,22 +9181,22 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 874
+            ExplicitWidth = 870
           end
           object Panel24: TPanel
             Left = 0
             Top = 0
-            Width = 932
+            Width = 928
             Height = 50
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               50)
             object btCreatureModelSearch: TBitBtn
-              Left = 806
+              Left = 802
               Top = 16
               Width = 75
               Height = 25
@@ -9339,7 +9339,7 @@ object MainForm: TMainForm
           object Panel23: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 50
             Align = alTop
             BevelOuter = bvNone
@@ -9533,8 +9533,8 @@ object MainForm: TMainForm
           Caption = 'Creature Loot'
           ImageIndex = 4
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object lbcoitem: TLabel
             Left = 79
             Top = 476
@@ -9734,7 +9734,7 @@ object MainForm: TMainForm
           object lvcoCreatureLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 874
+            Width = 870
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9815,7 +9815,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object edcoEntry: TLabeledEdit
             Left = 9
@@ -10004,8 +10004,8 @@ object MainForm: TMainForm
           Caption = 'Pickpocket Loot'
           ImageIndex = 7
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object lbcpitem: TLabel
             Left = 79
             Top = 476
@@ -10205,7 +10205,7 @@ object MainForm: TMainForm
           object lvcoPickpocketLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 874
+            Width = 870
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10276,7 +10276,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object edcpEntry: TLabeledEdit
             Left = 9
@@ -10465,8 +10465,8 @@ object MainForm: TMainForm
           Caption = 'Skin Loot'
           ImageIndex = 8
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object lbcsitem: TLabel
             Left = 79
             Top = 476
@@ -10666,7 +10666,7 @@ object MainForm: TMainForm
           object lvcoSkinLoot: TJvListView
             Left = 3
             Top = 32
-            Width = 874
+            Width = 870
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10736,7 +10736,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object edcsEntry: TLabeledEdit
             Left = 9
@@ -10925,8 +10925,8 @@ object MainForm: TMainForm
           Caption = 'NPC Vendor'
           ImageIndex = 5
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object lbcvitem: TLabel
             Left = 192
             Top = 474
@@ -11123,7 +11123,7 @@ object MainForm: TMainForm
           object lvcvNPCVendor: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -11177,7 +11177,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edcventry: TLabeledEdit
             Left = 8
@@ -11333,8 +11333,8 @@ object MainForm: TMainForm
           Caption = 'NPC Trainer'
           ImageIndex = 6
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object SpellID: TLabel
             Left = 96
             Top = 479
@@ -11531,7 +11531,7 @@ object MainForm: TMainForm
           object lvcrNPCTrainer: TJvListView
             Left = 3
             Top = 27
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -11580,7 +11580,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edcrID: TLabeledEdit
             Left = 8
@@ -11728,8 +11728,8 @@ object MainForm: TMainForm
           object cttSearchCreatureText: TJvListView
             Left = 0
             Top = 89
-            Width = 936
-            Height = 295
+            Width = 932
+            Height = 294
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -11826,16 +11826,16 @@ object MainForm: TMainForm
           object cttGroupBox: TGroupBox
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 89
             Align = alTop
             TabOrder = 1
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               89)
             object cttClearSearchCreatureText: TBitBtn
-              Left = 823
+              Left = 819
               Top = 56
               Width = 75
               Height = 25
@@ -11846,7 +11846,7 @@ object MainForm: TMainForm
               ExplicitLeft = 839
             end
             object btSearchCreatureText: TBitBtn
-              Left = 823
+              Left = 819
               Top = 24
               Width = 75
               Height = 25
@@ -11926,8 +11926,8 @@ object MainForm: TMainForm
           end
           object cttPanel13: TPanel
             Left = 0
-            Top = 383
-            Width = 932
+            Top = 382
+            Width = 928
             Height = 218
             Align = alBottom
             BevelOuter = bvNone
@@ -11935,7 +11935,7 @@ object MainForm: TMainForm
             ExplicitTop = 385
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               218)
             object edcttCreatureId: TLabeledEdit
               Left = 8
@@ -12687,7 +12687,7 @@ object MainForm: TMainForm
           object pcCreatureInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 936
+            Width = 932
             Height = 417
             ActivePage = tsCreatureStarts
             Align = alTop
@@ -12698,7 +12698,7 @@ object MainForm: TMainForm
               object lvCreatureStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12755,7 +12755,7 @@ object MainForm: TMainForm
               object lvCreatureEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12812,7 +12812,7 @@ object MainForm: TMainForm
               object lvCreatureObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12866,7 +12866,7 @@ object MainForm: TMainForm
           object Panel20: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -12902,12 +12902,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsCreatureScriptShow
           DesignSize = (
-            932
-            601)
+            928
+            600)
           object mectScript: TMemo
             Left = 13
             Top = 9
-            Width = 875
+            Width = 871
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -12922,14 +12922,14 @@ object MainForm: TMainForm
           object mectLog: TMemo
             Left = 8
             Top = 472
-            Width = 722
+            Width = 718
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardCreature: TButton
-            Left = 736
+            Left = 732
             Top = 472
             Width = 137
             Height = 25
@@ -12939,7 +12939,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardCreatureClick
           end
           object btExecuteCreatureScript: TButton
-            Left = 736
+            Left = 732
             Top = 516
             Width = 137
             Height = 25
@@ -12953,7 +12953,7 @@ object MainForm: TMainForm
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 940
+        Width = 936
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -12966,7 +12966,7 @@ object MainForm: TMainForm
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 944
+        Width = 940
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -12976,8 +12976,8 @@ object MainForm: TMainForm
       object PageControl4: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsGOScript
         Align = alClient
         TabOrder = 1
@@ -12988,12 +12988,12 @@ object MainForm: TMainForm
           object Panel6: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              932
+              928
               105)
             object lbSearchGOtype: TLabel
               Left = 264
@@ -13036,7 +13036,7 @@ object MainForm: TMainForm
               OnChange = edSearchGOChange
             end
             object btSearchGO: TBitBtn
-              Left = 831
+              Left = 823
               Top = 24
               Width = 75
               Height = 25
@@ -13092,7 +13092,7 @@ object MainForm: TMainForm
               ExplicitLeft = 843
             end
             object btClearSearchGO: TBitBtn
-              Left = 831
+              Left = 823
               Top = 56
               Width = 75
               Height = 25
@@ -13222,8 +13222,8 @@ object MainForm: TMainForm
           object lvSearchGO: TJvListView
             Left = 0
             Top = 105
-            Width = 932
-            Height = 453
+            Width = 928
+            Height = 452
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -13265,13 +13265,13 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 936
-            ExplicitHeight = 454
+            ExplicitWidth = 932
+            ExplicitHeight = 453
           end
           object Panel7: TPanel
             Left = 0
-            Top = 558
-            Width = 932
+            Top = 557
+            Width = 928
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -14232,8 +14232,8 @@ object MainForm: TMainForm
           Caption = 'GO Location'
           ImageIndex = 2
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbglGOLocationHint: TLabel
             Left = 8
             Top = 8
@@ -14260,7 +14260,7 @@ object MainForm: TMainForm
           object lvglGOLocation: TJvListView
             Left = 3
             Top = 27
-            Width = 874
+            Width = 870
             Height = 390
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -14308,7 +14308,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object edglguid: TLabeledEdit
             Left = 8
@@ -14472,7 +14472,7 @@ object MainForm: TMainForm
             Text = ''
           end
           object btFullScriptGOLocation: TButton
-            Left = 698
+            Left = 694
             Top = 584
             Width = 201
             Height = 25
@@ -14620,8 +14620,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsGOLootShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbgoitem: TLabel
             Left = 97
             Top = 494
@@ -14818,7 +14818,7 @@ object MainForm: TMainForm
           object lvgoGOLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 909
+            Width = 905
             Height = 449
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -14899,7 +14899,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 913
+            ExplicitWidth = 909
           end
           object edgoEntry: TLabeledEdit
             Left = 9
@@ -15091,7 +15091,7 @@ object MainForm: TMainForm
           object pcGameObjectInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 936
+            Width = 932
             Height = 417
             ActivePage = tsGOStarts
             Align = alTop
@@ -15102,7 +15102,7 @@ object MainForm: TMainForm
               object lvGameObjectStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15158,7 +15158,7 @@ object MainForm: TMainForm
               object lvGameObjectEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15214,7 +15214,7 @@ object MainForm: TMainForm
               object lvGameObjectObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15268,7 +15268,7 @@ object MainForm: TMainForm
           object Panel21: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -15304,12 +15304,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsGOScriptShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object megoScript: TMemo
             Left = 8
             Top = 8
-            Width = 875
+            Width = 871
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -15325,7 +15325,7 @@ object MainForm: TMainForm
           object megoLog: TMemo
             Left = 8
             Top = 472
-            Width = 722
+            Width = 718
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -15333,7 +15333,7 @@ object MainForm: TMainForm
             ExplicitWidth = 738
           end
           object btCopyToClipboardGO: TButton
-            Left = 745
+            Left = 741
             Top = 508
             Width = 137
             Height = 25
@@ -15344,7 +15344,7 @@ object MainForm: TMainForm
             ExplicitLeft = 761
           end
           object btExecuteGOScript: TButton
-            Left = 745
+            Left = 741
             Top = 540
             Width = 137
             Height = 25
@@ -15363,7 +15363,7 @@ object MainForm: TMainForm
       object Panel9: TPanel
         Left = 0
         Top = 0
-        Width = 944
+        Width = 940
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -15373,8 +15373,8 @@ object MainForm: TMainForm
       object PageControl5: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsItemScript
         Align = alClient
         TabOrder = 1
@@ -15385,12 +15385,12 @@ object MainForm: TMainForm
           object Panel10: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              932
+              928
               105)
             object lbSearchItemSubClass: TLabel
               Left = 308
@@ -15461,7 +15461,7 @@ object MainForm: TMainForm
               OnChange = edSearchItemChange
             end
             object btSearchItem: TBitBtn
-              Left = 831
+              Left = 823
               Top = 24
               Width = 75
               Height = 25
@@ -15517,7 +15517,7 @@ object MainForm: TMainForm
               ExplicitLeft = 843
             end
             object btClearSearchItem: TBitBtn
-              Left = 831
+              Left = 823
               Top = 56
               Width = 75
               Height = 25
@@ -15776,8 +15776,8 @@ object MainForm: TMainForm
           object lvSearchItem: TJvListView
             Left = 0
             Top = 105
-            Width = 932
-            Height = 453
+            Width = 928
+            Height = 452
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -15846,13 +15846,13 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 936
-            ExplicitHeight = 454
+            ExplicitWidth = 932
+            ExplicitHeight = 453
           end
           object Panel11: TPanel
             Left = 0
-            Top = 558
-            Width = 932
+            Top = 557
+            Width = 928
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -19472,8 +19472,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsItemLootShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbilitem: TLabel
             Left = 96
             Top = 484
@@ -19679,7 +19679,7 @@ object MainForm: TMainForm
           object lvitItemLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -19748,7 +19748,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edilEntry: TLabeledEdit
             Left = 8
@@ -19938,8 +19938,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsDisenchantLootShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbiditem: TLabel
             Left = 112
             Top = 453
@@ -20145,7 +20145,7 @@ object MainForm: TMainForm
           object lvitDisLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 401
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20215,7 +20215,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edidEntry: TLabeledEdit
             Left = 10
@@ -20405,8 +20405,8 @@ object MainForm: TMainForm
           ImageIndex = 5
           OnShow = tsProspectingLootShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbipitem: TLabel
             Left = 96
             Top = 484
@@ -20612,7 +20612,7 @@ object MainForm: TMainForm
           object lvitProsLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20682,7 +20682,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edipEntry: TLabeledEdit
             Left = 8
@@ -20872,8 +20872,8 @@ object MainForm: TMainForm
           ImageIndex = 9
           OnShow = tsMillingLootShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object Label2: TLabel
             Left = 96
             Top = 484
@@ -21070,7 +21070,7 @@ object MainForm: TMainForm
           object lvitMillingLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21140,7 +21140,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edimItem: TJvComboEdit
             Left = 96
@@ -21329,8 +21329,8 @@ object MainForm: TMainForm
           Caption = 'Reference Loot'
           ImageIndex = 10
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object Label1: TLabel
             Left = 96
             Top = 484
@@ -21534,7 +21534,7 @@ object MainForm: TMainForm
           object lvitReferenceLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21604,7 +21604,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edirItem: TJvComboEdit
             Left = 96
@@ -21837,8 +21837,8 @@ object MainForm: TMainForm
           ImageIndex = 6
           OnShow = tsEnchantmentShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btieEnchAdd: TSpeedButton
             Left = 736
             Top = 500
@@ -22032,7 +22032,7 @@ object MainForm: TMainForm
           object lvitEnchantment: TJvListView
             Left = 8
             Top = 32
-            Width = 891
+            Width = 887
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -22061,7 +22061,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edieentry: TLabeledEdit
             Left = 8
@@ -22122,8 +22122,8 @@ object MainForm: TMainForm
           object lvitItemLootedFrom: TJvListView
             Left = 0
             Top = 0
-            Width = 936
-            Height = 620
+            Width = 932
+            Height = 619
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -22196,7 +22196,7 @@ object MainForm: TMainForm
           object Panel22: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -22206,7 +22206,7 @@ object MainForm: TMainForm
           object pcItemInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 936
+            Width = 932
             Height = 417
             ActivePage = tsItemRewardFrom
             Align = alTop
@@ -22217,7 +22217,7 @@ object MainForm: TMainForm
               object lvItemStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22273,7 +22273,7 @@ object MainForm: TMainForm
               object lvItemObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22329,7 +22329,7 @@ object MainForm: TMainForm
               object lvItemSourceFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22385,7 +22385,7 @@ object MainForm: TMainForm
               object lvItemProvidedFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22441,7 +22441,7 @@ object MainForm: TMainForm
               object lvItemRewardFrom: TJvListView
                 Left = 0
                 Top = 0
-                Width = 928
+                Width = 924
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22498,12 +22498,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsItemScriptShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object meitScript: TMemo
             Left = 8
             Top = 8
-            Width = 892
+            Width = 888
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -22519,7 +22519,7 @@ object MainForm: TMainForm
           object meitLog: TMemo
             Left = 8
             Top = 472
-            Width = 739
+            Width = 735
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -22527,7 +22527,7 @@ object MainForm: TMainForm
             ExplicitWidth = 755
           end
           object btCopyToClipboardItem: TButton
-            Left = 762
+            Left = 758
             Top = 508
             Width = 137
             Height = 25
@@ -22538,7 +22538,7 @@ object MainForm: TMainForm
             ExplicitLeft = 778
           end
           object btExecuteItemScript: TButton
-            Left = 762
+            Left = 758
             Top = 540
             Width = 137
             Height = 25
@@ -22557,8 +22557,8 @@ object MainForm: TMainForm
       object PageControl9: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsSmartAI
         Align = alClient
         TabOrder = 0
@@ -22568,8 +22568,8 @@ object MainForm: TMainForm
           Caption = 'SmartAI'
           ImageIndex = 19
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btSmartAIAdd: TSpeedButton
             Left = 868
             Top = 315
@@ -22985,7 +22985,7 @@ object MainForm: TMainForm
           object lvcySmartAI: TJvListView
             Left = 3
             Top = 23
-            Width = 917
+            Width = 913
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -23146,7 +23146,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 921
+            ExplicitWidth = 917
           end
           object btcyFullScript: TButton
             Left = 725
@@ -23595,10 +23595,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           OnShow = tsSmartAIScriptShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btCopyToClipboardSmartAI: TButton
-            Left = 773
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -23609,7 +23609,7 @@ object MainForm: TMainForm
             ExplicitLeft = 789
           end
           object btExecuteSmartAIScript: TButton
-            Left = 773
+            Left = 769
             Top = 540
             Width = 137
             Height = 25
@@ -23622,7 +23622,7 @@ object MainForm: TMainForm
           object mecyScript: TMemo
             Left = 11
             Top = 10
-            Width = 903
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -23638,7 +23638,7 @@ object MainForm: TMainForm
           object mecyLog: TMemo
             Left = 11
             Top = 472
-            Width = 750
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -23650,7 +23650,7 @@ object MainForm: TMainForm
       object Panel25: TPanel
         Left = 0
         Top = 0
-        Width = 940
+        Width = 936
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -23664,8 +23664,8 @@ object MainForm: TMainForm
       object PageControl10: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsConditions
         Align = alClient
         TabOrder = 0
@@ -23675,8 +23675,8 @@ object MainForm: TMainForm
           Caption = 'Conditions'
           ImageIndex = 19
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btConditionsAdd: TSpeedButton
             Left = 787
             Top = 315
@@ -23973,7 +23973,7 @@ object MainForm: TMainForm
           object lvcConditions: TJvListView
             Left = 3
             Top = 23
-            Width = 917
+            Width = 913
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -24058,7 +24058,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 921
+            ExplicitWidth = 917
           end
           object btFullScript: TButton
             Left = 726
@@ -24290,10 +24290,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           OnShow = tsConditionsScriptShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btCopyToClipboardConditions: TButton
-            Left = 773
+            Left = 769
             Top = 508
             Width = 137
             Height = 25
@@ -24304,7 +24304,7 @@ object MainForm: TMainForm
             ExplicitLeft = 789
           end
           object btExecuteConditionsScript: TButton
-            Left = 773
+            Left = 769
             Top = 540
             Width = 137
             Height = 25
@@ -24317,7 +24317,7 @@ object MainForm: TMainForm
           object mecScript: TMemo
             Left = 11
             Top = 10
-            Width = 903
+            Width = 899
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -24333,7 +24333,7 @@ object MainForm: TMainForm
           object mecLog: TMemo
             Left = 11
             Top = 472
-            Width = 750
+            Width = 746
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -24345,7 +24345,7 @@ object MainForm: TMainForm
       object Panel26: TPanel
         Left = 0
         Top = 0
-        Width = 940
+        Width = 936
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -24359,7 +24359,7 @@ object MainForm: TMainForm
       object Panel12: TPanel
         Left = 0
         Top = 0
-        Width = 944
+        Width = 940
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -24369,8 +24369,8 @@ object MainForm: TMainForm
       object PageControl6: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsGameEvents
         Align = alClient
         TabOrder = 1
@@ -24380,8 +24380,8 @@ object MainForm: TMainForm
           Caption = 'Fishing Loot'
           ImageIndex = 4
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object lbotitem: TLabel
             Left = 96
             Top = 463
@@ -24592,7 +24592,7 @@ object MainForm: TMainForm
           object lvotFishingLoot: TJvListView
             Left = 8
             Top = 72
-            Width = 891
+            Width = 887
             Height = 385
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -24673,7 +24673,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 895
+            ExplicitWidth = 891
           end
           object edotChance: TLabeledEdit
             Left = 298
@@ -24938,8 +24938,8 @@ object MainForm: TMainForm
           object lvSearchPageText: TJvListView
             Left = 0
             Top = 89
-            Width = 936
-            Height = 313
+            Width = 932
+            Height = 312
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -24979,16 +24979,16 @@ object MainForm: TMainForm
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 89
             Align = alTop
             TabOrder = 1
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               89)
             object btClearSearchPageText: TBitBtn
-              Left = 823
+              Left = 819
               Top = 56
               Width = 75
               Height = 25
@@ -24999,7 +24999,7 @@ object MainForm: TMainForm
               ExplicitLeft = 839
             end
             object btSearchPageText: TBitBtn
-              Left = 823
+              Left = 819
               Top = 24
               Width = 75
               Height = 25
@@ -25090,16 +25090,16 @@ object MainForm: TMainForm
           end
           object Panel13: TPanel
             Left = 0
-            Top = 401
-            Width = 932
+            Top = 400
+            Width = 928
             Height = 218
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 402
-            ExplicitWidth = 936
+            ExplicitTop = 401
+            ExplicitWidth = 932
             DesignSize = (
-              932
+              928
               218)
             object lbptId: TLabel
               Left = 8
@@ -25233,7 +25233,7 @@ object MainForm: TMainForm
             object edpttext: TMemo
               Left = 88
               Top = 33
-              Width = 793
+              Width = 789
               Height = 176
               Anchors = [akLeft, akTop, akRight, akBottom]
               ScrollBars = ssVertical
@@ -25269,16 +25269,16 @@ object MainForm: TMainForm
           object GroupBox2: TGroupBox
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 89
             Align = alTop
             TabOrder = 0
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               89)
             object btClearSearchGameEvent: TBitBtn
-              Left = 831
+              Left = 823
               Top = 56
               Width = 75
               Height = 25
@@ -25289,7 +25289,7 @@ object MainForm: TMainForm
               ExplicitLeft = 843
             end
             object btSearchGameEvent: TBitBtn
-              Left = 831
+              Left = 823
               Top = 24
               Width = 75
               Height = 25
@@ -25369,16 +25369,16 @@ object MainForm: TMainForm
           end
           object pnSelectedEventInfo: TPanel
             Left = 0
-            Top = 327
-            Width = 932
+            Top = 326
+            Width = 928
             Height = 292
             Align = alBottom
             Enabled = False
             TabOrder = 1
-            ExplicitTop = 328
-            ExplicitWidth = 936
+            ExplicitTop = 327
+            ExplicitWidth = 932
             DesignSize = (
-              932
+              928
               292)
             object edGameEventCreatureHint: TLabel
               Left = 8
@@ -25927,7 +25927,7 @@ object MainForm: TMainForm
               OnButtonClick = edgeGOguidButtonClick
             end
             object btScriptGameEvent: TButton
-              Left = 664
+              Left = 660
               Top = 256
               Width = 217
               Height = 25
@@ -25942,17 +25942,17 @@ object MainForm: TMainForm
           object Panel17: TPanel
             Left = 0
             Top = 89
-            Width = 932
-            Height = 238
+            Width = 928
+            Height = 237
             Align = alClient
             TabOrder = 2
-            ExplicitWidth = 936
-            ExplicitHeight = 239
+            ExplicitWidth = 932
+            ExplicitHeight = 238
             object lvSearchGameEvent: TJvListView
               Left = 1
               Top = 1
-              Width = 934
-              Height = 137
+              Width = 930
+              Height = 136
               Align = alClient
               BorderStyle = bsNone
               Columns = <
@@ -26028,8 +26028,8 @@ object MainForm: TMainForm
             end
             object Panel18: TPanel
               Left = 1
-              Top = 138
-              Width = 934
+              Top = 137
+              Width = 930
               Height = 100
               Align = alBottom
               BevelOuter = bvNone
@@ -26342,12 +26342,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsOtherScriptShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object meotScript: TMemo
             Left = 8
             Top = 8
-            Width = 875
+            Width = 871
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -26363,7 +26363,7 @@ object MainForm: TMainForm
           object meotLog: TMemo
             Left = 8
             Top = 472
-            Width = 722
+            Width = 718
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -26371,7 +26371,7 @@ object MainForm: TMainForm
             ExplicitWidth = 738
           end
           object btCopyToClipboardOther: TButton
-            Left = 745
+            Left = 741
             Top = 508
             Width = 137
             Height = 25
@@ -26382,7 +26382,7 @@ object MainForm: TMainForm
             ExplicitLeft = 761
           end
           object btExecuteOtherScript: TButton
-            Left = 745
+            Left = 741
             Top = 540
             Width = 137
             Height = 25
@@ -26401,7 +26401,7 @@ object MainForm: TMainForm
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 944
+        Width = 940
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -26412,8 +26412,8 @@ object MainForm: TMainForm
       object PageControl8: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsCharSearch
         Align = alClient
         TabOrder = 1
@@ -26424,13 +26424,13 @@ object MainForm: TMainForm
           object Panel16: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 105
             Align = alTop
             TabOrder = 0
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               105)
             object edCharGuid: TLabeledEdit
               Left = 8
@@ -26459,7 +26459,7 @@ object MainForm: TMainForm
               OnChange = edSearchCreatureChange
             end
             object btCharSearch: TBitBtn
-              Left = 831
+              Left = 823
               Top = 24
               Width = 75
               Height = 25
@@ -26515,7 +26515,7 @@ object MainForm: TMainForm
               ExplicitLeft = 843
             end
             object btCharClear: TBitBtn
-              Left = 831
+              Left = 823
               Top = 56
               Width = 75
               Height = 25
@@ -26543,8 +26543,8 @@ object MainForm: TMainForm
           object lvSearchChar: TJvListView
             Left = 0
             Top = 105
-            Width = 932
-            Height = 495
+            Width = 928
+            Height = 494
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -26593,13 +26593,13 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 936
-            ExplicitHeight = 496
+            ExplicitWidth = 932
+            ExplicitHeight = 495
           end
           object StatusBarChar: TStatusBar
             Left = 0
-            Top = 600
-            Width = 932
+            Top = 599
+            Width = 928
             Height = 19
             Panels = <
               item
@@ -27584,8 +27584,8 @@ object MainForm: TMainForm
           Caption = 'Inventory'
           ImageIndex = 3
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object btCharInvDel: TSpeedButton
             Left = 800
             Top = 499
@@ -27787,7 +27787,7 @@ object MainForm: TMainForm
           object lvCharacterInventory: TJvListView
             Left = 8
             Top = 32
-            Width = 874
+            Width = 870
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -27826,7 +27826,7 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 878
+            ExplicitWidth = 874
           end
           object edhiguid: TLabeledEdit
             Left = 8
@@ -27878,12 +27878,12 @@ object MainForm: TMainForm
           ImageIndex = 2
           OnShow = tsCharacterScriptShow
           DesignSize = (
-            932
-            619)
+            928
+            618)
           object mehtScript: TMemo
             Left = 8
             Top = 8
-            Width = 875
+            Width = 871
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -27899,7 +27899,7 @@ object MainForm: TMainForm
           object mehtLog: TMemo
             Left = 8
             Top = 472
-            Width = 722
+            Width = 718
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -27907,7 +27907,7 @@ object MainForm: TMainForm
             ExplicitWidth = 738
           end
           object btCopyToClipboardChar: TButton
-            Left = 745
+            Left = 741
             Top = 508
             Width = 137
             Height = 25
@@ -27918,7 +27918,7 @@ object MainForm: TMainForm
             ExplicitLeft = 761
           end
           object btExecuteScriptChar: TButton
-            Left = 745
+            Left = 741
             Top = 540
             Width = 137
             Height = 25
@@ -27937,7 +27937,7 @@ object MainForm: TMainForm
       object Panel14: TPanel
         Left = 0
         Top = 0
-        Width = 944
+        Width = 940
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -27947,8 +27947,8 @@ object MainForm: TMainForm
       object PageControl7: TPageControl
         Left = 0
         Top = 25
-        Width = 944
-        Height = 648
+        Width = 940
+        Height = 647
         ActivePage = tsSQL1
         Align = alClient
         TabOrder = 1
@@ -27959,17 +27959,17 @@ object MainForm: TMainForm
           object Panel15: TPanel
             Left = 0
             Top = 0
-            Width = 936
+            Width = 932
             Height = 113
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             ExplicitWidth = 940
             DesignSize = (
-              932
+              928
               113)
             object btSQLOpen: TBitBtn
-              Left = 808
+              Left = 804
               Top = 8
               Width = 75
               Height = 25
@@ -27982,7 +27982,7 @@ object MainForm: TMainForm
             object SQLEdit: TMemo
               Left = 8
               Top = 8
-              Width = 793
+              Width = 789
               Height = 89
               Anchors = [akLeft, akTop, akRight]
               Font.Charset = RUSSIAN_CHARSET
@@ -28003,8 +28003,8 @@ object MainForm: TMainForm
           object JvDBGrid1: TJvDBGrid
             Left = 0
             Top = 113
-            Width = 932
-            Height = 506
+            Width = 928
+            Height = 505
             Align = alClient
             Ctl3D = False
             DataSource = DataSource
