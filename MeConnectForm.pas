@@ -43,7 +43,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edServerChange(Sender: TObject);
-
+    procedure btCancelClick(Sender: TObject);
+    procedure WMSysCommand(var MSG: TWMSysCommand); message WM_SYSCOMMAND;
+    procedure CloseProgram;
   private
     FListGot : boolean;
     procedure SaveSettings;
@@ -158,7 +160,9 @@ end;
 procedure TMeConnectForm.edExit(Sender: TObject);
 begin
   try
-  	MainForm.MyTrinityConnection.Params.Clear;
+    if (MainForm.MyTrinityConnection.Connected=true) then
+      MainForm.MyTrinityConnection.Close;
+  MainForm.MyTrinityConnection.Params.Clear;
 	MainForm.MyTrinityConnection.DriverName:='MySQL';
 	MainForm.MyTrinityConnection.Params.AddPair('Server', edServer.Text);
 	MainForm.MyTrinityConnection.Params.AddPair('Port', edPort.Text);
@@ -169,6 +173,28 @@ begin
     ActiveControl := Sender as TWinControl;
     raise;
   end;
+end;
+
+procedure TMeConnectForm.btCancelClick(Sender: TObject);
+begin
+    CloseProgram;
+end;
+
+procedure TMeConnectForm.WMSYSCommand(var MSG:  TWMSysCommand);
+begin
+  if MSG.CmdType = SC_CLOSE then
+  begin
+     //Closing from border icon
+     CloseProgram;
+  end;
+  inherited;
+end;
+
+procedure TMeConnectForm.CloseProgram;
+begin
+ if (MainForm.MyTrinityConnection.Connected=true) then
+      MainForm.MyTrinityConnection.Close;
+  MainForm.Close;
 end;
 
 procedure TMeConnectForm.LoadPassword;
@@ -303,5 +329,7 @@ begin
   edCharSet.Text:=ReadFromRegistry(CurrentUser,'servers\' + edServer.Text, 'Charset', tpString, '');
 end;
 
+
 end.
+
 
