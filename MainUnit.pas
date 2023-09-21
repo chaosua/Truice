@@ -8434,7 +8434,7 @@ end;
 procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
 begin
   if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
-    ExecuteScript(mectScript.Text, meitLog);
+    ExecuteScript(mectScript.Text, mectLog);
 end;
 
 procedure TMainForm.btScriptItemClick(Sender: TObject);
