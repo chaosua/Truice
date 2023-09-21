@@ -53,6 +53,7 @@ const
   PFX_SKINNING_LOOT_TEMPLATE        = 'cs';
   PFX_NPC_VENDOR                    = 'cv';
   PFX_NPC_TRAINER                   = 'cr';
+  PFX_NPC_DEFAULT_TRAINER           = 'crdt';
   PFX_GAMEOBJECT_TEMPLATE           = 'gt';
   PFX_GAME_EVENT                    = 'ge';
   PFX_GAMEOBJECT                    = 'gl';
@@ -549,8 +550,8 @@ type
     btTrainerDel: TSpeedButton;
     lbcrReqSkillLine: TLabel;
     lvcrNPCTrainer: TJvListView;
-    edcrID: TLabeledEdit;
-    edcrSpellID: TJvComboEdit;
+    edcrTrainerId: TLabeledEdit;
+    edcrSpellId: TJvComboEdit;
     edcrMoneyCost: TLabeledEdit;
     btScriptNPCTrainer: TButton;
     edcrReqSkillRank: TLabeledEdit;
@@ -1632,6 +1633,12 @@ type
     edctspell_school_immune_mask: TJvComboEdit;
     lbctspell_school_immune_mask: TLabel;
     btExecuteScriptCreature: TButton;
+    edcrReqAbility1: TLabeledEdit;
+    edcrReqAbility2: TLabeledEdit;
+    edcrReqAbility3: TLabeledEdit;
+    edcrVerifiedBuild: TLabeledEdit;
+    edcrdtCreatureId: TLabeledEdit;
+    Label10: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -4410,9 +4417,11 @@ begin
 
     if (istrainer=true) then
     begin
-      LoadQueryToListView(Format('SELECT `ID`, `SpellID`,'+
-        ' `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`'+
-        ' FROM `npc_trainer` WHERE (`ID`=%d)',
+      LoadQueryToListView(Format('SELECT `TrainerId`, `SpellId`,'+
+        ' `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`,'+
+        ' `ReqAbility1`, `ReqAbility2`, `ReqAbility3`, `ReqLevel`, `VerifiedBuild`'+
+        ' FROM `trainer_spell` WHERE (`TrainerId`='+
+        ' (SELECT `TrainerId` FROM  `creature_default_trainer` WHERE `CreatureId`=%d))',
         [Entry]),lvcrNPCTrainer);
       // set spellnames in list view
       lvcrNPCTrainer.Columns[lvcrNPCTrainer.Columns.Count-1].Caption := 'Spell Name';
@@ -4423,13 +4432,13 @@ begin
     tsNPCVendor.TabVisible := isvendor;
     tsNPCTrainer.TabVisible := istrainer;
     LoadCreatureTemplateAddon(Entry);
-	LoadCreatureTemplateMovement(Entry);
+    LoadCreatureTemplateMovement(Entry);
     edclid.Text := IntToStr(Entry);
     edcoEntry.Text := edctlootid.Text;
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
     edcventry.Text := IntToStr(Entry);	//vendor
-    edcrID.Text := IntToStr(Entry);		//trainer
+    edcrdtCreatureId.Text := IntToStr(Entry);		//trainer
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[82]+#10#13+E.Message);
@@ -5899,15 +5908,16 @@ end;
 
 procedure TMainForm.CompleteNPCTrainerScript;
 var
-  crentry, crspell, Fields, Values: string;
+  crentry, trainerentry, trainerspell, Fields, Values: string;
 begin
   mectLog.Clear;
-  crentry :=  edcrID.Text;
-  crspell := edcrSpellID.Text;
-  if (crentry='') or (crspell='') then Exit;
-  SetFieldsAndValues(Fields, Values, 'npc_trainer', PFX_NPC_TRAINER, mectLog);
-  mectScript.Text := Format('DELETE FROM `npc_trainer` WHERE (`ID`=%s) AND (`spell`=%s);'#13#10+
-   'INSERT INTO `npc_trainer` (%s) VALUES (%s);'#13#10,[crentry, crspell, Fields, Values])
+  crentry :=  edcrdtCreatureId.Text;   // TODO
+  trainerentry :=  edcrTrainerId.Text;
+  trainerspell := edcrSpellID.Text;
+  if (trainerentry='') or (trainerspell='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'trainer_spell', PFX_NPC_TRAINER, mectLog);
+  mectScript.Text := Format('DELETE FROM `trainer_spell` WHERE (`TrainerId`=%s) AND (`SpellId`=%s);'#13#10+
+   'INSERT INTO `trainer_spell` (%s) VALUES (%s);'#13#10,[trainerentry, trainerspell, Fields, Values])
 end;
 
 procedure TMainForm.lvcoCreatureLootSelectItem(Sender: TObject;
@@ -7032,12 +7042,18 @@ begin
   begin
     with TJvListView(Sender).Selected do
     begin
-      edcrID.Text := Caption;
+    //edcrdtCreatureId.Text := Caption;
+      edcrTrainerId.Text := Caption;
       edcrSpellID.Text := SubItems[0];
       edcrMoneyCost.Text := SubItems[1];
       edcrReqSkillLine.Text := SubItems[2];
       edcrReqSkillRank.Text := SubItems[3];
-      edcrReqLevel.Text := SubItems[4];
+      edcrReqAbility1.Text := SubItems[4];
+      edcrReqAbility2.Text := SubItems[5];
+      edcrReqAbility3.Text := SubItems[6];
+      edcrReqLevel.Text := SubItems[7];
+      edcrVerifiedBuild.Text := SubItems[8];
+
     end;
   end;
 end;
@@ -7927,12 +7943,17 @@ procedure TMainForm.btTrainerAddClick(Sender: TObject);
 begin
   with lvcrNPCTrainer.Items.Add do
   begin
-    Caption := edcrID.Text;
+  //Caption := edcrdtCreatureId.Text;
+    Caption := edcrTrainerId.Text;
     SubItems.Add(edcrSpellID.Text);
     SubItems.Add(edcrMoneyCost.Text);
     SubItems.Add(edcrReqSkillLine.Text);
     SubItems.Add(edcrReqSkillRank.Text);
+    SubItems.Add(edcrReqAbility1.Text);
+    SubItems.Add(edcrReqAbility2.Text);
+    SubItems.Add(edcrReqAbility3.Text);
     SubItems.Add(edcrReqLevel.Text);
+    SubItems.Add(edcrVerifiedBuild.Text);
   end;
 end;
 
@@ -7942,12 +7963,17 @@ begin
   begin
     with lvcrNPCTrainer.Selected do
     begin
-      Caption := edcrID.Text;
+    //Caption := edcrdtCreatureId.Text;
+      Caption := edcrTrainerID.Text;
       SubItems[0] := edcrSpellID.Text;
       SubItems[1] := edcrMoneyCost.Text;
       SubItems[2] := edcrReqSkillLine.Text;
       SubItems[3] := edcrReqSkillRank.Text;
-      SubItems[4] := edcrReqLevel.Text;
+      SubItems[4] := edcrReqAbility1.Text;
+      SubItems[5] := edcrReqAbility2.Text;
+      SubItems[6] := edcrReqAbility3.Text;
+      SubItems[7] := edcrReqLevel.Text;
+      SubItems[8] := edcrVerifiedBuild.Text;
     end;
   end;
 end;
@@ -7961,42 +7987,53 @@ end;
 procedure TMainForm.btFullScriptTrainerClick(Sender: TObject);
 var
   i: integer;
-  entry, Values: string;
+  entry, TrainerId, Values: string;
 begin
   PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
   entry := edctEntry.Text;
+  TrainerId := edcrTrainerId.Text;
   mectScript.Clear;
   Values := '';
   if lvcrNPCTrainer.Items.Count<>0 then
   begin
     for i := 0 to lvcrNPCTrainer.Items.Count - 2 do
     begin
-      Values := Values + Format('(%s, %s, %s, %s, %s, %s),'#13#10,[
+      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s),'#13#10,[
         lvcrNPCTrainer.Items[i].Caption,
         lvcrNPCTrainer.Items[i].SubItems[0],
         lvcrNPCTrainer.Items[i].SubItems[1],
         lvcrNPCTrainer.Items[i].SubItems[2],
         lvcrNPCTrainer.Items[i].SubItems[3],
-        lvcrNPCTrainer.Items[i].SubItems[4]
+        lvcrNPCTrainer.Items[i].SubItems[4],
+        lvcrNPCTrainer.Items[i].SubItems[5],
+        lvcrNPCTrainer.Items[i].SubItems[6],
+        lvcrNPCTrainer.Items[i].SubItems[7],
+        lvcrNPCTrainer.Items[i].SubItems[8]
       ]);
     end;
     i := lvcrNPCTrainer.Items.Count - 1;
-    Values := Values + Format('(%s, %s, %s, %s, %s, %s);',[
-      lvcrNPCTrainer.Items[i].Caption,
-      lvcrNPCTrainer.Items[i].SubItems[0],
+    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);',[
+        lvcrNPCTrainer.Items[i].Caption,
+        lvcrNPCTrainer.Items[i].SubItems[0],
         lvcrNPCTrainer.Items[i].SubItems[1],
         lvcrNPCTrainer.Items[i].SubItems[2],
         lvcrNPCTrainer.Items[i].SubItems[3],
-        lvcrNPCTrainer.Items[i].SubItems[4]
+        lvcrNPCTrainer.Items[i].SubItems[4],
+        lvcrNPCTrainer.Items[i].SubItems[5],
+        lvcrNPCTrainer.Items[i].SubItems[6],
+        lvcrNPCTrainer.Items[i].SubItems[7],
+        lvcrNPCTrainer.Items[i].SubItems[8]
     ]);
   end;
   if Values<>'' then
   begin
-    mectScript.Text := Format('DELETE FROM `npc_trainer` WHERE (`ID`=%s);'#13#10+
-     'INSERT INTO `npc_trainer` (ID, SpellID, MoneyCost, ReqSkillLine, ReqSkillRank, ReqLevel) VALUES '#13#10'%s',[entry, Values])
+    mectScript.Text := Format('DELETE FROM `trainer_spell` WHERE (`TrainerId`=%s);'#13#10+
+   // 'DELETE FROM `creature_default_trainer` WHERE (`entry`=%s);'#13#10+
+    'INSERT INTO `trainer_spell` (TrainerId, SpellID, MoneyCost, ReqSkillLine, ReqSkillRank, ReqAbility1, ReqAbility2, ReqAbility3, ReqLevel, VerifiedBuild) VALUES '#13#10'%s',
+     [TrainerId, Values])
   end
   else
-    mectScript.Text := Format('DELETE FROM `npc_trainer` WHERE (`ID`=%s);',[entry]);
+    mectScript.Text := Format('DELETE FROM `trainer_spell` WHERE (`TrainerId`=%s);',[TrainerId]);
 end;
 
 procedure TMainForm.lvcrNPCTrainerChange(Sender: TObject; Item: TListItem;
@@ -8969,7 +9006,7 @@ begin
   MyTempQuery.SQL.Text :=
   'SELECT `SourceSpellId` FROM `quest_template_addon` WHERE `SourceSpellId`<>0 '+
   'UNION ' +
-  'SELECT `spell1` FROM `creature_template` WHERE `spell1`<>0 '+
+ { 'SELECT `spell1` FROM `creature_template` WHERE `spell1`<>0 '+
   'UNION ' +
   'SELECT `spell2` FROM `creature_template` WHERE `spell2`<>0 '+
   'UNION ' +
@@ -8979,7 +9016,7 @@ begin
   'UNION ' +
   'SELECT `trainer_spell` FROM `creature_template` WHERE `trainer_spell`<>0 '+
   'UNION ' +
-  'SELECT `SpellID` FROM `npc_trainer` WHERE `SpellID`<>0 '+
+ } 'SELECT `SpellId` FROM `trainer_spell` WHERE `SpellId`<>0 '+
   'UNION ' +
   'SELECT `requiredspell` FROM `item_template` WHERE `requiredspell`<>0 '+
   'UNION ' +
