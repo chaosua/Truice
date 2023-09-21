@@ -7092,7 +7092,7 @@ begin
   loc:= LoadLocales();
   Result := '';
   sets := '';
-  MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s',[tn, KeyName, KeyValue]);
+  MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s and locale= "%s"',[tn, KeyName, KeyValue, loc]);
   MyTempQuery.Open;
   if (MyTempQuery.Eof=false) then
   begin
@@ -7128,7 +7128,7 @@ begin
       end;
     end;
     if sets<>'' then
-      Result := Format('UPDATE `%s` %s WHERE `%s` = %s;',[tn, sets, KeyName, KeyValue])
+      Result := Format('UPDATE `%s` %s WHERE `%s` = %s AND locale="%s";',[tn, sets, KeyName, KeyValue, loc])
   end;
   MyTempQuery.Close;
 end;
