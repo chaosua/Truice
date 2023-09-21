@@ -373,7 +373,7 @@ type
     edctfaction: TJvComboEdit;
     edctnpcflag: TJvComboEdit;
     edctspeed_walk: TLabeledEdit;
-	edctspeed_run: TLabeledEdit;
+    edctspeed_run: TLabeledEdit;
     edctscale: TLabeledEdit;
     edctrank: TJvComboEdit;
     edctdmgschool: TLabeledEdit;
@@ -386,7 +386,7 @@ type
     edctunit_flags2: TJvComboEdit;
     edctdynamicflags: TJvComboEdit;
     edctfamily: TJvComboEdit;
-	edcttrainer_type: TJvComboEdit;
+    edcttrainer_type: TJvComboEdit;
     edcttrainer_spell: TJvComboEdit;
     edcttrainer_class: TJvComboEdit;
     edcttrainer_race: TJvComboEdit;
@@ -436,13 +436,6 @@ type
     edctflags_extra: TJvComboEdit;
     edctScriptName: TLabeledEdit;
     edctVerifiedBuild: TLabeledEdit;
-    GroupBox3: TGroupBox;
-    edctquestItem1: TLabeledEdit;
-    edctquestItem2: TLabeledEdit;
-    edctquestItem3: TLabeledEdit;
-    edctquestItem4: TLabeledEdit;
-    edctquestItem5: TLabeledEdit;
-    edctquestItem6: TLabeledEdit;
     gbCreature2: TGroupBox;
     lbctfaction: TLabel;
     lbctnpcflag: TLabel;
@@ -885,7 +878,7 @@ type
     edotZone: TJvComboEdit;
     btGetLootForZone: TButton;
     tsCreatureText: TTabSheet;
-	cttSearchCreatureText: TJvListView;
+    cttSearchCreatureText: TJvListView;
     cttGroupBox: TGroupBox;
     cttClearSearchCreatureText: TBitBtn;
     btSearchCreatureText: TBitBtn;
@@ -897,15 +890,15 @@ type
     edcttText: TLabeledEdit;
     btScriptCreatureText: TButton;
     edcttID: TLabeledEdit;
-	edcttType: TLabeledEdit;
-	edcttLanguage: TLabeledEdit;
-	edcttProbability: TLabeledEdit;
-	edcttEmote: TLabeledEdit;
-	edcttDuration: TLabeledEdit;
-	edcttSound: TLabeledEdit;
-	edcttBroadcastTextId: TLabeledEdit;
-	edcttTextRange: TLabeledEdit;
-	edcttcomment: TLabeledEdit;
+    edcttType: TLabeledEdit;
+    edcttLanguage: TLabeledEdit;
+    edcttProbability: TLabeledEdit;
+    edcttEmote: TLabeledEdit;
+    edcttDuration: TLabeledEdit;
+    edcttSound: TLabeledEdit;
+    edcttBroadcastTextId: TLabeledEdit;
+    edcttTextRange: TLabeledEdit;
+    edcttcomment: TLabeledEdit;
     tsPageText: TTabSheet;
     lvSearchPageText: TJvListView;
     GroupBox1: TGroupBox;
@@ -1639,7 +1632,19 @@ type
     edcrReqAbility3: TLabeledEdit;
     edcrVerifiedBuild: TLabeledEdit;
     edcrdtCreatureId: TLabeledEdit;
+    tsQuestItem: TTabSheet;
+    lvcqiCreatureQuestItem: TJvListView;
+    edcqiCreatureEntry: TLabeledEdit;
+    edcqiIdx: TLabeledEdit;
+    edcqiVerifiedBuild: TLabeledEdit;
+    btCreatureQuestItemAdd: TSpeedButton;
+    btCreatureQuestItemUpd: TSpeedButton;
+    btCreatureQuestItemDel: TSpeedButton;
+    btFullQuestItemScript: TButton;
+    btShowQuestItemScript: TButton;
     Label10: TLabel;
+    edcqiItemId: TJvComboEdit;
+    ItemId: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1772,12 +1777,24 @@ type
       Change: TItemChange);
     procedure lvgoGOLootChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
+    // Creature trainer_spell (Old NPC spell)
     procedure btTrainerAddClick(Sender: TObject);
     procedure btTrainerUpdClick(Sender: TObject);
     procedure btTrainerDelClick(Sender: TObject);
     procedure btFullScriptTrainerClick(Sender: TObject);
     procedure lvcrNPCTrainerChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
+
+    // Creature Quest Item tab begin
+    procedure btCreatureQuestItemAddClick(Sender: TObject);
+    procedure btCreatureQuestItemUpdClick(Sender: TObject);
+    procedure btCreatureQuestItemDelClick(Sender: TObject);
+    procedure lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
+    procedure lvcqiCreatureQuestItemSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    // Creature Quest Item tab end
+
     procedure edSearchItemChange(Sender: TObject);
     procedure btClearSearchItemClick(Sender: TObject);
     procedure lvSearchItemChange(Sender: TObject; Item: TListItem;
@@ -7983,7 +8000,7 @@ end;
 
 procedure TMainForm.btTrainerDelClick(Sender: TObject);
 begin
-  if Assigned(lvcrNPCTrainer.Selected) then
+if Assigned(lvcrNPCTrainer.Selected) then
     lvcrNPCTrainer.DeleteSelected;
 end;
 
@@ -8044,6 +8061,59 @@ procedure TMainForm.lvcrNPCTrainerChange(Sender: TObject; Item: TListItem;
 begin
   btTrainerUpd.Enabled := Assigned(TJvListView(Sender).Selected);
   btTrainerDel.Enabled := Assigned(TJvListView(Sender).Selected);
+end;
+
+procedure TMainForm.btCreatureQuestItemAddClick(Sender: TObject);
+begin
+  with lvcqiCreatureQuestItem.Items.Add do
+  begin
+    Caption := edcqiCreatureEntry.Text;
+    SubItems.Add(edcqiIdx.Text);
+    SubItems.Add(edcqiItemID.Text);
+    SubItems.Add(edcqiVerifiedBuild.Text);
+  end;
+end;
+
+procedure TMainForm.btCreatureQuestItemUpdClick(Sender: TObject);
+begin
+  if Assigned(lvcqiCreatureQuestItem.Selected) then
+  begin
+    with lvcqiCreatureQuestItem.Selected do
+    begin
+      Caption := edcqiCreatureEntry.Text;
+      SubItems[0] := edcqiIdx.Text;
+      SubItems[1] := edcqiItemID.Text;
+      SubItems[2] := edcqiVerifiedBuild.Text;
+    end;
+  end;
+end;
+
+procedure TMainForm.btCreatureQuestItemDelClick(Sender: TObject);
+begin
+if Assigned(lvcqiCreatureQuestItem.Selected) then
+    lvcqiCreatureQuestItem.DeleteSelected;
+end;
+
+procedure TMainForm.lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+  btCreatureQuestItemUpd.Enabled := Assigned(TJvListView(Sender).Selected);
+  btCreatureQuestItemDel.Enabled := Assigned(TJvListView(Sender).Selected);
+end;
+
+procedure TMainForm.lvcqiCreatureQuestItemSelectItem(Sender: TObject;
+  Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    with TJvListView(Sender).Selected do
+    begin
+      edcqiCreatureEntry.Text := Caption;
+      edcqiIdx.Text := SubItems[0];
+      edcqiItemID.Text := SubItems[1];
+      edcqiVerifiedBuild.Text := SubItems[2];
+    end;
+  end;
 end;
 
 procedure TMainForm.edSearchItemChange(Sender: TObject);
