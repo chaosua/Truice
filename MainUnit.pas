@@ -42,6 +42,7 @@ const
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
   PFX_CREATURE                      = 'cl';
   PFX_CREATURE_ADDON                = 'ca';
+  PFX_CREATURE_QUESTITEM            = 'cqi';
   PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
   PFX_CREATURE_EQUIP_TEMPLATE       = 'ce';
   PFX_CREATURE_MODEL_INFO           = 'ci';
@@ -4371,6 +4372,8 @@ begin
     edctEntry.Text := IntToStr(Entry);
     FillFields(MyQuery, PFX_CREATURE_TEMPLATE);
 
+   // MyQuery.SQL.Text := Format('SELECT * FROM `creature_questitem` WHERE `CreatureEntry`=%d',[Entry]);
+
     npcflag := MyQuery.FieldByName('npcflag').AsInteger;
 
     // is creature vendor?
@@ -4404,16 +4407,16 @@ begin
      ' WHERE (slt.`Entry`=%d)',[StrToIntDef(edctskinloot.Text,0)]), lvcoSkinLoot);
 
     if (isvendor=true) then 
-	begin
-		LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
-    ' LEFT OUTER JOIN `item_template` i ON i.`entry` = v.`item` WHERE (v.`entry`=%d)',
-      [Entry]),lvcvNPCVendor);
-	end;
+	  begin
+		    LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
+        ' LEFT OUTER JOIN `item_template` i ON i.`entry` = v.`item` WHERE (v.`entry`=%d)',
+        [Entry]),lvcvNPCVendor);
+	  end;
 
-    if (isEquip=true) then 
-	begin
-		LoadCreatureEquip(StrToIntDef(edctentry.Text,0));
-	end;
+    if (isEquip=true) then
+    begin
+		    LoadCreatureEquip(StrToIntDef(edctentry.Text,0));
+	  end;
 
     if (istrainer=true) then
     begin
@@ -8478,7 +8481,7 @@ end;
 procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
 begin
   if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
-    ExecuteScript(mectScript.Text, meitLog);
+    ExecuteScript(mectScript.Text, mectLog);
 end;
 
 procedure TMainForm.btScriptItemClick(Sender: TObject);
