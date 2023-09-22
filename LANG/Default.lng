@@ -306,6 +306,8 @@ TEXT155=AreaTrigger
 TEXT156=LootCondition
 TEXT157=The error has accured while loading Creature EventAI:
 TEXT158=Please specify a source type!
+TEXT159=The error has accured while loading Creature QuestItem:
+TEXT160=QuestItem field Null values not allowed
 
 [MAIN]
 Caption=Truice
