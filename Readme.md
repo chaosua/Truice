@@ -15,7 +15,7 @@ this fork updates https://github.com/chaosua/Truice/releases
 **How To run:**
 1. choose 32 bit or 64 and copy "libmysql.dll" and "Truice.exe" outside folder (where are all other folders: CSV, Lang etc.);
 2. run "Truice.exe"
-3. dll files are from MySQL v5.6.21
+3. dll files are from MySQL v5.7.42 x32
 4. if You got it right, then it should be like this:
 
 <img src="images/torun.png" width="120" height="100">
