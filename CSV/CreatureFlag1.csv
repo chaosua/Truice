@@ -2,16 +2,16 @@
 1;GHOST_VISIBLE (also visible to dead players)
 2;BOSS_MOB ("BOSS" flag for tooltips)
 3;DO_NOT_PLAY_WOUND_PARRY_ANIMATION
-4;HIDE_FACTION_TOOLTIP (controls something in client tooltip related to creature faction)
-5;UNK5 (sound related)
+4;HIDE_FACTION_TOOLTIP 
+5;MORE_AUDIBLE (sound related)
 6;SPELL_ATTACKABLE
 7;CAN_INTERACT_WHILE_DEAD
 8;HERB_SKINNING_SKILL (Can be looted by herbalist)
 9;MINING_SKINNING_SKILL (Can be looted by miner)
 10;DO_NOT_LOG_DEATH (Death event will not show up in combat log)
-11;MOUNTED_COMBAT_ALLOWED (Creature can remain mounted when entering combat)
+11;ALLOW_MOUNTED_COMBAT (Creature can remain mounted when entering combat)
 12;CAN_ASSIST (can aid player in range)
-13;IS_PET_BAR_USED (checked from calls in Lua_PetHasActionBar)
+13;NO_PET_BAR Is using pet bar.
 14;MASK_UID (Lua_UnitGUID, client does guid_low &= 0xFF000000 if this flag is set)
 15;ENGINEERING_SKINNING_SKILL (Can be looted by engineer)
 16;EXOTIC_PET (Can be tamed by hunter as exotic pet)
@@ -24,9 +24,9 @@
 23;INTERACT_ONLY_WITH_CREATOR
 24;DO_NOT_PLAY_UNIT_EVENT_SOUNDS (pet sounds related?)
 25;HAS_NO_SHADOW_BLOB (probably controls some creature visual)
-26;TREAT_AS_RAID_UNIT (creature has no type, or forces creature to be considered as in party, may be related to creature assistance)
+26;TREAT_AS_RAID_UNIT (Creature can be targeted by spells that require target to be in caster's party/raid)
 27;FORCE_GOSSIP
 28;DO_NOT_SHEATHE
 29;DO_NOT_TARGET_ON_INTERACTION
 30;DO_NOT_RENDER_OBJECT_NAME
-31;UNIT_IS_QUEST_BOSS (Not verified)
+31;UNIT_IS_QUEST_BOSS 

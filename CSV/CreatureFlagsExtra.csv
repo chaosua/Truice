@@ -4,29 +4,29 @@
 4;NO_PARRY_HASTEN(creature does not counter-attack at parry)
 5;NO_BLOCK(creature does not block)
 6;NO_CRUSH(creature does not do crush-attacks)
-7;NO_XP_AT_KILL(creature kill does not give XP)
+7;NO_XP(creature kill does not give XP)
 8;TRIGGER(creature is trigger-NPC - invisible to players only)
 9;NO_TAUNT(creature is immune to taunt-auras and "attack me"-effects)
-10;NO_MOVE_FLAGS_UPDATE (creature won't update movement flags)
+10;NO_MOVE_FLAGS_UPDATE (not implemented) (creature won't update movement flags)
 11;GHOST_VISIBILITY (creature will be only visible for dead players)
-12;USE_OFFHAND_ATTACK (creature will use offhand attacks)
+12;USE_OFFHAND_ATTACK (not implemented) (creature will use offhand attacks)
 13;NO_SELL_VENDOR (players can't sell items to this vendor)
-14;UNUSED_13
+14;IGNORE_COMBAT
 15;WORLDEVENT(custom flag for world events - left room for merging)
 16;GUARD(creature is a guard - will ignore feign death and vanish)
-17;UNUSED_16
+17;IGNORE_FEIGN_DEATH (creature ignores feign death)
 18;NO_CRIT(creature does not do critical strikes)
 19;NO_SKILLGAIN(creature won't increase weapon skills)
 20;TAUNT_DIMINISH(Taunt is a subject to diminishing returns on this creautre)
 21;ALL_DIMINISH(creature is subject to all diminishing returns as player are)
 22;EXTRA_NO_PLAYER_DAMAGE_REQ (creature does not need to take player damage for kill credit)
-23;UNUSED_22
-24;NUSED_23
-25;NUSED_24
-26;NUSED_25
-27;NUSED_26
-28;NUSED_27
+23;AVOID_AOE (ignored by aoe attacks for icc blood prince council npc - Dark Nucleus)
+24;NO_DODGE (target cannot dodge)
+25;MODULE (Used by module creatures to avoid blizzlike checks.)
+26;DONT_CALL_ASSISTANCE (Prevents creatures from calling for assistance on initial aggro)
+27;IGNORE_ALL_ASSISTANCE_CALLS (Prevents creature from responding to assistance calls)
+28;DONT_OVERRIDE_SAI_ENTRY (Allows creatures to use both GUID and ENTRY specific SAI without one overwriting the other)
 29;DUNGEON_BOSS(creature is a dungeon boss (SET DYNAMICALLY, DO NOT ADD IN DB))
 30;IGNORE_PATHFINDING (creature ignore pathfinding)
 31;IMMUNITY_KNOCKBACK (creature is immune to knockback effects)
-32;UNUSED_31
+32;HARD_RESET (Creature will despawn on evade)
