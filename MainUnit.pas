@@ -8493,11 +8493,13 @@ end;
 procedure TMainForm.SearchItem;
 var
   i: integer;
+  name_was_set: bool;
   loc, ID, Name, QueryStr, WhereStr, t: string;
   class_, subclass, InventoryType, itemset, Quality_, flags, ItemLevel_: integer;
   Field: TField;
 begin
   loc:=LoadLocales();
+  name_was_set:=false;
   ShowHourGlassCursor;
   ID :=  edSearchItemEntry.Text;
   Name := edSearchItemName.Text;
@@ -8517,10 +8519,11 @@ begin
 
   if Name<>'%%' then
   begin
+    name_was_set:=true;
     if WhereStr<> '' then
-      WhereStr := Format('%s AND ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%1:s'')',[WhereStr, Name])
+      WhereStr := Format('%s AND ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%1:s'' AND li.`locale` = ''%s''))',[WhereStr, Name, loc])
     else
-      WhereStr := Format('WHERE (it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%0:s'')',[Name]);
+      WhereStr := Format('WHERE (it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%0:s'' AND li.`locale` = ''%s'')',[Name, loc]);
   end;
 
   class_ := StrToIntDef(edSearchItemClass.Text, -1);
@@ -8586,11 +8589,13 @@ begin
       WhereStr := Format('WHERE (it.`ItemLevel` = %d)',[ItemLevel_]);
   end;
 
-
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s',[WhereStr]);
+  if (name_was_set=true) then
+      QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s',[WhereStr])
+  else
+      QueryStr := Format('SELECT * FROM `item_template` it %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvSearchItem.Items.BeginUpdate;
