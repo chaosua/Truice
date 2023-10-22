@@ -8288,13 +8288,11 @@ end;
 procedure TMainForm.SearchItem;
 var
   i: integer;
-  name_was_set: bool;
   loc, ID, Name, QueryStr, WhereStr, t: string;
   class_, subclass, InventoryType, itemset, Quality_, flags, ItemLevel_: integer;
   Field: TField;
 begin
   loc:=LoadLocales();
-  name_was_set := false;
   ShowHourGlassCursor;
   ID :=  edSearchItemEntry.Text;
   Name := edSearchItemName.Text;
@@ -8314,11 +8312,18 @@ begin
 
   if Name<>'%%' then
   begin
-    name_was_set:=true;
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND (it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%1:s'' AND li.`locale` = ''%s'')',[WhereStr, Name, loc])
+   if (loc<>'enUS') then begin
+    if (WhereStr<> '') then
+      WhereStr := Format('%s AND ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%1:s'' AND li.`locale` = ''%s''))',[WhereStr, Name, loc])
     else
-       WhereStr := Format('WHERE (it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%0:s'' AND li.`locale` = ''%s'')',[Name, loc]);
+      WhereStr := Format('WHERE ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%0:s'' AND li.`locale` = ''%s''))',[Name, loc]);
+   end
+   else begin
+    if (WhereStr<> '') then
+      WhereStr := Format('%s AND (it.`name` LIKE ''%s'')',[WhereStr, Name])
+    else
+      WhereStr := Format('WHERE (it.`name` LIKE ''%s'')',[Name]);
+   end;
   end;
 
   class_ := StrToIntDef(edSearchItemClass.Text, -1);
@@ -8387,8 +8392,16 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  if (name_was_set=true) then
-      QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s',[WhereStr])
+  if (loc<>'enUS') then begin
+      if (Name<>'%%') then begin
+        if ID<>'' then
+          QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s LIMIT 1',[WhereStr])
+        else
+          QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s',[WhereStr])
+      end
+      else
+          QueryStr := Format('SELECT * FROM `item_template` it %s',[WhereStr])
+  end
   else
       QueryStr := Format('SELECT * FROM `item_template` it %s',[WhereStr]);
 
