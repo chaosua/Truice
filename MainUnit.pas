@@ -176,7 +176,6 @@ type
     edqtPrevQuestID: TJvComboEdit;
     edqtNextQuestID: TJvComboEdit;
     edqtExclusiveGroup: TLabeledEdit;
-//    edqtBreadcrumbForQuestId: TLabeledEdit;
     edqtRewardNextQuest: TJvComboEdit;
     gbQuestSorting: TGroupBox;
     gbFlags: TGroupBox;
@@ -202,14 +201,12 @@ type
     lObjectives: TLabel;
     lRewardText: TLabel;
     lCompletionText: TLabel;
-    lEndText: TLabel;
     edqtLogTitle: TLabeledEdit;
     edqtAreaDescription: TLabeledEdit;
     edqtQuestDescription: TMemo;
     edqtLogDescription: TMemo;
     edqtRewardText: TMemo;
     edqtCompletionText: TMemo;
-    edqtEndText: TMemo;
     edqtObjectiveText1: TLabeledEdit;
     edqtObjectiveText2: TLabeledEdit;
     edqtObjectiveText3: TLabeledEdit;
@@ -2624,7 +2621,6 @@ begin
 		edqtPrevQuestID.Text := MyQuery.FieldByName('PrevQuestID').AsString;
 		edqtNextQuestID.Text := MyQuery.FieldByName('NextQuestID').AsString;
 		edqtExclusiveGroup.Text := MyQuery.FieldByName('ExclusiveGroup').AsString;
-	//	edqtBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
 		edqtRewardMailTemplateID.Text := MyQuery.FieldByName('RewardMailTemplateID').AsString;
 		edqtRewardMailDelay.Text := MyQuery.FieldByName('RewardMailDelay').AsString;
 		edqtRequiredSkillID.Text := MyQuery.FieldByName('RequiredSkillID').AsString;
