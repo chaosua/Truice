@@ -199,8 +199,6 @@ type
     edqtaRequiredSkillPoints: TLabeledEdit;
     edqtaSpecialFlags: TJvComboEdit;
     edqtaRequiredSkillID: TJvComboEdit;
-    edqtaRewardMailTemplateID: TLabeledEdit;
-    edqtaRewardMailDelay: TLabeledEdit;
     edqtaMaxLevel: TLabeledEdit;
     edqtaAllowableClasses: TJvComboEdit;
 
@@ -231,7 +229,6 @@ type
     edqtAllowableRaces: TJvComboEdit;
     edqtQuestDescription: TMemo;
     edqtLogDescription: TMemo;
-    edqtRewardText: TMemo;
     edqtObjectiveText1: TLabeledEdit;
     edqtObjectiveText2: TLabeledEdit;
     edqtObjectiveText3: TLabeledEdit;
@@ -317,10 +314,7 @@ type
     edqtRewardFactionID4: TJvComboEdit;
     edqtRewardFactionID5: TJvComboEdit;
     gbOther: TGroupBox;
-    edqtOfferRewardEmote1: TJvComboEdit;
-    edqtOfferRewardEmote2: TJvComboEdit;
-    edqtOfferRewardEmote3: TJvComboEdit;
-    edqtOfferRewardEmote4: TJvComboEdit;
+
     gbAreatrigger: TGroupBox;
     lbAreatrigger: TLabel;
     edqtAreatrigger: TJvComboEdit;
@@ -1377,10 +1371,19 @@ type
     edqdEmoteDelay4: TLabeledEdit;
     edqdVerifiedBuild: TLabeledEdit;
 
-    edqtOfferRewardEmoteDelay1: TLabeledEdit;
-    edqtOfferRewardEmoteDelay2: TLabeledEdit;
-    edqtOfferRewardEmoteDelay3: TLabeledEdit;
-    edqtOfferRewardEmoteDelay4: TLabeledEdit;
+    //quest_offer_reward
+    edqorID: TLabeledEdit;
+    edqorEmote1: TJvComboEdit;
+    edqorEmote2: TJvComboEdit;
+    edqorEmote3: TJvComboEdit;
+    edqorEmote4: TJvComboEdit;
+    edqorEmoteDelay1: TLabeledEdit;
+    edqorEmoteDelay2: TLabeledEdit;
+    edqorEmoteDelay3: TLabeledEdit;
+    edqorEmoteDelay4: TLabeledEdit;
+    edqorRewardText: TMemo;
+    edqorVerifiedBuild: TLabeledEdit;
+
     editHolidayId: TLabeledEdit;
     edgtunk1: TLabeledEdit;
     gbGOQuestItems: TGroupBox;
@@ -1660,6 +1663,8 @@ type
 
     //quest_mail_sender
     edqmsQuestId: TLabeledEdit;
+    edqtaRewardMailTemplateID: TLabeledEdit;
+    edqtaRewardMailDelay: TLabeledEdit;
     edqmsRewardMailSenderEntry: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
@@ -2676,16 +2681,17 @@ begin
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then
-    //edqorID.Text := MyQuery.FieldByName('ID').AsString;
-		edqtOfferRewardEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
-		edqtOfferRewardEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
-		edqtOfferRewardEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
-		edqtOfferRewardEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
-		edqtOfferRewardEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
-		edqtOfferRewardEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
-		edqtOfferRewardEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqtOfferRewardEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
-		edqtRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+    edqorID.Text := MyQuery.FieldByName('ID').AsString;
+		edqorEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
+		edqorEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
+		edqorEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
+		edqorEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
+		edqorEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
+		edqorEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
+		edqorEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
+		edqorEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+		edqorRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+    edqorVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
@@ -2955,59 +2961,83 @@ begin
       [edqtAreatrigger.Text, quest]);
 
   // quest_details
+  if edqdID.Text<>'' then begin
   Fields:= ''; Values:= '';
   SetFieldsAndValues(Fields, Values, 'quest_details', PFX_QUEST_DETAILS, meqtLog);
-  case SyntaxStyle of
+   case SyntaxStyle of
     ssInsertDelete: s5 := Format(#13#10+
                       'DELETE FROM `quest_details` WHERE `ID` = %s;'#13#10+
                       'INSERT INTO `quest_details` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s5 := Format(#13#10+
-                      'REPLACE INTO `quest_details` (%s) VALUES (%s);'#13#10
+                      'REPLACE INTO `quest_details` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
     ssUpdate: s5 := MakeUpdate('quest_details', PFX_QUEST_DETAILS, 'ID', quest);
+   end;
   end;
 
   // quest_template_addon
+  if edqtaID.Text<>'' then begin
   Fields:= ''; Values:= '';
   SetFieldsAndValues(Fields, Values, 'quest_template_addon', PFX_QUEST_TEMPLATE_ADDON, meqtLog);
-  case SyntaxStyle of
+   case SyntaxStyle of
     ssInsertDelete: s6 := Format(#13#10+
                       'DELETE FROM `quest_template_addon` WHERE `ID` = %s;'#13#10+
                       'INSERT INTO `quest_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s6 := Format(#13#10+
-                      'REPLACE INTO `quest_template_addon` (%s) VALUES (%s);'#13#10
+                      'REPLACE INTO `quest_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
     ssUpdate: s6 := MakeUpdate('quest_template_addon', PFX_QUEST_TEMPLATE_ADDON, 'ID', quest);
+   end;
   end;
 
   // quest_request_items
+  if edqriID.Text<>'' then begin
   Fields:= ''; Values:= '';
   SetFieldsAndValues(Fields, Values, 'quest_request_items', PFX_QUEST_REQUEST_ITEMS, meqtLog);
-  case SyntaxStyle of
+   case SyntaxStyle of
     ssInsertDelete: s7 := Format(#13#10+
                       'DELETE FROM `quest_request_items` WHERE `ID` = %s;'#13#10+
                       'INSERT INTO `quest_request_items` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s7 := Format(#13#10+
-                      'REPLACE INTO `quest_request_items` (%s) VALUES (%s);'#13#10
+                      'REPLACE INTO `quest_request_items` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
     ssUpdate: s7 := MakeUpdate('quest_request_items', PFX_QUEST_REQUEST_ITEMS, 'ID', quest);
+   end;
   end;
 
   // quest_mail_sender
+  if edqmsQuestid.Text<>'' then begin
   Fields:= ''; Values:= '';
   SetFieldsAndValues(Fields, Values, 'quest_mail_sender', PFX_QUEST_MAIL_SENDER, meqtLog);
-  case SyntaxStyle of
+   case SyntaxStyle of
     ssInsertDelete: s8 := Format(#13#10+
                       'DELETE FROM `quest_mail_sender` WHERE `Questid` = %s;'#13#10+
                       'INSERT INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s8 := Format(#13#10+
-                      'REPLACE INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10
+                      'REPLACE INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
     ssUpdate: s8 := MakeUpdate('quest_mail_sender', PFX_QUEST_MAIL_SENDER, 'Questid', quest);
+   end;
+  end;
+
+  // quest_offer_reward
+  if edqorID.Text<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_offer_reward', PFX_QUEST_OFFER_REWARD, meqtLog);
+   case SyntaxStyle of
+    ssInsertDelete: s9 := Format(#13#10+
+                      'DELETE FROM `quest_offer_reward` WHERE `ID` = %s;'#13#10+
+                      'INSERT INTO `quest_offer_reward` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, Fields, Values]);
+    ssReplace: s9 := Format(#13#10+
+                      'REPLACE INTO `quest_offer_reward` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s9 := MakeUpdate('quest_offer_reward', PFX_QUEST_OFFER_REWARD, 'ID', quest);
+   end;
   end;
 
 
