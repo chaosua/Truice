@@ -4155,9 +4155,9 @@ object MainForm: TMainForm
               Caption = 'OfferRewardEmote4'
             end
             object edqtPointX: TLabeledEdit
-              Left = 78
-              Top = 27
-              Width = 90
+              Left = 138
+              Top = 26
+              Width = 64
               Height = 21
               EditLabel.Width = 31
               EditLabel.Height = 13
@@ -4166,9 +4166,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtPointY: TLabeledEdit
-              Left = 179
+              Left = 208
               Top = 27
-              Width = 90
+              Width = 61
               Height = 21
               EditLabel.Width = 31
               EditLabel.Height = 13
@@ -4621,7 +4621,7 @@ object MainForm: TMainForm
               TabOrder = 15
               Text = ''
             end
-            object edqdsEmoteDelay4: TLabeledEdit
+            object edqdEmoteDelay4: TLabeledEdit
               Left = 77
               Top = 185
               Width = 90
@@ -4685,6 +4685,21 @@ object MainForm: TMainForm
               EditLabel.Hint = 'OfferRewardEmoteDelay4'
               EditLabel.Caption = 'OfferRewardEmoteDelay4'
               TabOrder = 20
+              Text = ''
+            end
+            object edqdVerifiedBuild: TLabeledEdit
+              Left = 6
+              Top = 27
+              Width = 55
+              Height = 21
+              Hint = 'PlayersSlain'
+              Color = clYellow
+              EditLabel.Width = 90
+              EditLabel.Height = 13
+              EditLabel.BiDiMode = bdRightToLeft
+              EditLabel.Caption = 'DetailsVerifiedBuild'
+              EditLabel.ParentBiDiMode = False
+              TabOrder = 21
               Text = ''
             end
           end

@@ -1364,7 +1364,8 @@ type
     edqdEmoteDelay1: TLabeledEdit;
     edqdEmoteDelay2: TLabeledEdit;
     edqdEmoteDelay3: TLabeledEdit;
-    edqdsEmoteDelay4: TLabeledEdit;
+    edqdEmoteDelay4: TLabeledEdit;
+    edqdVerifiedBuild: TLabeledEdit;
 
     edqtOfferRewardEmoteDelay1: TLabeledEdit;
     edqtOfferRewardEmoteDelay2: TLabeledEdit;
@@ -2677,7 +2678,8 @@ begin
 		edqdEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
 		edqdEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
 		edqdEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqdsEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+		edqdEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+    edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
     MyQuery.Open;
