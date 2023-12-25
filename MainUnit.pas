@@ -36,8 +36,19 @@ const
 
   WM_FREEQL = WM_USER + 1;
 
+  PFX_QUEST_DETAILS                 = 'qd';
+  PFX_QUEST_GREETING                = 'qg';
+  PFX_QUEST_GREETING_LOCALE         = 'qgloc';
+  PFX_QUEST_MONEY_REWARD            = 'qmr';
+  PFX_QUEST_OFFER_REWARD            = 'qor';
+  PFX_QUEST_OFFER_REWARD_LOCALE     = 'qorloc';
+  PFX_QUEST_POI                     = 'qp';
+  PFX_QUEST_POI_POINTS              = 'qpp';
+  PFX_QUEST_REQUEST_ITEMS           = 'qri';
+  PFX_QUEST_REQUEST_ITEMS_LOCALE    = 'qriloc';
   PFX_QUEST_TEMPLATE                = 'qt';
   PFX_QUEST_TEMPLATE_ADDON          = 'qta';
+  PFX_QUEST_TEMPLATE_LOCALE         = 'qtloc';
   PFX_CREATURE_TEMPLATE             = 'ct';
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
   PFX_CREATURE                      = 'cl';
@@ -45,7 +56,7 @@ const
   PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
   PFX_CREATURE_EQUIP_TEMPLATE       = 'ce';
   PFX_CREATURE_MODEL_INFO           = 'ci';
-  PFX_CREATURE_TEMPLATE_MOVEMENT	= 'cm';
+  PFX_CREATURE_TEMPLATE_MOVEMENT   	= 'cm';
   PFX_CREATURE_LOOT_TEMPLATE        = 'co';
   PFX_CREATURE_SMARTAI              = 'cy';
   PFX_CONDITIONS                    = 'c';
@@ -297,10 +308,7 @@ type
     edqtPointOption: TLabeledEdit;
     edqtEmoteOnIncomplete: TJvComboEdit;
     edqtEmoteOnComplete: TJvComboEdit;
-    edqtDetailsEmote1: TJvComboEdit;
-    edqtDetailsEmote2: TJvComboEdit;
-    edqtDetailsEmote3: TJvComboEdit;
-    edqtDetailsEmote4: TJvComboEdit;
+
     edqtOfferRewardEmote1: TJvComboEdit;
     edqtOfferRewardEmote2: TJvComboEdit;
     edqtOfferRewardEmote3: TJvComboEdit;
@@ -1115,10 +1123,7 @@ type
     edcmrooted: TLabeledEdit;
     edcmChase: TLabeledEdit;
     edcmRandom: TLabeledEdit;
-    lbqtDetailsEmote1: TLabel;
-    lbqtDetailsEmote2: TLabel;
-    lbqtDetailsEmote3: TLabel;
-    lbqtDetailsEmote4: TLabel;
+
     lbqtIncompleteEmote: TLabel;
     lbqtEmoteOnComplete: TLabel;
     lbqtOfferRewardEmote1: TLabel;
@@ -1347,10 +1352,20 @@ type
     edgeholidayStage: TLabeledEdit;
     edgtIconName: TLabeledEdit;
     Label2: TLabel;
-    edqtDetailsEmoteDelay1: TLabeledEdit;
-    edqtDetailsEmoteDelay2: TLabeledEdit;
-    edqtDetailsEmoteDelay3: TLabeledEdit;
-    edqtDetailsEmoteDelay4: TLabeledEdit;
+
+    lbqdDetailsEmote1: TLabel;
+    lbqdDetailsEmote2: TLabel;
+    lbqdDetailsEmote3: TLabel;
+    lbqdDetailsEmote4: TLabel;
+    edqdEmote1: TJvComboEdit;
+    edqdEmote2: TJvComboEdit;
+    edqdEmote3: TJvComboEdit;
+    edqdEmote4: TJvComboEdit;
+    edqdEmoteDelay1: TLabeledEdit;
+    edqdEmoteDelay2: TLabeledEdit;
+    edqdEmoteDelay3: TLabeledEdit;
+    edqdsEmoteDelay4: TLabeledEdit;
+
     edqtOfferRewardEmoteDelay1: TLabeledEdit;
     edqtOfferRewardEmoteDelay2: TLabeledEdit;
     edqtOfferRewardEmoteDelay3: TLabeledEdit;
@@ -2655,14 +2670,14 @@ begin
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then 
-		edqtDetailsEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
-		edqtDetailsEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
-		edqtDetailsEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
-		edqtDetailsEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
-		edqtDetailsEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
-		edqtDetailsEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
-		edqtDetailsEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqtDetailsEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+		edqdEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
+		edqdEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
+		edqdEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
+		edqdEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
+		edqdEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
+		edqdEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
+		edqdEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
+		edqdsEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
     MyQuery.Close;
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
     MyQuery.Open;
@@ -2838,8 +2853,8 @@ end;
 
 procedure TMainForm.CompleteScript;
 var
-  s1, s2, s3, s4, Script, quest,
-  Fields, Values: string;
+  s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, Script, quest,
+  Fields, FieldsQD, Values: string;
   who, id: string;
   i: integer;
 begin
@@ -2908,7 +2923,22 @@ begin
     s4 := Format('DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %1:s;'#13#10+
       'INSERT INTO `areatrigger_involvedrelation` (`id`, `quest`) VALUES (%0:s, %1:s);'#13#10,
       [edqtAreatrigger.Text, quest]);
-  Script := s1+s2+s3+s4;
+
+    Fields:= '';
+    Values:= '';
+
+    SetFieldsAndValues(Fields, Values, 'quest_details', PFX_QUEST_DETAILS, meqtLog);
+    case SyntaxStyle of
+    ssInsertDelete: s5 := Format('DELETE FROM `quest_details` WHERE `Id` = %s;'#13#10+
+                      'INSERT INTO `quest_details` (%s) VALUES (%s);'#13#10,[quest, Fields, Values]);
+    ssReplace: s5 := Format('REPLACE INTO `quest_details` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: s5 := MakeUpdate('quest_details', PFX_QUEST_DETAILS, 'Id', quest);
+  end;
+
+
+  //Add all scripts together
+  Script := s1+s2+s3+s4+s5+s6+s7+s8+s9+s10;
+  //Format all quest script
   meqtScript.Text := Script;
 end;
 
