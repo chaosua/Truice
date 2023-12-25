@@ -33,6 +33,8 @@ object MainForm: TMainForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 920
+    ExplicitHeight = 693
     object tsQuest: TTabSheet
       Caption = 'Quest'
       ImageIndex = 1
@@ -44,6 +46,7 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitWidth = 912
       end
       object PageControl2: TPageControl
         Left = 0
@@ -62,6 +65,8 @@ object MainForm: TMainForm
         ParentShowHint = False
         ShowHint = False
         TabOrder = 0
+        ExplicitWidth = 912
+        ExplicitHeight = 640
         object tsSearch: TTabSheet
           Caption = 'Search'
           ImageIndex = 5
@@ -196,7 +201,7 @@ object MainForm: TMainForm
               OnChange = edSearchChange
             end
             object btSearch: TBitBtn
-              Left = 797
+              Left = 793
               Top = 25
               Width = 75
               Height = 25
@@ -251,7 +256,7 @@ object MainForm: TMainForm
               OnClick = btSearchClick
             end
             object btClear: TBitBtn
-              Left = 797
+              Left = 793
               Top = 56
               Width = 75
               Height = 25
@@ -781,7 +786,7 @@ object MainForm: TMainForm
               OnClick = btCheckQuestClick
             end
             object btCheckAll: TBitBtn
-              Left = 769
+              Left = 765
               Top = 10
               Width = 110
               Height = 25
@@ -922,7 +927,7 @@ object MainForm: TMainForm
               Font.Style = []
               ParentFont = False
             end
-            object edqtId: TJvComboEdit
+            object edqtID: TJvComboEdit
               Left = 8
               Top = 31
               Width = 81
@@ -979,7 +984,7 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = btLoadQuest
             end
-            object edqtPrevQuestID: TJvComboEdit
+            object edqtaPrevQuestID: TJvComboEdit
               Left = 95
               Top = 30
               Width = 81
@@ -990,6 +995,7 @@ object MainForm: TMainForm
                 'e active before this quest can be obtained'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -1037,7 +1043,7 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = btLoadQuest
             end
-            object edqtNextQuestId: TJvComboEdit
+            object edqtaNextQuestID: TJvComboEdit
               Left = 95
               Top = 70
               Width = 81
@@ -1045,6 +1051,7 @@ object MainForm: TMainForm
               Hint = 'Contains the next quest id.'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36050000424D3605000000000000360400002800000010000000100000000100
                 080000000000000100000000000000000000000100000000000000000000FFFF
@@ -1092,7 +1099,7 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = btLoadQuest
             end
-            object edqtExclusiveGroup: TLabeledEdit
+            object edqtaExclusiveGroup: TLabeledEdit
               Left = 9
               Top = 69
               Width = 81
@@ -1100,6 +1107,7 @@ object MainForm: TMainForm
               Hint = 
                 'Used for group of quests, for example for quests with one quest ' +
                 'tender and many quest starters.'
+              Color = 14807256
               EditLabel.Width = 74
               EditLabel.Height = 13
               EditLabel.Caption = 'ExclusiveGroup'
@@ -1298,7 +1306,7 @@ object MainForm: TMainForm
                 TabOrder = 2
               end
             end
-            object edqtRequiredSkillID: TJvComboEdit
+            object edqtaRequiredSkillID: TJvComboEdit
               Left = 7
               Top = 72
               Width = 74
@@ -1306,6 +1314,7 @@ object MainForm: TMainForm
               Hint = 'if value>0 then Skill'#13#10'if value<0 then Class'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -1335,24 +1344,25 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
               TabOrder = 5
               Text = ''
-              OnButtonClick = edqtRequiredSkillIdButtonClick
-              OnChange = edqtRequiredSkillIdChange
+              OnButtonClick = edqtaRequiredSkillIDButtonClick
+              OnChange = edqtaRequiredSkillIDChange
             end
             object UpDown3: TUpDown
               Left = 105
               Top = 113
               Width = 16
               Height = 21
-              Associate = edqtMaxLevel
+              Associate = edqtaMaxLevel
               Max = 255
               TabOrder = 6
             end
-            object edqtMaxLevel: TLabeledEdit
+            object edqtaMaxLevel: TLabeledEdit
               Left = 71
               Top = 113
               Width = 34
               Height = 21
               Hint = 'Maximum player level at which a character can get the quest.'
+              Color = 14807256
               EditLabel.Width = 46
               EditLabel.Height = 13
               EditLabel.Caption = 'MaxLevel'
@@ -1526,12 +1536,13 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'AllowableClasses'
             end
-            object edqtRequiredMinRepValue: TLabeledEdit
+            object edqtaRequiredMinRepValue: TLabeledEdit
               Left = 93
               Top = 72
               Width = 44
               Height = 21
               Hint = 'Minimum reputation value to recieve the quest'
+              Color = 14807256
               EditLabel.Width = 36
               EditLabel.Height = 13
               EditLabel.BiDiMode = bdLeftToRight
@@ -1540,7 +1551,7 @@ object MainForm: TMainForm
               TabOrder = 3
               Text = ''
             end
-            object edqtRequiredMinRepFaction: TJvComboEdit
+            object edqtaRequiredMinRepFaction: TJvComboEdit
               Left = 8
               Top = 72
               Width = 73
@@ -1548,6 +1559,7 @@ object MainForm: TMainForm
               Hint = 'Faction ID for reputation requirement'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -1618,7 +1630,7 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetRaces
             end
-            object edqtRequiredMaxRepFaction: TJvComboEdit
+            object edqtaRequiredMaxRepFaction: TJvComboEdit
               Left = 8
               Top = 112
               Width = 73
@@ -1626,6 +1638,7 @@ object MainForm: TMainForm
               Hint = 'Faction ID for reputation requirement'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -1657,19 +1670,20 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetFaction
             end
-            object edqtRequiredMaxRepValue: TLabeledEdit
+            object edqtaRequiredMaxRepValue: TLabeledEdit
               Left = 93
               Top = 112
               Width = 44
               Height = 21
               Hint = 'Maximum reputation value to recieve the quest'
+              Color = 14807256
               EditLabel.Width = 36
               EditLabel.Height = 13
               EditLabel.Caption = '...Value'
               TabOrder = 5
               Text = ''
             end
-            object edqtRequiredSkillPoints: TLabeledEdit
+            object edqtaRequiredSkillPoints: TLabeledEdit
               Left = 143
               Top = 111
               Width = 58
@@ -1677,13 +1691,14 @@ object MainForm: TMainForm
               Hint = 
                 'Player skill value requirement for skill correspond to ZoneOrSor' +
                 't field.'
+              Color = 14807256
               EditLabel.Width = 68
               EditLabel.Height = 13
               EditLabel.Caption = 'ReqSkillPoints'
               TabOrder = 1
               Text = ''
             end
-            object edqtAllowableClasses: TJvComboEdit
+            object edqtaAllowableClasses: TJvComboEdit
               Left = 93
               Top = 32
               Width = 73
@@ -1693,6 +1708,7 @@ object MainForm: TMainForm
                 'e for all classes.'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -1746,7 +1762,7 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'SourceSpellID'
             end
-            object edqtProvidedItemCount: TLabeledEdit
+            object edqtaProvidedItemCount: TLabeledEdit
               Left = 8
               Top = 72
               Width = 105
@@ -1754,6 +1770,7 @@ object MainForm: TMainForm
               Hint = 
                 'Number of items given to the player (inserted in the players bag' +
                 's) upon accepting the quest.'
+              Color = 14807256
               EditLabel.Width = 90
               EditLabel.Height = 13
               EditLabel.Caption = 'ProvidedItemCount'
@@ -1799,7 +1816,7 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetItem
             end
-            object edqtSourceSpellID: TJvComboEdit
+            object edqtaSourceSpellID: TJvComboEdit
               Left = 8
               Top = 112
               Width = 105
@@ -1807,6 +1824,7 @@ object MainForm: TMainForm
               Hint = 'No information'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -1915,7 +1933,7 @@ object MainForm: TMainForm
               ScrollBars = ssVertical
               TabOrder = 3
             end
-            object edqtCompletionText: TMemo
+            object edqriCompletionText: TMemo
               Left = 293
               Top = 269
               Width = 275
@@ -1925,6 +1943,7 @@ object MainForm: TMainForm
                 'turning in an item delivery quest. The quest item(s) involved in' +
                 ' thequest can either be provided by the quest giver or collected' +
                 ' by the player.'
+              Color = 13694193
               ScrollBars = ssVertical
               TabOrder = 4
             end
@@ -1998,6 +2017,42 @@ object MainForm: TMainForm
               Text = ''
             end
           end
+          object edqdID: TLabeledEdit
+            Left = 840
+            Top = 202
+            Width = 33
+            Height = 21
+            Color = clYellow
+            EditLabel.Width = 8
+            EditLabel.Height = 13
+            EditLabel.Caption = 'id'
+            TabOrder = 6
+            Text = ''
+          end
+          object edqriID: TLabeledEdit
+            Left = 840
+            Top = 229
+            Width = 33
+            Height = 21
+            Color = 13694193
+            EditLabel.Width = 8
+            EditLabel.Height = 13
+            EditLabel.Caption = 'id'
+            TabOrder = 7
+            Text = ''
+          end
+          object edqtaID: TLabeledEdit
+            Left = 840
+            Top = 256
+            Width = 33
+            Height = 21
+            Color = 14807256
+            EditLabel.Width = 8
+            EditLabel.Height = 13
+            EditLabel.Caption = 'id'
+            TabOrder = 8
+            Text = ''
+          end
         end
         object tsQuestPart2: TTabSheet
           Caption = 'Quest Part 2'
@@ -2007,7 +2062,7 @@ object MainForm: TMainForm
           object gbRequirementsEnd: TGroupBox
             Left = 0
             Top = 8
-            Width = 441
+            Width = 425
             Height = 349
             Caption = 'Requirements for finish quest'
             TabOrder = 0
@@ -2174,7 +2229,7 @@ object MainForm: TMainForm
             object edqtItemDropQuantity1: TLabeledEdit
               Left = 319
               Top = 29
-              Width = 111
+              Width = 74
               Height = 21
               Hint = 'Count of Source Items1'
               EditLabel.Width = 88
@@ -2186,7 +2241,7 @@ object MainForm: TMainForm
             object edqtItemDropQuantity2: TLabeledEdit
               Left = 319
               Top = 54
-              Width = 111
+              Width = 74
               Height = 21
               Hint = 
                 'Maximum number of items in ItemDrop2 that can be picked up (and ' +
@@ -2200,7 +2255,7 @@ object MainForm: TMainForm
             object edqtItemDropQuantity3: TLabeledEdit
               Left = 319
               Top = 80
-              Width = 111
+              Width = 74
               Height = 21
               Hint = 
                 'Maximum number of items in ItemDrop3 that can be picked up (and ' +
@@ -2214,11 +2269,12 @@ object MainForm: TMainForm
             object edqtItemDropQuantity4: TLabeledEdit
               Left = 319
               Top = 105
-              Width = 111
+              Width = 74
               Height = 21
               Hint = 
                 'Maximum number of items in ItemDrop4 that can be picked up (and ' +
                 'dropped by the core).'
+              Color = 14807256
               EditLabel.Width = 109
               EditLabel.Height = 13
               EditLabel.Caption = 'edqtItemDropQuantity4'
@@ -2951,7 +3007,7 @@ object MainForm: TMainForm
             end
           end
           object gbRewards: TGroupBox
-            Left = 456
+            Left = 431
             Top = 8
             Width = 505
             Height = 474
@@ -3918,22 +3974,24 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetSpell
             end
-            object edqtRewardMailTemplateID: TLabeledEdit
-              Left = 387
+            object edqtaRewardMailTemplateID: TLabeledEdit
+              Left = 380
               Top = 29
-              Width = 110
+              Width = 70
               Height = 21
+              Color = 14807256
               EditLabel.Width = 111
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardMailTemplateID'
               TabOrder = 33
               Text = ''
             end
-            object edqtRewardMailDelay: TLabeledEdit
-              Left = 387
+            object edqtaRewardMailDelay: TLabeledEdit
+              Left = 380
               Top = 69
-              Width = 110
+              Width = 70
               Height = 21
+              Color = 14807256
               EditLabel.Width = 83
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardMailDelay'
@@ -3941,9 +3999,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtRewardHonor: TLabeledEdit
-              Left = 396
+              Left = 395
               Top = 299
-              Width = 87
+              Width = 67
               Height = 21
               Hint = 
                 'Number of honorable kill honor rewarded for completing this ques' +
@@ -3960,7 +4018,7 @@ object MainForm: TMainForm
             object edqtRewardKillHonor: TLabeledEdit
               Left = 303
               Top = 261
-              Width = 82
+              Width = 80
               Height = 21
               Hint = 'RewardKillHonor'
               EditLabel.Width = 79
@@ -4032,7 +4090,7 @@ object MainForm: TMainForm
             object edqtRewardArenaPoints: TLabeledEdit
               Left = 303
               Top = 299
-              Width = 87
+              Width = 80
               Height = 21
               Hint = 'Arena Points rewarded by completing this quest'
               EditLabel.Width = 86
@@ -4042,9 +4100,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtRewardDisplaySpell: TLabeledEdit
-              Left = 396
+              Left = 395
               Top = 224
-              Width = 93
+              Width = 67
               Height = 21
               Hint = '...'
               EditLabel.Width = 94
@@ -4054,9 +4112,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtRewardTitle: TLabeledEdit
-              Left = 396
+              Left = 395
               Top = 261
-              Width = 92
+              Width = 67
               Height = 21
               EditLabel.Width = 57
               EditLabel.Height = 13
@@ -4076,11 +4134,25 @@ object MainForm: TMainForm
               TabOrder = 44
               Text = ''
             end
+            object edqtRewardMoneyDifficulty: TLabeledEdit
+              Left = 301
+              Top = 181
+              Width = 76
+              Height = 21
+              Hint = 
+                'Money earned by completing the quest (if value > 0). Money quest' +
+                ' requirement (if value < 0).'
+              EditLabel.Width = 109
+              EditLabel.Height = 13
+              EditLabel.Caption = 'RewardMoneyDifficulty'
+              TabOrder = 46
+              Text = ''
+            end
           end
           object gbOther: TGroupBox
             Left = 8
             Top = 363
-            Width = 441
+            Width = 417
             Height = 254
             Caption = 'Emotions'
             TabOrder = 2
@@ -4112,15 +4184,15 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'DetailsEmote4'
             end
-            object lbqtIncompleteEmote: TLabel
-              Left = 95
+            object lbqriIncompleteEmote: TLabel
+              Left = 157
               Top = 208
               Width = 96
               Height = 13
               Caption = 'EmoteOnIncomplete'
             end
-            object lbqtEmoteOnComplete: TLabel
-              Left = 6
+            object lbqriEmoteOnComplete: TLabel
+              Left = 72
               Top = 208
               Width = 79
               Height = 13
@@ -4154,50 +4226,17 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'OfferRewardEmote4'
             end
-            object edqtPointX: TLabeledEdit
-              Left = 138
-              Top = 26
-              Width = 64
-              Height = 21
-              EditLabel.Width = 31
-              EditLabel.Height = 13
-              EditLabel.Caption = 'PointX'
-              TabOrder = 0
-              Text = ''
-            end
-            object edqtPointY: TLabeledEdit
-              Left = 208
-              Top = 27
-              Width = 61
-              Height = 21
-              EditLabel.Width = 31
-              EditLabel.Height = 13
-              EditLabel.Caption = 'PointY'
-              TabOrder = 1
-              Text = ''
-            end
-            object edqtPointOption: TLabeledEdit
-              Left = 280
-              Top = 27
-              Width = 90
-              Height = 21
-              EditLabel.Width = 55
-              EditLabel.Height = 13
-              EditLabel.Caption = 'PointOption'
-              TabOrder = 2
-              Text = ''
-            end
-            object edqtEmoteOnIncomplete: TJvComboEdit
-              Left = 95
+            object edqriEmoteOnIncomplete: TJvComboEdit
+              Left = 157
               Top = 223
-              Width = 90
+              Width = 60
               Height = 21
               Hint = 
                 'Emote that creature show at request quest details, '#13#10'show incomp' +
                 'leted quest'
               ButtonWidth = 22
               ClickKey = 13
-              Color = 12448982
+              Color = 13694193
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4225,21 +4264,21 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 7
+              TabOrder = 4
               Text = ''
               OnButtonClick = GetEmote
             end
-            object edqtEmoteOnComplete: TJvComboEdit
-              Left = 6
+            object edqriEmoteOnComplete: TJvComboEdit
+              Left = 77
               Top = 223
-              Width = 72
+              Width = 60
               Height = 21
               Hint = 
                 'Emote that creature show at request quest details, '#13#10'show comple' +
                 'ting quest'
               ButtonWidth = 22
               ClickKey = 13
-              Color = 12448982
+              Color = 13694193
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4267,7 +4306,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 8
+              TabOrder = 5
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4306,7 +4345,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 3
+              TabOrder = 0
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4345,7 +4384,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 4
+              TabOrder = 1
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4384,7 +4423,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 5
+              TabOrder = 2
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4423,7 +4462,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 6
+              TabOrder = 3
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4461,7 +4500,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 9
+              TabOrder = 6
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4499,7 +4538,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 10
+              TabOrder = 7
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4537,7 +4576,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 11
+              TabOrder = 8
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4575,7 +4614,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 12
+              TabOrder = 9
               Text = ''
               OnButtonClick = GetEmote
             end
@@ -4590,7 +4629,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'DetailsEmoteDelay1'
               EditLabel.Caption = 'DetailsEmoteDelay1'
-              TabOrder = 13
+              TabOrder = 10
               Text = ''
             end
             object edqdEmoteDelay2: TLabeledEdit
@@ -4604,7 +4643,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'DetailsEmoteDelay2'
               EditLabel.Caption = 'DetailsEmoteDelay2'
-              TabOrder = 14
+              TabOrder = 11
               Text = ''
             end
             object edqdEmoteDelay3: TLabeledEdit
@@ -4618,7 +4657,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'DetailsEmoteDelay3'
               EditLabel.Caption = 'DetailsEmoteDelay1'
-              TabOrder = 15
+              TabOrder = 12
               Text = ''
             end
             object edqdEmoteDelay4: TLabeledEdit
@@ -4632,7 +4671,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'DetailsEmoteDelay4'
               EditLabel.Caption = 'DetailsEmoteDelay1'
-              TabOrder = 16
+              TabOrder = 13
               Text = ''
             end
             object edqtOfferRewardEmoteDelay1: TLabeledEdit
@@ -4645,7 +4684,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay1'
               EditLabel.Caption = 'OfferRewardEmoteDelay1'
-              TabOrder = 19
+              TabOrder = 16
               Text = ''
             end
             object edqtOfferRewardEmoteDelay2: TLabeledEdit
@@ -4658,7 +4697,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay2'
               EditLabel.Caption = 'OfferRewardEmoteDelay2'
-              TabOrder = 18
+              TabOrder = 15
               Text = ''
             end
             object edqtOfferRewardEmoteDelay3: TLabeledEdit
@@ -4671,7 +4710,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay3'
               EditLabel.Caption = 'OfferRewardEmoteDelay3'
-              TabOrder = 17
+              TabOrder = 14
               Text = ''
             end
             object edqtOfferRewardEmoteDelay4: TLabeledEdit
@@ -4684,7 +4723,7 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay4'
               EditLabel.Caption = 'OfferRewardEmoteDelay4'
-              TabOrder = 20
+              TabOrder = 17
               Text = ''
             end
             object edqdVerifiedBuild: TLabeledEdit
@@ -4699,7 +4738,20 @@ object MainForm: TMainForm
               EditLabel.BiDiMode = bdRightToLeft
               EditLabel.Caption = 'DetailsVerifiedBuild'
               EditLabel.ParentBiDiMode = False
-              TabOrder = 21
+              TabOrder = 18
+              Text = ''
+            end
+            object edqriVerifiedBuild: TLabeledEdit
+              Left = 6
+              Top = 223
+              Width = 60
+              Height = 21
+              Hint = 'PlayersSlain'
+              Color = 13694193
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 19
               Text = ''
             end
           end
@@ -4772,13 +4824,14 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = btAreatriggerClick
             end
-            object edqtSpecialFlags: TJvComboEdit
+            object edqtaSpecialFlags: TJvComboEdit
               Left = 103
               Top = 28
               Width = 76
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
+              Color = 14807256
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4822,20 +4875,6 @@ object MainForm: TMainForm
               TabOrder = 2
               Text = ''
             end
-            object edqtMethod: TLabeledEdit
-              Left = 393
-              Top = 28
-              Width = 36
-              Height = 21
-              Hint = 
-                'Accepted values: 0, 1 or 2. If value = 0 then Quest is autocompl' +
-                'eted (skip objectives/details)'
-              EditLabel.Width = 36
-              EditLabel.Height = 13
-              EditLabel.Caption = 'Method'
-              TabOrder = 3
-              Text = ''
-            end
             object edqtRequiredPlayerKills: TLabeledEdit
               Left = 287
               Top = 28
@@ -4845,11 +4884,11 @@ object MainForm: TMainForm
               EditLabel.Width = 90
               EditLabel.Height = 13
               EditLabel.Caption = 'RequiredPlayerKills'
-              TabOrder = 4
+              TabOrder = 3
               Text = ''
             end
             object edqtVerifiedBuild: TLabeledEdit
-              Left = 424
+              Left = 346
               Top = 68
               Width = 73
               Height = 21
@@ -4857,18 +4896,18 @@ object MainForm: TMainForm
               EditLabel.Width = 58
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
-              TabOrder = 5
+              TabOrder = 4
               Text = ''
             end
             object edqtUnknown0: TLabeledEdit
-              Left = 441
-              Top = 28
+              Left = 287
+              Top = 68
               Width = 53
               Height = 21
               EditLabel.Width = 52
               EditLabel.Height = 13
               EditLabel.Caption = 'Unknown0'
-              TabOrder = 6
+              TabOrder = 5
               Text = ''
             end
             object edqtPOIContinent: TJvComboEdit
@@ -4908,7 +4947,7 @@ object MainForm: TMainForm
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 7
+              TabOrder = 6
               Text = ''
               OnButtonClick = GetMap
             end
@@ -4921,7 +4960,7 @@ object MainForm: TMainForm
               EditLabel.Width = 23
               EditLabel.Height = 13
               EditLabel.Caption = 'POIx'
-              TabOrder = 8
+              TabOrder = 7
               Text = ''
             end
             object edqtPOIy: TLabeledEdit
@@ -4933,7 +4972,7 @@ object MainForm: TMainForm
               EditLabel.Width = 23
               EditLabel.Height = 13
               EditLabel.Caption = 'POIy'
-              TabOrder = 9
+              TabOrder = 8
               Text = ''
             end
             object edqtPOIPriority: TLabeledEdit
@@ -4945,7 +4984,7 @@ object MainForm: TMainForm
               EditLabel.Width = 49
               EditLabel.Height = 13
               EditLabel.Caption = 'POIPriority'
-              TabOrder = 10
+              TabOrder = 9
               Text = ''
             end
           end
@@ -5094,7 +5133,7 @@ object MainForm: TMainForm
           object lvqtStarterTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 850
+            Width = 846
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5136,7 +5175,7 @@ object MainForm: TMainForm
           object lvqtStarterLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 850
+            Width = 846
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5348,7 +5387,7 @@ object MainForm: TMainForm
           object lvqtTenderTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 850
+            Width = 846
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5390,7 +5429,7 @@ object MainForm: TMainForm
           object lvqtTenderLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 850
+            Width = 846
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5563,7 +5602,7 @@ object MainForm: TMainForm
               Hint = 
                 'This text ist send to player, yet did not terminate the Quest an' +
                 'd speak with NPC again!'
-              Color = 12448982
+              Color = 13694193
               ScrollBars = ssVertical
               TabOrder = 5
             end
@@ -5663,7 +5702,7 @@ object MainForm: TMainForm
             908
             613)
           object btCopyToClipboard: TButton
-            Left = 721
+            Left = 717
             Top = 508
             Width = 137
             Height = 25
@@ -5673,7 +5712,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardClick
           end
           object btExecuteScript: TButton
-            Left = 721
+            Left = 717
             Top = 540
             Width = 137
             Height = 25
@@ -5685,7 +5724,7 @@ object MainForm: TMainForm
           object meqtLog: TMemo
             Left = 8
             Top = 472
-            Width = 698
+            Width = 694
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -5694,7 +5733,7 @@ object MainForm: TMainForm
           object meqtScript: TMemo
             Left = 3
             Top = 9
-            Width = 851
+            Width = 847
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -8560,7 +8599,7 @@ object MainForm: TMainForm
           object lvclCreatureLocation: TJvListView
             Left = 10
             Top = 27
-            Width = 850
+            Width = 846
             Height = 350
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -8790,7 +8829,7 @@ object MainForm: TMainForm
             OnClick = btScriptCreatureLocationCustomToAllClick
           end
           object btFullScriptCreatureLocation: TButton
-            Left = 643
+            Left = 639
             Top = 568
             Width = 210
             Height = 25
@@ -9100,7 +9139,7 @@ object MainForm: TMainForm
           object lvCreatureModelSearch: TJvListView
             Left = 11
             Top = 50
-            Width = 846
+            Width = 842
             Height = 223
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9155,7 +9194,7 @@ object MainForm: TMainForm
               908
               50)
             object btCreatureModelSearch: TBitBtn
-              Left = 782
+              Left = 778
               Top = 16
               Width = 75
               Height = 25
@@ -9692,7 +9731,7 @@ object MainForm: TMainForm
           object lvcoCreatureLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 850
+            Width = 846
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10161,7 +10200,7 @@ object MainForm: TMainForm
           object lvcoPickpocketLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 850
+            Width = 846
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10620,7 +10659,7 @@ object MainForm: TMainForm
           object lvcoSkinLoot: TJvListView
             Left = 3
             Top = 32
-            Width = 850
+            Width = 846
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -11075,7 +11114,7 @@ object MainForm: TMainForm
           object lvcvNPCVendor: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -11481,7 +11520,7 @@ object MainForm: TMainForm
           object lvcrNPCTrainer: TJvListView
             Left = 3
             Top = 27
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -11781,7 +11820,7 @@ object MainForm: TMainForm
               908
               89)
             object cttClearSearchCreatureText: TBitBtn
-              Left = 799
+              Left = 795
               Top = 56
               Width = 75
               Height = 25
@@ -11791,7 +11830,7 @@ object MainForm: TMainForm
               OnClick = btClearSearchCreatureClick
             end
             object btSearchCreatureText: TBitBtn
-              Left = 799
+              Left = 795
               Top = 24
               Width = 75
               Height = 25
@@ -12844,7 +12883,7 @@ object MainForm: TMainForm
           object mectScript: TMemo
             Left = 13
             Top = 9
-            Width = 851
+            Width = 847
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -12859,14 +12898,14 @@ object MainForm: TMainForm
           object mectLog: TMemo
             Left = 8
             Top = 472
-            Width = 698
+            Width = 694
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardCreature: TButton
-            Left = 712
+            Left = 708
             Top = 472
             Width = 137
             Height = 25
@@ -12876,7 +12915,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardCreatureClick
           end
           object btExecuteCreatureScript: TButton
-            Left = 712
+            Left = 708
             Top = 516
             Width = 137
             Height = 25
@@ -14187,7 +14226,7 @@ object MainForm: TMainForm
           object lvglGOLocation: TJvListView
             Left = 3
             Top = 27
-            Width = 850
+            Width = 846
             Height = 390
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -14397,7 +14436,7 @@ object MainForm: TMainForm
             Text = ''
           end
           object btFullScriptGOLocation: TButton
-            Left = 674
+            Left = 670
             Top = 584
             Width = 201
             Height = 25
@@ -14742,7 +14781,7 @@ object MainForm: TMainForm
           object lvgoGOLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 885
+            Width = 881
             Height = 449
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -15226,7 +15265,7 @@ object MainForm: TMainForm
           object megoScript: TMemo
             Left = 8
             Top = 8
-            Width = 851
+            Width = 847
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -15241,14 +15280,14 @@ object MainForm: TMainForm
           object megoLog: TMemo
             Left = 8
             Top = 472
-            Width = 698
+            Width = 694
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardGO: TButton
-            Left = 721
+            Left = 717
             Top = 508
             Width = 137
             Height = 25
@@ -15258,7 +15297,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardGOClick
           end
           object btExecuteGOScript: TButton
-            Left = 721
+            Left = 717
             Top = 540
             Width = 137
             Height = 25
@@ -19582,7 +19621,7 @@ object MainForm: TMainForm
           object lvitItemLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20046,7 +20085,7 @@ object MainForm: TMainForm
           object lvitDisLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 401
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20511,7 +20550,7 @@ object MainForm: TMainForm
           object lvitProsLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20967,7 +21006,7 @@ object MainForm: TMainForm
           object lvitMillingLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21429,7 +21468,7 @@ object MainForm: TMainForm
           object lvitReferenceLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21925,7 +21964,7 @@ object MainForm: TMainForm
           object lvitEnchantment: TJvListView
             Left = 8
             Top = 32
-            Width = 867
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -22386,7 +22425,7 @@ object MainForm: TMainForm
           object meitScript: TMemo
             Left = 8
             Top = 8
-            Width = 868
+            Width = 864
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -22401,14 +22440,14 @@ object MainForm: TMainForm
           object meitLog: TMemo
             Left = 8
             Top = 472
-            Width = 715
+            Width = 711
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardItem: TButton
-            Left = 738
+            Left = 734
             Top = 508
             Width = 137
             Height = 25
@@ -22418,7 +22457,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardItemClick
           end
           object btExecuteItemScript: TButton
-            Left = 738
+            Left = 734
             Top = 540
             Width = 137
             Height = 25
@@ -22862,7 +22901,7 @@ object MainForm: TMainForm
           object lvcySmartAI: TJvListView
             Left = 3
             Top = 23
-            Width = 893
+            Width = 889
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -23473,7 +23512,7 @@ object MainForm: TMainForm
             908
             613)
           object btCopyToClipboardSmartAI: TButton
-            Left = 749
+            Left = 745
             Top = 508
             Width = 137
             Height = 25
@@ -23483,7 +23522,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardSmartAIClick
           end
           object btExecuteSmartAIScript: TButton
-            Left = 749
+            Left = 745
             Top = 540
             Width = 137
             Height = 25
@@ -23495,7 +23534,7 @@ object MainForm: TMainForm
           object mecyScript: TMemo
             Left = 11
             Top = 10
-            Width = 879
+            Width = 875
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -23510,7 +23549,7 @@ object MainForm: TMainForm
           object mecyLog: TMemo
             Left = 11
             Top = 472
-            Width = 726
+            Width = 722
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -23841,7 +23880,7 @@ object MainForm: TMainForm
           object lvcConditions: TJvListView
             Left = 3
             Top = 23
-            Width = 893
+            Width = 889
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -24159,7 +24198,7 @@ object MainForm: TMainForm
             908
             613)
           object btCopyToClipboardConditions: TButton
-            Left = 749
+            Left = 745
             Top = 508
             Width = 137
             Height = 25
@@ -24169,7 +24208,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardConditionsClick
           end
           object btExecuteConditionsScript: TButton
-            Left = 749
+            Left = 745
             Top = 540
             Width = 137
             Height = 25
@@ -24181,7 +24220,7 @@ object MainForm: TMainForm
           object mecScript: TMemo
             Left = 11
             Top = 10
-            Width = 879
+            Width = 875
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -24196,7 +24235,7 @@ object MainForm: TMainForm
           object mecLog: TMemo
             Left = 11
             Top = 472
-            Width = 726
+            Width = 722
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -24450,7 +24489,7 @@ object MainForm: TMainForm
           object lvotFishingLoot: TJvListView
             Left = 8
             Top = 72
-            Width = 867
+            Width = 863
             Height = 385
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -24842,7 +24881,7 @@ object MainForm: TMainForm
               908
               89)
             object btClearSearchPageText: TBitBtn
-              Left = 799
+              Left = 795
               Top = 56
               Width = 75
               Height = 25
@@ -24852,7 +24891,7 @@ object MainForm: TMainForm
               OnClick = btClearClick
             end
             object btSearchPageText: TBitBtn
-              Left = 799
+              Left = 795
               Top = 24
               Width = 75
               Height = 25
@@ -25083,7 +25122,7 @@ object MainForm: TMainForm
             object edpttext: TMemo
               Left = 88
               Top = 33
-              Width = 769
+              Width = 765
               Height = 176
               Anchors = [akLeft, akTop, akRight, akBottom]
               ScrollBars = ssVertical
@@ -25769,7 +25808,7 @@ object MainForm: TMainForm
               OnButtonClick = edgeGOguidButtonClick
             end
             object btScriptGameEvent: TButton
-              Left = 640
+              Left = 636
               Top = 256
               Width = 217
               Height = 25
@@ -26183,7 +26222,7 @@ object MainForm: TMainForm
           object meotScript: TMemo
             Left = 8
             Top = 8
-            Width = 851
+            Width = 847
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -26198,14 +26237,14 @@ object MainForm: TMainForm
           object meotLog: TMemo
             Left = 8
             Top = 472
-            Width = 698
+            Width = 694
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardOther: TButton
-            Left = 721
+            Left = 717
             Top = 508
             Width = 137
             Height = 25
@@ -26215,7 +26254,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardOtherClick
           end
           object btExecuteOtherScript: TButton
-            Left = 721
+            Left = 717
             Top = 540
             Width = 137
             Height = 25
@@ -27608,7 +27647,7 @@ object MainForm: TMainForm
           object lvCharacterInventory: TJvListView
             Left = 8
             Top = 32
-            Width = 850
+            Width = 846
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -27702,7 +27741,7 @@ object MainForm: TMainForm
           object mehtScript: TMemo
             Left = 8
             Top = 8
-            Width = 851
+            Width = 847
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -27717,14 +27756,14 @@ object MainForm: TMainForm
           object mehtLog: TMemo
             Left = 8
             Top = 472
-            Width = 698
+            Width = 694
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardChar: TButton
-            Left = 721
+            Left = 717
             Top = 508
             Width = 137
             Height = 25
@@ -27734,7 +27773,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardCharClick
           end
           object btExecuteScriptChar: TButton
-            Left = 721
+            Left = 717
             Top = 540
             Width = 137
             Height = 25
@@ -27780,7 +27819,7 @@ object MainForm: TMainForm
               908
               113)
             object btSQLOpen: TBitBtn
-              Left = 784
+              Left = 780
               Top = 8
               Width = 75
               Height = 25
@@ -27792,7 +27831,7 @@ object MainForm: TMainForm
             object SQLEdit: TMemo
               Left = 8
               Top = 8
-              Width = 769
+              Width = 765
               Height = 89
               Anchors = [akLeft, akTop, akRight]
               Font.Charset = RUSSIAN_CHARSET
@@ -27979,7 +28018,7 @@ object MainForm: TMainForm
   object MyQueryAll: TFDQuery
     Connection = MyTrinityConnection
     Left = 621
-    Top = 217
+    Top = 137
   end
   object pmCreature: TPopupMenu
     Left = 177
@@ -28079,7 +28118,7 @@ object MainForm: TMainForm
   object DataSource: TDataSource
     DataSet = MyQuery
     Left = 681
-    Top = 218
+    Top = 130
   end
   object ActionList1: TActionList
     Left = 480
@@ -28104,21 +28143,21 @@ object MainForm: TMainForm
   end
   object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
     DriverID = 'MYSQL'
-    Left = 772
-    Top = 216
+    Left = 764
+    Top = 144
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
     ScreenCursor = gcrHourGlass
-    Left = 764
-    Top = 304
+    Left = 796
+    Top = 400
   end
   object FDScript1: TFDScript
     SQLScripts = <>
     Connection = MyTrinityConnection
     Params = <>
     Macros = <>
-    Left = 876
-    Top = 272
+    Left = 828
+    Top = 200
   end
 end
