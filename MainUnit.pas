@@ -39,7 +39,7 @@ const
   PFX_QUEST_DETAILS                 = 'qd';
   PFX_QUEST_GREETING                = 'qg';    //for creature or GO
   PFX_QUEST_GREETING_LOCALE         = 'qgloc';  //for creature or GO
-  PFX_QUEST_MAIL_SENDER             = 'qmails';
+  PFX_QUEST_MAIL_SENDER             = 'qms';
   PFX_QUEST_MONEY_REWARD            = 'qmr';
   PFX_QUEST_OFFER_REWARD            = 'qor';
   PFX_QUEST_OFFER_REWARD_LOCALE     = 'qorloc';
@@ -1657,6 +1657,11 @@ type
     lbctspell_school_immune_mask: TLabel;
     btExecuteCreatureScript: TButton;
     edqtRewardMoneyDifficulty: TLabeledEdit;
+
+    //quest_mail_sender
+    edqmsQuestId: TLabeledEdit;
+    edqmsRewardMailSenderEntry: TLabeledEdit;
+
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -2671,7 +2676,7 @@ begin
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then
-    //edqorID.Text := edqtID.Text;
+    //edqorID.Text := MyQuery.FieldByName('ID').AsString;
 		edqtOfferRewardEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
 		edqtOfferRewardEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
 		edqtOfferRewardEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
@@ -2685,7 +2690,7 @@ begin
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
     if (MyQuery.Eof=false) then
-    edqdID.Text := edqtID.Text;
+    edqdID.Text := MyQuery.FieldByName('ID').AsString;
 		edqdEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
 		edqdEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
 		edqdEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
@@ -2696,6 +2701,14 @@ begin
 		edqdEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
     edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
+
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_mail_sender` WHERE `Questid`=%d', [QuestID]);
+	  MyQuery.Open;
+    if (MyQuery.Eof=false) then
+      edqmsQuestId.Text := MyQuery.FieldByName('QuestId').AsString;
+	    edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString;
+    MyQuery.Close;
+
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString else
@@ -2981,6 +2994,20 @@ begin
                       'REPLACE INTO `quest_request_items` (%s) VALUES (%s);'#13#10
                       ,[Fields, Values]);
     ssUpdate: s7 := MakeUpdate('quest_request_items', PFX_QUEST_REQUEST_ITEMS, 'ID', quest);
+  end;
+
+  // quest_mail_sender
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_mail_sender', PFX_QUEST_MAIL_SENDER, meqtLog);
+  case SyntaxStyle of
+    ssInsertDelete: s8 := Format(#13#10+
+                      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %s;'#13#10+
+                      'INSERT INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, Fields, Values]);
+    ssReplace: s8 := Format(#13#10+
+                      'REPLACE INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s8 := MakeUpdate('quest_mail_sender', PFX_QUEST_MAIL_SENDER, 'Questid', quest);
   end;
 
 
