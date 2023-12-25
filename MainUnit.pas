@@ -3009,7 +3009,8 @@ begin
   end;
 
   // quest_mail_sender
-  if edqmsQuestid.Text<>'' then begin
+  if edqmsRewardMailSenderEntry.Text<>'' then begin
+    if edqmsQuestid.Text<>edqtID.Text then edqmsQuestid.Text := edqtID.Text;
   Fields:= ''; Values:= '';
   SetFieldsAndValues(Fields, Values, 'quest_mail_sender', PFX_QUEST_MAIL_SENDER, meqtLog);
    case SyntaxStyle of
