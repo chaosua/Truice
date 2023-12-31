@@ -21,7 +21,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '7';
+  VERSION_4   = '9';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -220,8 +220,6 @@ type
     edqtaNextQuestID: TJvComboEdit;
     edqtaExclusiveGroup: TLabeledEdit;
     edqtaBreadcrumbForQuestId: TLabeledEdit;
-    edqtaRewardMailTemplateID: TLabeledEdit;
-    edqtaRewardMailDelay: TLabeledEdit;
     edqtaRequiredSkillID: TJvComboEdit;
     edqtaRequiredSkillPoints: TLabeledEdit;
     edqtaRequiredMinRepFaction: TJvComboEdit;
@@ -1665,6 +1663,9 @@ type
     edcqiItemId: TJvComboEdit;
     ItemId: TLabel;
     edcmInteractionPauseTimer: TLabeledEdit;
+    edqtaRewardMailTemplateID: TLabeledEdit;
+    edqtaRewardMailDelay: TLabeledEdit;
+    edqmsRewardMailSenderEntry: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2722,10 +2723,19 @@ begin
 		edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_mail_sender` WHERE `Questid`=%d', [QuestID]);
+	  MyQuery.Open;
+    if (MyQuery.Eof=false) then
+      //edqmsQuestId.Text := MyQuery.FieldByName('QuestId').AsString;
+	    edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString
+    else edqmsRewardMailSenderEntry.Clear;
+    MyQuery.Close;
+
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
     MyQuery.Open;
-    if (MyQuery.Eof=false) then edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString else
-    edqtAreatrigger.Clear;
+    if (MyQuery.Eof=false) then
+      edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString
+    else edqtAreatrigger.Clear;
     MyQuery.Close;
 
     LoadQuestStarters(QuestID);
@@ -2963,9 +2973,23 @@ begin
   end;
 
   if edqtAreatrigger.Text<>'' then
-    s4 := Format('DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %1:s;'#13#10+
-      'INSERT INTO `areatrigger_involvedrelation` (`id`, `quest`) VALUES (%0:s, %1:s);'#13#10,
-      [edqtAreatrigger.Text, quest]);
+    s4 := Format(#13#10+
+      'DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %1:s;'#13#10+
+      'INSERT INTO `areatrigger_involvedrelation` (`id`, `quest`) VALUES (%0:s, %1:s);'#13#10#13#10,
+      [edqtAreatrigger.Text, quest])
+  else s4 := Format(#13#10+
+      'DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %s;'#13#10,
+      [quest]);
+
+  //quest_mail_sender
+  if edqmsRewardMailSenderEntry.Text<>'' then
+    s8 := Format(#13#10+
+      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %1:s;'#13#10+
+      'INSERT INTO `quest_mail_sender` (`Questid`, `RewardMailSenderEntry`) VALUES (%0:s, %1:s);'#13#10#13#10,
+      [quest, edqmsRewardMailSenderEntry.Text])
+  else s8 := Format(#13#10+
+      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %s;'#13#10,
+      [quest]);
 
   // quest_details
   if edqdID.Text<>'' then begin
@@ -3014,7 +3038,7 @@ begin
   end;
 
   //Add all scripts together
-  Script := s1+s2+s4+s5+s6+s7+s8+s9+s10+s3;
+  Script := s1+s2+s4+s8+s5+s6+s7+s9+s10+s3;
   meqtScript.Text := Script;
 end;
 
@@ -4050,6 +4074,7 @@ begin
   'DELETE FROM `gameobject_queststarter` WHERE (`quest`=%0:s);'#13#10+
   'DELETE FROM `creature_questender` WHERE (`quest`=%0:s);'#13#10+
   'DELETE FROM `gameobject_questender` WHERE (`quest`=%0:s);'#13#10+
+  'DELETE FROM `quest_mail_sander` WHERE (`Questid`=%0:s);'#13#10+
   'DELETE FROM `areatrigger_involvedrelation` WHERE (`quest`=%0:s);'#13#10
    ,[lvQuest.Selected.Caption]);
 end;

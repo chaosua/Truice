@@ -3028,7 +3028,7 @@ object MainForm: TMainForm
             Left = 456
             Top = 8
             Width = 505
-            Height = 474
+            Height = 441
             Caption = 'Rewards for quest'
             TabOrder = 1
             object lbRewardChoiceItemID1: TLabel
@@ -3992,30 +3992,6 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetSpell
             end
-            object edqtaRewardMailTemplateID: TLabeledEdit
-              Left = 387
-              Top = 29
-              Width = 110
-              Height = 21
-              Color = clMoneyGreen
-              EditLabel.Width = 111
-              EditLabel.Height = 13
-              EditLabel.Caption = 'RewardMailTemplateID'
-              TabOrder = 33
-              Text = ''
-            end
-            object edqtaRewardMailDelay: TLabeledEdit
-              Left = 387
-              Top = 69
-              Width = 110
-              Height = 21
-              Color = clMoneyGreen
-              EditLabel.Width = 83
-              EditLabel.Height = 13
-              EditLabel.Caption = 'RewardMailDelay'
-              TabOrder = 34
-              Text = ''
-            end
             object edqtRewardHonor: TLabeledEdit
               Left = 396
               Top = 299
@@ -4030,7 +4006,7 @@ object MainForm: TMainForm
               EditLabel.Width = 66
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardHonor'
-              TabOrder = 35
+              TabOrder = 33
               Text = ''
             end
             object edqtRewardKillHonor: TLabeledEdit
@@ -4042,7 +4018,7 @@ object MainForm: TMainForm
               EditLabel.Width = 79
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardKillHonor'
-              TabOrder = 36
+              TabOrder = 34
               Text = ''
             end
             object edqtRewardFactionOverride1: TLabeledEdit
@@ -4054,7 +4030,7 @@ object MainForm: TMainForm
               EditLabel.Width = 95
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr1'
-              TabOrder = 37
+              TabOrder = 35
               Text = ''
             end
             object edqtRewardFactionOverride2: TLabeledEdit
@@ -4066,7 +4042,7 @@ object MainForm: TMainForm
               EditLabel.Width = 95
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr2'
-              TabOrder = 38
+              TabOrder = 36
               Text = ''
             end
             object edqtRewardFactionOverride3: TLabeledEdit
@@ -4078,7 +4054,7 @@ object MainForm: TMainForm
               EditLabel.Width = 95
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr3'
-              TabOrder = 39
+              TabOrder = 37
               Text = ''
             end
             object edqtRewardFactionOverride4: TLabeledEdit
@@ -4090,7 +4066,7 @@ object MainForm: TMainForm
               EditLabel.Width = 95
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr4'
-              TabOrder = 40
+              TabOrder = 38
               Text = ''
             end
             object edqtRewardFactionOverride5: TLabeledEdit
@@ -4102,7 +4078,7 @@ object MainForm: TMainForm
               EditLabel.Width = 95
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardFactionOvr5'
-              TabOrder = 41
+              TabOrder = 39
               Text = ''
             end
             object edqtRewardArenaPoints: TLabeledEdit
@@ -4114,7 +4090,7 @@ object MainForm: TMainForm
               EditLabel.Width = 86
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardArenaPnts'
-              TabOrder = 42
+              TabOrder = 40
               Text = ''
             end
             object edqtRewardDisplaySpell: TLabeledEdit
@@ -4126,7 +4102,7 @@ object MainForm: TMainForm
               EditLabel.Width = 94
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardDisplaySpell'
-              TabOrder = 43
+              TabOrder = 41
               Text = ''
             end
             object edqtRewardTitle: TLabeledEdit
@@ -4137,7 +4113,7 @@ object MainForm: TMainForm
               EditLabel.Width = 57
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardTitle'
-              TabOrder = 45
+              TabOrder = 43
               Text = ''
             end
             object edqtRewardTalents: TLabeledEdit
@@ -4149,7 +4125,7 @@ object MainForm: TMainForm
               EditLabel.Width = 72
               EditLabel.Height = 13
               EditLabel.Caption = 'RewardTalents'
-              TabOrder = 44
+              TabOrder = 42
               Text = ''
             end
           end
@@ -4759,9 +4735,9 @@ object MainForm: TMainForm
           end
           object gbAreatrigger: TGroupBox
             Left = 456
-            Top = 488
+            Top = 468
             Width = 505
-            Height = 129
+            Height = 149
             Caption = 'Other'
             TabOrder = 3
             object lbAreatrigger: TLabel
@@ -4772,8 +4748,8 @@ object MainForm: TMainForm
               Caption = 'Areatrigger'
             end
             object lbqtSpecialFlags: TLabel
-              Left = 105
-              Top = 12
+              Left = 240
+              Top = 93
               Width = 60
               Height = 13
               Caption = 'SpecialFlags'
@@ -4795,6 +4771,7 @@ object MainForm: TMainForm
                 'gger id that need to explore'
               ButtonWidth = 22
               ClickKey = 13
+              Color = clScrollBar
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4827,8 +4804,8 @@ object MainForm: TMainForm
               OnButtonClick = btAreatriggerClick
             end
             object edqtaSpecialFlags: TJvComboEdit
-              Left = 103
-              Top = 28
+              Left = 240
+              Top = 108
               Width = 76
               Height = 21
               ButtonWidth = 22
@@ -4867,7 +4844,7 @@ object MainForm: TMainForm
               OnChange = edflagsChange
             end
             object edqtSuggestedGroupNum: TLabeledEdit
-              Left = 186
+              Left = 103
               Top = 28
               Width = 95
               Height = 21
@@ -4878,7 +4855,7 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtRequiredPlayerKills: TLabeledEdit
-              Left = 287
+              Left = 215
               Top = 28
               Width = 95
               Height = 21
@@ -4890,8 +4867,8 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtVerifiedBuild: TLabeledEdit
-              Left = 424
-              Top = 68
+              Left = 400
+              Top = 28
               Width = 73
               Height = 21
               Hint = 'PlayersSlain'
@@ -4902,7 +4879,7 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtUnknown0: TLabeledEdit
-              Left = 441
+              Left = 329
               Top = 28
               Width = 53
               Height = 21
@@ -4987,6 +4964,42 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'POIPriority'
               TabOrder = 9
+              Text = ''
+            end
+            object edqtaRewardMailTemplateID: TLabeledEdit
+              Left = 8
+              Top = 108
+              Width = 110
+              Height = 21
+              Color = clMoneyGreen
+              EditLabel.Width = 111
+              EditLabel.Height = 13
+              EditLabel.Caption = 'RewardMailTemplateID'
+              TabOrder = 10
+              Text = ''
+            end
+            object edqtaRewardMailDelay: TLabeledEdit
+              Left = 124
+              Top = 108
+              Width = 110
+              Height = 21
+              Color = clMoneyGreen
+              EditLabel.Width = 83
+              EditLabel.Height = 13
+              EditLabel.Caption = 'RewardMailDelay'
+              TabOrder = 11
+              Text = ''
+            end
+            object edqmsRewardMailSenderEntry: TLabeledEdit
+              Left = 332
+              Top = 108
+              Width = 110
+              Height = 21
+              Color = 33023
+              EditLabel.Width = 114
+              EditLabel.Height = 13
+              EditLabel.Caption = 'RewardMailSenderEntry'
+              TabOrder = 12
               Text = ''
             end
           end
