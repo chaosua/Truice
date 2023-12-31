@@ -197,6 +197,19 @@ type
     edqdEmoteDelay3: TLabeledEdit;
     edqdEmoteDelay4: TLabeledEdit;
     edqdVerifiedBuild: TLabeledEdit;
+    lbqdDetailsEmote1: TLabel;
+    lbqdDetailsEmote2: TLabel;
+    lbqdDetailsEmote3: TLabel;
+    lbqdDetailsEmote4: TLabel;
+
+    //quest_request_items
+    edqriID: TLabeledEdit;
+    edqriEmoteOnIncomplete: TJvComboEdit;
+    edqriEmoteOnComplete: TJvComboEdit;
+    edqriCompletionText: TMemo;
+    edqriVerifiedBuild: TLabeledEdit;
+    lbqriIncompleteEmote: TLabel;
+    lbqriEmoteOnComplete: TLabel;
 
     //quest_template_addon
     edqtaID: TLabeledEdit;
@@ -246,7 +259,6 @@ type
     edqtQuestDescription: TMemo;
     edqtLogDescription: TMemo;
     edqtRewardText: TMemo;
-    edqtCompletionText: TMemo;
     edqtObjectiveText1: TLabeledEdit;
     edqtObjectiveText2: TLabeledEdit;
     edqtObjectiveText3: TLabeledEdit;
@@ -332,8 +344,6 @@ type
     edqtRewardFactionID4: TJvComboEdit;
     edqtRewardFactionID5: TJvComboEdit;
     gbOther: TGroupBox;
-    edqtEmoteOnIncomplete: TJvComboEdit;
-    edqtEmoteOnComplete: TJvComboEdit;
     edqtOfferRewardEmote1: TJvComboEdit;
     edqtOfferRewardEmote2: TJvComboEdit;
     edqtOfferRewardEmote3: TJvComboEdit;
@@ -1135,12 +1145,6 @@ type
     edcmrooted: TLabeledEdit;
     edcmChase: TLabeledEdit;
     edcmRandom: TLabeledEdit;
-    lbqtDetailsEmote1: TLabel;
-    lbqtDetailsEmote2: TLabel;
-    lbqtDetailsEmote3: TLabel;
-    lbqtDetailsEmote4: TLabel;
-    lbqtIncompleteEmote: TLabel;
-    lbqtEmoteOnComplete: TLabel;
     lbqtOfferRewardEmote1: TLabel;
     lbqtOfferRewardEmote2: TLabel;
     lbqtOfferRewardEmote3: TLabel;
@@ -2681,10 +2685,12 @@ begin
 
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
-    if (MyQuery.Eof=false) then 
-		edqtEmoteOnComplete.Text := MyQuery.FieldByName('EmoteOnComplete').AsString;
-		edqtEmoteOnIncomplete.Text := MyQuery.FieldByName('EmoteOnIncomplete').AsString;
-		edqtCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
+    if (MyQuery.Eof=false) then
+    edqriID.Text := MyQuery.FieldByName('ID').AsString;
+		edqriEmoteOnComplete.Text := MyQuery.FieldByName('EmoteOnComplete').AsString;
+		edqriEmoteOnIncomplete.Text := MyQuery.FieldByName('EmoteOnIncomplete').AsString;
+		edqriCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
+  	edqriVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
@@ -2991,6 +2997,21 @@ begin
     ssUpdate: s6 := MakeUpdate('quest_template_addon', PFX_QUEST_TEMPLATE_ADDON, 'ID', quest);
   end;
 
+  // quest_request_items
+  if edqriID.Text<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_request_items', PFX_QUEST_REQUEST_ITEMS, meqtLog);
+   case SyntaxStyle of
+    ssInsertDelete: s7 := Format(#13#10+
+                      'DELETE FROM `quest_request_items` WHERE `ID` = %s;'#13#10+
+                      'INSERT INTO `quest_request_items` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, Fields, Values]);
+    ssReplace: s7 := Format(#13#10+
+                      'REPLACE INTO `quest_request_items` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s7 := MakeUpdate('quest_request_items', PFX_QUEST_REQUEST_ITEMS, 'ID', quest);
+   end;
+  end;
 
   //Add all scripts together
   Script := s1+s2+s4+s5+s6+s7+s8+s9+s10+s3;

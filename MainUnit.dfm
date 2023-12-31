@@ -1951,7 +1951,7 @@ object MainForm: TMainForm
               ScrollBars = ssVertical
               TabOrder = 3
             end
-            object edqtCompletionText: TMemo
+            object edqriCompletionText: TMemo
               Left = 293
               Top = 268
               Width = 275
@@ -1961,6 +1961,7 @@ object MainForm: TMainForm
                 'turning in an item delivery quest. The quest item(s) involved in' +
                 ' thequest can either be provided by the quest giver or collected' +
                 ' by the player.'
+              Color = 13694193
               ScrollBars = ssVertical
               TabOrder = 4
             end
@@ -2034,7 +2035,7 @@ object MainForm: TMainForm
           end
           object edqtaID: TLabeledEdit
             Left = 847
-            Top = 300
+            Top = 316
             Width = 60
             Height = 21
             Hint = 'quest_template_addon ID = quest_template ID'
@@ -2047,7 +2048,7 @@ object MainForm: TMainForm
           end
           object edqdID: TLabeledEdit
             Left = 847
-            Top = 228
+            Top = 236
             Width = 60
             Height = 21
             Hint = 'quest_details ID = quest_template ID'
@@ -2056,6 +2057,19 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ID qd'
             TabOrder = 7
+            Text = ''
+          end
+          object edqriID: TLabeledEdit
+            Left = 847
+            Top = 276
+            Width = 60
+            Height = 21
+            Hint = 'quest_trequest_items D = quest_template ID'
+            Color = 13694193
+            EditLabel.Width = 25
+            EditLabel.Height = 13
+            EditLabel.Caption = 'ID qri'
+            TabOrder = 8
             Text = ''
           end
         end
@@ -4140,49 +4154,49 @@ object MainForm: TMainForm
             end
           end
           object gbOther: TGroupBox
-            Left = 8
+            Left = 9
             Top = 363
             Width = 441
             Height = 254
             Caption = 'Emotions'
             TabOrder = 2
-            object lbqtDetailsEmote1: TLabel
+            object lbqdDetailsEmote1: TLabel
               Left = 6
               Top = 49
               Width = 68
               Height = 13
               Caption = 'DetailsEmote1'
             end
-            object lbqtDetailsEmote2: TLabel
+            object lbqdDetailsEmote2: TLabel
               Left = 6
               Top = 90
               Width = 68
               Height = 13
               Caption = 'DetailsEmote2'
             end
-            object lbqtDetailsEmote3: TLabel
+            object lbqdDetailsEmote3: TLabel
               Left = 6
               Top = 129
               Width = 68
               Height = 13
               Caption = 'DetailsEmote3'
             end
-            object lbqtDetailsEmote4: TLabel
+            object lbqdDetailsEmote4: TLabel
               Left = 6
               Top = 170
               Width = 68
               Height = 13
               Caption = 'DetailsEmote4'
             end
-            object lbqtIncompleteEmote: TLabel
-              Left = 95
+            object lbqriIncompleteEmote: TLabel
+              Left = 89
               Top = 208
               Width = 96
               Height = 13
               Caption = 'EmoteOnIncomplete'
             end
-            object lbqtEmoteOnComplete: TLabel
-              Left = 6
+            object lbqriEmoteOnComplete: TLabel
+              Left = 4
               Top = 208
               Width = 79
               Height = 13
@@ -4216,8 +4230,8 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'OfferRewardEmote4'
             end
-            object edqtEmoteOnIncomplete: TJvComboEdit
-              Left = 95
+            object edqriEmoteOnIncomplete: TJvComboEdit
+              Left = 89
               Top = 223
               Width = 90
               Height = 21
@@ -4226,6 +4240,7 @@ object MainForm: TMainForm
                 'leted quest'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 13694193
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4257,16 +4272,17 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetEmote
             end
-            object edqtEmoteOnComplete: TJvComboEdit
+            object edqriEmoteOnComplete: TJvComboEdit
               Left = 6
               Top = 223
-              Width = 72
+              Width = 60
               Height = 21
               Hint = 
                 'Emote that creature show at request quest details, '#13#10'show comple' +
                 'ting quest'
               ButtonWidth = 22
               ClickKey = 13
+              Color = 13694193
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4725,6 +4741,19 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 18
+              Text = ''
+            end
+            object edqriVerifiedBuild: TLabeledEdit
+              Left = 191
+              Top = 223
+              Width = 60
+              Height = 21
+              Hint = 'PlayersSlain'
+              Color = 13694193
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 19
               Text = ''
             end
           end
