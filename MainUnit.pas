@@ -186,6 +186,18 @@ type
     lbNextQuestID: TLabel;
     lbRewardNextQuest: TLabel;
 
+    //quest_details
+    edqdID: TLabeledEdit;
+    edqdEmote1: TJvComboEdit;
+    edqdEmote2: TJvComboEdit;
+    edqdEmote3: TJvComboEdit;
+    edqdEmote4: TJvComboEdit;
+    edqdEmoteDelay1: TLabeledEdit;
+    edqdEmoteDelay2: TLabeledEdit;
+    edqdEmoteDelay3: TLabeledEdit;
+    edqdEmoteDelay4: TLabeledEdit;
+    edqdVerifiedBuild: TLabeledEdit;
+
     //quest_template_addon
     edqtaID: TLabeledEdit;
     edqtaMaxLevel: TLabeledEdit;
@@ -235,7 +247,6 @@ type
     edqtLogDescription: TMemo;
     edqtRewardText: TMemo;
     edqtCompletionText: TMemo;
-    edqtEndText: TMemo;
     edqtObjectiveText1: TLabeledEdit;
     edqtObjectiveText2: TLabeledEdit;
     edqtObjectiveText3: TLabeledEdit;
@@ -323,10 +334,6 @@ type
     gbOther: TGroupBox;
     edqtEmoteOnIncomplete: TJvComboEdit;
     edqtEmoteOnComplete: TJvComboEdit;
-    edqtDetailsEmote1: TJvComboEdit;
-    edqtDetailsEmote2: TJvComboEdit;
-    edqtDetailsEmote3: TJvComboEdit;
-    edqtDetailsEmote4: TJvComboEdit;
     edqtOfferRewardEmote1: TJvComboEdit;
     edqtOfferRewardEmote2: TJvComboEdit;
     edqtOfferRewardEmote3: TJvComboEdit;
@@ -1357,10 +1364,6 @@ type
     edgeholidayStage: TLabeledEdit;
     edgtIconName: TLabeledEdit;
     Label2: TLabel;
-    edqtDetailsEmoteDelay1: TLabeledEdit;
-    edqtDetailsEmoteDelay2: TLabeledEdit;
-    edqtDetailsEmoteDelay3: TLabeledEdit;
-    edqtDetailsEmoteDelay4: TLabeledEdit;
     edqtOfferRewardEmoteDelay1: TLabeledEdit;
     edqtOfferRewardEmoteDelay2: TLabeledEdit;
     edqtOfferRewardEmoteDelay3: TLabeledEdit;
@@ -1658,6 +1661,7 @@ type
     edcqiItemId: TJvComboEdit;
     ItemId: TLabel;
     edcmInteractionPauseTimer: TLabeledEdit;
+
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -2699,15 +2703,17 @@ begin
 
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
-    if (MyQuery.Eof=false) then 
-		edqtDetailsEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
-		edqtDetailsEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
-		edqtDetailsEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
-		edqtDetailsEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
-		edqtDetailsEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
-		edqtDetailsEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
-		edqtDetailsEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqtDetailsEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+    if (MyQuery.Eof=false) then
+		edqdID.Text := MyQuery.FieldByName('ID').AsString;
+		edqdEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
+		edqdEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
+		edqdEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
+		edqdEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
+		edqdEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
+		edqdEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
+		edqdEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
+		edqdEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+		edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
@@ -2954,6 +2960,22 @@ begin
     s4 := Format('DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %1:s;'#13#10+
       'INSERT INTO `areatrigger_involvedrelation` (`id`, `quest`) VALUES (%0:s, %1:s);'#13#10,
       [edqtAreatrigger.Text, quest]);
+
+  // quest_details
+  if edqdID.Text<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_details', PFX_QUEST_DETAILS, meqtLog);
+   case SyntaxStyle of
+    ssInsertDelete: s5 := Format(#13#10+
+                      'DELETE FROM `quest_details` WHERE `ID` = %s;'#13#10+
+                      'INSERT INTO `quest_details` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, Fields, Values]);
+    ssReplace: s5 := Format(#13#10+
+                      'REPLACE INTO `quest_details` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s5 := MakeUpdate('quest_details', PFX_QUEST_DETAILS, 'ID', quest);
+   end;
+  end;
 
    // quest_template_addon
   Fields:= ''; Values:= '';
