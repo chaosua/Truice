@@ -1940,7 +1940,7 @@ object MainForm: TMainForm
               ScrollBars = ssVertical
               TabOrder = 2
             end
-            object edqtRewardText: TMemo
+            object edqorRewardText: TMemo
               Left = 5
               Top = 268
               Width = 275
@@ -1948,6 +1948,7 @@ object MainForm: TMainForm
               Hint = 
                 'Quest gossip text shown when turning in a quest where noitem del' +
                 'ivery is involveds.'
+              Color = clSkyBlue
               ScrollBars = ssVertical
               TabOrder = 3
             end
@@ -2070,6 +2071,19 @@ object MainForm: TMainForm
             EditLabel.Height = 13
             EditLabel.Caption = 'ID qri'
             TabOrder = 8
+            Text = ''
+          end
+          object edqorID: TLabeledEdit
+            Left = 847
+            Top = 356
+            Width = 60
+            Height = 21
+            Hint = 'quest_offer_reward ID = quest_template ID'
+            Color = clSkyBlue
+            EditLabel.Width = 29
+            EditLabel.Height = 13
+            EditLabel.Caption = 'ID qor'
+            TabOrder = 9
             Text = ''
           end
         end
@@ -4178,28 +4192,28 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'EmoOnComplete'
             end
-            object lbqtOfferRewardEmote1: TLabel
+            object lbqorOfferRewardEmote1: TLabel
               Left = 179
               Top = 50
               Width = 96
               Height = 13
               Caption = 'OfferRewardEmote1'
             end
-            object lbqtOfferRewardEmote2: TLabel
+            object lbqorOfferRewardEmote2: TLabel
               Left = 179
               Top = 90
               Width = 96
               Height = 13
               Caption = 'OfferRewardEmote2'
             end
-            object lbqtOfferRewardEmote3: TLabel
+            object lbqorOfferRewardEmote3: TLabel
               Left = 179
               Top = 129
               Width = 96
               Height = 13
               Caption = 'OfferRewardEmote3'
             end
-            object lbqtOfferRewardEmote4: TLabel
+            object lbqorOfferRewardEmote4: TLabel
               Left = 179
               Top = 170
               Width = 96
@@ -4446,13 +4460,14 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetEmote
             end
-            object edqtOfferRewardEmote1: TJvComboEdit
+            object edqorEmote1: TJvComboEdit
               Left = 179
               Top = 65
               Width = 90
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
+              Color = clSkyBlue
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4484,13 +4499,14 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetEmote
             end
-            object edqtOfferRewardEmote2: TJvComboEdit
+            object edqorEmote2: TJvComboEdit
               Left = 179
               Top = 105
               Width = 90
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
+              Color = clSkyBlue
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4522,13 +4538,14 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetEmote
             end
-            object edqtOfferRewardEmote3: TJvComboEdit
-              Left = 179
-              Top = 145
+            object edqorEmote3: TJvComboEdit
+              Left = 173
+              Top = 143
               Width = 90
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
+              Color = clSkyBlue
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4560,13 +4577,14 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = GetEmote
             end
-            object edqtOfferRewardEmote4: TJvComboEdit
+            object edqorEmote4: TJvComboEdit
               Left = 179
               Top = 185
               Width = 90
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
+              Color = clSkyBlue
               Glyph.Data = {
                 36030000424D3603000000000000360000002800000010000000100000000100
                 18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -4654,12 +4672,13 @@ object MainForm: TMainForm
               TabOrder = 13
               Text = ''
             end
-            object edqtOfferRewardEmoteDelay1: TLabeledEdit
+            object edqorEmoteDelay1: TLabeledEdit
               Left = 280
               Top = 65
               Width = 121
               Height = 21
               Hint = 'OfferRewardEmoteDelay1'
+              Color = clSkyBlue
               EditLabel.Width = 123
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay1'
@@ -4667,12 +4686,13 @@ object MainForm: TMainForm
               TabOrder = 16
               Text = ''
             end
-            object edqtOfferRewardEmoteDelay2: TLabeledEdit
+            object edqorEmoteDelay2: TLabeledEdit
               Left = 280
               Top = 105
               Width = 121
               Height = 21
               Hint = 'OfferRewardEmoteDelay2'
+              Color = clSkyBlue
               EditLabel.Width = 123
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay2'
@@ -4680,12 +4700,13 @@ object MainForm: TMainForm
               TabOrder = 15
               Text = ''
             end
-            object edqtOfferRewardEmoteDelay3: TLabeledEdit
+            object edqorEmoteDelay3: TLabeledEdit
               Left = 280
               Top = 145
               Width = 121
               Height = 21
               Hint = 'OfferRewardEmoteDelay3'
+              Color = clSkyBlue
               EditLabel.Width = 123
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay3'
@@ -4693,12 +4714,13 @@ object MainForm: TMainForm
               TabOrder = 14
               Text = ''
             end
-            object edqtOfferRewardEmoteDelay4: TLabeledEdit
+            object edqorEmoteDelay4: TLabeledEdit
               Left = 280
               Top = 185
               Width = 121
               Height = 21
               Hint = 'OfferRewardEmoteDelay4'
+              Color = clSkyBlue
               EditLabel.Width = 123
               EditLabel.Height = 13
               EditLabel.Hint = 'OfferRewardEmoteDelay4'
@@ -4730,6 +4752,19 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 19
+              Text = ''
+            end
+            object edqorVerifiedBuild: TLabeledEdit
+              Left = 179
+              Top = 30
+              Width = 60
+              Height = 21
+              Hint = 'PlayersSlain'
+              Color = clSkyBlue
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 20
               Text = ''
             end
           end

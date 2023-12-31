@@ -229,6 +229,29 @@ type
     edqtaProvidedItemCount: TLabeledEdit;
     edqtaSpecialFlags: TJvComboEdit;
 
+    //quest_mail_sender
+    edqmsRewardMailSenderEntry: TLabeledEdit;
+
+    edqtaRewardMailTemplateID: TLabeledEdit;
+    edqtaRewardMailDelay: TLabeledEdit;
+
+    //quest_offer_reward
+    edqorID: TLabeledEdit;
+    edqorEmote1: TJvComboEdit;
+    edqorEmote2: TJvComboEdit;
+    edqorEmote3: TJvComboEdit;
+    edqorEmote4: TJvComboEdit;
+    edqorEmoteDelay1: TLabeledEdit;
+    edqorEmoteDelay2: TLabeledEdit;
+    edqorEmoteDelay3: TLabeledEdit;
+    edqorEmoteDelay4: TLabeledEdit;
+    edqorRewardText: TMemo;
+    edqorVerifiedBuild: TLabeledEdit;
+    lbqorOfferRewardEmote1: TLabel;
+    lbqorOfferRewardEmote2: TLabel;
+    lbqorOfferRewardEmote3: TLabel;
+    lbqorOfferRewardEmote4: TLabel;
+
     //quest_template
     edqtId: TJvComboEdit;
     edqtRewardNextQuest: TJvComboEdit;
@@ -256,7 +279,6 @@ type
     edqtAreaDescription: TLabeledEdit;
     edqtQuestDescription: TMemo;
     edqtLogDescription: TMemo;
-    edqtRewardText: TMemo;
     edqtObjectiveText1: TLabeledEdit;
     edqtObjectiveText2: TLabeledEdit;
     edqtObjectiveText3: TLabeledEdit;
@@ -342,10 +364,6 @@ type
     edqtRewardFactionID4: TJvComboEdit;
     edqtRewardFactionID5: TJvComboEdit;
     gbOther: TGroupBox;
-    edqtOfferRewardEmote1: TJvComboEdit;
-    edqtOfferRewardEmote2: TJvComboEdit;
-    edqtOfferRewardEmote3: TJvComboEdit;
-    edqtOfferRewardEmote4: TJvComboEdit;
     gbAreatrigger: TGroupBox;
     lbAreatrigger: TLabel;
     edqtAreatrigger: TJvComboEdit;
@@ -1143,10 +1161,6 @@ type
     edcmrooted: TLabeledEdit;
     edcmChase: TLabeledEdit;
     edcmRandom: TLabeledEdit;
-    lbqtOfferRewardEmote1: TLabel;
-    lbqtOfferRewardEmote2: TLabel;
-    lbqtOfferRewardEmote3: TLabel;
-    lbqtOfferRewardEmote4: TLabel;
     lbcaemote: TLabel;
     edclequipment_id: TLabeledEdit;
     edclmodelid: TLabeledEdit;
@@ -1366,10 +1380,6 @@ type
     edgeholidayStage: TLabeledEdit;
     edgtIconName: TLabeledEdit;
     Label2: TLabel;
-    edqtOfferRewardEmoteDelay1: TLabeledEdit;
-    edqtOfferRewardEmoteDelay2: TLabeledEdit;
-    edqtOfferRewardEmoteDelay3: TLabeledEdit;
-    edqtOfferRewardEmoteDelay4: TLabeledEdit;
     editHolidayId: TLabeledEdit;
     edgtunk1: TLabeledEdit;
     gbGOQuestItems: TGroupBox;
@@ -1663,9 +1673,6 @@ type
     edcqiItemId: TJvComboEdit;
     ItemId: TLabel;
     edcmInteractionPauseTimer: TLabeledEdit;
-    edqtaRewardMailTemplateID: TLabeledEdit;
-    edqtaRewardMailDelay: TLabeledEdit;
-    edqmsRewardMailSenderEntry: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2696,16 +2703,18 @@ begin
 
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
-    if (MyQuery.Eof=false) then 
-		edqtOfferRewardEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
-		edqtOfferRewardEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
-		edqtOfferRewardEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
-		edqtOfferRewardEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
-		edqtOfferRewardEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
-		edqtOfferRewardEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
-		edqtOfferRewardEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqtOfferRewardEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
-		edqtRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+    if (MyQuery.Eof=false) then
+    edqorID.Text := MyQuery.FieldByName('ID').AsString;
+		edqorEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
+		edqorEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
+		edqorEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
+		edqorEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
+		edqorEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
+		edqorEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
+		edqorEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
+		edqorEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+		edqorRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+    edqorVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
@@ -3034,6 +3043,22 @@ begin
                       'REPLACE INTO `quest_request_items` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
     ssUpdate: s7 := MakeUpdate('quest_request_items', PFX_QUEST_REQUEST_ITEMS, 'ID', quest);
+   end;
+  end;
+
+  // quest_offer_reward
+  if edqorID.Text<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_offer_reward', PFX_QUEST_OFFER_REWARD, meqtLog);
+   case SyntaxStyle of
+    ssInsertDelete: s9 := Format(#13#10+
+                      'DELETE FROM `quest_offer_reward` WHERE `ID` = %s;'#13#10+
+                      'INSERT INTO `quest_offer_reward` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, Fields, Values]);
+    ssReplace: s9 := Format(#13#10+
+                      'REPLACE INTO `quest_offer_reward` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s9 := MakeUpdate('quest_offer_reward', PFX_QUEST_OFFER_REWARD, 'ID', quest);
    end;
   end;
 
