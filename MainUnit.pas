@@ -35,8 +35,20 @@ const
 
   WM_FREEQL = WM_USER + 1;
 
+  PFX_QUEST_DETAILS                 = 'qd';
+  PFX_QUEST_GREETING                = 'qg';    //for creature or GO
+  PFX_QUEST_GREETING_LOCALE         = 'qgloc';  //for creature or GO
+  PFX_QUEST_MAIL_SENDER             = 'qms';
+  PFX_QUEST_MONEY_REWARD            = 'qmr';
+  PFX_QUEST_OFFER_REWARD            = 'qor';
+  PFX_QUEST_OFFER_REWARD_LOCALE     = 'qorloc';
+  PFX_QUEST_POI                     = 'qp';
+  PFX_QUEST_POI_POINTS              = 'qpp';
+  PFX_QUEST_REQUEST_ITEMS           = 'qri';
+  PFX_QUEST_REQUEST_ITEMS_LOCALE    = 'qriloc';
   PFX_QUEST_TEMPLATE                = 'qt';
   PFX_QUEST_TEMPLATE_ADDON          = 'qta';
+  PFX_QUEST_TEMPLATE_LOCALE         = 'qtloc';
   PFX_CREATURE_TEMPLATE             = 'ct';
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
   PFX_CREATURE                      = 'cl';
@@ -173,11 +185,29 @@ type
     lbPrevQuestID: TLabel;
     lbNextQuestID: TLabel;
     lbRewardNextQuest: TLabel;
+
+    //quest_template_addon
+    edqtaID: TLabeledEdit;
+    edqtaMaxLevel: TLabeledEdit;
+    edqtaAllowableClasses: TJvComboEdit;
+    edqtaSourceSpellID: TJvComboEdit;
+    edqtaPrevQuestID: TJvComboEdit;
+    edqtaNextQuestID: TJvComboEdit;
+    edqtaExclusiveGroup: TLabeledEdit;
+    edqtaBreadcrumbForQuestId: TLabeledEdit;
+    edqtaRewardMailTemplateID: TLabeledEdit;
+    edqtaRewardMailDelay: TLabeledEdit;
+    edqtaRequiredSkillID: TJvComboEdit;
+    edqtaRequiredSkillPoints: TLabeledEdit;
+    edqtaRequiredMinRepFaction: TJvComboEdit;
+    edqtaRequiredMaxRepFaction: TJvComboEdit;
+    edqtaRequiredMinRepValue: TLabeledEdit;
+    edqtaRequiredMaxRepValue: TLabeledEdit;
+    edqtaProvidedItemCount: TLabeledEdit;
+    edqtaSpecialFlags: TJvComboEdit;
+
+    //quest_template
     edqtId: TJvComboEdit;
-    edqtPrevQuestID: TJvComboEdit;
-    edqtNextQuestID: TJvComboEdit;
-    edqtExclusiveGroup: TLabeledEdit;
-    edqtBreadcrumbForQuestId: TLabeledEdit;
     edqtRewardNextQuest: TJvComboEdit;
     gbQuestSorting: TGroupBox;
     gbFlags: TGroupBox;
@@ -189,15 +219,10 @@ type
     gbRequirementsBegin: TGroupBox;
     lbAllowableRaces: TLabel;
     lbRequiredMinRepFaction: TLabel;
-    edqtRequiredMinRepValue: TLabeledEdit;
-    edqtRequiredMinRepFaction: TJvComboEdit;
-    edqtAllowableRaces: TJvComboEdit;
     gbSource: TGroupBox;
     lbStartItem: TLabel;
     lbSourceSpellID: TLabel;
-    edqtProvidedItemCount: TLabeledEdit;
     edqtStartItem: TJvComboEdit;
-    edqtSourceSpellID: TJvComboEdit;
     gbDescription: TGroupBox;
     lDetails: TLabel;
     lObjectives: TLabel;
@@ -296,9 +321,6 @@ type
     edqtRewardFactionID4: TJvComboEdit;
     edqtRewardFactionID5: TJvComboEdit;
     gbOther: TGroupBox;
-    edqtPointX: TLabeledEdit;
-    edqtPointY: TLabeledEdit;
-    edqtPointOption: TLabeledEdit;
     edqtEmoteOnIncomplete: TJvComboEdit;
     edqtEmoteOnComplete: TJvComboEdit;
     edqtDetailsEmote1: TJvComboEdit;
@@ -1052,14 +1074,12 @@ type
     btDelQuestStarter: TSpeedButton;
     btAddQuestEnder: TSpeedButton;
     btDelQuestEnder: TSpeedButton;
-    edqtRequiredMaxRepFaction: TJvComboEdit;
-    edqtRequiredMaxRepValue: TLabeledEdit;
     lbRequiredMaxRepFaction: TLabel;
     UpDown2: TUpDown;
     UpDown1: TUpDown;
     edqtQuestLevel: TLabeledEdit;
     edqtMinLevel: TLabeledEdit;
-    edqtRequiredSkillPoints: TLabeledEdit;
+    edqtAllowableRaces: TJvComboEdit;
     nReconnect: TMenuItem;
     N3: TMenuItem;
     editspellppmRate_5: TLabeledEdit;
@@ -1234,7 +1254,6 @@ type
     lbillootmode: TLabel;
     lbidlootmode: TLabel;
     lbiplootmode: TLabel;
-    edqtSpecialFlags: TJvComboEdit;
     lbqtSpecialFlags: TLabel;
     edqtRequiredFactionValue1: TLabeledEdit;
     lbqtRequiredFactionId1: TLabel;
@@ -1272,17 +1291,13 @@ type
     edqtRewardSpell: TJvComboEdit;
     edqtRewardTitle: TLabeledEdit;
     edqtSuggestedGroupNum: TLabeledEdit;
-    edqtRequiredSkillID: TJvComboEdit;
     edqtQuestSortID: TJvComboEdit;
     rbqtQuestSort: TRadioButton;
     rbqtZoneID: TRadioButton;
-    edqtRewardMailTemplateID: TLabeledEdit;
-    edqtRewardMailDelay: TLabeledEdit;
     lbctflags_extra: TLabel;
     lbctdifficulty_entry_1: TLabel;
     edqtRewardHonor: TLabeledEdit;
     edqtRewardDisplaySpell: TLabeledEdit;
-    edqtMethod: TLabeledEdit;
     pmruwowhead: TMenuItem;
     nEditCreatureAI: TMenuItem;
     N4: TMenuItem;
@@ -1415,7 +1430,6 @@ type
     edcdpath_id: TLabeledEdit;
     edcdvisibilityDistanceType: TLabeledEdit;
     UpDown3: TUpDown;
-    edqtMaxLevel: TLabeledEdit;
     edqtQuestInfoID: TLabeledEdit;
     edqtRequiredFactionValue2: TLabeledEdit;
     edqtRequiredFactionId2: TJvComboEdit;
@@ -1616,7 +1630,6 @@ type
     edhtis_logout_resting: TCheckBox;
     edhtgrantableLevels: TLabeledEdit;
     lbRequiredSkillId: TLabel;
-    edqtAllowableClasses: TJvComboEdit;
     lbAllowableClasses: TLabel;
     editflagsCustom: TJvComboEdit;
     lbitflagsCustom: TLabel;
@@ -2018,8 +2031,8 @@ type
       SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
-    procedure edqtRequiredSkillIdChange(Sender: TObject);
-    procedure edqtRequiredSkillIdButtonClick(Sender: TObject);
+    procedure edqtaRequiredSkillIDChange(Sender: TObject);
+    procedure edqtaRequiredSkillIDButtonClick(Sender: TObject);
     procedure nEditCreatureAIClick(Sender: TObject);
     procedure btSmartAIAddClick(Sender: TObject);
     procedure btSmartAIUpdClick(Sender: TObject);
@@ -2641,24 +2654,25 @@ begin
 	// load data for quest from addon table
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_addon` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
-    if (MyQuery.Eof=false) then 
-		edqtMaxLevel.Text := MyQuery.FieldByName('MaxLevel').AsString;
-		edqtAllowableClasses.Text := MyQuery.FieldByName('AllowableClasses').AsString;
-		edqtSourceSpellID.Text := MyQuery.FieldByName('SourceSpellID').AsString;
-		edqtPrevQuestID.Text := MyQuery.FieldByName('PrevQuestID').AsString;
-		edqtNextQuestID.Text := MyQuery.FieldByName('NextQuestID').AsString;
-		edqtExclusiveGroup.Text := MyQuery.FieldByName('ExclusiveGroup').AsString;
-		edqtBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
-		edqtRewardMailTemplateID.Text := MyQuery.FieldByName('RewardMailTemplateID').AsString;
-		edqtRewardMailDelay.Text := MyQuery.FieldByName('RewardMailDelay').AsString;
-		edqtRequiredSkillID.Text := MyQuery.FieldByName('RequiredSkillID').AsString;
-		edqtRequiredSkillPoints.Text := MyQuery.FieldByName('RequiredSkillPoints').AsString;
-		edqtRequiredMinRepFaction.Text := MyQuery.FieldByName('RequiredMinRepFaction').AsString;
-		edqtRequiredMaxRepFaction.Text := MyQuery.FieldByName('RequiredMaxRepFaction').AsString;
-		edqtRequiredMinRepValue.Text := MyQuery.FieldByName('RequiredMinRepValue').AsString;
-		edqtRequiredMaxRepValue.Text := MyQuery.FieldByName('RequiredMaxRepValue').AsString;
-		edqtProvidedItemCount.Text := MyQuery.FieldByName('ProvidedItemCount').AsString;
-		edqtSpecialFlags.Text := MyQuery.FieldByName('SpecialFlags').AsString;
+    if (MyQuery.Eof=false) then
+    edqtaID.Text := MyQuery.FieldByName('ID').AsString;
+		edqtaMaxLevel.Text := MyQuery.FieldByName('MaxLevel').AsString;
+		edqtaAllowableClasses.Text := MyQuery.FieldByName('AllowableClasses').AsString;
+		edqtaSourceSpellID.Text := MyQuery.FieldByName('SourceSpellID').AsString;
+		edqtaPrevQuestID.Text := MyQuery.FieldByName('PrevQuestID').AsString;
+		edqtaNextQuestID.Text := MyQuery.FieldByName('NextQuestID').AsString;
+		edqtaExclusiveGroup.Text := MyQuery.FieldByName('ExclusiveGroup').AsString;
+		edqtaBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
+		edqtaRewardMailTemplateID.Text := MyQuery.FieldByName('RewardMailTemplateID').AsString;
+		edqtaRewardMailDelay.Text := MyQuery.FieldByName('RewardMailDelay').AsString;
+		edqtaRequiredSkillID.Text := MyQuery.FieldByName('RequiredSkillID').AsString;
+		edqtaRequiredSkillPoints.Text := MyQuery.FieldByName('RequiredSkillPoints').AsString;
+		edqtaRequiredMinRepFaction.Text := MyQuery.FieldByName('RequiredMinRepFaction').AsString;
+		edqtaRequiredMaxRepFaction.Text := MyQuery.FieldByName('RequiredMaxRepFaction').AsString;
+		edqtaRequiredMinRepValue.Text := MyQuery.FieldByName('RequiredMinRepValue').AsString;
+		edqtaRequiredMaxRepValue.Text := MyQuery.FieldByName('RequiredMaxRepValue').AsString;
+		edqtaProvidedItemCount.Text := MyQuery.FieldByName('ProvidedItemCount').AsString;
+		edqtaSpecialFlags.Text := MyQuery.FieldByName('SpecialFlags').AsString;
     MyQuery.Close;
 
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=%d', [QuestID]);
@@ -2870,7 +2884,7 @@ end;
 
 procedure TMainForm.CompleteScript;
 var
-  s1, s2, s3, s4, Script, quest,
+  s1, s2, s3, s4, s5, s6, s7, s8, s9 ,s10, Script, quest,
   Fields, Values: string;
   who, id: string;
   i: integer;
@@ -2940,7 +2954,24 @@ begin
     s4 := Format('DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %1:s;'#13#10+
       'INSERT INTO `areatrigger_involvedrelation` (`id`, `quest`) VALUES (%0:s, %1:s);'#13#10,
       [edqtAreatrigger.Text, quest]);
-  Script := s1+s2+s3+s4;
+
+   // quest_template_addon
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_template_addon', PFX_QUEST_TEMPLATE_ADDON, meqtLog);
+  case SyntaxStyle of
+    ssInsertDelete: s6 := Format(#13#10+
+                      'DELETE FROM `quest_template_addon` WHERE `ID` = %s;'#13#10+
+                      'INSERT INTO `quest_template_addon` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, Fields, Values]);
+    ssReplace: s6 := Format(#13#10+
+                      'REPLACE INTO `quest_template_addon` (%s) VALUES (%s);'#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s6 := MakeUpdate('quest_template_addon', PFX_QUEST_TEMPLATE_ADDON, 'ID', quest);
+  end;
+
+
+  //Add all scripts together
+  Script := s1+s2+s4+s5+s6+s7+s8+s9+s10+s3;
   meqtScript.Text := Script;
 end;
 
@@ -3052,7 +3083,7 @@ begin
   GetSomeFlags(Sender, 'SpecialFlags');
 end;
 
-procedure TMainForm.edqtRequiredSkillIdButtonClick(Sender: TObject);
+procedure TMainForm.edqtaRequiredSkillIDButtonClick(Sender: TObject);
 begin
   {if rbqtSkill.Checked then
     GetSkill(Sender)
@@ -3061,7 +3092,7 @@ begin
   }
 end;
 
-procedure TMainForm.edqtRequiredSkillIdChange(Sender: TObject);
+procedure TMainForm.edqtaRequiredSkillIDChange(Sender: TObject);
 begin
   {
   if StrToIntDef(edqtSkillOrClassMask.Text,0)>=0 then rbqtSkill.Checked := true else
@@ -7098,7 +7129,7 @@ begin
       end;
     end;
     if sets<>'' then
-      Result := Format('UPDATE `%s` %s WHERE `%s` = %s;',[tn, sets, KeyName, KeyValue])
+      Result := Format('UPDATE `%s` %s WHERE `%s` = %s;'#13#10,[tn, sets, KeyName, KeyValue])
   end;
   MyTempQuery.Close;
 end;
