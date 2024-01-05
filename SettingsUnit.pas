@@ -97,6 +97,7 @@ begin
     sT: rgSite.ItemIndex:=2;
     sA: rgSite.ItemIndex:=3;
     sD: rgSite.ItemIndex:=4;
+    sWr: rgSite.ItemIndex:=5;
   end;
   LoadLanguages;
 
@@ -209,6 +210,7 @@ begin
     2: dmMain.Site:=sT;
     3: dmMain.Site:=sA;
     4: dmMain.Site:=sD;
+    5: dmMain.Site:=sWr;
   end;
   dmMain.Language:=cbxLanguage.Text;
   dmMain.IsAutoUpdates := cbAutomaticCheckForUpdates.Checked;

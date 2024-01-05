@@ -28,6 +28,7 @@ btEditCreatureOrGO=Править
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [ITEM]
 Caption=Предмет
@@ -42,6 +43,7 @@ btSearch=Найти
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [ITEMLOOT]
 Caption=Добывается из
@@ -127,6 +129,7 @@ btEdit=Править
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [CUSTOM]
 TEXT1=Предмет не может быть получателем квеста
@@ -1300,6 +1303,7 @@ nBrowseGO=На сайт
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 nEditItem=Править Item
 nDeleteItem=Удалить Item
 nBrowseItem=На сайт

@@ -436,7 +436,8 @@ object SettingsForm: TSettingsForm
             'ru.wowhead (http://ru.wowhead.com/)'
             'thottbot (http://thottbot.com/)'
             'allakhazam (http://wow.allakhazam.com/)'
-            'wowdb (http://www.wowdb.com/)')
+            'wowdb (http://www.wowdb.com/)'
+            'wowroad (http://wowroad.info/)')
           TabOrder = 0
         end
       end

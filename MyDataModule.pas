@@ -13,7 +13,7 @@ const
 
 type
   TType = (ttNPC, ttItem, ttObject, ttQuest, ttChar);
-  TSite = (sW, sRW, sA, sT, sD);
+  TSite = (sW, sRW, sA, sT, sD, sWr);
 
   TdmMain = class(TDataModule)
     ActionList: TActionList;
@@ -54,6 +54,7 @@ type
     procedure thottbot(T: TType; id: integer);
     procedure allakhazam(T: TType; id: integer);
     procedure wowdb(T: TType; id: integer);
+    procedure wowroad(T: TType; id: integer);
 
     procedure Init;
 
@@ -102,6 +103,7 @@ begin
     sA: allakhazam(T, id);
     sT: thottbot(T, id);
     sD: wowdb(T, id);
+    sWr: wowroad(T, id);
   end;
 end;
 
@@ -175,6 +177,21 @@ begin
     ttItem:    url := Format('http://ru.wowhead.com/?item=%d',[id]);
     ttObject:  url := Format('http://ru.wowhead.com/?object=%d',[id]);
     ttQuest:   url := Format('http://ru.wowhead.com/?quest=%d',[id]);
+  end;
+  BrowseURL.URL:=url;
+  BrowseURL.Execute;
+end;
+
+procedure TdmMain.wowroad(T: TType; id: integer);
+var
+  url: string;
+begin
+  id:=abs(id);
+  case T of
+    ttNPC:     url := Format('http://wowroad.info/?npc=%d',[id]);
+    ttItem:    url := Format('http://wowroad.info/?item==%d',[id]);
+    ttObject:  url := Format('http://wowroad.info/?object=%d',[id]);
+    ttQuest:   url := Format('http://wowroad.info/?quest=%d',[id]);
   end;
   BrowseURL.URL:=url;
   BrowseURL.Execute;

@@ -10,6 +10,7 @@ btEditCreatureOrGO=Edit
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [GETGUID]
 Caption=Ukázat GUID gameobjectu
@@ -61,6 +62,7 @@ btSearch=Hledat
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [ITEMPAGE]
 Caption=ItemPage
@@ -87,6 +89,7 @@ btEdit=Edit
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [CHECK]
 Caption=Kontrola Questu
@@ -1498,6 +1501,7 @@ nBrowseGO=Procházet web
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 nEditItem=Upravit Item
 nDeleteItem=Smazat Item
 nBrowseItem=Procházet web

@@ -189,6 +189,8 @@ begin
         dmMain.thottbot(ttItem, StrToInt(lvItem.Selected.Caption));
     if TMenuItem(Sender).Name='pmwowdb' then
         dmMain.wowdb(ttItem, StrToInt(lvItem.Selected.Caption));
+    if TMenuItem(Sender).Name='pmwowroad' then
+        dmMain.wowroad(ttItem, StrToInt(lvItem.Selected.Caption));
   end;
 end;
 

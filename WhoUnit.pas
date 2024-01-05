@@ -236,6 +236,8 @@ begin
         dmMain.thottbot(par, StrToInt(lvWho.Selected.Caption));
     if TMenuItem(Sender).Name='pmwowdb' then
         dmMain.wowdb(par, StrToInt(lvWho.Selected.Caption));
+    if TMenuItem(Sender).Name='pmwowroad' then
+        dmMain.wowroad(par, StrToInt(lvWho.Selected.Caption));
   end;
 end;
 

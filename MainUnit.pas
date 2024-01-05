@@ -1673,6 +1673,7 @@ type
     edcqiItemId: TJvComboEdit;
     ItemId: TLabel;
     edcmInteractionPauseTimer: TLabeledEdit;
+    pmwowroad: TMenuItem;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -3848,6 +3849,8 @@ begin
        sRW: WriteInteger('Site', 1);
        sT: WriteInteger('Site', 2);
        sA: WriteInteger('Site', 3);
+       sD: WriteInteger('Site', 4);
+       sWr: WriteInteger('Site', 5);
      end;
   finally
     Free;
@@ -3886,6 +3889,8 @@ begin
       1: dmMain.Site := sRW;
       2: dmMain.Site := sT;
       3: dmMain.Site := sA;
+      4: dmMain.Site := sD;
+      5: dmMain.Site := sWr;
     end;
   end;
 end;
@@ -7123,6 +7128,8 @@ begin
         dmMain.thottbot(par, StrToInt(lvList.Selected.Caption));
     if TMenuItem(Sender).Name = 'pmwowdb' then
         dmMain.wowdb(par, StrToInt(lvList.Selected.Caption));
+    if TMenuItem(Sender).Name = 'pmwowroad' then
+        dmMain.wowroad(par, StrToInt(lvList.Selected.Caption));
   end;
 end;
 

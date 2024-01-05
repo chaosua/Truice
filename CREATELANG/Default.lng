@@ -27,6 +27,7 @@ pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
 pmwowdb=wowdb
+pmwowroad=wowroad
 
 [GETGUID]
 Caption=Get GUID for gameobject
@@ -51,6 +52,7 @@ pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
 pmwowdb=wowdb
+pmwowroad=wowroad
 
 [ITEMLOOT]
 Caption=Item Loot
@@ -146,6 +148,7 @@ pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
 pmwowdb=wowdb
+pmwowroad=wowroad
 
 [CUSTOM]
 TEXT1=Item cannot be a quest taker
@@ -1555,6 +1558,7 @@ pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
 pmwowdb=wowdb
+pmwowroad=wowroad
 nEditItem=Edit Item
 nDeleteItem=Delete Item
 nBrowseItem=Browse Site

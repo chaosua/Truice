@@ -28472,6 +28472,10 @@ object MainForm: TMainForm
       Caption = 'wowdb'
       OnClick = pmSiteClick
     end
+    object pmwowroad: TMenuItem
+      Caption = 'woworoad'
+      OnClick = pmSiteClick
+    end
   end
   object pmItem: TPopupMenu
     Left = 345

@@ -28,6 +28,7 @@ btEditCreatureOrGO=Bearbeiten
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [ITEM]
 Caption=Gegenstand
@@ -42,6 +43,7 @@ btSearch=Suchen
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [ITEMLOOT]
 Caption=Gegenstands Beute
@@ -118,6 +120,7 @@ btEdit=Bearbeiten
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 
 [CUSTOM]
 TEXT1=Gegenstand kann kein QuestGeber sein
@@ -1146,6 +1149,7 @@ nBrowseGO=Browse Site
 pmwowhead=wowhead
 pmthottbot=thottbot
 pmallakhazam=allakhazam
+pmwowroad=wowroad
 nEditItem=Bearbeite Gegenstand
 nDeleteItem=Lösche Gegenstand
 nBrowseItem=Browse Site
