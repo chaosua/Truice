@@ -54,6 +54,7 @@ const
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
   PFX_CREATURE                      = 'cl';
   PFX_CREATURE_ADDON                = 'ca';
+  PFX_CREATURE_QUESTITEM            = 'cqi';
   PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
   PFX_CREATURE_EQUIP_TEMPLATE       = 'ce';
   PFX_CREATURE_MODEL_INFO           = 'ci';
@@ -1667,6 +1668,21 @@ type
     edqtaRewardMailDelay: TLabeledEdit;
     edqmsRewardMailSenderEntry: TLabeledEdit;
 
+    // Creature Quest_Item tab
+    tsQuestItem: TTabSheet;
+    Label11: TLabel;
+    lvcqiCreatureQuestItem: TJvListView;
+    edcqiCreatureEntry: TLabeledEdit;
+    edcqiIdx: TLabeledEdit;
+    edcqiItemId: TJvComboEdit;
+    ItemId: TLabel;
+    edcqiVerifiedBuild: TLabeledEdit;
+    btCreatureQuestItemAdd: TSpeedButton;
+    btCreatureQuestItemUpd: TSpeedButton;
+    btCreatureQuestItemDel: TSpeedButton;
+    btShowQuestItemScript: TButton;
+    btFullQuestItemScript: TButton;
+
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -2083,6 +2099,19 @@ type
     procedure ScriptAdd(pfx: string; lvList: TJvListView);
     procedure ScriptDel(lvList: TJvListView);
     procedure ScriptUpd(pfx: string; lvList: TJvListView);
+
+    // Creature Quest Item tab begin
+    procedure btCreatureQuestItemAddClick(Sender: TObject);
+    procedure btCreatureQuestItemUpdClick(Sender: TObject);
+    procedure btCreatureQuestItemDelClick(Sender: TObject);
+    procedure lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
+    procedure lvcqiCreatureQuestItemSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btFullQuestItemScriptClick(Sender: TObject);
+//    procedure LoadCreatureQuestItem(Entry: integer);
+    procedure CompleteCreatureQuestItemScript;
+    // Creature Quest Item tab end
 
   private
     { Private declarations }
@@ -3588,10 +3617,11 @@ begin
            ((Pos('ed'+s+'v',Components[i].Name)=1) or (Pos('ed'+s+'p',Components[i].Name)=1) or (Pos('ed'+s+'a',Components[i].Name)=1)  or
            (Pos('ed'+s+'g',Components[i].Name)=1)  or (Pos('ed'+s+'x',Components[i].Name)=1)  or (Pos('ed'+s+'m',Components[i].Name)=1)  or
            (Pos('ed'+s+'s',Components[i].Name)=1) or (Pos('ed'+s+'r',Components[i].Name)=1) or (Pos('ed'+s+'i',Components[i].Name)=1) or
-           (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1)) then
+           (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1)) then
              TCustomEdit(Components[i]).Clear;
-        if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or (Pos('lv'+s+'m',Components[i].Name)=1)) then
-          TCustomListView(Components[i]).Clear;
+        if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or
+           (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1)) then
+             TCustomListView(Components[i]).Clear;
     end;
     if s='i' then
     begin
@@ -4526,6 +4556,9 @@ begin
      ' slt LEFT OUTER JOIN `item_template` i ON i.`entry` = slt.`Item`'+
      ' WHERE (slt.`Entry`=%d)',[StrToIntDef(edctskinloot.Text,0)]), lvcoSkinLoot);
 
+    LoadQueryToListView(Format('SELECT `CreatureEntry`, `idx`, `itemId`, `VerifiedBuild` FROM `creature_questitem` WHERE (`CreatureEntry`=%d)',
+     [Entry]),lvcqiCreatureQuestItem);
+
     if (isvendor=true) then 
 	begin
 		LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
@@ -4793,12 +4826,15 @@ begin
     7: CompleteSkinLootScript;
     8: CompleteNPCVendorScript;
     9: CompleteNPCTrainerScript;
-	10: CompleteCreatureTextScript;
+    10: CompleteCreatureTextScript;
     11: CompleteCreatureTemplateAddonScript;
     12: CompleteCreatureAddonScript;
     13: CompleteCreatureTemplateMovementScript;
     14: CompleteCreatureOnKillReputationScript;
     15: {involved in tab - do nothing};
+    16: {smartAi tab - do nothing};
+    17: {script tab - do nothing};
+    18: CompleteCreatureQuestItemScript;
   end;
 end;
 
@@ -6842,7 +6878,7 @@ begin
       tmp := StringReplace(tmp,'''','\''', [rfReplaceAll]);
 
       // if tmp is not number
-      if not IsNumber(tmp) then
+      if (tmp<>'NULL') AND (not IsNumber(tmp)) then
       begin
         if Values='' then Values := Format('''%s''',[tmp])
         else Values := Format('%s, ''%s''',[Values,tmp]);
@@ -8130,6 +8166,132 @@ begin
   btTrainerUpd.Enabled := Assigned(TJvListView(Sender).Selected);
   btTrainerDel.Enabled := Assigned(TJvListView(Sender).Selected);
 end;
+
+// -- creature_questitem
+procedure TMainForm.btCreatureQuestItemAddClick(Sender: TObject);
+begin
+  with lvcqiCreatureQuestItem.Items.Add do
+  begin
+    Caption := edcqiCreatureEntry.Text;
+    SubItems.Add(edcqiIdx.Text);
+    SubItems.Add(edcqiItemID.Text);
+    SubItems.Add(edcqiVerifiedBuild.Text);
+  end;
+end;
+
+procedure TMainForm.btCreatureQuestItemUpdClick(Sender: TObject);
+begin
+  if Assigned(lvcqiCreatureQuestItem.Selected) then
+  begin
+    with lvcqiCreatureQuestItem.Selected do
+    begin
+      Caption := edcqiCreatureEntry.Text;
+      SubItems[0] := edcqiIdx.Text;
+      SubItems[1] := edcqiItemID.Text;
+      SubItems[2] := edcqiVerifiedBuild.Text;
+    end;
+  end;
+end;
+
+procedure TMainForm.btCreatureQuestItemDelClick(Sender: TObject);
+begin
+if Assigned(lvcqiCreatureQuestItem.Selected) then
+    lvcqiCreatureQuestItem.DeleteSelected;
+end;
+
+procedure TMainForm.btFullQuestItemScriptClick(Sender: TObject);
+var
+  i: integer;
+  entry, Values: string;
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+  entry := edcqiCreatureEntry.Text;
+  mectScript.Clear;
+  Values := '';
+  if lvcqiCreatureQuestItem.Items.Count<>0 then
+  begin
+    for i := 0 to lvcqiCreatureQuestItem.Items.Count - 2 do
+    begin
+      if lvcqiCreatureQuestItem.Items[i].SubItems[2]='' then lvcqiCreatureQuestItem.Items[i].SubItems[2] := '0';
+      Values := Values + Format('(%s, %s, %s, %s),'#13#10,[
+        lvcqiCreatureQuestItem.Items[i].Caption,
+        lvcqiCreatureQuestItem.Items[i].SubItems[0],
+        lvcqiCreatureQuestItem.Items[i].SubItems[1],
+        lvcqiCreatureQuestItem.Items[i].SubItems[2]
+      ]);
+    end;
+    i := lvcqiCreatureQuestItem.Items.Count - 1;
+    if lvcqiCreatureQuestItem.Items[i].SubItems[2]='' then lvcqiCreatureQuestItem.Items[i].SubItems[2] := '0';
+    Values := Values + Format('(%s, %s, %s, %s);',[
+        lvcqiCreatureQuestItem.Items[i].Caption,
+        lvcqiCreatureQuestItem.Items[i].SubItems[0],
+        lvcqiCreatureQuestItem.Items[i].SubItems[1],
+        lvcqiCreatureQuestItem.Items[i].SubItems[2]
+    ]);
+  end;
+
+  if Values<>'' then
+  begin
+    mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE `CreatureEntry`= %s ;'#13#10+
+    'INSERT INTO `creature_questitem` (CreatureEntry, Idx, ItemId, VerifiedBuild) VALUES '#13#10'%s ',
+     [entry, Values])
+  end
+  else
+    mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE `CreatureEntry`= %s;',[entry]);
+end;
+
+procedure TMainForm.lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+  btCreatureQuestItemUpd.Enabled := Assigned(TJvListView(Sender).Selected);
+  btCreatureQuestItemDel.Enabled := Assigned(TJvListView(Sender).Selected);
+end;
+
+procedure TMainForm.lvcqiCreatureQuestItemSelectItem(Sender: TObject;
+  Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    with TJvListView(Sender).Selected do
+    begin
+      edcqiCreatureEntry.Text := Caption;
+      edcqiIdx.Text := SubItems[0];
+      edcqiItemID.Text := SubItems[1];
+      edcqiVerifiedBuild.Text := SubItems[2];
+    end;
+  end;
+end;
+
+{procedure TMainForm.LoadCreatureQuestItem(Entry: integer);
+begin
+  if Entry<1 then Exit;
+  MyQuery.SQL.Text := Format('SELECT * FROM `creature_questitem` WHERE (`CreatureEntry`= %d)',[Entry]);
+  MyQuery.Open;
+  try
+    FillFields(MyQuery, PFX_CREATURE_QUESTITEM);
+    if edcqiVerifiedBuild.Text=''  then  edcqiVerifiedBuild.Text:='NULL';
+
+    MyQuery.Close;
+  except
+    on E: Exception do
+      raise Exception.Create(dmMain.Text[159]+#10#13+E.Message);
+  end;
+end;
+}
+
+procedure TMainForm.CompleteCreatureQuestItemScript;
+var
+  entry, itemid, Fields, Values: string;
+begin
+  mectLog.Clear;
+  entry :=  edcqiCreatureEntry.Text;
+  itemid :=  edcqiItemId.Text;
+  if (entry='') or (itemid='') or (edcqiIdx.Text='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'creature_questitem', PFX_CREATURE_QUESTITEM, mectLog);
+  mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE (`CreatureEntry`=%s) AND (`ItemId`=%s);'#13#10+
+   'INSERT INTO `creature_questitem` (%s) VALUES (%s);'#13#10,[entry, itemid, Fields, Values])
+end;
+// -- creature_questitem
 
 procedure TMainForm.edSearchItemChange(Sender: TObject);
 begin
