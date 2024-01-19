@@ -5943,7 +5943,8 @@ begin
   if (coentry='') or (coitem='') then Exit;
   SetFieldsAndValues(Fields, Values, 'creature_loot_template', PFX_CREATURE_LOOT_TEMPLATE, mectLog);
   mectScript.Text := Format('DELETE FROM `creature_loot_template` WHERE (`entry`=%s) AND (`item`=%s);'#13#10+
-    'INSERT INTO `creature_loot_template` (%s) VALUES (%s);'#13#10,[coentry, coitem, Fields, Values])
+    'INSERT INTO `creature_loot_template` (%s) VALUES '#13#10+
+    '(%s);'#13#10,[coentry, coitem, Fields, Values])
 end;
 
 procedure TMainForm.CompletePickpocketLootScript;
@@ -5956,7 +5957,8 @@ begin
   if (cpEntry='') or (cpItem='') then Exit;
   SetFieldsAndValues(Fields, Values, 'pickpocketing_loot_template', PFX_PICKPOCKETING_LOOT_TEMPLATE, mectLog);
   mectScript.Text := Format('DELETE FROM `pickpocketing_loot_template` WHERE (`Entry`=%s) AND (`Item`=%s);'#13#10+
-   'INSERT INTO `pickpocketing_loot_template` (%s) VALUES (%s);'#13#10,[cpEntry, cpItem, Fields, Values])
+   'INSERT INTO `pickpocketing_loot_template` (%s) VALUES '#13#10+
+   '(%s);'#13#10,[cpEntry, cpItem, Fields, Values])
 end;
 
 procedure TMainForm.CompleteSkinLootScript;
@@ -5969,7 +5971,8 @@ begin
   if (csentry='') or (csitem='') then Exit;
   SetFieldsAndValues(Fields, Values, 'skinning_loot_template', PFX_SKINNING_LOOT_TEMPLATE, mectLog);
   mectScript.Text := Format('DELETE FROM `skinning_loot_template` WHERE (`Entry`=%s) AND (`Item`=%s);'#13#10+
-    'INSERT INTO `skinning_loot_template` (%s) VALUES (%s);'#13#10,[csentry, csitem, Fields, Values])
+    'INSERT INTO `skinning_loot_template` (%s) VALUES '#13#10+
+    '(%s);'#13#10,[csentry, csitem, Fields, Values])
 end;
 
 function TMainForm.Connect: boolean;
@@ -8210,7 +8213,8 @@ begin
   if (trainerentry='') or (trainerspell='') then Exit;
   SetFieldsAndValues(Fields, Values, 'trainer_spell', PFX_NPC_TRAINER, mectLog);
   mectScript.Text := Format('DELETE FROM `trainer_spell` WHERE (`TrainerId`=%s) AND (`SpellId`=%s);'#13#10+
-   'INSERT INTO `trainer_spell` (%s) VALUES (%s);'#13#10,[trainerentry, trainerspell, Fields, Values])
+   'INSERT INTO `trainer_spell` (%s) VALUES '#13#10+
+   '(%s);'#13#10,[trainerentry, trainerspell, Fields, Values])
 end;
 
 // -trainer_spell
