@@ -1653,6 +1653,7 @@ type
     edcmInteractionPauseTimer: TLabeledEdit;
     edctspell_school_immune_mask: TJvComboEdit;
     lbctspell_school_immune_mask: TLabel;
+    edclComment: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
