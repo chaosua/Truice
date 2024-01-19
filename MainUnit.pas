@@ -8323,15 +8323,16 @@ end;
 
 procedure TMainForm.CompleteCreatureQuestItemScript;
 var
-  entry, itemid, Fields, Values: string;
+  entry, itemidx, Fields, Values: string;
 begin
   mectLog.Clear;
   entry :=  edcqiCreatureEntry.Text;
-  itemid :=  edcqiItemId.Text;
-  if (entry='') or (itemid='') or (edcqiIdx.Text='') then Exit;
+  itemidx :=  edcqiIdx.Text;
+  if (entry='') or (itemidx='') then Exit;
   SetFieldsAndValues(Fields, Values, 'creature_questitem', PFX_CREATURE_QUESTITEM, mectLog);
-  mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE (`CreatureEntry`=%s) AND (`ItemId`=%s);'#13#10+
-   'INSERT INTO `creature_questitem` (%s) VALUES (%s);'#13#10,[entry, itemid, Fields, Values])
+  mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE (`CreatureEntry`=%s) AND (`Idx`=%s);'#13#10+
+   'INSERT INTO `creature_questitem` (%s) VALUES '#13#10+
+   '(%s);'#13#10,[entry, itemid, Fields, Values])
 end;
 // -- creature_questitem
 
