@@ -2119,7 +2119,7 @@ object AboutBox: TAboutBox
         Width = 117
         Height = 15
         AutoSize = False
-        Caption = #169' chaosua, 2023-'
+        Caption = #169' chaosua, 2023-2024'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clGray
         Font.Height = -11
@@ -2146,7 +2146,7 @@ object AboutBox: TAboutBox
       end
     end
     object OKButton: TButton
-      Left = 308
+      Left = 304
       Top = 261
       Width = 75
       Height = 25
@@ -2156,7 +2156,7 @@ object AboutBox: TAboutBox
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 304
+      ExplicitLeft = 300
       ExplicitTop = 260
     end
   end
