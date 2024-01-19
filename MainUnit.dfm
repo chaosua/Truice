@@ -8702,7 +8702,7 @@ object MainForm: TMainForm
                 Width = 80
               end
               item
-                Caption = 'DisplayOD_Other_Gender'
+                Caption = 'DisplayID_Other_Gender'
                 Width = 135
               end>
             HideSelection = False
