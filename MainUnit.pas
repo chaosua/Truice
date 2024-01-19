@@ -5900,7 +5900,7 @@ begin
   if Values<>'' then
   begin
     mectScript.Text := Format('DELETE FROM `creature_equip_template` WHERE `CreatureID`= %s ;'#13#10+
-    'INSERT INTO `creature_questitem` (CreatureID, IID, ItemID1, ItemID2, ItemID3, VerifiedBuild) VALUES '#13#10'%s ',
+    'INSERT INTO `creature_equip_template` (CreatureID, IID, ItemID1, ItemID2, ItemID3, VerifiedBuild) VALUES '#13#10'%s ',
      [entry, Values])
   end
   else
@@ -8427,7 +8427,7 @@ begin
   mectLog.Clear;
   entry :=  edcqiCreatureEntry.Text;
   itemidx :=  edcqiIdx.Text;
-  if (entry='') or (itemidx='') or (edcqiIdx.Text='') then Exit;
+  if (entry='') or (itemidx='') then Exit;
   SetFieldsAndValues(Fields, Values, 'creature_questitem', PFX_CREATURE_QUESTITEM, mectLog);
   mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE (`CreatureEntry`=%s) AND (`Idx`=%s);'#13#10+
    'INSERT INTO `creature_questitem` (%s) VALUES '#13#10+
