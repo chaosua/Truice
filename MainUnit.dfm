@@ -13823,7 +13823,7 @@ object MainForm: TMainForm
         Top = 6
         Width = 884
         Height = 650
-        ActivePage = tsGOLocation
+        ActivePage = tsEditGO
         Align = alClient
         TabOrder = 1
         object tsSearchGO: TTabSheet
@@ -14912,14 +14912,14 @@ object MainForm: TMainForm
             Height = 230
             Caption = 'Gameobgect Template Addon'
             TabOrder = 3
-            object lbgtfaction: TLabel
+            object lbgotafaction: TLabel
               Left = 7
               Top = 55
               Width = 32
               Height = 13
               Caption = 'faction'
             end
-            object lbgtflags: TLabel
+            object lbgotaflags: TLabel
               Left = 128
               Top = 55
               Width = 22
