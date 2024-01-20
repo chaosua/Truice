@@ -72,6 +72,8 @@ const
   PFX_GAMEOBJECT_TEMPLATE           = 'gt';
   PFX_GAME_EVENT                    = 'ge';
   PFX_GAMEOBJECT                    = 'gl';
+  PFX_GAMEOBJECT_TEMPLATE_ADDON     = 'gota';
+  PFX_GAMEOBJECT_QUEST_ITEM         = 'goqi';
   PFX_GAMEOBJECT_LOOT_TEMPLATE      = 'go';
   PFX_ITEM_TEMPLATE                 = 'it';
   PFX_ITEM_LOOT_TEMPLATE            = 'il';
@@ -567,15 +569,12 @@ type
     tsEditGO: TTabSheet;
     gbGO1: TGroupBox;
     lbgtentry: TLabel;
-    lbgtfaction: TLabel;
     lbgttype: TLabel;
     edgtentry: TJvComboEdit;
-    edgtflags: TJvComboEdit;
     edgtname: TLabeledEdit;
     edgtdisplayId: TLabeledEdit;
     edgtsize: TLabeledEdit;
     edgtScriptName: TLabeledEdit;
-    edgtfaction: TJvComboEdit;
     edgttype: TJvComboEdit;
     btScriptGOTemplate: TButton;
     gbGOsounds: TGroupBox;
@@ -1236,7 +1235,6 @@ type
     lbctunit_flags2: TLabel;
     lbcttype_flags: TLabel;
     lbctdynamicflags: TLabel;
-    lbgtflags: TLabel;
     lbctMovementType: TLabel;
     linkSmartAIInfo: TLabel;
     linkConditionInfo: TLabel;
@@ -1347,13 +1345,11 @@ type
 
     editHolidayId: TLabeledEdit;
     edgtunk1: TLabeledEdit;
-    gbGOQuestItems: TGroupBox;
-    edgtquestItem1: TLabeledEdit;
-    edgtquestItem2: TLabeledEdit;
-    edgtquestItem3: TLabeledEdit;
-    edgtquestItem4: TLabeledEdit;
-    edgtquestItem5: TLabeledEdit;
-    edgtquestItem6: TLabeledEdit;
+    gbGOTemplateAddom: TGroupBox;
+    edgotaentry: TLabeledEdit;
+    edgotaartkit0: TLabeledEdit;
+    edgotamingold: TLabeledEdit;
+    edgotaartkit1: TLabeledEdit;
     editFlagsExtra: TLabeledEdit;
     edqtRequiredItemId5: TJvComboEdit;
     edqtRequiredItemCount5: TLabeledEdit;
@@ -1690,6 +1686,14 @@ type
     btShowwFullCreatureTemplateSpellScript: TButton;
     edctsSpell: TJvComboEdit;
     Label6: TLabel;
+    edgotamaxgold: TLabeledEdit;
+    edgotaartkit2: TLabeledEdit;
+    edgotafaction: TJvComboEdit;
+    lbgtfaction: TLabel;
+    edgotaflags: TJvComboEdit;
+    lbgtflags: TLabel;
+    edgotaartkit3: TLabeledEdit;
+    edglComment: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -6855,6 +6859,20 @@ begin
     MyQuery.Close;
     SetGOdataHints(t);
     SetGOdataNames(t);
+
+	MyQuery.SQL.Text := Format('SELECT * FROM `gameobject_template_addon` WHERE `entry`=%d', [Entry]);
+	MyQuery.Open;
+    if (MyQuery.Eof=false) then
+    edgotaentry.Text := edgtentry.Text;
+		edgotafaction.Text := MyQuery.FieldByName('faction').AsString;
+		edgotaflags.Text := MyQuery.FieldByName('flags').AsString;
+		edgotamingold.Text := MyQuery.FieldByName('mingold').AsString;
+		edgotamaxgold.Text := MyQuery.FieldByName('maxgold').AsString;
+		edgotaartkit0.Text := MyQuery.FieldByName('artkit0').AsString;
+		edgotaartkit1.Text := MyQuery.FieldByName('artkit1').AsString;
+		edgotaartkit2.Text := MyQuery.FieldByName('artkit2').AsString;
+		edgotaartkit3.Text := MyQuery.FieldByName('artkit3').AsString;
+    MyQuery.Close;
 
     LoadQueryToListView(Format('SELECT `guid`, `id`, `map`, `position_x`,'+
       '`position_y`,`position_z`,`orientation` FROM `gameobject` WHERE (`id`=%d)',
