@@ -33,13 +33,15 @@ object MainForm: TMainForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 892
+    ExplicitHeight = 684
     object tsQuest: TTabSheet
       Caption = 'Quest'
       ImageIndex = 1
       object pnQuestTop: TPanel
         Left = 0
         Top = 0
-        Width = 892
+        Width = 888
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -48,8 +50,8 @@ object MainForm: TMainForm
       object PageControl2: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsQuestPart2
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
@@ -68,7 +70,7 @@ object MainForm: TMainForm
           object pnSearch: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 105
             Align = alTop
             TabOrder = 0
@@ -249,7 +251,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 6
               OnClick = btSearchClick
-              ExplicitLeft = 757
             end
             object btClear: TBitBtn
               Left = 753
@@ -260,7 +261,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 7
               OnClick = btClearClick
-              ExplicitLeft = 757
             end
             object gbSpecialFlags: TGroupBox
               Left = 616
@@ -450,7 +450,6 @@ object MainForm: TMainForm
                 Width = 300
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
@@ -467,8 +466,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 884
-            ExplicitHeight = 439
           end
           object Panel2: TPanel
             Left = 0
@@ -477,8 +474,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 544
-            ExplicitWidth = 884
             DesignSize = (
               880
               61)
@@ -850,7 +845,6 @@ object MainForm: TMainForm
               NumGlyphs = 2
               TabOrder = 5
               OnClick = btCheckAllClick
-              ExplicitLeft = 729
             end
             object StatusBar: TStatusBar
               Left = 1
@@ -861,7 +855,6 @@ object MainForm: TMainForm
                 item
                   Width = 300
                 end>
-              ExplicitWidth = 882
             end
             object btBrowseQuestPopup: TBitBtn
               Left = 424
@@ -5232,7 +5225,6 @@ object MainForm: TMainForm
                 Width = 80
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -5250,7 +5242,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object lvqtStarterLocation: TJvListView
             Left = 8
@@ -5293,7 +5284,6 @@ object MainForm: TMainForm
                 Width = 70
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
@@ -5322,7 +5312,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
         end
         object tsQuestender: TTabSheet
@@ -5490,7 +5479,6 @@ object MainForm: TMainForm
                 Width = 80
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -5508,7 +5496,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object lvqtTenderLocation: TJvListView
             Left = 8
@@ -5551,7 +5538,6 @@ object MainForm: TMainForm
                 Width = 70
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
@@ -5580,7 +5566,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
         end
         object tsLocalesQuest: TTabSheet
@@ -5795,7 +5780,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 2
             OnClick = btCopyToClipboardClick
-            ExplicitLeft = 681
           end
           object btExecuteScript: TButton
             Left = 677
@@ -5806,7 +5790,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 3
             OnClick = btExecuteScriptClick
-            ExplicitLeft = 681
           end
           object meqtLog: TMemo
             Left = 8
@@ -5816,7 +5799,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
-            ExplicitWidth = 658
           end
           object meqtScript: TMemo
             Left = 3
@@ -5832,7 +5814,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitWidth = 811
           end
         end
       end
@@ -5845,7 +5826,7 @@ object MainForm: TMainForm
         Top = 9
         Width = 888
         Height = 648
-        ActivePage = tsCreatureEquipTemplate
+        ActivePage = tsCreatureModelInfo
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -5854,7 +5835,7 @@ object MainForm: TMainForm
           object Panel4: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 105
             Align = alTop
             TabOrder = 0
@@ -5888,7 +5869,7 @@ object MainForm: TMainForm
               OnChange = edSearchCreatureChange
             end
             object btSearchCreature: TBitBtn
-              Left = 768
+              Left = 764
               Top = 23
               Width = 75
               Height = 25
@@ -5941,10 +5922,9 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 4
               OnClick = btSearchCreatureClick
-              ExplicitLeft = 772
             end
             object btClearSearchCreature: TBitBtn
-              Left = 767
+              Left = 763
               Top = 56
               Width = 75
               Height = 25
@@ -5952,7 +5932,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 5
               OnClick = btClearSearchCreatureClick
-              ExplicitLeft = 771
             end
             object edSearchCreatureSubName: TLabeledEdit
               Left = 264
@@ -6104,7 +6083,6 @@ object MainForm: TMainForm
                 Width = 40
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
@@ -6129,8 +6107,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 884
-            ExplicitHeight = 437
           end
           object Panel5: TPanel
             Left = 0
@@ -6139,8 +6115,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 542
-            ExplicitWidth = 884
             object btEditCreature: TBitBtn
               Left = 112
               Top = 10
@@ -6386,7 +6360,7 @@ object MainForm: TMainForm
             object StatusBarCreature: TStatusBar
               Left = 1
               Top = 41
-              Width = 882
+              Width = 878
               Height = 19
               Panels = <
                 item
@@ -8194,7 +8168,6 @@ object MainForm: TMainForm
                 Width = 100
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -8220,7 +8193,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object edclguid: TLabeledEdit
             Left = 8
@@ -8405,7 +8377,6 @@ object MainForm: TMainForm
             Caption = 'Show FULL Creature Location Script'
             TabOrder = 19
             OnClick = btFullScriptCreatureLocationClick
-            ExplicitLeft = 591
           end
           object edclequipment_id: TLabeledEdit
             Left = 742
@@ -8713,7 +8684,7 @@ object MainForm: TMainForm
           DesignSize = (
             880
             602)
-          object lvCreatureModelSearch: TJvListView
+          object lvciCreatureModelSearch: TJvListView
             Left = 11
             Top = 50
             Width = 802
@@ -8741,12 +8712,11 @@ object MainForm: TMainForm
                 Width = 135
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
             ViewStyle = vsReport
-            OnSelectItem = lvCreatureModelSearchSelectItem
+            OnSelectItem = lvciCreatureModelSearchSelectItem
             ColumnsOrder = '0=80,1=120,2=120,3=80,4=135'
             ExtendedColumns = <
               item
@@ -8759,7 +8729,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 806
           end
           object Panel24: TPanel
             Left = 0
@@ -8769,7 +8738,6 @@ object MainForm: TMainForm
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitWidth = 884
             DesignSize = (
               880
               50)
@@ -8827,7 +8795,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 1
               OnClick = btCreatureModelSearchClick
-              ExplicitLeft = 742
             end
             object edCreatureDisplayIDSearch: TLabeledEdit
               Left = 8
@@ -9145,7 +9112,7 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnChange = lvceCreatureEquipTemplateChange
             OnSelectItem = lvceCreatureEquipTemplateSelectItem
-            ColumnsOrder = '0=98,1=98,2=98,3=98,4=98,5=98'
+            ColumnsOrder = '0=99,1=97,2=97,3=97,4=97,5=97'
             ExtendedColumns = <
               item
               end
@@ -9159,6 +9126,7 @@ object MainForm: TMainForm
               end
               item
               end>
+            ExplicitWidth = 584
           end
           object btShowCreatureEquipTemplate: TButton
             Left = 17
@@ -9586,7 +9554,6 @@ object MainForm: TMainForm
                 Width = 200
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -9618,7 +9585,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object edcoEntry: TLabeledEdit
             Left = 9
@@ -10048,7 +10014,6 @@ object MainForm: TMainForm
                 Width = 200
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -10079,7 +10044,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object edcpEntry: TLabeledEdit
             Left = 9
@@ -10508,7 +10472,6 @@ object MainForm: TMainForm
                 Width = 200
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -10539,7 +10502,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object edcsEntry: TLabeledEdit
             Left = 9
@@ -10955,7 +10917,6 @@ object MainForm: TMainForm
                 Width = 120
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -10980,7 +10941,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edcventry: TLabeledEdit
             Left = 8
@@ -11360,7 +11320,6 @@ object MainForm: TMainForm
                 Width = 200
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -11383,7 +11342,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edcrID: TLabeledEdit
             Left = 8
@@ -11531,8 +11489,8 @@ object MainForm: TMainForm
           object cttSearchCreatureText: TJvListView
             Left = 0
             Top = 89
-            Width = 884
-            Height = 296
+            Width = 880
+            Height = 295
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -11589,7 +11547,6 @@ object MainForm: TMainForm
                 Width = 180
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -11629,7 +11586,7 @@ object MainForm: TMainForm
           object cttGroupBox: TGroupBox
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 89
             Align = alTop
             TabOrder = 1
@@ -11645,7 +11602,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 2
               OnClick = btClearSearchCreatureClick
-              ExplicitLeft = 759
             end
             object btSearchCreatureText: TBitBtn
               Left = 755
@@ -11701,7 +11657,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 3
               OnClick = btSearchCreatureTextClick
-              ExplicitLeft = 759
             end
             object edSearchCreatureText: TLabeledEdit
               Left = 96
@@ -11734,8 +11689,6 @@ object MainForm: TMainForm
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 385
-            ExplicitWidth = 884
             DesignSize = (
               880
               218)
@@ -12506,7 +12459,7 @@ object MainForm: TMainForm
           object pcCreatureInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 884
+            Width = 880
             Height = 417
             ActivePage = tsCreatureStarts
             Align = alTop
@@ -12516,7 +12469,7 @@ object MainForm: TMainForm
               object lvCreatureStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12545,7 +12498,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -12573,7 +12525,7 @@ object MainForm: TMainForm
               object lvCreatureEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12602,7 +12554,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -12630,7 +12581,7 @@ object MainForm: TMainForm
               object lvCreatureObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12659,7 +12610,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -12684,7 +12634,7 @@ object MainForm: TMainForm
           object Panel20: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -12712,62 +12662,6 @@ object MainForm: TMainForm
             Caption = 'Goto SmartAI'
             TabOrder = 0
             OnClick = btctGoToSmartAIClick
-          end
-        end
-        object tsCreatureScript: TTabSheet
-          Caption = 'Script'
-          ImageIndex = 3
-          OnShow = tsCreatureScriptShow
-          DesignSize = (
-            880
-            602)
-          object mectScript: TMemo
-            Left = 13
-            Top = 9
-            Width = 807
-            Height = 457
-            Anchors = [akLeft, akTop, akRight]
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Courier New'
-            Font.Style = []
-            ParentFont = False
-            ScrollBars = ssVertical
-            TabOrder = 0
-            ExplicitWidth = 811
-          end
-          object mectLog: TMemo
-            Left = 8
-            Top = 472
-            Width = 654
-            Height = 97
-            Anchors = [akLeft, akTop, akRight]
-            ScrollBars = ssVertical
-            TabOrder = 1
-            ExplicitWidth = 658
-          end
-          object btCopyToClipboardCreature: TButton
-            Left = 668
-            Top = 472
-            Width = 137
-            Height = 25
-            Anchors = [akTop, akRight]
-            Caption = 'Copy script to clipboard'
-            TabOrder = 2
-            OnClick = btCopyToClipboardCreatureClick
-            ExplicitLeft = 672
-          end
-          object btExecuteCreatureScript: TButton
-            Left = 668
-            Top = 516
-            Width = 137
-            Height = 25
-            Anchors = [akTop, akRight]
-            Caption = 'Execute script'
-            TabOrder = 3
-            OnClick = btExecuteCreatureScriptClick
-            ExplicitLeft = 672
           end
         end
         object tsQuestItem: TTabSheet
@@ -12984,7 +12878,6 @@ object MainForm: TMainForm
                 Caption = 'VerifiedBuild'
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -13001,7 +12894,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 639
           end
           object edcqiCreatureEntry: TLabeledEdit
             Left = 56
@@ -13093,6 +12985,66 @@ object MainForm: TMainForm
             OnClick = btFullQuestItemScriptClick
           end
         end
+        object TemplateSpell: TTabSheet
+          Caption = 'TemplateSpell'
+          ImageIndex = 19
+        end
+        object TemplateResistance: TTabSheet
+          Caption = 'TemplateResistance'
+          ImageIndex = 20
+        end
+        object tsCreatureScript: TTabSheet
+          Caption = 'Script'
+          ImageIndex = 3
+          OnShow = tsCreatureScriptShow
+          DesignSize = (
+            880
+            602)
+          object mectScript: TMemo
+            Left = 13
+            Top = 9
+            Width = 807
+            Height = 457
+            Anchors = [akLeft, akTop, akRight]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Courier New'
+            Font.Style = []
+            ParentFont = False
+            ScrollBars = ssVertical
+            TabOrder = 0
+          end
+          object mectLog: TMemo
+            Left = 8
+            Top = 472
+            Width = 654
+            Height = 97
+            Anchors = [akLeft, akTop, akRight]
+            ScrollBars = ssVertical
+            TabOrder = 1
+          end
+          object btCopyToClipboardCreature: TButton
+            Left = 668
+            Top = 472
+            Width = 137
+            Height = 25
+            Anchors = [akTop, akRight]
+            Caption = 'Copy script to clipboard'
+            TabOrder = 2
+            OnClick = btCopyToClipboardCreatureClick
+          end
+          object btExecuteCreatureScript: TButton
+            Left = 668
+            Top = 516
+            Width = 137
+            Height = 25
+            Anchors = [akTop, akRight]
+            Caption = 'Execute script'
+            TabOrder = 3
+            OnClick = btExecuteCreatureScriptClick
+          end
+        end
       end
       object Panel3: TPanel
         Left = 0
@@ -13102,6 +13054,7 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitWidth = 884
       end
     end
     object tsGameObject: TTabSheet
@@ -13110,7 +13063,7 @@ object MainForm: TMainForm
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 892
+        Width = 888
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -13119,8 +13072,8 @@ object MainForm: TMainForm
       object PageControl4: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsGOScript
         Align = alClient
         TabOrder = 1
@@ -13129,7 +13082,7 @@ object MainForm: TMainForm
           object Panel6: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 105
             Align = alTop
             TabOrder = 0
@@ -13177,7 +13130,7 @@ object MainForm: TMainForm
               OnChange = edSearchGOChange
             end
             object btSearchGO: TBitBtn
-              Left = 767
+              Left = 763
               Top = 24
               Width = 75
               Height = 25
@@ -13230,10 +13183,9 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 4
               OnClick = btSearchGOClick
-              ExplicitLeft = 771
             end
             object btClearSearchGO: TBitBtn
-              Left = 767
+              Left = 763
               Top = 56
               Width = 75
               Height = 25
@@ -13241,7 +13193,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 5
               OnClick = btClearSearchGOClick
-              ExplicitLeft = 771
             end
             object edSearchGOtype: TJvComboEdit
               Left = 264
@@ -13387,7 +13338,6 @@ object MainForm: TMainForm
                 Caption = 'Count'
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
@@ -13406,8 +13356,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 884
-            ExplicitHeight = 439
           end
           object Panel7: TPanel
             Left = 0
@@ -13416,8 +13364,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 544
-            ExplicitWidth = 884
             object btEditGO: TBitBtn
               Left = 112
               Top = 10
@@ -13663,7 +13609,7 @@ object MainForm: TMainForm
             object StatusBarGO: TStatusBar
               Left = 1
               Top = 41
-              Width = 882
+              Width = 878
               Height = 19
               Panels = <
                 item
@@ -14427,7 +14373,6 @@ object MainForm: TMainForm
                 Width = 100
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -14449,7 +14394,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object edglguid: TLabeledEdit
             Left = 8
@@ -14621,7 +14565,6 @@ object MainForm: TMainForm
             Caption = 'Show FULL GO Location Script'
             TabOrder = 16
             OnClick = btFullScriptGOLocationClick
-            ExplicitLeft = 634
           end
           object edglmap: TJvComboEdit
             Left = 183
@@ -15003,7 +14946,6 @@ object MainForm: TMainForm
                 Width = 20
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -15040,7 +14982,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 845
           end
           object edgoEntry: TLabeledEdit
             Left = 9
@@ -15232,7 +15173,7 @@ object MainForm: TMainForm
           object pcGameObjectInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 884
+            Width = 880
             Height = 417
             ActivePage = tsGOStarts
             Align = alTop
@@ -15242,7 +15183,7 @@ object MainForm: TMainForm
               object lvGameObjectStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15271,7 +15212,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -15298,7 +15238,7 @@ object MainForm: TMainForm
               object lvGameObjectEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15327,7 +15267,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -15354,7 +15293,7 @@ object MainForm: TMainForm
               object lvGameObjectObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15383,7 +15322,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -15408,7 +15346,7 @@ object MainForm: TMainForm
           object Panel21: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -15459,7 +15397,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitWidth = 811
           end
           object megoLog: TMemo
             Left = 8
@@ -15469,7 +15406,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
-            ExplicitWidth = 658
           end
           object btCopyToClipboardGO: TButton
             Left = 677
@@ -15480,7 +15416,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 2
             OnClick = btCopyToClipboardGOClick
-            ExplicitLeft = 681
           end
           object btExecuteGOScript: TButton
             Left = 677
@@ -15491,7 +15426,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 3
             OnClick = btExecuteGOScriptClick
-            ExplicitLeft = 681
           end
         end
       end
@@ -15502,7 +15436,7 @@ object MainForm: TMainForm
       object Panel9: TPanel
         Left = 0
         Top = 0
-        Width = 892
+        Width = 888
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -15511,8 +15445,8 @@ object MainForm: TMainForm
       object PageControl5: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsSearchItem
         Align = alClient
         TabOrder = 1
@@ -15521,7 +15455,7 @@ object MainForm: TMainForm
           object Panel10: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 105
             Align = alTop
             TabOrder = 0
@@ -15597,7 +15531,7 @@ object MainForm: TMainForm
               OnChange = edSearchItemChange
             end
             object btSearchItem: TBitBtn
-              Left = 771
+              Left = 767
               Top = 24
               Width = 75
               Height = 25
@@ -15650,10 +15584,9 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 7
               OnClick = btSearchItemClick
-              ExplicitLeft = 775
             end
             object btClearSearchItem: TBitBtn
-              Left = 771
+              Left = 767
               Top = 56
               Width = 75
               Height = 25
@@ -15661,7 +15594,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 8
               OnClick = btClearSearchItemClick
-              ExplicitLeft = 775
             end
             object edSearchItemClass: TJvComboEdit
               Left = 223
@@ -15955,7 +15887,6 @@ object MainForm: TMainForm
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             ParentFont = False
@@ -15982,8 +15913,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 884
-            ExplicitHeight = 439
           end
           object Panel11: TPanel
             Left = 0
@@ -15992,8 +15921,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 544
-            ExplicitWidth = 884
             object btEditItem: TBitBtn
               Left = 112
               Top = 10
@@ -16239,7 +16166,7 @@ object MainForm: TMainForm
             object StatusBarItem: TStatusBar
               Left = 1
               Top = 41
-              Width = 882
+              Width = 878
               Height = 19
               Panels = <
                 item
@@ -19853,7 +19780,6 @@ object MainForm: TMainForm
                 Width = 200
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -19884,7 +19810,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edilEntry: TLabeledEdit
             Left = 8
@@ -20320,7 +20245,6 @@ object MainForm: TMainForm
                 Width = 150
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -20351,7 +20275,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edidEntry: TLabeledEdit
             Left = 10
@@ -20787,7 +20710,6 @@ object MainForm: TMainForm
                 Width = 150
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -20818,7 +20740,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edipEntry: TLabeledEdit
             Left = 8
@@ -21245,7 +21166,6 @@ object MainForm: TMainForm
                 Width = 150
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -21276,7 +21196,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edimItem: TJvComboEdit
             Left = 96
@@ -21709,7 +21628,6 @@ object MainForm: TMainForm
                 Width = 150
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -21740,7 +21658,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edirItem: TJvComboEdit
             Left = 96
@@ -22182,7 +22099,6 @@ object MainForm: TMainForm
                 Width = 90
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -22197,7 +22113,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edieentry: TLabeledEdit
             Left = 8
@@ -22258,8 +22173,8 @@ object MainForm: TMainForm
           object lvitItemLootedFrom: TJvListView
             Left = 0
             Top = 0
-            Width = 884
-            Height = 605
+            Width = 880
+            Height = 604
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -22293,7 +22208,6 @@ object MainForm: TMainForm
                 Width = 150
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -22332,7 +22246,7 @@ object MainForm: TMainForm
           object Panel22: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -22341,7 +22255,7 @@ object MainForm: TMainForm
           object pcItemInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 884
+            Width = 880
             Height = 417
             ActivePage = tsItemRewardFrom
             Align = alTop
@@ -22351,7 +22265,7 @@ object MainForm: TMainForm
               object lvItemStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22380,7 +22294,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -22407,7 +22320,7 @@ object MainForm: TMainForm
               object lvItemObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22436,7 +22349,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -22463,7 +22375,7 @@ object MainForm: TMainForm
               object lvItemSourceFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22492,7 +22404,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -22519,7 +22430,7 @@ object MainForm: TMainForm
               object lvItemProvidedFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22548,7 +22459,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -22575,7 +22485,7 @@ object MainForm: TMainForm
               object lvItemRewardFrom: TJvListView
                 Left = 0
                 Top = 0
-                Width = 876
+                Width = 872
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -22604,7 +22514,6 @@ object MainForm: TMainForm
                     Width = 80
                   end>
                 HideSelection = False
-                Items.ItemData = {}
                 ReadOnly = True
                 RowSelect = True
                 TabOrder = 0
@@ -22648,7 +22557,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitWidth = 828
           end
           object meitLog: TMemo
             Left = 8
@@ -22658,7 +22566,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
-            ExplicitWidth = 675
           end
           object btCopyToClipboardItem: TButton
             Left = 694
@@ -22669,7 +22576,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 2
             OnClick = btCopyToClipboardItemClick
-            ExplicitLeft = 698
           end
           object btExecuteItemScript: TButton
             Left = 694
@@ -22680,7 +22586,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 3
             OnClick = btScriptCreatureClick
-            ExplicitLeft = 698
           end
         end
       end
@@ -22691,8 +22596,8 @@ object MainForm: TMainForm
       object PageControl9: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsSmartAI
         Align = alClient
         TabOrder = 0
@@ -23206,7 +23111,6 @@ object MainForm: TMainForm
               item
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -23278,7 +23182,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 853
           end
           object btcyFullScript: TButton
             Left = 725
@@ -23738,7 +23641,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 0
             OnClick = btCopyToClipboardSmartAIClick
-            ExplicitLeft = 709
           end
           object btExecuteSmartAIScript: TButton
             Left = 705
@@ -23749,7 +23651,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 1
             OnClick = btExecuteSmartAIScriptClick
-            ExplicitLeft = 709
           end
           object mecyScript: TMemo
             Left = 11
@@ -23765,7 +23666,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 2
-            ExplicitWidth = 839
           end
           object mecyLog: TMemo
             Left = 11
@@ -23775,7 +23675,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 3
-            ExplicitWidth = 686
           end
         end
       end
@@ -23787,7 +23686,6 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 892
       end
     end
     object Conditions: TTabSheet
@@ -23796,8 +23694,8 @@ object MainForm: TMainForm
       object PageControl10: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsConditions
         Align = alClient
         TabOrder = 0
@@ -24149,7 +24047,6 @@ object MainForm: TMainForm
                 Width = 135
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -24188,7 +24085,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 853
           end
           object btFullScript: TButton
             Left = 726
@@ -24431,7 +24327,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 0
             OnClick = btCopyToClipboardConditionsClick
-            ExplicitLeft = 709
           end
           object btExecuteConditionsScript: TButton
             Left = 705
@@ -24442,7 +24337,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 1
             OnClick = btExecuteConditionsScriptClick
-            ExplicitLeft = 709
           end
           object mecScript: TMemo
             Left = 11
@@ -24458,7 +24352,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 2
-            ExplicitWidth = 839
           end
           object mecLog: TMemo
             Left = 11
@@ -24468,7 +24361,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 3
-            ExplicitWidth = 686
           end
         end
       end
@@ -24480,7 +24372,6 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 892
       end
     end
     object tsOther: TTabSheet
@@ -24489,7 +24380,7 @@ object MainForm: TMainForm
       object Panel12: TPanel
         Left = 0
         Top = 0
-        Width = 892
+        Width = 888
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -24498,8 +24389,8 @@ object MainForm: TMainForm
       object PageControl6: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsGameEvents
         Align = alClient
         TabOrder = 1
@@ -24763,7 +24654,6 @@ object MainForm: TMainForm
                 Width = 200
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 2
@@ -24800,7 +24690,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 827
           end
           object edotChance: TLabeledEdit
             Left = 298
@@ -25065,8 +24954,8 @@ object MainForm: TMainForm
           object lvSearchPageText: TJvListView
             Left = 0
             Top = 89
-            Width = 884
-            Height = 298
+            Width = 880
+            Height = 297
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -25086,7 +24975,6 @@ object MainForm: TMainForm
                 Caption = 'VerifiedBuild'
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -25106,7 +24994,7 @@ object MainForm: TMainForm
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 89
             Align = alTop
             TabOrder = 1
@@ -25122,7 +25010,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 4
               OnClick = btClearClick
-              ExplicitLeft = 759
             end
             object btSearchPageText: TBitBtn
               Left = 755
@@ -25178,7 +25065,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 3
               OnClick = btSearchPageTextClick
-              ExplicitLeft = 759
             end
             object edSearchPageTextNextPage: TLabeledEdit
               Left = 536
@@ -25222,8 +25108,6 @@ object MainForm: TMainForm
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 387
-            ExplicitWidth = 884
             DesignSize = (
               880
               218)
@@ -25364,7 +25248,6 @@ object MainForm: TMainForm
               Anchors = [akLeft, akTop, akRight, akBottom]
               ScrollBars = ssVertical
               TabOrder = 2
-              ExplicitWidth = 729
             end
             object btScriptPageText: TButton
               Left = 8
@@ -25395,7 +25278,7 @@ object MainForm: TMainForm
           object GroupBox2: TGroupBox
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 89
             Align = alTop
             TabOrder = 0
@@ -25403,7 +25286,7 @@ object MainForm: TMainForm
               880
               89)
             object btClearSearchGameEvent: TBitBtn
-              Left = 767
+              Left = 763
               Top = 56
               Width = 75
               Height = 25
@@ -25411,10 +25294,9 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 0
               OnClick = btClearClick
-              ExplicitLeft = 771
             end
             object btSearchGameEvent: TBitBtn
-              Left = 767
+              Left = 763
               Top = 24
               Width = 75
               Height = 25
@@ -25467,7 +25349,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 1
               OnClick = btSearchGameEventClick
-              ExplicitLeft = 771
             end
             object edSearchGameEventDesc: TLabeledEdit
               Left = 96
@@ -25500,8 +25381,6 @@ object MainForm: TMainForm
             Align = alBottom
             Enabled = False
             TabOrder = 1
-            ExplicitTop = 313
-            ExplicitWidth = 884
             DesignSize = (
               880
               292)
@@ -25910,7 +25789,6 @@ object MainForm: TMainForm
                 end>
               Enabled = False
               HideSelection = False
-              Items.ItemData = {}
               ReadOnly = True
               RowSelect = True
               TabOrder = 0
@@ -25954,7 +25832,6 @@ object MainForm: TMainForm
                 end>
               Enabled = False
               HideSelection = False
-              Items.ItemData = {}
               ReadOnly = True
               RowSelect = True
               TabOrder = 2
@@ -26061,7 +25938,6 @@ object MainForm: TMainForm
               Enabled = False
               TabOrder = 4
               OnClick = btScriptFishingLootClick
-              ExplicitLeft = 600
             end
           end
           object Panel17: TPanel
@@ -26071,13 +25947,11 @@ object MainForm: TMainForm
             Height = 223
             Align = alClient
             TabOrder = 2
-            ExplicitWidth = 884
-            ExplicitHeight = 224
             object lvSearchGameEvent: TJvListView
               Left = 1
               Top = 1
-              Width = 882
-              Height = 122
+              Width = 878
+              Height = 121
               Align = alClient
               BorderStyle = bsNone
               Columns = <
@@ -26121,7 +25995,6 @@ object MainForm: TMainForm
                   Width = 65
                 end>
               HideSelection = False
-              Items.ItemData = {}
               ReadOnly = True
               RowSelect = True
               TabOrder = 0
@@ -26153,8 +26026,8 @@ object MainForm: TMainForm
             end
             object Panel18: TPanel
               Left = 1
-              Top = 123
-              Width = 882
+              Top = 122
+              Width = 878
               Height = 100
               Align = alBottom
               BevelOuter = bvNone
@@ -26481,7 +26354,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitWidth = 811
           end
           object meotLog: TMemo
             Left = 8
@@ -26491,7 +26363,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
-            ExplicitWidth = 658
           end
           object btCopyToClipboardOther: TButton
             Left = 677
@@ -26502,7 +26373,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 2
             OnClick = btCopyToClipboardOtherClick
-            ExplicitLeft = 681
           end
           object btExecuteOtherScript: TButton
             Left = 677
@@ -26513,7 +26383,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 3
             OnClick = btExecuteOtherScriptClick
-            ExplicitLeft = 681
           end
         end
       end
@@ -26524,7 +26393,7 @@ object MainForm: TMainForm
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 892
+        Width = 888
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -26534,8 +26403,8 @@ object MainForm: TMainForm
       object PageControl8: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsCharSearch
         Align = alClient
         TabOrder = 1
@@ -26544,7 +26413,7 @@ object MainForm: TMainForm
           object Panel16: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 105
             Align = alTop
             TabOrder = 0
@@ -26578,7 +26447,7 @@ object MainForm: TMainForm
               OnChange = edSearchCreatureChange
             end
             object btCharSearch: TBitBtn
-              Left = 767
+              Left = 763
               Top = 24
               Width = 75
               Height = 25
@@ -26631,10 +26500,9 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 2
               OnClick = btCharSearchClick
-              ExplicitLeft = 771
             end
             object btCharClear: TBitBtn
-              Left = 767
+              Left = 763
               Top = 56
               Width = 75
               Height = 25
@@ -26642,7 +26510,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 3
               OnClick = btCharClearClick
-              ExplicitLeft = 771
             end
             object edCharAccount: TLabeledEdit
               Left = 88
@@ -26692,7 +26559,6 @@ object MainForm: TMainForm
                 Width = 60
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 1
@@ -26712,8 +26578,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 884
-            ExplicitHeight = 481
           end
           object StatusBarChar: TStatusBar
             Left = 0
@@ -26724,8 +26588,6 @@ object MainForm: TMainForm
               item
                 Width = 50
               end>
-            ExplicitTop = 586
-            ExplicitWidth = 884
           end
         end
         object tsCharacter: TTabSheet
@@ -27926,7 +27788,6 @@ object MainForm: TMainForm
                 Width = 250
               end>
             HideSelection = False
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 2
@@ -27945,7 +27806,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 810
           end
           object edhiguid: TLabeledEdit
             Left = 8
@@ -28013,7 +27873,6 @@ object MainForm: TMainForm
             ParentFont = False
             ScrollBars = ssVertical
             TabOrder = 0
-            ExplicitWidth = 811
           end
           object mehtLog: TMemo
             Left = 8
@@ -28023,7 +27882,6 @@ object MainForm: TMainForm
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
-            ExplicitWidth = 658
           end
           object btCopyToClipboardChar: TButton
             Left = 677
@@ -28034,7 +27892,6 @@ object MainForm: TMainForm
             Caption = 'Copy script to clipboard'
             TabOrder = 2
             OnClick = btCopyToClipboardCharClick
-            ExplicitLeft = 681
           end
           object btExecuteScriptChar: TButton
             Left = 677
@@ -28045,7 +27902,6 @@ object MainForm: TMainForm
             Caption = 'Execute script'
             TabOrder = 3
             OnClick = btExecuteScriptCharClick
-            ExplicitLeft = 681
           end
         end
       end
@@ -28056,7 +27912,7 @@ object MainForm: TMainForm
       object Panel14: TPanel
         Left = 0
         Top = 0
-        Width = 892
+        Width = 888
         Height = 25
         Align = alTop
         BevelOuter = bvNone
@@ -28065,8 +27921,8 @@ object MainForm: TMainForm
       object PageControl7: TPageControl
         Left = 0
         Top = 25
-        Width = 892
-        Height = 633
+        Width = 888
+        Height = 632
         ActivePage = tsSQL1
         Align = alClient
         TabOrder = 1
@@ -28075,7 +27931,7 @@ object MainForm: TMainForm
           object Panel15: TPanel
             Left = 0
             Top = 0
-            Width = 884
+            Width = 880
             Height = 113
             Align = alTop
             BevelOuter = bvNone
@@ -28092,7 +27948,6 @@ object MainForm: TMainForm
               Caption = 'Execute'
               TabOrder = 0
               OnClick = btSQLOpenClick
-              ExplicitLeft = 744
             end
             object SQLEdit: TMemo
               Left = 8

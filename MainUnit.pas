@@ -22,11 +22,11 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '8';
+  VERSION_4   = '10';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
-  SCRIPT_TAB_NO_CREATURE    = 17;
+  SCRIPT_TAB_NO_CREATURE    = 20;
   SCRIPT_TAB_NO_GAMEOBJECT  = 6;
   SCRIPT_TAB_NO_ITEM        = 10;
   SCRIPT_TAB_NO_SMARTAI     = 1;
@@ -51,14 +51,17 @@ const
   PFX_QUEST_TEMPLATE_ADDON          = 'qta';
   PFX_QUEST_TEMPLATE_LOCALE         = 'qtloc';
   PFX_CREATURE_TEMPLATE             = 'ct';
+  PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
+  PFX_CREATURE_TEMPLATE_LOCALE      = 'ctloc';
+  PFX_CREATURE_TEMPLATE_MOVEMENT   	= 'cm';
+  PFX_CREATURE_TEMPLATE_RESISTANCE  = 'ctr';
+  PFX_CREATURE_TEMPLATE_SPELL       = 'cts';
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
   PFX_CREATURE                      = 'cl';
   PFX_CREATURE_ADDON                = 'ca';
   PFX_CREATURE_QUESTITEM            = 'cqi';
-  PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
   PFX_CREATURE_EQUIP_TEMPLATE       = 'ce';
   PFX_CREATURE_MODEL_INFO           = 'ci';
-  PFX_CREATURE_TEMPLATE_MOVEMENT   	= 'cm';
   PFX_CREATURE_LOOT_TEMPLATE        = 'co';
   PFX_CREATURE_SMARTAI              = 'cy';
   PFX_CONDITIONS                    = 'c';
@@ -1109,7 +1112,7 @@ type
     lbcaemote: TLabel;
     tsCreatureModelInfo: TTabSheet;
     tsCreatureEquipTemplate: TTabSheet;
-    lvCreatureModelSearch: TJvListView;
+    lvciCreatureModelSearch: TJvListView;
     Panel24: TPanel;
     btCreatureModelSearch: TBitBtn;
     edCreatureDisplayIDSearch: TLabeledEdit;
@@ -1660,6 +1663,8 @@ type
     lbceItemID2: TLabel;
     lbceItemID3: TLabel;
     lbceItemID1: TLabel;
+    TemplateSpell: TTabSheet;
+    TemplateResistance: TTabSheet;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -1949,7 +1954,7 @@ type
     procedure tsCreatureEquipTemplateShow(Sender: TObject);
     procedure tsCreatureModelInfoShow(Sender: TObject);
     procedure btCreatureModelSearchClick(Sender: TObject);
-    procedure lvCreatureModelSearchSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+    procedure lvciCreatureModelSearchSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
     procedure tsCreatureOnKillReputationShow(Sender: TObject);
     procedure reaShow(Sender: TObject);
     procedure tsGOLootShow(Sender: TObject);
@@ -3608,10 +3613,12 @@ begin
            ((Pos('ed'+s+'v',Components[i].Name)=1) or (Pos('ed'+s+'p',Components[i].Name)=1) or (Pos('ed'+s+'a',Components[i].Name)=1)  or
            (Pos('ed'+s+'g',Components[i].Name)=1)  or (Pos('ed'+s+'x',Components[i].Name)=1)  or (Pos('ed'+s+'m',Components[i].Name)=1)  or
            (Pos('ed'+s+'s',Components[i].Name)=1) or (Pos('ed'+s+'r',Components[i].Name)=1) or (Pos('ed'+s+'i',Components[i].Name)=1) or
-           (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1)) then
-             TCustomEdit(Components[i]).Clear;
+           (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1) or
+           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1)
+           ) then TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or
-           (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1)) then
+           (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1) or (Pos('lv'+s+'e',Components[i].Name)=1) or (Pos('lv'+s+'i',Components[i].Name)=1) or
+           (Pos('lv'+s+'tr',Components[i].Name)=1) or (Pos('lv'+s+'ts',Components[i].Name)=1)) then
              TCustomListView(Components[i]).Clear;
     end;
     if s='i' then
@@ -4315,17 +4322,17 @@ begin
 
   QueryStr := Format('SELECT * FROM `creature_model_info` %s',[WhereStr]);
   MyQuery.SQL.Text := QueryStr;
-  lvCreatureModelSearch.Items.BeginUpdate;
+  lvciCreatureModelSearch.Items.BeginUpdate;
   try
     MyQuery.Open;
-    lvCreatureModelSearch.Clear;
+    lvciCreatureModelSearch.Clear;
     while (MyQuery.Eof=false) do
     begin
-      with lvCreatureModelSearch.Items.Add do
+      with lvciCreatureModelSearch.Items.Add do
       begin
-        for i := 0 to lvCreatureModelSearch.Columns.Count - 1 do
+        for i := 0 to lvciCreatureModelSearch.Columns.Count - 1 do
         begin
-          Field := MyQuery.FindField(lvCreatureModelSearch.Columns[i].Caption);
+          Field := MyQuery.FindField(lvciCreatureModelSearch.Columns[i].Caption);
           t := '';
           if Assigned(Field) then
           begin
@@ -4338,7 +4345,7 @@ begin
       end;
     end;
   finally
-    lvCreatureModelSearch.Items.EndUpdate;
+    lvciCreatureModelSearch.Items.EndUpdate;
     MyQuery.Close;
   end;
 end;
@@ -4824,8 +4831,10 @@ begin
     14: CompleteCreatureOnKillReputationScript;
     15: {involved in tab - do nothing};
     16: {smartAi tab - do nothing};
-    17: {script tab - do nothing};
-    18: CompleteCreatureQuestItemScript;
+    17: CompleteCreatureQuestItemScript;
+    18: {CompleteCreatureTemplateResistanceScript};
+    19: {CompleteCreatureTemplateSpellScript};
+    20: {script tab - do nothing};
   end;
 end;
 
@@ -6233,11 +6242,11 @@ begin
     SetLootEditFields('edcs', lvcoSkinLoot);
 end;
 
-procedure TMainForm.lvCreatureModelSearchSelectItem(Sender: TObject; Item: TListItem;
+procedure TMainForm.lvciCreatureModelSearchSelectItem(Sender: TObject; Item: TListItem;
   Selected: Boolean);
 begin
   if Selected then
-    SetCreatureModelEditFields('edci', lvCreatureModelSearch);
+    SetCreatureModelEditFields('edci', lvciCreatureModelSearch);
 end;
 
 procedure TMainForm.lvCreatureStartsEndsDblClick(Sender: TObject);
@@ -7529,7 +7538,7 @@ end;
 procedure TMainForm.btCreatureModelSearchClick(Sender: TObject);
 begin
   SearchCreatureModelInfo();
-  with lvCreatureModelSearch do
+  with lvciCreatureModelSearch do
     if Items.Count > 0 then
     begin
       SetFocus;
