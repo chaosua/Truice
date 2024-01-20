@@ -1748,7 +1748,6 @@ type
     procedure GetClass(Sender: TObject);
     procedure edcttypeButtonClick(Sender: TObject);
     procedure btScriptCreatureClick(Sender: TObject);
-    procedure btScriptCreatureEquipTemplateClick(Sender: TObject);
     procedure btcyScriptSmartAIClick(Sender: TObject);
     procedure btcScriptConditionsClick(Sender: TObject);
     procedure edgtentryButtonClick(Sender: TObject);
@@ -2117,7 +2116,7 @@ type
     procedure lvcqiCreatureQuestItemSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btFullQuestItemScriptClick(Sender: TObject);
-//    procedure LoadCreatureQuestItem(Entry: integer);
+    procedure btScriptCreatureQuestItemClick(Sender: TObject);
     // Creature Quest Item tab end
 
     // Creature Equip Template tab begin
@@ -2129,8 +2128,32 @@ type
     procedure lvceCreatureEquipTemplateSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btFullCreatureEquipTemplateScriptClick(Sender: TObject);
-//    procedure LoadCreatureEquipTemplate(Entry: integer);
+    procedure btScriptCreatureEquipTemplateClick(Sender: TObject);
     // Creature Equip Template tab end
+
+    // Creature Template Resistance tab begin
+    procedure btCreatureTemplateResistanceAddClick(Sender: TObject);
+    procedure btCreatureTemplateResistanceUpdClick(Sender: TObject);
+    procedure btCreatureTemplateResistanceDelClick(Sender: TObject);
+    procedure lvctrCreatureTemplateResistanceChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
+    procedure lvctrCreatureTemplateResistanceSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btFullCreatureTemplateResistanceScriptClick(Sender: TObject);
+    procedure btScriptCreatureTemplateResistanceClick(Sender: TObject);
+    // Creature Template Resistance tab end
+
+    // Creature Template Spell tab begin
+    procedure btCreatureTemplateSpellAddClick(Sender: TObject);
+    procedure btCreatureTemplateSpellUpdClick(Sender: TObject);
+    procedure btCreatureTemplateSpellDelClick(Sender: TObject);
+    procedure lvctsCreatureTemplateSpellChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
+    procedure lvctsCreatureTemplateSpellSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btFullCreatureTemplateSpellScriptClick(Sender: TObject);
+    procedure btScriptCreatureTemplateSpellClick(Sender: TObject);
+    // Creature Template Spell tab end
 
   private
     { Private declarations }
@@ -2173,7 +2196,6 @@ type
     procedure LoadCreature(Entry: integer);
     procedure LoadCreatureTemplateAddon(entry: integer);
     procedure LoadCreatureTemplateMovement(creatureid: integer);
-    procedure CompleteCreatureEquipTemplateScript;
     procedure LoadCreatureAddon(GUID: integer);
     procedure LoadCreatureEquip(entry: integer);
     procedure LoadCreatureOnKillReputation(id: string);
@@ -2194,7 +2216,10 @@ type
     procedure CompleteCreatureTemplateMovementScript;
     procedure CompleteCreatureOnKillReputationScript;
     procedure CompleteCreatureTextScript;
+    procedure CompleteCreatureEquipTemplateScript;
     procedure CompleteCreatureQuestItemScript;
+    procedure CompleteCreatureTemplateResistanceScript;
+    procedure CompleteCreatureTemplateSpellScript;
 
    {gameobjects}
     procedure SearchGO;
@@ -4582,6 +4607,12 @@ begin
     LoadQueryToListView(Format('SELECT `CreatureEntry`, `idx`, `itemId`, `VerifiedBuild` FROM `creature_questitem` WHERE (`CreatureEntry`=%d)',
      [Entry]),lvcqiCreatureQuestItem);
 
+    LoadQueryToListView(Format('SELECT `CreatureID`, `School`, `Resistance`, `VerifiedBuild` FROM `creature_template_resistance` WHERE (`CreatureID`=%d)',
+     [Entry]),lvctrCreatureTemplateResistance);
+
+    LoadQueryToListView(Format('SELECT `CreatureID`, `Index`, `Spell`, `VerifiedBuild` FROM `creature_template_spell` WHERE (`CreatureID`=%d)',
+     [Entry]),lvctsCreatureTemplateSpell);
+
     if (isvendor=true) then 
 	begin
 		LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
@@ -4857,8 +4888,8 @@ begin
     15: {involved in tab - do nothing};
     16: {smartAi tab - do nothing};
     17: CompleteCreatureQuestItemScript;
-    18: {CompleteCreatureTemplateResistanceScript};
-    19: {CompleteCreatureTemplateSpellScript};
+    18: CompleteCreatureTemplateResistanceScript;
+    19: CompleteCreatureTemplateSpellScript;
     20: {script tab - do nothing};
   end;
 end;
@@ -5793,11 +5824,6 @@ begin
 
 end;
 
-procedure TMainForm.btScriptCreatureEquipTemplateClick(Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-end;
-
 procedure TMainForm.GetLootCondition(Sender: TObject);
 begin
   //GetValueFromSimpleList(Sender, 156, 'LootMode', false);
@@ -5860,12 +5886,16 @@ begin
     '(%s);'#13#10,[ceentry, ceid, Fields, Values])
 end;
 
+procedure TMainForm.btScriptCreatureEquipTemplateClick(Sender: TObject);
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+end;
+
 procedure TMainForm.btCreatureEquipTemplateAddClick(Sender: TObject);
 begin
   with lvceCreatureEquipTemplate.Items.Add do
   begin
     Caption := edceCreatureID.Text;
-   // SubItems.Add(edceCreatureID.Text);
     SubItems.Add(edceID.Text);
     SubItems.Add(edceItemID1.Text);
     SubItems.Add(edceItemID2.Text);
@@ -5965,37 +5995,238 @@ begin
   end;
 end;
 
-{procedure TMainForm.LoadCreatureQuestItem(Entry: integer);
-begin
-  if Entry<1 then Exit;
-  MyQuery.SQL.Text := Format('SELECT * FROM `creature_questitem` WHERE (`CreatureEntry`= %d)',[Entry]);
-  MyQuery.Open;
-  try
-    FillFields(MyQuery, PFX_CREATURE_QUESTITEM);
-    if edcqiVerifiedBuild.Text=''  then  edcqiVerifiedBuild.Text:='NULL';
+// --creature equip template end
 
-    MyQuery.Close;
-  except
-    on E: Exception do
-      raise Exception.Create(dmMain.Text[159]+#10#13+E.Message);
-  end;
-end;
-}
-
-{procedure TMainForm.CompleteCreatureQuestItemScript;
+// --creature template resistance
+procedure TMainForm.CompleteCreatureTemplateResistanceScript;
 var
-  entry, itemid, Fields, Values: string;
+  ceentry, ceschool, Fields, Values: string;
 begin
   mectLog.Clear;
-  entry :=  edcqiCreatureEntry.Text;
-  itemid :=  edcqiItemId.Text;
-  if (entry='') or (itemid='') or (edcqiIdx.Text='') then Exit;
-  SetFieldsAndValues(Fields, Values, 'creature_questitem', PFX_CREATURE_QUESTITEM, mectLog);
-  mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE (`CreatureEntry`=%s) AND (`ItemId`=%s);'#13#10+
-   'INSERT INTO `creature_questitem` (%s) VALUES (%s);'#13#10,[entry, itemid, Fields, Values])
+  ceentry :=  edctrCreatureID.Text;
+  ceschool := edctrschool.Text;
+  if (ceentry='') or (ceschool='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'creature_template_resistance', PFX_CREATURE_TEMPLATE_RESISTANCE, mectLog);
+  mectScript.Text := Format('DELETE FROM `creature_template_resistance` WHERE (`CreatureID`=%s) AND (`School`=%s);'#13#10+
+    'INSERT INTO `creature_template_resistance` (%s) VALUES '#13#10+
+    '(%s);'#13#10,[ceentry, ceschool, Fields, Values])
 end;
-}
-// --creature equip template
+
+procedure TMainForm.btScriptCreatureTemplateResistanceClick(Sender: TObject);
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+end;
+
+procedure TMainForm.btCreatureTemplateResistanceAddClick(Sender: TObject);
+begin
+  with lvctrCreatureTemplateResistance.Items.Add do
+  begin
+    Caption := edctrCreatureID.Text;
+    SubItems.Add(edctrSchool.Text);
+    SubItems.Add(edctrResistance.Text);
+    SubItems.Add(edctrVerifiedBuild.Text);
+  end;
+end;
+
+procedure TMainForm.btCreatureTemplateResistanceUpdClick(Sender: TObject);
+begin
+  if Assigned(lvctrCreatureTemplateResistance.Selected) then
+  begin
+    with lvctrCreatureTemplateResistance.Selected do
+    begin
+      Caption := edctrCreatureID.Text;
+      SubItems[0] := edctrSchool.Text;
+      SubItems[1] := edctrResistance.Text;
+      SubItems[2] := edctrVerifiedBuild.Text;
+    end;
+  end;
+end;
+
+procedure TMainForm.btCreatureTemplateResistanceDelClick(Sender: TObject);
+begin
+if Assigned(lvctrCreatureTemplateResistance.Selected) then
+    lvctrCreatureTemplateResistance.DeleteSelected;
+end;
+
+procedure TMainForm.btFullCreatureTemplateResistanceScriptClick(Sender: TObject);
+var
+  i: integer;
+  entry, Values: string;
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+  entry := edctrCreatureID.Text;
+  mectScript.Clear;
+  Values := '';
+  if lvctrCreatureTemplateResistance.Items.Count<>0 then
+  begin
+    for i := 0 to lvctrCreatureTemplateResistance.Items.Count - 2 do
+    begin
+      if lvctrCreatureTemplateResistance.Items[i].SubItems[2]='' then lvctrCreatureTemplateResistance.Items[i].SubItems[2] := '0';
+      Values := Values + Format('(%s, %s, %s, %s),'#13#10,[
+        lvctrCreatureTemplateResistance.Items[i].Caption,
+        lvctrCreatureTemplateResistance.Items[i].SubItems[0],
+        lvctrCreatureTemplateResistance.Items[i].SubItems[1],
+        lvctrCreatureTemplateResistance.Items[i].SubItems[2]
+      ]);
+    end;
+    i := lvctrCreatureTemplateResistance.Items.Count - 1;
+    if lvctrCreatureTemplateResistance.Items[i].SubItems[2]='' then lvctrCreatureTemplateResistance.Items[i].SubItems[2] := '0';
+    Values := Values + Format('(%s, %s, %s, %s);',[
+        lvctrCreatureTemplateResistance.Items[i].Caption,
+        lvctrCreatureTemplateResistance.Items[i].SubItems[0],
+        lvctrCreatureTemplateResistance.Items[i].SubItems[1],
+        lvctrCreatureTemplateResistance.Items[i].SubItems[2]
+    ]);
+  end;
+
+  if Values<>'' then
+  begin
+    mectScript.Text := Format('DELETE FROM `creature_template_resistance` WHERE `CreatureID`= %s ;'#13#10+
+    'INSERT INTO `creature_template_resistance` (CreatureID, School, Resistance, VerifiedBuild) VALUES '#13#10'%s ',
+     [entry, Values])
+  end
+  else
+    mectScript.Text := Format('DELETE FROM `creature_template_resistance` WHERE `CreatureID`= %s;',[entry]);
+end;
+
+procedure TMainForm.lvctrCreatureTemplateResistanceChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+  btCreatureTemplateResistanceUpd.Enabled := Assigned(TJvListView(Sender).Selected);
+  btCreatureTemplateResistanceDel.Enabled := Assigned(TJvListView(Sender).Selected);
+end;
+
+procedure TMainForm.lvctrCreatureTemplateResistanceSelectItem(Sender: TObject;
+  Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    with TJvListView(Sender).Selected do
+    begin
+      edctrCreatureID.Text := Caption;
+      edctrSchool.Text := SubItems[0];
+      edctrResistance.Text := SubItems[1];
+      edctrVerifiedBuild.Text := SubItems[2];
+    end;
+  end;
+end;
+// --creature template resistance end
+
+// --creature template spell
+procedure TMainForm.CompleteCreatureTemplateSpellScript;
+var
+  ceentry, ceindex, Fields, Values: string;
+begin
+  mectLog.Clear;
+  ceentry :=  edctsCreatureID.Text;
+  ceindex := edctsIndex.Text;
+  if (ceentry='') or (ceindex='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'creature_template_spell', PFX_CREATURE_TEMPLATE_SPELL, mectLog);
+  mectScript.Text := Format('DELETE FROM `creature_template_spell` WHERE (`CreatureID`=%s) AND (`Index`=%s);'#13#10+
+    'INSERT INTO `creature_template_spell` (%s) VALUES '#13#10+
+    '(%s);'#13#10,[ceentry, ceindex, Fields, Values])
+end;
+
+procedure TMainForm.btCreatureTemplateSpellAddClick(Sender: TObject);
+begin
+  with lvctsCreatureTemplateSpell.Items.Add do
+  begin
+    Caption := edctsCreatureID.Text;
+    SubItems.Add(edctsIndex.Text);
+    SubItems.Add(edctsSpell.Text);
+    SubItems.Add(edctsVerifiedBuild.Text);
+  end;
+end;
+
+procedure TMainForm.btScriptCreatureTemplateSpellClick(Sender: TObject);
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+end;
+
+procedure TMainForm.btCreatureTemplateSpellUpdClick(Sender: TObject);
+begin
+  if Assigned(lvctsCreatureTemplateSpell.Selected) then
+  begin
+    with lvctsCreatureTemplateSpell.Selected do
+    begin
+      Caption := edctsCreatureID.Text;
+      SubItems[0] := edctsIndex.Text;
+      SubItems[1] := edctsSpell.Text;
+      SubItems[2] := edctsVerifiedBuild.Text;
+    end;
+  end;
+end;
+
+procedure TMainForm.btCreatureTemplateSpellDelClick(Sender: TObject);
+begin
+if Assigned(lvctsCreatureTemplateSpell.Selected) then
+    lvctsCreatureTemplateSpell.DeleteSelected;
+end;
+
+procedure TMainForm.btFullCreatureTemplateSpellScriptClick(Sender: TObject);
+var
+  i: integer;
+  entry, Values: string;
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+  entry := edctsCreatureID.Text;
+  mectScript.Clear;
+  Values := '';
+  if lvctsCreatureTemplateSpell.Items.Count<>0 then
+  begin
+    for i := 0 to lvctsCreatureTemplateSpell.Items.Count - 2 do
+    begin
+      if lvctsCreatureTemplateSpell.Items[i].SubItems[2]='' then lvctsCreatureTemplateSpell.Items[i].SubItems[2] := '0';
+      Values := Values + Format('(%s, %s, %s, %s),'#13#10,[
+        lvctsCreatureTemplateSpell.Items[i].Caption,
+        lvctsCreatureTemplateSpell.Items[i].SubItems[0],
+        lvctsCreatureTemplateSpell.Items[i].SubItems[1],
+        lvctsCreatureTemplateSpell.Items[i].SubItems[2]
+      ]);
+    end;
+    i := lvctsCreatureTemplateSpell.Items.Count - 1;
+    if lvctsCreatureTemplateSpell.Items[i].SubItems[2]='' then lvctsCreatureTemplateSpell.Items[i].SubItems[2] := '0';
+    Values := Values + Format('(%s, %s, %s, %s);',[
+        lvctsCreatureTemplateSpell.Items[i].Caption,
+        lvctsCreatureTemplateSpell.Items[i].SubItems[0],
+        lvctsCreatureTemplateSpell.Items[i].SubItems[1],
+        lvctsCreatureTemplateSpell.Items[i].SubItems[2]
+    ]);
+  end;
+
+  if Values<>'' then
+  begin
+    mectScript.Text := Format('DELETE FROM `creature_template_spell` WHERE `CreatureID`= %s ;'#13#10+
+    'INSERT INTO `creature_template_spell` (CreatureID, Index, Spell, VerifiedBuild) VALUES '#13#10'%s ',
+     [entry, Values])
+  end
+  else
+    mectScript.Text := Format('DELETE FROM `creature_template_spell` WHERE `CreatureID`= %s;',[entry]);
+end;
+
+procedure TMainForm.lvctsCreatureTemplateSpellChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+  btCreatureTemplateSpellUpd.Enabled := Assigned(TJvListView(Sender).Selected);
+  btCreatureTemplateSpellDel.Enabled := Assigned(TJvListView(Sender).Selected);
+end;
+
+procedure TMainForm.lvctsCreatureTemplateSpellSelectItem(Sender: TObject;
+  Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    with TJvListView(Sender).Selected do
+    begin
+      edctsCreatureID.Text := Caption;
+      edctsIndex.Text := SubItems[0];
+      edctsSpell.Text := SubItems[1];
+      edctsVerifiedBuild.Text := SubItems[2];
+    end;
+  end;
+end;
+
+// --creature template spell
 
 procedure TMainForm.CompleteLocalesQuest;
 var
@@ -8413,6 +8644,11 @@ begin
   end
   else
     mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE `CreatureEntry`= %s;',[entry]);
+end;
+
+procedure TMainForm.btScriptCreatureQuestItemClick(Sender: TObject);
+begin
+  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
 end;
 
 procedure TMainForm.lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
