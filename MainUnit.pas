@@ -72,6 +72,8 @@ const
   PFX_GAMEOBJECT_TEMPLATE           = 'gt';
   PFX_GAME_EVENT                    = 'ge';
   PFX_GAMEOBJECT                    = 'gl';
+  PFX_GAMEOBJECT_TEMPLATE_ADDON     = 'gota';
+  PFX_GAMEOBJECT_QUEST_ITEM         = 'goqi';
   PFX_GAMEOBJECT_LOOT_TEMPLATE      = 'go';
   PFX_ITEM_TEMPLATE                 = 'it';
   PFX_ITEM_LOOT_TEMPLATE            = 'il';
@@ -611,15 +613,12 @@ type
     tsEditGO: TTabSheet;
     gbGO1: TGroupBox;
     lbgtentry: TLabel;
-    lbgtfaction: TLabel;
     lbgttype: TLabel;
     edgtentry: TJvComboEdit;
-    edgtflags: TJvComboEdit;
     edgtname: TLabeledEdit;
     edgtdisplayId: TLabeledEdit;
     edgtsize: TLabeledEdit;
     edgtScriptName: TLabeledEdit;
-    edgtfaction: TJvComboEdit;
     edgttype: TJvComboEdit;
     btScriptGOTemplate: TButton;
     gbGOsounds: TGroupBox;
@@ -1267,7 +1266,6 @@ type
     lbctunit_flags2: TLabel;
     lbcttype_flags: TLabel;
     lbctdynamicflags: TLabel;
-    lbgtflags: TLabel;
     lbctMovementType: TLabel;
     linkSmartAIInfo: TLabel;
     linkConditionInfo: TLabel;
@@ -1347,13 +1345,6 @@ type
     Label2: TLabel;
     editHolidayId: TLabeledEdit;
     edgtunk1: TLabeledEdit;
-    gbGOQuestItems: TGroupBox;
-    edgtquestItem1: TLabeledEdit;
-    edgtquestItem2: TLabeledEdit;
-    edgtquestItem3: TLabeledEdit;
-    edgtquestItem4: TLabeledEdit;
-    edgtquestItem5: TLabeledEdit;
-    edgtquestItem6: TLabeledEdit;
     editFlagsExtra: TLabeledEdit;
     edqtRequiredItemId5: TJvComboEdit;
     edqtRequiredItemCount5: TLabeledEdit;
@@ -1691,6 +1682,20 @@ type
     edctspell_school_immune_mask: TJvComboEdit;
     edcrdtCreatureId: TLabeledEdit;
     edcrdtTrainerId: TLabeledEdit;
+
+    //gameobject_template_addon
+    edgotaentry: TLabeledEdit;
+    edgotafaction: TJvComboEdit;
+    edgotaflags: TJvComboEdit;
+    edgotamingold: TLabeledEdit;
+    edgotamaxgold: TLabeledEdit;
+    edgotaartkit0: TLabeledEdit;
+    edgotaartkit1: TLabeledEdit;
+    edgotaartkit2: TLabeledEdit;
+    edgotaartkit3: TLabeledEdit;
+    gbGOTemplateAddon: TGroupBox;
+    lbgotafaction: TLabel;
+    lbgotaflags: TLabel;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -6906,6 +6911,20 @@ begin
     SetGOdataHints(t);
     SetGOdataNames(t);
 
+    MyQuery.SQL.Text := Format('SELECT * FROM `gameobject_template_addon` WHERE `entry`=%d', [Entry]);
+    MyQuery.Open;
+    if (MyQuery.Eof=false) then
+      edgotaentry.Text := edgtentry.Text;
+	   	edgotafaction.Text := MyQuery.FieldByName('faction').AsString;
+		  edgotaflags.Text := MyQuery.FieldByName('flags').AsString;
+	   	edgotamingold.Text := MyQuery.FieldByName('mingold').AsString;
+	   	edgotamaxgold.Text := MyQuery.FieldByName('maxgold').AsString;
+	  	edgotaartkit0.Text := MyQuery.FieldByName('artkit0').AsString;
+	   	edgotaartkit1.Text := MyQuery.FieldByName('artkit1').AsString;
+	   	edgotaartkit2.Text := MyQuery.FieldByName('artkit2').AsString;
+	   	edgotaartkit3.Text := MyQuery.FieldByName('artkit3').AsString;
+    MyQuery.Close;
+
     LoadQueryToListView(Format('SELECT `guid`, `id`, `map`, `position_x`,'+
       '`position_y`,`position_z`,`orientation` FROM `gameobject` WHERE (`id`=%d)',
       [Entry]), lvglGOLocation);
@@ -6920,18 +6939,40 @@ end;
 
 procedure TMainForm.CompleteGOScript;
 var
-  gtentry, Fields, Values: string;
+  gtentry, Fields, Values, s1, s2, Script: string;
 begin
   meGOLog.Clear;
   gtentry := edgtEntry.Text;
   if gtentry='' then exit;
   SetFieldsAndValues(Fields, Values, 'gameobject_template', PFX_GAMEOBJECT_TEMPLATE, megoLog);
   case SyntaxStyle of
-    ssInsertDelete: meGOScript.Text := Format('DELETE FROM `gameobject_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `gameobject_template` WHERE (`entry`=%s);'#13#10+
       'INSERT INTO `gameobject_template` (%s) VALUES (%s);'#13#10,[gtentry, Fields, Values]);
-    ssReplace: meGOScript.Text := Format('REPLACE INTO `gameobject_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: megoScript.Text := MakeUpdate('gameobject_template', PFX_GAMEOBJECT_TEMPLATE, 'entry', gtentry);
+    ssReplace: s1 := Format('REPLACE INTO `gameobject_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: s1 := MakeUpdate('gameobject_template', PFX_GAMEOBJECT_TEMPLATE, 'entry', gtentry);
   end;
+
+ // gameobject_template_addon
+  if edgotaentry.Text<>'' then begin
+  Fields:= ''; Values:= '';
+  gtentry:=edgotaentry.Text;
+  SetFieldsAndValues(Fields, Values, 'gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, megoLog);
+   case SyntaxStyle of
+    ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `gameobject_template_addon` WHERE `entry` = %s;'#13#10+
+                      'INSERT INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[gtentry, Fields, Values]);
+    ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s2 := MakeUpdate('gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, 'entry', gtentry);
+   end;
+  end;
+
+  //Add all scripts together
+  Script := s1+s2;
+  //Format all go script
+  megoScript.Text := Script;
 end;
 
 procedure TMainForm.edgeCreatureGuidButtonClick(Sender: TObject);

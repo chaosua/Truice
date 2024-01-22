@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 956
     Height = 693
-    ActivePage = tsCreature
+    ActivePage = tsGameObject
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -13565,7 +13565,7 @@ object MainForm: TMainForm
         Top = 5
         Width = 948
         Height = 660
-        ActivePage = tsGOScript
+        ActivePage = tsEditGO
         Align = alClient
         TabOrder = 1
         object tsSearchGO: TTabSheet
@@ -14147,26 +14147,12 @@ object MainForm: TMainForm
               Height = 13
               Caption = 'Entry'
             end
-            object lbgtfaction: TLabel
-              Left = 88
-              Top = 56
-              Width = 32
-              Height = 13
-              Caption = 'faction'
-            end
             object lbgttype: TLabel
               Left = 216
               Top = 16
               Width = 20
               Height = 13
               Caption = 'type'
-            end
-            object lbgtflags: TLabel
-              Left = 216
-              Top = 56
-              Width = 22
-              Height = 13
-              Caption = 'flags'
             end
             object edgtentry: TJvComboEdit
               Left = 8
@@ -14262,55 +14248,16 @@ object MainForm: TMainForm
               Text = ''
             end
             object edgtScriptName: TLabeledEdit
-              Left = 333
+              Left = 102
               Top = 72
-              Width = 107
+              Width = 120
               Height = 21
               Hint = 'Script'#39's name this object uses, if needed.'
               EditLabel.Width = 55
               EditLabel.Height = 13
               EditLabel.Caption = 'ScriptName'
-              TabOrder = 7
-              Text = ''
-            end
-            object edgtfaction: TJvComboEdit
-              Left = 88
-              Top = 72
-              Width = 121
-              Height = 21
-              Hint = 'Object'#39's faction, if any.'
-              ButtonWidth = 22
-              ClickKey = 13
-              Glyph.Data = {
-                36030000424D3603000000000000360000002800000010000000100000000100
-                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
-                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
-                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
-                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
-                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
-                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
-                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
               TabOrder = 5
               Text = ''
-              OnButtonClick = GetFactionTemplate
             end
             object edgttype: TJvComboEdit
               Left = 216
@@ -14352,45 +14299,6 @@ object MainForm: TMainForm
               OnButtonClick = edgttypeButtonClick
               OnChange = edgttypeChange
             end
-            object edgtflags: TJvComboEdit
-              Left = 216
-              Top = 72
-              Width = 110
-              Height = 21
-              ButtonWidth = 22
-              ClickKey = 13
-              Glyph.Data = {
-                36030000424D3603000000000000360000002800000010000000100000000100
-                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
-                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
-                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
-                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
-                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
-                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
-                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-              TabOrder = 6
-              Text = ''
-              OnButtonClick = GetGOFlags
-              OnChange = edflagsChange
-            end
             object edgtcastBarCaption: TLabeledEdit
               Left = 116
               Top = 111
@@ -14399,7 +14307,7 @@ object MainForm: TMainForm
               EditLabel.Width = 72
               EditLabel.Height = 13
               EditLabel.Caption = 'castBarCaption'
-              TabOrder = 8
+              TabOrder = 6
               Text = ''
             end
             object edgtIconName: TLabeledEdit
@@ -14410,40 +14318,40 @@ object MainForm: TMainForm
               EditLabel.Width = 49
               EditLabel.Height = 13
               EditLabel.Caption = 'IconName'
-              TabOrder = 9
+              TabOrder = 7
               Text = ''
             end
             object edgtunk1: TLabeledEdit
-              Left = 220
+              Left = 240
               Top = 111
               Width = 66
               Height = 21
               EditLabel.Width = 24
               EditLabel.Height = 13
               EditLabel.Caption = 'unk1'
-              TabOrder = 10
+              TabOrder = 8
               Text = ''
             end
             object edgtVerifiedBuild: TLabeledEdit
-              Left = 292
+              Left = 380
               Top = 111
               Width = 60
               Height = 21
               EditLabel.Width = 58
               EditLabel.Height = 13
               EditLabel.Caption = 'VerifiedBuild'
-              TabOrder = 11
+              TabOrder = 9
               Text = ''
             end
             object edgtAIName: TLabeledEdit
-              Left = 356
-              Top = 111
-              Width = 91
+              Left = 235
+              Top = 72
+              Width = 110
               Height = 21
               EditLabel.Width = 38
               EditLabel.Height = 13
               EditLabel.Caption = 'AIName'
-              TabOrder = 12
+              TabOrder = 10
               Text = ''
             end
           end
@@ -14731,77 +14639,199 @@ object MainForm: TMainForm
               Text = ''
             end
           end
-          object gbGOQuestItems: TGroupBox
-            Left = 474
-            Top = 6
+          object gbGOTemplateAddon: TGroupBox
+            Left = 472
+            Top = 3
             Width = 246
-            Height = 140
-            Caption = 'Quest Items'
+            Height = 230
+            Caption = 'Gameobgect Template Addon'
             TabOrder = 3
-            object edgtquestItem1: TLabeledEdit
+            object lbgotafaction: TLabel
+              Left = 7
+              Top = 55
+              Width = 32
+              Height = 13
+              Caption = 'faction'
+            end
+            object lbgotaflags: TLabel
+              Left = 128
+              Top = 55
+              Width = 22
+              Height = 13
+              Caption = 'flags'
+            end
+            object edgotaentry: TLabeledEdit
               Left = 7
               Top = 32
               Width = 107
               Height = 21
-              EditLabel.Width = 52
+              Hint = 'ID of the gameobject'
+              EditLabel.Width = 23
               EditLabel.Height = 13
-              EditLabel.Caption = 'questItem1'
+              EditLabel.Caption = 'entry'
               TabOrder = 0
               Text = ''
             end
-            object edgtquestItem2: TLabeledEdit
-              Left = 128
-              Top = 32
+            object edgotaartkit0: TLabeledEdit
+              Left = 7
+              Top = 151
               Width = 107
               Height = 21
-              EditLabel.Width = 52
+              Hint = 
+                'Updates display if object is activated by SPELL_EFFCT_ACTIVATE_O' +
+                'BJECT with MiscValue 19 - 22'
+              EditLabel.Width = 29
               EditLabel.Height = 13
-              EditLabel.Caption = 'questItem2'
+              EditLabel.Caption = 'artkit0'
               TabOrder = 1
               Text = ''
             end
-            object edgtquestItem3: TLabeledEdit
+            object edgotamingold: TLabeledEdit
               Left = 7
-              Top = 72
+              Top = 111
               Width = 107
               Height = 21
-              EditLabel.Width = 52
+              Hint = 
+                'Minimum money, in copper, that the gameobject can drop when acce' +
+                'ssed / used'
+              EditLabel.Width = 36
               EditLabel.Height = 13
-              EditLabel.Caption = 'questItem3'
+              EditLabel.Caption = 'mingold'
               TabOrder = 2
               Text = ''
             end
-            object edgtquestItem4: TLabeledEdit
+            object edgotaartkit1: TLabeledEdit
+              Left = 128
+              Top = 151
+              Width = 107
+              Height = 21
+              Hint = 
+                'Updates display if object is activated by SPELL_EFFCT_ACTIVATE_O' +
+                'BJECT with MiscValue 19 - 22'
+              EditLabel.Width = 29
+              EditLabel.Height = 13
+              EditLabel.Caption = 'artkit1'
+              TabOrder = 3
+              Text = ''
+            end
+            object edgotamaxgold: TLabeledEdit
+              Left = 128
+              Top = 111
+              Width = 107
+              Height = 21
+              Hint = 
+                'Maximum money, in copper, that the gameobject can drop when acce' +
+                'ssed / used'
+              EditLabel.Width = 39
+              EditLabel.Height = 13
+              EditLabel.Caption = 'maxgold'
+              TabOrder = 4
+              Text = ''
+            end
+            object edgotaartkit2: TLabeledEdit
+              Left = 7
+              Top = 189
+              Width = 107
+              Height = 21
+              Hint = 
+                'Updates display if object is activated by SPELL_EFFCT_ACTIVATE_O' +
+                'BJECT with MiscValue 19 - 22'
+              EditLabel.Width = 29
+              EditLabel.Height = 13
+              EditLabel.Caption = 'artkit2'
+              TabOrder = 5
+              Text = ''
+            end
+            object edgotafaction: TJvComboEdit
+              Left = 7
+              Top = 72
+              Width = 107
+              Height = 21
+              Hint = 'Object'#39's faction, if any.'
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              TabOrder = 6
+              Text = ''
+              OnButtonClick = GetFactionTemplate
+            end
+            object edgotaflags: TJvComboEdit
               Left = 128
               Top = 72
               Width = 107
               Height = 21
-              EditLabel.Width = 52
-              EditLabel.Height = 13
-              EditLabel.Caption = 'questItem4'
-              TabOrder = 3
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              TabOrder = 7
               Text = ''
+              OnButtonClick = GetGOFlags
+              OnChange = edflagsChange
             end
-            object edgtquestItem5: TLabeledEdit
-              Left = 7
-              Top = 111
-              Width = 107
-              Height = 21
-              EditLabel.Width = 52
-              EditLabel.Height = 13
-              EditLabel.Caption = 'questItem5'
-              TabOrder = 4
-              Text = ''
-            end
-            object edgtquestItem6: TLabeledEdit
+            object edgotaartkit3: TLabeledEdit
               Left = 128
-              Top = 111
+              Top = 189
               Width = 107
               Height = 21
-              EditLabel.Width = 52
+              Hint = 
+                'Updates display if object is activated by SPELL_EFFCT_ACTIVATE_O' +
+                'BJECT with MiscValue 19 - 22'
+              EditLabel.Width = 29
               EditLabel.Height = 13
-              EditLabel.Caption = 'questItem6'
-              TabOrder = 5
+              EditLabel.Caption = 'artkit3'
+              TabOrder = 8
               Text = ''
             end
           end

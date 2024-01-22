@@ -4,8 +4,8 @@
 4;TRANSPORT (Object can transport - boat, elevator, car)
 5;NOT_SELECTABLE (Not even in GM-mode)
 6;NODESPAWN (Never despawn, typ for doors, they just change state)
-7;TRIGGERED (Typ, summoned objects. Triggered by spell or other events)
-8;UNK1
+7;AI_OBSTACLE (makes the client register the object in something called AIObstacleMgr, unknown what it does)
+8;FREEZE_ANIMATION
 9;UNK2
 10;DAMAGED (Has been siege damaged)
 11;DESTROYED (Has been destroyed)
