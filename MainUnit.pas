@@ -27,7 +27,7 @@ const
 
   SCRIPT_TAB_NO_QUEST       = 6;
   SCRIPT_TAB_NO_CREATURE    = 20;
-  SCRIPT_TAB_NO_GAMEOBJECT  = 6;
+  SCRIPT_TAB_NO_GAMEOBJECT  = 7;
   SCRIPT_TAB_NO_ITEM        = 10;
   SCRIPT_TAB_NO_SMARTAI     = 1;
   SCRIPT_TAB_NO_CONDITIONS  = 1;
@@ -73,7 +73,7 @@ const
   PFX_GAME_EVENT                    = 'ge';
   PFX_GAMEOBJECT                    = 'gl';
   PFX_GAMEOBJECT_TEMPLATE_ADDON     = 'gota';
-  PFX_GAMEOBJECT_QUEST_ITEM         = 'goqi';
+  PFX_GAMEOBJECT_QUESTITEM         = 'goqi';
   PFX_GAMEOBJECT_LOOT_TEMPLATE      = 'go';
   PFX_ITEM_TEMPLATE                 = 'it';
   PFX_ITEM_LOOT_TEMPLATE            = 'il';
@@ -1696,6 +1696,18 @@ type
     edgotaflags: TJvComboEdit;
     edgotaartkit3: TLabeledEdit;
     lbgotaflags: TLabel;
+    tsGOQuestItem: TTabSheet;
+    lvgoqiGOQuestItem: TJvListView;
+    edgoqiGameObjectEntry: TLabeledEdit;
+    edgoqiIdx: TLabeledEdit;
+    edgoqiItemId: TJvComboEdit;
+    lbgoqiItemId: TLabel;
+    edgoqiVerifiedBuild: TLabeledEdit;
+    btGOQuestItemAdd: TSpeedButton;
+    btGOQuestItemUpd: TSpeedButton;
+    btGOQuestItemDel: TSpeedButton;
+    btShowGOQuestItemScript: TButton;
+    btFullGOQuestItemScript: TButton;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2161,6 +2173,18 @@ type
     procedure btScriptCreatureTemplateSpellClick(Sender: TObject);
     // Creature Template Spell tab end
 
+    // Gameobject Quest Item tab begin
+    procedure btGOQuestItemAddClick(Sender: TObject);
+    procedure btGOQuestItemUpdClick(Sender: TObject);
+    procedure btGOQuestItemDelClick(Sender: TObject);
+    procedure lvgoqiGOQuestItemChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
+    procedure lvgoqiGOQuestItemSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btFullGOQuestItemScriptClick(Sender: TObject);
+    procedure btScriptGOQuestItemClick(Sender: TObject);
+    // Gameobject Quest Item tab end
+
   private
     { Private declarations }
     Spells: TList;
@@ -2234,6 +2258,7 @@ type
     procedure CompleteGOLocationScript;
     procedure CompleteGOLootScript;
     procedure CompleteGOScript;
+    procedure CompleteGOQuestItemScript;
 
     {items}
     procedure SearchItem;
@@ -6883,6 +6908,10 @@ begin
     LoadQueryToListView(Format('SELECT glt.*, i.name FROM `gameobject_loot_template` glt '+
       'LEFT OUTER JOIN `item_template` i ON i.`entry` = glt.`item`  WHERE (glt.`entry`=%d)',
       [StrToIntDef(edgtdata1.Text,0)]), lvgoGOLoot);
+
+    LoadQueryToListView(Format('SELECT `GameObjectEntry`, `idx`, `itemId`, `VerifiedBuild` FROM `gameobject_questitem` WHERE (`GameObjectEntry`=%d)',
+      [Entry]),lvgoqiGOQuestItem);
+
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[89]+#10#13+E.Message);
@@ -6893,7 +6922,7 @@ procedure TMainForm.CompleteGOScript;
 var
   gtentry, Fields, Values, s1, s2, Script: string;
 begin
-  meGOLog.Clear;
+  megoLog.Clear;
   gtentry := edgtEntry.Text;
   if gtentry='' then exit;
   SetFieldsAndValues(Fields, Values, 'gameobject_template', PFX_GAMEOBJECT_TEMPLATE, megoLog);
@@ -6926,6 +6955,119 @@ begin
   //Format all go script
   megoScript.Text := Script;
 end;
+
+// -- gameobject_questitem
+procedure TMainForm.btGOQuestItemAddClick(Sender: TObject);
+begin
+  with lvgoqiGOQuestItem.Items.Add do
+  begin
+    Caption := edgoqiGameObjectEntry.Text;
+    SubItems.Add(edgoqiIdx.Text);
+    SubItems.Add(edgoqiItemID.Text);
+    SubItems.Add(edgoqiVerifiedBuild.Text);
+  end;
+end;
+
+procedure TMainForm.btGOQuestItemUpdClick(Sender: TObject);
+begin
+  if Assigned(lvgoqiGOQuestItem.Selected) then
+  begin
+    with lvgoqiGOQuestItem.Selected do
+    begin
+      Caption := edgoqiGameObjectEntry.Text;
+      SubItems[0] := edgoqiIdx.Text;
+      SubItems[1] := edgoqiItemID.Text;
+      SubItems[2] := edgoqiVerifiedBuild.Text;
+    end;
+  end;
+end;
+
+procedure TMainForm.btGOQuestItemDelClick(Sender: TObject);
+begin
+if Assigned(lvgoqiGOQuestItem.Selected) then
+    lvgoqiGOQuestItem.DeleteSelected;
+end;
+
+procedure TMainForm.btFullGOQuestItemScriptClick(Sender: TObject);
+var
+  i: integer;
+  entry, Values: string;
+begin
+  PageControl4.ActivePageIndex := SCRIPT_TAB_NO_GAMEOBJECT;
+  entry := edgoqiGameObjectEntry.Text;
+  megoScript.Clear;
+  Values := '';
+  if lvgoqiGOQuestItem.Items.Count<>0 then
+  begin
+    for i := 0 to lvgoqiGOQuestItem.Items.Count - 2 do
+    begin
+      Values := Values + Format('(%s, %s, %s, %s),'#13#10,[
+        lvgoqiGOQuestItem.Items[i].Caption,
+        lvgoqiGOQuestItem.Items[i].SubItems[0],
+        lvgoqiGOQuestItem.Items[i].SubItems[1],
+        lvgoqiGOQuestItem.Items[i].SubItems[2]
+      ]);
+    end;
+    i := lvgoqiGOQuestItem.Items.Count - 1;
+    Values := Values + Format('(%s, %s, %s, %s);',[
+        lvgoqiGOQuestItem.Items[i].Caption,
+        lvgoqiGOQuestItem.Items[i].SubItems[0],
+        lvgoqiGOQuestItem.Items[i].SubItems[1],
+        lvgoqiGOQuestItem.Items[i].SubItems[2]
+    ]);
+  end;
+
+  if Values<>'' then
+  begin
+    megoScript.Text := Format('DELETE FROM `gameobject_questitem` WHERE `GameObjectEntry`= %s ;'#13#10+
+    'INSERT INTO `gameobject_questitem` (GameObjectEntry, Idx, ItemId, VerifiedBuild) VALUES '#13#10'%s ',
+     [entry, Values])
+  end
+  else
+    megoScript.Text := Format('DELETE FROM `gameobject_questitem` WHERE `GameObjectEntry`= %s;',[entry]);
+end;
+
+procedure TMainForm.btScriptGOQuestItemClick(Sender: TObject);
+begin
+  PageControl4.ActivePageIndex := SCRIPT_TAB_NO_GAMEOBJECT;
+end;
+
+procedure TMainForm.lvgoqiGOQuestItemChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+  btGOQuestItemUpd.Enabled := Assigned(TJvListView(Sender).Selected);
+  btGOQuestItemDel.Enabled := Assigned(TJvListView(Sender).Selected);
+end;
+
+procedure TMainForm.lvgoqiGOQuestItemSelectItem(Sender: TObject;
+  Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    with TJvListView(Sender).Selected do
+    begin
+      edgoqiGameObjectEntry.Text := Caption;
+      edgoqiIdx.Text := SubItems[0];
+      edgoqiItemID.Text := SubItems[1];
+      edgoqiVerifiedBuild.Text := SubItems[2];
+    end;
+  end;
+end;
+
+procedure TMainForm.CompleteGOQuestItemScript;
+var
+  entry, itemidx, Fields, Values: string;
+begin
+  megoLog.Clear;
+  entry :=  edgoqiGameObjectEntry.Text;
+  itemidx :=  edgoqiIdx.Text;
+  if (entry='') or (itemidx='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'gameobject_questitem', PFX_GAMEOBJECT_QUESTITEM, megoLog);
+  megoScript.Text := Format('DELETE FROM `gameobject_questitem` WHERE (`GameObjectEntry`=%s) AND (`Idx`=%s);'#13#10+
+   'INSERT INTO `gameobject_questitem` (%s) VALUES '#13#10+
+   '(%s);'#13#10,[entry, itemidx, Fields, Values])
+end;
+// -- gameobject_questitem
 
 procedure TMainForm.edgeCreatureGuidButtonClick(Sender: TObject);
 begin
@@ -7007,6 +7149,10 @@ begin
     1: CompleteGOScript;
     2: CompleteGOLocationScript;
     3: CompleteGOLootScript;
+    4: {involved in - do nothing};
+    5: CompleteGOQuestItemScript;
+    6: {smartai tab - do nothing};
+    7: {scritp tab - do nothing};
   end;
 end;
 
