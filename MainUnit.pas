@@ -520,7 +520,7 @@ type
     edclposition_z: TLabeledEdit;
     edclorientation: TLabeledEdit;
     edclspawntimesecs: TLabeledEdit;
-    edclspawndist: TLabeledEdit;
+    edclwander_distance: TLabeledEdit;
     edclcurrentwaypoint: TLabeledEdit;
     edclcurhealth: TLabeledEdit;
     edclcurmana: TLabeledEdit;
@@ -1061,8 +1061,8 @@ type
     rea: TTabSheet;
     edcaguid: TLabeledEdit;
     edcamount : TLabeledEdit;
-    edcabytes1: TLabeledEdit;
-    edcabytes2: TLabeledEdit;
+    edcaMountCreatureID: TLabeledEdit;
+    edcaStandState: TLabeledEdit;
     edcaemote : TJvComboEdit;
     edcaauras: TLabeledEdit;
     lbcaCreatureAddonHint: TLabel;
@@ -1198,10 +1198,10 @@ type
     edcdentry: TLabeledEdit;
     btScriptCreatureTemplateAddon: TButton;
     edcdauras: TLabeledEdit;
-    edcdbytes1: TLabeledEdit;
+    edcdMountCreatureID: TLabeledEdit;
     edcdmount: TLabeledEdit;
     lbcdCreatureTemplateAddonHint: TLabel;
-    edcdbytes2: TLabeledEdit;
+    edcdStandState: TLabeledEdit;
     edcdemote: TJvComboEdit;
     lbcdemote: TLabel;
     editGemProperties: TJvComboEdit;
@@ -1712,6 +1712,14 @@ type
     btCreatureEquipTemplateDel: TSpeedButton;
     btFullCreatureEquipTemplate: TButton;
     btShowCreatureEquipTemplate: TButton;
+    edcdAnimTier: TLabeledEdit;
+    edcdVisFlags: TLabeledEdit;
+    edcdSheathState: TLabeledEdit;
+    edcdPvPFlags: TLabeledEdit;
+    edcaAnimTier: TLabeledEdit;
+    edcaVisFlags: TLabeledEdit;
+    edcaSheathState: TLabeledEdit;
+    edcaPvPFlags: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -4851,8 +4859,12 @@ begin
   if (edcaguid.Text='') then edcaguid.Text := edclguid.Text;
   if (edcapath_id.Text='') then edcapath_id.Text := '0';
   if (edcamount.Text='') then edcamount.Text := '0';
-  if (edcabytes1.Text='') then edcabytes1.Text := '0';
-  if (edcabytes2.Text='') then edcabytes2.Text := '0';
+  if (edcaMountCreatureID.Text='') then edcaMountCreatureID.Text := '0';
+  if (edcaStandState.Text='') then edcaStandState.Text := '0';
+  if (edcaAnimTier.Text='') then edcaAnimTier.Text := '0';
+  if (edcaVisFlags.Text='') then edcaVisFlags.Text := '0';
+  if (edcaSheathState.Text='') then edcaSheathState.Text := '0';
+  if (edcaPvPFlags.Text='') then edcaPvPFlags.Text := '0';
   if (edcaemote.Text='') then edcaemote.Text := '0';
   if (edcavisibilityDistanceType.Text='') then edcavisibilityDistanceType.Text := '0';
   if (edcaauras.Text='') then edcaauras.Text := '';
@@ -4942,8 +4954,12 @@ begin
   if (edcdentry.Text='') then edcdentry.Text := edctEntry.Text;
   if (edcdpath_id.Text='') then edcdpath_id.Text := '0';
   if (edcdmount.Text='') then edcdmount.Text := '0';
-  if (edcdbytes1.Text='') then edcdbytes1.Text := '0';
-  if (edcdbytes2.Text='') then edcdbytes2.Text := '0';
+  if (edcdMountCreatureID.Text='') then edcdMountCreatureID.Text := '0';
+  if (edcdStandState.Text='') then edcdStandState.Text := '0';
+  if (edcdAnimTier.Text='') then edcdAnimTier.Text := '0';
+  if (edcdVisFlags.Text='') then edcdVisFlags.Text := '0';
+  if (edcdSheathState.Text='') then edcdSheathState.Text := '0';
+  if (edcdPvPFlags.Text='') then edcdPvPFlags.Text := '0';
   if (edcdemote.Text='') then edcdemote.Text := '0';
   if (edcdvisibilityDistanceType.Text='') then edcdvisibilityDistanceType.Text := '0';
   if (edcdauras.Text='') then edcdauras.Text := '';
