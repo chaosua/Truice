@@ -5820,14 +5820,14 @@ begin
   try
     FillFields(MyQuery, PFX_CREATURE_EQUIP_TEMPLATE);
     MyQuery.Close;
-  except
-    on E: Exception do
-      raise Exception.Create(dmMain.Text[139]+#10#13+E.Message);
-  end;
 
    LoadQueryToListView(Format('SELECT `CreatureID`, `ID`, `ItemID1`, `ItemID2`, `ItemID3`, `VerifiedBuild` FROM `creature_equip_template` WHERE (`CreatureID`=%d)',
      [Entry]),lvceCreatureEquipTemplate);
 
+  except
+    on E: Exception do
+      raise Exception.Create(dmMain.Text[139]+#10#13+E.Message);
+  end;
 end;
 
 procedure TMainForm.GetLootCondition(Sender: TObject);
