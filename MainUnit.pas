@@ -58,6 +58,7 @@ const
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
   PFX_CREATURE                      = 'cl';
   PFX_CREATURE_ADDON                = 'ca';
+  PFX_CREATURE_DEFAULT_TRAINER      = 'crdt';
   PFX_CREATURE_QUESTITEM            = 'cqi';
   PFX_CREATURE_EQUIP_TEMPLATE       = 'ce';
   PFX_CREATURE_MODEL_INFO           = 'ci';
@@ -67,8 +68,7 @@ const
   PFX_PICKPOCKETING_LOOT_TEMPLATE   = 'cp';
   PFX_SKINNING_LOOT_TEMPLATE        = 'cs';
   PFX_NPC_VENDOR                    = 'cv';
-  PFX_NPC_TRAINER                   = 'cr';
-  PFX_NPC_DEFAULT_TRAINER           = 'crdt';
+  PFX_TRAINER_SPELL                 = 'ts';
   PFX_GAMEOBJECT_TEMPLATE           = 'gt';
   PFX_GAME_EVENT                    = 'ge';
   PFX_GAMEOBJECT                    = 'gl';
@@ -443,42 +443,18 @@ type
     edctunit_flags2: TJvComboEdit;
     edctdynamicflags: TJvComboEdit;
     edctfamily: TJvComboEdit;
-    edcttrainer_type: TJvComboEdit;
-    edcttrainer_spell: TJvComboEdit;
-    edcttrainer_class: TJvComboEdit;
-    edcttrainer_race: TJvComboEdit;
     edcttype: TJvComboEdit;
     edcttype_flags: TJvComboEdit;
     gbLoot: TGroupBox;
     edctlootid: TLabeledEdit;
     edctpickpocketloot: TLabeledEdit;
     edctskinloot: TLabeledEdit;
-    gbResistance: TGroupBox;
-    edctresistance1: TLabeledEdit;
-    edctresistance2: TLabeledEdit;
-    edctresistance3: TLabeledEdit;
-    edctresistance4: TLabeledEdit;
-    edctresistance5: TLabeledEdit;
-    edctresistance6: TLabeledEdit;
-    edctspell1: TJvComboEdit;
-    edctspell2: TJvComboEdit;
-    edctspell3: TJvComboEdit;
-    edctspell4: TJvComboEdit;
-    edctspell5: TJvComboEdit;
-    edctspell6: TJvComboEdit;
-    edctspell7: TJvComboEdit;
-    edctspell8: TJvComboEdit;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
     edctPetSpellDataId: TLabeledEdit;
     edctVehicleId: TLabeledEdit;
     edctmingold: TLabeledEdit;
     edctmaxgold: TLabeledEdit;
     edctAIName: TLabeledEdit;
     edctMovementType: TJvComboEdit;
-    edctInhabitType: TJvComboEdit;
     edctHoverHeight: TLabeledEdit;
     gbModifyers: TGroupBox;
     edctHealthModifier: TLabeledEdit;
@@ -499,17 +475,8 @@ type
     lbctrank: TLabel;
     lbctfamily: TLabel;
     lbcttype: TLabel;
-    gbSpells: TGroupBox;
-    lbctspell1: TLabel;
-    lbctspell2: TLabel;
-    lbctspell3: TLabel;
-    lbctspell4: TLabel;
     gbctbehaviour: TGroupBox;
     gbTrainer: TGroupBox;
-    lbcttrainer_type: TLabel;
-    lbcttrainer_spell: TLabel;
-    lbctclass: TLabel;
-    lbctrace: TLabel;
     btScriptCreatureTemplate: TButton;
     tsCreatureLocation: TTabSheet;
     lvclCreatureLocation: TJvListView;
@@ -594,21 +561,29 @@ type
     edcvincrtime: TLabeledEdit;
     btScriptNPCVendor: TButton;
     btFullScriptVendor: TButton;
-    tsNPCTrainer: TTabSheet;
-    SpellID: TLabel;
+    tsTrainerSpell: TTabSheet;
+    lbtsSpellID: TLabel;
     btTrainerAdd: TSpeedButton;
     btTrainerUpd: TSpeedButton;
     btTrainerDel: TSpeedButton;
-    lbcrReqSkillLine: TLabel;
-    lvcrNPCTrainer: TJvListView;
-    edcrTrainerId: TLabeledEdit;
-    edcrSpellId: TJvComboEdit;
-    edcrMoneyCost: TLabeledEdit;
-    btScriptNPCTrainer: TButton;
-    edcrReqSkillRank: TLabeledEdit;
-    edcrReqLevel: TLabeledEdit;
-    btFullScriptTrainer: TButton;
-    edcrReqSkillLine: TJvComboEdit;
+
+
+    //trainer_spell
+    lvtsTrainerSpell: TJvListView;
+    edtsTrainerId: TLabeledEdit;
+    edtsSpellId: TJvComboEdit;
+    edtsMoneyCost: TLabeledEdit;
+    edtsReqSkillLine: TJvComboEdit;
+    edtsReqSkillRank: TLabeledEdit;
+    edtsReqAbility1: TLabeledEdit;
+    edtsReqAbility2: TLabeledEdit;
+    edtsReqAbility3: TLabeledEdit;
+    edtsReqLevel: TLabeledEdit;
+    edtsVerifiedBuild: TLabeledEdit;
+    btScriptTrainerSpell: TButton;
+    btFullScriptTrainerSpell: TButton;
+    lbtsReqSkillLine: TLabel;
+
     tsCreatureScript: TTabSheet;
     mectScript: TMemo;
     mectLog: TMemo;
@@ -1294,7 +1269,6 @@ type
     lbctdynamicflags: TLabel;
     lbgtflags: TLabel;
     lbctMovementType: TLabel;
-    lbctInhabitType: TLabel;
     linkSmartAIInfo: TLabel;
     linkConditionInfo: TLabel;
     lbctmechanic_immune_mask: TLabel;
@@ -1642,14 +1616,7 @@ type
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDScript1: TFDScript;
-    edctspell_school_immune_mask: TJvComboEdit;
-    lbctspell_school_immune_mask: TLabel;
     btExecuteScriptCreature: TButton;
-    edcrReqAbility1: TLabeledEdit;
-    edcrReqAbility2: TLabeledEdit;
-    edcrReqAbility3: TLabeledEdit;
-    edcrVerifiedBuild: TLabeledEdit;
-    edcrdtCreatureId: TLabeledEdit;
 
     //creature_questitem
     tsQuestItem: TTabSheet;
@@ -1720,6 +1687,10 @@ type
     edcaVisFlags: TLabeledEdit;
     edcaSheathState: TLabeledEdit;
     edcaPvPFlags: TLabeledEdit;
+    lbctspell_school_immune_mask: TLabel;
+    edctspell_school_immune_mask: TJvComboEdit;
+    edcrdtCreatureId: TLabeledEdit;
+    edcrdtTrainerId: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -1856,10 +1827,10 @@ type
     procedure btTrainerAddClick(Sender: TObject);
     procedure btTrainerUpdClick(Sender: TObject);
     procedure btTrainerDelClick(Sender: TObject);
-    procedure btFullScriptTrainerClick(Sender: TObject);
-    procedure lvcrNPCTrainerChange(Sender: TObject; Item: TListItem;
+    procedure btFullScriptTrainerSpellClick(Sender: TObject);
+    procedure lvtsTrainerSpellChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
-    procedure lvcrNPCTrainerSelectItem(Sender: TObject; Item: TListItem;
+    procedure lvtsTrainerSpellSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
 
     // Creature Quest Item tab begin
@@ -2234,8 +2205,6 @@ type
     procedure LoadCreatureEquip(entry: integer);
     procedure LoadCreatureOnKillReputation(id: string);
     procedure LoadCreatureLocation(GUID: integer);
-    procedure LoadCreatureQuestItem(Entry: integer);
-
     procedure SetCreatureModelEditFields(pfx: string; lvList: TJvListView);
 
     procedure CompleteCreatureScript;
@@ -2659,7 +2628,7 @@ begin
   Application.HintHidePause := 50000;
 
   tsNPCVendor.TabVisible := false;
-  tsNPCTrainer.TabVisible := false;
+  tsTrainerSpell.TabVisible := false;
   tsCreatureTemplateMovement.TabVisible := true;
 
   ItemColors[0] := $9D9D9D;
@@ -4612,13 +4581,13 @@ begin
 
     // is creature vendor?
     if npcflag and 128 = 128 then
-		isvendor := true
-	else isvendor := false;
+		  isvendor := true
+    else isvendor := false;
 
     // is creature trainer?
     if npcflag and 16 = 16 then
-		istrainer := true
-	else istrainer := false;
+		  istrainer := true
+	  else istrainer := false;
 
     if MyQuery.FieldByName('entry').AsInteger <> 0 then isEquip:= true else isEquip:= false;
 
@@ -4668,15 +4637,30 @@ begin
         ' `ReqAbility1`, `ReqAbility2`, `ReqAbility3`, `ReqLevel`, `VerifiedBuild`'+
         ' FROM `trainer_spell` WHERE (`TrainerId`='+
         ' (SELECT `TrainerId` FROM  `creature_default_trainer` WHERE `CreatureId`=%d))',
-        [Entry]),lvcrNPCTrainer);
+        [Entry]),lvtsTrainerSpell);
+
       // set spellnames in list view
-      lvcrNPCTrainer.Columns[lvcrNPCTrainer.Columns.Count-1].Caption := 'Spell Name';
-      for i := 0 to lvcrNPCTrainer.Items.Count - 1 do
-        lvcrNPCTrainer.Items[i].SubItems.Add(SpellsForm.GetSpellName(StrToIntDef(lvcrNPCTrainer.Items[i].SubItems[0],0)));
+      lvtsTrainerSpell.Columns[lvtsTrainerSpell.Columns.Count-1].Caption := 'Spell Name';
+      for i := 0 to lvtsTrainerSpell.Items.Count - 1 do
+        lvtsTrainerSpell.Items[i].SubItems.Add(SpellsForm.GetSpellName(StrToIntDef(lvtsTrainerSpell.Items[i].SubItems[0],0)));
+
+      MyQuery.SQL.Text := Format('SELECT * FROM `creature_default_trainer` WHERE `CreatureId`=%d', [Entry]);
+      MyQuery.Open;
+      if (MyQuery.Eof=false) then
+        edcrdtCreatureId.Text := MyQuery.FieldByName('CreatureId').AsString;
+        edcrdtTrainerId.Text := MyQuery.FieldByName('TrainerId').AsString;
+
+        //if creature is a trainer but has not assigned trainer id make default config
+        if edcrdtCreatureId.Text='' then begin
+          edcrdtCreatureId.Text:= IntToStr(Entry);
+          edcrdtTrainerId.Text:=IntToStr(Entry);
+        end;
+
+      MyQuery.Close;
     end;
 
     tsNPCVendor.TabVisible := isvendor;
-    tsNPCTrainer.TabVisible := istrainer;
+    tsTrainerSpell.TabVisible := istrainer;
     LoadCreatureTemplateAddon(Entry);
     LoadCreatureTemplateMovement(Entry);
     edclid.Text := IntToStr(Entry);
@@ -4684,7 +4668,6 @@ begin
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
     edcventry.Text := IntToStr(Entry);	//vendor
-    edcrdtCreatureId.Text := IntToStr(Entry);		//trainer
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[82]+#10#13+E.Message);
@@ -4693,18 +4676,43 @@ end;
 
 procedure TMainForm.CompleteCreatureScript;
 var
-  ctentry, Fields, Values: string;
+  ctentry, Fields, Values, s1, s2, Script: string;
 begin
   mectLog.Clear;
   ctentry := edctEntry.Text;
   if ctentry='' then exit;
   SetFieldsAndValues(Fields, Values, 'creature_template', PFX_CREATURE_TEMPLATE, mectLog);
   case SyntaxStyle of
-    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `creature_template` WHERE (`entry`=%s);'#13#10+
       'INSERT INTO `creature_template` (%s) VALUES (%s);'#13#10,[ctentry, Fields, Values]);
-    ssReplace: mectScript.Text := Format('REPLACE INTO `creature_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: mectScript.Text := MakeUpdate('creature_template', PFX_CREATURE_TEMPLATE, 'entry', ctentry);
+    ssReplace: s1 := Format('REPLACE INTO `creature_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: s1 := MakeUpdate('creature_template', PFX_CREATURE_TEMPLATE, 'entry', ctentry);
   end;
+
+ // creature_default_trainer
+  if edcrdtTrainerID.Text<>'' then begin
+  Fields:= ''; Values:= '';
+  ctentry:=edcrdtCreatureID.Text;
+
+  if ctentry='' then ctentry := edctEntry.Text;
+
+  SetFieldsAndValues(Fields, Values, 'creature_default_trainer', PFX_CREATURE_DEFAULT_TRAINER, mectLog);
+   case SyntaxStyle of
+    ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `creature_default_trainer` WHERE `CreatureID` = %s;'#13#10+
+                      'INSERT INTO `creature_default_trainer` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[ctentry, Fields, Values]);
+    ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `creature_default_trainer` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s2 := MakeUpdate('creature_default_trainer', PFX_CREATURE_DEFAULT_TRAINER, 'CreatureID', ctentry);
+   end;
+  end;
+
+  //Add all scripts together
+  Script := s1+s2;
+  //Format all go script
+  mectScript.Text := Script;
 end;
 
 procedure TMainForm.CompleteCreatureTemplateAddonScript;
@@ -8527,88 +8535,87 @@ end;
 // ---trainer_spell
 procedure TMainForm.btTrainerAddClick(Sender: TObject);
 begin
-  with lvcrNPCTrainer.Items.Add do
+  with lvtsTrainerSpell.Items.Add do
   begin
-  //Caption := edcrdtCreatureId.Text;
-    Caption := edcrTrainerId.Text;
-    SubItems.Add(edcrSpellID.Text);
-    SubItems.Add(edcrMoneyCost.Text);
-    SubItems.Add(edcrReqSkillLine.Text);
-    SubItems.Add(edcrReqSkillRank.Text);
-    SubItems.Add(edcrReqAbility1.Text);
-    SubItems.Add(edcrReqAbility2.Text);
-    SubItems.Add(edcrReqAbility3.Text);
-    SubItems.Add(edcrReqLevel.Text);
-    SubItems.Add(edcrVerifiedBuild.Text);
+    Caption := edtsTrainerId.Text;
+    SubItems.Add(edtsSpellId.Text);
+    SubItems.Add(edtsMoneyCost.Text);
+    SubItems.Add(edtsReqSkillLine.Text);
+    SubItems.Add(edtsReqSkillRank.Text);
+    SubItems.Add(edtsReqAbility1.Text);
+    SubItems.Add(edtsReqAbility2.Text);
+    SubItems.Add(edtsReqAbility3.Text);
+    SubItems.Add(edtsReqLevel.Text);
+    SubItems.Add(edtsVerifiedBuild.Text);
   end;
 end;
 
 procedure TMainForm.btTrainerUpdClick(Sender: TObject);
 begin
-  if Assigned(lvcrNPCTrainer.Selected) then
+  if Assigned(lvtsTrainerSpell.Selected) then
   begin
-    with lvcrNPCTrainer.Selected do
+    with lvtsTrainerSpell.Selected do
     begin
     //Caption := edcrdtCreatureId.Text;
-      Caption := edcrTrainerID.Text;
-      SubItems[0] := edcrSpellID.Text;
-      SubItems[1] := edcrMoneyCost.Text;
-      SubItems[2] := edcrReqSkillLine.Text;
-      SubItems[3] := edcrReqSkillRank.Text;
-      SubItems[4] := edcrReqAbility1.Text;
-      SubItems[5] := edcrReqAbility2.Text;
-      SubItems[6] := edcrReqAbility3.Text;
-      SubItems[7] := edcrReqLevel.Text;
-      SubItems[8] := edcrVerifiedBuild.Text;
+      Caption := edtsTrainerId.Text;
+      SubItems[0] := edtsSpellId.Text;
+      SubItems[1] := edtsMoneyCost.Text;
+      SubItems[2] := edtsReqSkillLine.Text;
+      SubItems[3] := edtsReqSkillRank.Text;
+      SubItems[4] := edtsReqAbility1.Text;
+      SubItems[5] := edtsReqAbility2.Text;
+      SubItems[6] := edtsReqAbility3.Text;
+      SubItems[7] := edtsReqLevel.Text;
+      SubItems[8] := edtsVerifiedBuild.Text;
     end;
   end;
 end;
 
 procedure TMainForm.btTrainerDelClick(Sender: TObject);
 begin
-if Assigned(lvcrNPCTrainer.Selected) then
-    lvcrNPCTrainer.DeleteSelected;
+if Assigned(lvtsTrainerSpell.Selected) then
+    lvtsTrainerSpell.DeleteSelected;
 end;
 
-procedure TMainForm.btFullScriptTrainerClick(Sender: TObject);
+procedure TMainForm.btFullScriptTrainerSpellClick(Sender: TObject);
 var
   i: integer;
   entry, TrainerId, Values: string;
 begin
   PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
   entry := edctEntry.Text;
-  TrainerId := edcrTrainerId.Text;
+  TrainerId := edtsTrainerId.Text;
   mectScript.Clear;
   Values := '';
-  if lvcrNPCTrainer.Items.Count<>0 then
+  if lvtsTrainerSpell.Items.Count<>0 then
   begin
-    for i := 0 to lvcrNPCTrainer.Items.Count - 2 do
+    for i := 0 to lvtsTrainerSpell.Items.Count - 2 do
     begin
       Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s),'#13#10,[
-        lvcrNPCTrainer.Items[i].Caption,
-        lvcrNPCTrainer.Items[i].SubItems[0],
-        lvcrNPCTrainer.Items[i].SubItems[1],
-        lvcrNPCTrainer.Items[i].SubItems[2],
-        lvcrNPCTrainer.Items[i].SubItems[3],
-        lvcrNPCTrainer.Items[i].SubItems[4],
-        lvcrNPCTrainer.Items[i].SubItems[5],
-        lvcrNPCTrainer.Items[i].SubItems[6],
-        lvcrNPCTrainer.Items[i].SubItems[7],
-        lvcrNPCTrainer.Items[i].SubItems[8]
+        lvtsTrainerSpell.Items[i].Caption,
+        lvtsTrainerSpell.Items[i].SubItems[0],
+        lvtsTrainerSpell.Items[i].SubItems[1],
+        lvtsTrainerSpell.Items[i].SubItems[2],
+        lvtsTrainerSpell.Items[i].SubItems[3],
+        lvtsTrainerSpell.Items[i].SubItems[4],
+        lvtsTrainerSpell.Items[i].SubItems[5],
+        lvtsTrainerSpell.Items[i].SubItems[6],
+        lvtsTrainerSpell.Items[i].SubItems[7],
+        lvtsTrainerSpell.Items[i].SubItems[8]
       ]);
     end;
-    i := lvcrNPCTrainer.Items.Count - 1;
+    i := lvtsTrainerSpell.Items.Count - 1;
     Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);',[
-        lvcrNPCTrainer.Items[i].Caption,
-        lvcrNPCTrainer.Items[i].SubItems[0],
-        lvcrNPCTrainer.Items[i].SubItems[1],
-        lvcrNPCTrainer.Items[i].SubItems[2],
-        lvcrNPCTrainer.Items[i].SubItems[3],
-        lvcrNPCTrainer.Items[i].SubItems[4],
-        lvcrNPCTrainer.Items[i].SubItems[5],
-        lvcrNPCTrainer.Items[i].SubItems[6],
-        lvcrNPCTrainer.Items[i].SubItems[7],
-        lvcrNPCTrainer.Items[i].SubItems[8]
+        lvtsTrainerSpell.Items[i].Caption,
+        lvtsTrainerSpell.Items[i].SubItems[0],
+        lvtsTrainerSpell.Items[i].SubItems[1],
+        lvtsTrainerSpell.Items[i].SubItems[2],
+        lvtsTrainerSpell.Items[i].SubItems[3],
+        lvtsTrainerSpell.Items[i].SubItems[4],
+        lvtsTrainerSpell.Items[i].SubItems[5],
+        lvtsTrainerSpell.Items[i].SubItems[6],
+        lvtsTrainerSpell.Items[i].SubItems[7],
+        lvtsTrainerSpell.Items[i].SubItems[8]
     ]);
   end;
   if Values<>'' then
@@ -8622,31 +8629,30 @@ begin
     mectScript.Text := Format('DELETE FROM `trainer_spell` WHERE (`TrainerId`=%s);',[TrainerId]);
 end;
 
-procedure TMainForm.lvcrNPCTrainerChange(Sender: TObject; Item: TListItem;
+procedure TMainForm.lvtsTrainerSpellChange(Sender: TObject; Item: TListItem;
   Change: TItemChange);
 begin
   btTrainerUpd.Enabled := Assigned(TJvListView(Sender).Selected);
   btTrainerDel.Enabled := Assigned(TJvListView(Sender).Selected);
 end;
 
-procedure TMainForm.lvcrNPCTrainerSelectItem(Sender: TObject;
+procedure TMainForm.lvtsTrainerSpellSelectItem(Sender: TObject;
   Item: TListItem; Selected: Boolean);
 begin
   if Selected then
   begin
     with TJvListView(Sender).Selected do
     begin
-    //edcrdtCreatureId.Text := Caption;
-      edcrTrainerId.Text := Caption;
-      edcrSpellID.Text := SubItems[0];
-      edcrMoneyCost.Text := SubItems[1];
-      edcrReqSkillLine.Text := SubItems[2];
-      edcrReqSkillRank.Text := SubItems[3];
-      edcrReqAbility1.Text := SubItems[4];
-      edcrReqAbility2.Text := SubItems[5];
-      edcrReqAbility3.Text := SubItems[6];
-      edcrReqLevel.Text := SubItems[7];
-      edcrVerifiedBuild.Text := SubItems[8];
+      edtsTrainerId.Text := Caption;
+      edtsSpellId.Text := SubItems[0];
+      edtsMoneyCost.Text := SubItems[1];
+      edtsReqSkillLine.Text := SubItems[2];
+      edtsReqSkillRank.Text := SubItems[3];
+      edtsReqAbility1.Text := SubItems[4];
+      edtsReqAbility2.Text := SubItems[5];
+      edtsReqAbility3.Text := SubItems[6];
+      edtsReqLevel.Text := SubItems[7];
+      edtsVerifiedBuild.Text := SubItems[8];
 
     end;
   end;
@@ -8658,10 +8664,10 @@ var
 begin
   mectLog.Clear;
   crentry :=  edcrdtCreatureId.Text;   // TODO
-  trainerentry :=  edcrTrainerId.Text;
-  trainerspell := edcrSpellID.Text;
+  trainerentry :=  edtsTrainerId.Text;
+  trainerspell := edtsSpellId.Text;
   if (trainerentry='') or (trainerspell='') then Exit;
-  SetFieldsAndValues(Fields, Values, 'trainer_spell', PFX_NPC_TRAINER, mectLog);
+  SetFieldsAndValues(Fields, Values, 'trainer_spell', PFX_TRAINER_SPELL, mectLog);
   mectScript.Text := Format('DELETE FROM `trainer_spell` WHERE (`TrainerId`=%s) AND (`SpellId`=%s);'#13#10+
    'INSERT INTO `trainer_spell` (%s) VALUES '#13#10+
    '(%s);'#13#10,[trainerentry, trainerspell, Fields, Values])
@@ -8763,20 +8769,6 @@ begin
       edcqiItemID.Text := SubItems[1];
       edcqiVerifiedBuild.Text := SubItems[2];
     end;
-  end;
-end;
-
-procedure TMainForm.LoadCreatureQuestItem(Entry: integer);
-begin
-  if Entry<1 then Exit;
-  MyQuery.SQL.Text := Format('SELECT * FROM `creature_questitem` WHERE (`CreatureEntry`= %d)',[Entry]);
-  MyQuery.Open;
-  try
-    FillFields(MyQuery, PFX_CREATURE_QUESTITEM);
-    MyQuery.Close;
-  except
-    on E: Exception do
-      raise Exception.Create(dmMain.Text[159]+#10#13+E.Message);
   end;
 end;
 
