@@ -1721,6 +1721,7 @@ type
     btGOQuestItemDel: TSpeedButton;
     btShowGOQuestItemScript: TButton;
     btFullGOQuestItemScript: TButton;
+    edSQLlimit: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2453,7 +2454,7 @@ procedure TMainForm.SearchQuest;
 var
   i, PrevQuestId_, NextQuestId_: integer;
   loc, ID, QTilte, QueryStr, WhereStr, qgq, qtq, who, key, t, QuestSortID,
-  QuestFlags: string;
+  QuestFlags, limit: string;
   Field: TField;
 begin
   loc:= LoadLocales();
@@ -2461,6 +2462,8 @@ begin
   qgq := '';
   qtq := '';
   QuestSortID := '';
+  limit:=edSQLlimit.Text;
+
   if edQuestStarterSearch.Text<>'' then
   begin
     GetWhoAndKey(edQuestStarterSearch.Text, who, key);
@@ -2514,7 +2517,6 @@ begin
   end;
 
   ID :=  edQuestID.Text;
-  //Locales :=
   QTilte := edQuestTitle.Text;
   QTilte := StringReplace(QTilte, '''', '\''', [rfReplaceAll]);
   QTilte := StringReplace(QTilte, ' ', '%', [rfReplaceAll]);
@@ -2532,9 +2534,9 @@ begin
   if QTilte<>'%%' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%1:s''))',[WhereStr, QTilte])
+      WhereStr := Format('%s AND ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%1:s'' AND locale=''%2:s''))',[WhereStr, QTilte, loc])
     else
-      WhereStr := Format('WHERE ((qt.`LogTitle` LIKE ''%s'')OR (lq.title LIKE ''%0:s''))',[QTilte]);
+      WhereStr := Format('WHERE ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%0:s'' AND locale=''%1:s''))',[QTilte, loc]);
   end;
 
   if qgq<>'' then
@@ -2604,7 +2606,14 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID=lq.Id %s',[WhereStr]);
+ // QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID=lq.Id %s LIMIT %s',[WhereStr, limit]);
+   if loc<>'enUS' then
+   QueryStr := Format('SELECT qt.ID, MAX(qt.`LogTitle`) AS LogTitle, MAX(''%s'') AS locale, '+
+       '(SELECT Title FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'' LIMIT 1) AS Title, '+
+       '(SELECT Details FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'' LIMIT 1) AS Details '+
+       'FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID = lq.ID '+
+       ' %1:s GROUP BY qt.ID LIMIT %2:s ;',[loc, WhereStr, limit])
+   else QueryStr := Format('SELECT ID, LogTitle, Details FROM quest_template %s LIMIT %s',[WhereStr, limit]);
 
   MyQuery.SQL.Text := QueryStr;
   lvQuest.Items.BeginUpdate;
