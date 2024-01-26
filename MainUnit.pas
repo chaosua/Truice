@@ -2533,10 +2533,17 @@ begin
 
   if QTilte<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%1:s'' AND locale=''%2:s''))',[WhereStr, QTilte, loc])
-    else
-      WhereStr := Format('WHERE ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%0:s'' AND locale=''%1:s''))',[QTilte, loc]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%1:s'' AND locale=''%2:s''))',[WhereStr, QTilte, loc])
+      else
+        WhereStr := Format('WHERE ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%0:s'' AND locale=''%1:s''))',[QTilte, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `LogTitle` LIKE ''%s'' ',[WhereStr, QTilte])
+      else
+        WhereStr := Format('WHERE `LogTitle` LIKE ''%s''',[QTilte]);
+    end;
   end;
 
   if qgq<>'' then
@@ -2613,7 +2620,7 @@ begin
        '(SELECT Details FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'' LIMIT 1) AS Details '+
        'FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID = lq.ID '+
        ' %1:s GROUP BY qt.ID LIMIT %2:s ;',[loc, WhereStr, limit])
-   else QueryStr := Format('SELECT ID, LogTitle, Details FROM quest_template %s LIMIT %s',[WhereStr, limit]);
+   else QueryStr := Format('SELECT ID, LogTitle, QuestDescription as Details FROM quest_template qt %s LIMIT %s',[WhereStr, limit]);
 
   MyQuery.SQL.Text := QueryStr;
   lvQuest.Items.BeginUpdate;
