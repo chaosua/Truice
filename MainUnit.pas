@@ -1262,26 +1262,39 @@ type
     pmruwowhead: TMenuItem;
     nEditCreatureAI: TMenuItem;
     N4: TMenuItem;
+    //quest_*_locale
     tsLocalesQuest: TTabSheet;
     gbLocalesQuest: TGroupBox;
-    edlqlocale: TLabeledEdit;
-    edlqTitle: TLabeledEdit;
-    edlqDetails: TMemo;
+    edqtlocID: TLabeledEdit;
+    edqtloclocale: TLabeledEdit;
+    edqtlocTitle: TLabeledEdit;
+    edqtlocDetails: TMemo;
     l2Details: TLabel;
-    edlqObjectives: TMemo;
+    edqtlocObjectives: TMemo;
     l2Objectives: TLabel;
     l2EndText: TLabel;
-    edlqEndText: TMemo;
-    edlqRewardText: TMemo;
-    edlqCompletionText: TMemo;
+    edqtlocEndText: TMemo;
     l2CompletionText: TLabel;
     l2RewardText: TLabel;
-    edlqObjectiveText1: TLabeledEdit;
-    edlqObjectiveText2: TLabeledEdit;
-    edlqObjectiveText3: TLabeledEdit;
-    edlqObjectiveText4: TLabeledEdit;
-    edlqVerifiedBuild: TLabeledEdit;
+    edqtlocObjectiveText1: TLabeledEdit;
+    edqtlocObjectiveText2: TLabeledEdit;
+    edqtlocObjectiveText3: TLabeledEdit;
+    edqtlocObjectiveText4: TLabeledEdit;
+    edqtlocVerifiedBuild: TLabeledEdit;
     btlqShowFullLocalesScript: TButton;
+
+    //quest_offer_reward_locale
+    edqorlocID: TLabeledEdit;
+    edqorloclocale: TLabeledEdit;
+    edqorlocRewardText: TMemo;
+    edqorlocVerifiedBuild: TLabeledEdit;
+
+    //quest_request_items_locale
+    edqrilocID: TLabeledEdit;
+    edqriloclocale: TLabeledEdit;
+    edqrilocCompletionText: TMemo;
+    edqrilocVerifiedBuild: TLabeledEdit;
+
     editScalingStatDistribution: TLabeledEdit;
     editScalingStatValue: TLabeledEdit;
     editItemLimitCategory: TLabeledEdit;
@@ -1387,7 +1400,7 @@ type
     lbglspawnMask: TLabel;
     lbctgossip_menu_id: TLabel;
     edqtQuestCompletionLog: TLabeledEdit;
-    edlqCompletedText: TLabeledEdit;
+    edqtlocCompletedText: TLabeledEdit;
     edqtRewardXPDifficulty: TLabeledEdit;
     edqtRewardKillHonor: TLabeledEdit;
     edqtRewardFactionOverride1: TLabeledEdit;
@@ -3393,42 +3406,51 @@ loc: string;
 begin
   loc:= LoadLocales();
   if (loc<>'enUS') then begin
-  MyQuery.SQL.Text := Format('SELECT loc.locale, loc.Title, loc.Details, loc.Objectives, loc.EndText, loc.CompletedText, loc.ObjectiveText1, loc.ObjectiveText2, loc.ObjectiveText3, loc.ObjectiveText4, loc.VerifiedBuild, rl.RewardText, il.CompletionText '+
-  'FROM `quest_template_locale` loc LEFT OUTER JOIN quest_offer_reward_locale rl on rl.ID = loc.ID AND rl.locale = loc.locale LEFT OUTER JOIN quest_request_items_locale il on il.ID = loc.ID AND il.locale = loc.locale WHERE loc.ID=%d AND loc.locale="%s"',[QuestID, loc]);
-  MyQuery.Open;
-  edlqlocale.EditLabel.Caption:= 'locale';
-  edlqTitle.EditLabel.Caption:= 'Title';
-  l2Details.Caption:= 'Details';
-  l2Objectives.Caption:= 'Objectives';
-  l2EndText.Caption:= 'EndText';
-  edlqCompletedText.EditLabel.Caption:= 'CompletedText';
-  l2RewardText.Caption:= 'RewardText';
-  l2CompletionText.Caption:= 'CompletionText';
-  edlqObjectiveText1.EditLabel.Caption:= 'ObjectiveText1';
-  edlqObjectiveText2.EditLabel.Caption:= 'ObjectiveText2';
-  edlqObjectiveText3.EditLabel.Caption:= 'ObjectiveText3';
-  edlqObjectiveText4.EditLabel.Caption:= 'ObjectiveText4';
-  edlqVerifiedBuild.EditLabel.Caption:= 'VerifiedBuild';
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_locale` '+
+    'WHERE ID=%d AND locale="%s"',[QuestID, loc]);
+    MyQuery.Open;
+    while (MyQuery.Eof=false) do
+    begin
+      edqtlocID.Text:=Inttostr(QuestID);
+      edqtloclocale.Text:=MyQuery.FieldByName('locale').AsString;
+      edqtlocTitle.Text:=MyQuery.FieldByName('Title').AsString;
+      edqtlocDetails.Text:=MyQuery.FieldByName('Details').AsString;
+      edqtlocObjectives.Text:=MyQuery.FieldByName('Objectives').AsString;
+      edqtlocEndText.Text:=MyQuery.FieldByName('EndText').AsString;
+      edqtlocCompletedText.Text:=MyQuery.FieldByName('CompletedText').AsString;
+      edqtlocObjectiveText1.Text:=MyQuery.FieldByName('ObjectiveText1').AsString;
+      edqtlocObjectiveText2.Text:=MyQuery.FieldByName('ObjectiveText2').AsString;
+      edqtlocObjectiveText3.Text:=MyQuery.FieldByName('ObjectiveText3').AsString;
+      edqtlocObjectiveText4.Text:=MyQuery.FieldByName('ObjectiveText4').AsString;
+      edqtlocVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
+      MyQuery.Next;
+    end;
+    MyQuery.Close;
 
+    //quest_offer_reward_locale
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward_locale` '+
+     'WHERE ID=%d AND locale="%s"',[QuestID, loc]);
+    MyQuery.Open;
+    if (MyQuery.Eof=false) then begin
+      edqorlocID.TEXT := MyQuery.FieldByName('ID').AsString;
+      edqorloclocale.TEXT := MyQuery.FieldByName('locale').AsString;
+      edqorlocRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+      edqorlocVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
+    end;
+    MyQuery.Close;
 
-  while (MyQuery.Eof=false) do
-  begin
-    edlqlocale.Text:=MyQuery.FieldByName('locale').AsString;
-    edlqTitle.Text:=MyQuery.FieldByName('Title').AsString;
-    edlqDetails.Text:=MyQuery.FieldByName('Details').AsString;
-    edlqObjectives.Text:=MyQuery.FieldByName('Objectives').AsString;
-    edlqEndText.Text:=MyQuery.FieldByName('EndText').AsString;
-    edlqCompletedText.Text:=MyQuery.FieldByName('CompletedText').AsString;
-    edlqObjectiveText1.Text:=MyQuery.FieldByName('ObjectiveText1').AsString;
-    edlqObjectiveText2.Text:=MyQuery.FieldByName('ObjectiveText2').AsString;
-    edlqObjectiveText3.Text:=MyQuery.FieldByName('ObjectiveText3').AsString;
-    edlqObjectiveText4.Text:=MyQuery.FieldByName('ObjectiveText4').AsString;
-    edlqVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
-	edlqRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
-	edlqCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
-    MyQuery.Next;
-  end;
-  MyQuery.Close;
+    //quest_request_items_locale
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items_locale` '+
+     'WHERE ID=%d AND locale="%s"',[QuestID, loc]);
+    MyQuery.Open;
+    if (MyQuery.Eof=false) then begin
+      edqrilocID.TEXT := MyQuery.FieldByName('ID').AsString;
+      edqriloclocale.TEXT := MyQuery.FieldByName('locale').AsString;
+      edqrilocCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
+      edqrilocVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
+    end;
+    MyQuery.Close;
+
   end;
 end;
 
@@ -6261,12 +6283,68 @@ end;
 
 procedure TMainForm.CompleteLocalesQuest;
 var
-  lqentry : string;
+  Fields, Values, Script, quest, s1, s2, s3, locale : string;
 begin
   meqtLog.Clear;
-  lqentry:= edqtID.Text;
-  if lqentry='' then exit;
-  meqtScript.Text := MakeUpdateLocales('quest_template_locale', PFX_LOCALES_QUEST, 'Id', lqentry);
+  locale := edqtloclocale.Text;
+//  quest:= edqtlocID.Text;
+//  if quest='' then exit;
+//  meqtScript.Text := MakeUpdateLocales('quest_template_locale', PFX_LOCALES_QUEST, 'Id', quest);
+
+  // quest__template_locale
+  quest:= edqtlocID.Text;
+  if quest<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, meqtLog);
+   case SyntaxStyle of
+ssInsertDelete: s1 := Format(#13#10 +
+                      'DELETE FROM `quest_template_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10 +
+                      'INSERT INTO `quest_template_locale` (%s) VALUES (%s);'#13#10#13#10
+                      ,[quest, locale, Fields, Values]);
+    ssReplace: s1 := Format(#13#10+
+                      'REPLACE INTO `quest_template_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s1 := MakeUpdateLocales('quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, 'ID', quest);
+   end;
+  end;
+
+  // quest_request_items_locale
+  quest:= edqorlocID.Text;
+  if quest<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, meqtLog);
+   case SyntaxStyle of
+    ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `quest_offer_reward_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
+                      'INSERT INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, locale, Fields, Values]);
+    ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s2 := MakeUpdateLocales('quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, 'ID', quest);
+   end;
+  end;
+
+  // quest_request_items_locale
+  quest:= edqrilocID.Text;
+  if quest<>'' then begin
+  Fields:= ''; Values:= '';
+  SetFieldsAndValues(Fields, Values, 'quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, meqtLog);
+   case SyntaxStyle of
+    ssInsertDelete: s3 := Format(#13#10+
+                      'DELETE FROM `quest_request_items_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
+                      'INSERT INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, locale, Fields, Values]);
+    ssReplace: s3 := Format(#13#10+
+                      'REPLACE INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+    ssUpdate: s3 := MakeUpdateLocales('quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, 'ID', quest);
+   end;
+  end;
+  //Add all scripts together
+  Script := s1+s2+s3;
+  //Format all quest script
+  meqtScript.Text := Script;
 end;
 
 procedure TMainForm.CompleteCreatureSmartAIScript;
@@ -7846,6 +7924,7 @@ begin
   MyTempQuery.Close;
 end;
 
+//                                  table ;    prefix od variables; ColumnName;  Value
 function TMainForm.MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
 var
   i: integer;
@@ -7855,7 +7934,7 @@ begin
   loc:= LoadLocales();
   Result := '';
   sets := '';
-  MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s and locale= "%s"',[tn, KeyName, KeyValue, loc]);
+  MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s and locale= ''%s'';',[tn, KeyName, KeyValue, loc]);
   MyTempQuery.Open;
   if (MyTempQuery.Eof=false) then
   begin
@@ -7891,7 +7970,7 @@ begin
       end;
     end;
     if sets<>'' then
-      Result := Format('UPDATE `%s` %s WHERE `%s` = %s AND locale="%s";'#13#10,[tn, sets, KeyName, KeyValue, loc])
+      Result := Format('UPDATE `%s` %s WHERE `%s` = %s AND locale=''%s'';'#13#10,[tn, sets, KeyName, KeyValue, loc])
   end;
   MyTempQuery.Close;
 end;
