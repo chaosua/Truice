@@ -4328,18 +4328,32 @@ begin
 
   if CName<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%1:s''))',[WhereStr, CName])
-    else
-      WhereStr := Format('WHERE ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%0:s''))',[CName]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%1:s'' AND `locale`=''%2:s''))',[WhereStr, CName, loc])
+      else
+        WhereStr := Format('WHERE ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%0:s'' AND `locale`=''%1:s''))',[CName, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, CName])
+      else
+        WhereStr := Format('WHERE `name` LIKE ''%s''',[CName]);
+    end;
   end;
 
   if CSubName<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%1:s''))',[WhereStr, CSubName])
-    else
-      WhereStr := Format('WHERE ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%0:s''))',[CSubName]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%1:s'' AND `locale`=''%2:s''))',[WhereStr, CSubName, loc])
+      else
+        WhereStr := Format('WHERE ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%0:s'' AND `locale`=''%1:s''))',[CSubName, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `subname` LIKE ''%s'' ',[WhereStr, CSubName])
+      else
+        WhereStr := Format('WHERE `subname` LIKE ''%s''',[CSubName]);
+    end;
   end;
 
   npcflag := edSearchCreaturenpcflag.Text;
@@ -4383,7 +4397,16 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT *,(SELECT count(guid) from `creature` where creature.id1 = ct.entry) as `Count` FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.entry=lc.entry %s',[WhereStr]);
+  if loc<>'enUS' then
+    QueryStr := Format('SELECT ct.`entry`, MAX(ct.`name`) as name, MAX(ct.`subname`) as subname, ct.`npcflag`, ct.`minlevel`, ct.`maxlevel`, '+
+      '(SELECT count(guid) from `creature` where creature.`id1` = ct.`entry`) as `Count`, '+
+      '(SELECT `Title` FROM `creature_template_locale` WHERE `entry` = ct.`entry` AND `locale` = ''%0:s'') AS Title '+
+      'FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.`entry`=lc.`entry` %s'+
+      'GROUP BY ct.`entry`',[loc, WhereStr])
+  else QueryStr := Format('SELECT `entry`, `name`, `subname`, `npcflag`, `minlevel`, `maxlevel`, '+
+      '(SELECT count(guid) from `creature` where creature.`id1` = ct.`entry`) as `Count` '+
+      'FROM `creature_template` ct %s',[WhereStr]);
+
   MyQuery.SQL.Text := QueryStr;
   lvSearchCreature.Items.BeginUpdate;
   try
