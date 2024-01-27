@@ -6797,10 +6797,17 @@ begin
 
   if CName<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%1:s''))',[WhereStr, CName])
-    else
-      WhereStr := Format('WHERE ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%0:s''))',[CName]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%1:s'' AND lg.`locale`=''%2:s'' ))',[WhereStr, CName, loc])
+      else
+        WhereStr := Format('WHERE ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%0:s'' AND lg.`locale`=''%1:s'' ))',[CName, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, CName])
+      else
+        WhereStr := Format('WHERE `name` LIKE ''%s''',[CName]);
+    end;
   end;
 
   type_ := StrToIntDef(edSearchGOtype.Text,-1);
@@ -6851,7 +6858,16 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT *, (SELECT count(guid) from `gameobject` where gameobject.id = gt.entry) as `Count` FROM `gameobject_template` gt LEFT OUTER JOIN `gameobject_template_locale` lg ON gt.entry=lg.entry %s',[WhereStr]);
+  if loc<>'enUS' then
+    QueryStr := Format('SELECT gt.`entry`, MAX(gt.`name`) as name, gt.`type`, '+
+      '(SELECT `faction` from `gameobject_template_addon` WHERE gameobject_template_addon.`entry` = gt.`entry`) as `faction`, '+
+      '(SELECT count(guid) from `gameobject` where gameobject.`id` = gt.`entry`) as `Count` '+
+      'FROM `gameobject_template` gt LEFT OUTER JOIN gameobject_template_locale lg ON gt.`entry`=lg.`entry` %s '+
+      'GROUP BY gt.`entry`',[WhereStr])
+  else QueryStr := Format('SELECT `entry`, `name`, `type`, '+
+      '(SELECT `faction` from `gameobject_template_addon` WHERE gameobject_template_addon.`entry` = gt.`entry`) as `faction`, '+
+      '(SELECT count(guid) from `gameobject` where gameobject.`id` = gt.`entry`) as `Count` '+
+      'FROM `gameobject_template` gt %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvSearchGO.Items.BeginUpdate;
