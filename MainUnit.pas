@@ -22,7 +22,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '10';
+  VERSION_4   = '12';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -1625,10 +1625,10 @@ type
     edqtRewardMoneyDifficulty: TLabeledEdit;
 
     //quest_mail_sender
-    edqmsQuestId: TLabeledEdit;
+    edqmsRewardMailSenderEntry: TLabeledEdit;
+
     edqtaRewardMailTemplateID: TLabeledEdit;
     edqtaRewardMailDelay: TLabeledEdit;
-    edqmsRewardMailSenderEntry: TLabeledEdit;
 
     // Creature Quest_Item tab
     tsQuestItem: TTabSheet;
@@ -2826,7 +2826,7 @@ begin
     MyQuery.Close;
 	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
 	MyQuery.Open;
-    if (MyQuery.Eof=false) then
+    if (MyQuery.Eof=false) then begin
     edqdID.Text := MyQuery.FieldByName('ID').AsString;
 		edqdEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
 		edqdEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
@@ -2837,19 +2837,21 @@ begin
 		edqdEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
 		edqdEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
     edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+    end;
     MyQuery.Close;
 
     MyQuery.SQL.Text := Format('SELECT * FROM `quest_mail_sender` WHERE `Questid`=%d', [QuestID]);
 	  MyQuery.Open;
     if (MyQuery.Eof=false) then
-      edqmsQuestId.Text := MyQuery.FieldByName('QuestId').AsString;
-	    edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString;
+	    edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString
+    else edqmsRewardMailSenderEntry.Clear;
     MyQuery.Close;
 
     MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
     MyQuery.Open;
-    if (MyQuery.Eof=false) then edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString else
-    edqtAreatrigger.Clear;
+    if (MyQuery.Eof=false) then
+      edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString
+    else edqtAreatrigger.Clear;
     MyQuery.Close;
 
     LoadQuestStarters(QuestID);
@@ -3140,22 +3142,15 @@ begin
    end;
   end;
 
-  // quest_mail_sender
-  if edqmsRewardMailSenderEntry.Text<>'' then begin
-    if edqmsQuestid.Text<>edqtID.Text then edqmsQuestid.Text := edqtID.Text;
-  Fields:= ''; Values:= '';
-  SetFieldsAndValues(Fields, Values, 'quest_mail_sender', PFX_QUEST_MAIL_SENDER, meqtLog);
-   case SyntaxStyle of
-    ssInsertDelete: s8 := Format(#13#10+
-                      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %s;'#13#10+
-                      'INSERT INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10+#13#10
-                      ,[quest, Fields, Values]);
-    ssReplace: s8 := Format(#13#10+
-                      'REPLACE INTO `quest_mail_sender` (%s) VALUES (%s);'#13#10+#13#10
-                      ,[Fields, Values]);
-    ssUpdate: s8 := MakeUpdate('quest_mail_sender', PFX_QUEST_MAIL_SENDER, 'Questid', quest);
-   end;
-  end;
+  //quest_mail_sender
+  if edqmsRewardMailSenderEntry.Text<>'' then
+    s8 := Format(#13#10+
+      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %1:s;'#13#10+
+      'INSERT INTO `quest_mail_sender` (`Questid`, `RewardMailSenderEntry`) VALUES (%0:s, %1:s);'#13#10#13#10,
+      [quest, edqmsRewardMailSenderEntry.Text])
+  else s8 := Format(#13#10+
+      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %s;'#13#10,
+      [quest]);
 
   // quest_offer_reward
   if edqorID.Text<>'' then begin
@@ -3717,7 +3712,9 @@ begin
     begin
         if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
            ((Pos('ed'+s+'t',Components[i].Name)=1) or (Pos('ed'+s+'l',Components[i].Name)=1) or (Pos('ed'+s+'o',Components[i].Name)=1) or
-            (Pos('me'+s+'t',Components[i].Name)=1) or (Pos('me'+s+'l',Components[i].Name)=1) or (Pos('me'+s+'o',Components[i].Name)=1)) then
+            (Pos('me'+s+'t',Components[i].Name)=1) or (Pos('me'+s+'l',Components[i].Name)=1) or (Pos('me'+s+'o',Components[i].Name)=1) or
+            (Pos('ed'+s+'riloc',Components[i].Name)=1) or (Pos('ed'+s+'orloc',Components[i].Name)=1) or
+            (Pos('ed'+s+'d',Components[i].Name)=1) or (Pos('ed'+s+'ri',Components[i].Name)=1) or (Pos('ed'+s+'ms',Components[i].Name)=1) ) then
            TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;

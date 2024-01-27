@@ -128,7 +128,7 @@
         <DCC_Define>LeakChecking;$(DCC_Define)</DCC_Define>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
-        <VerInfo_Keys>CompanyName=;FileVersion=2.1.6.10;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=2.1.6.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileVersion=2.1.6.12;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=2.1.6.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_DebugInformation>2</DCC_DebugInformation>
         <DCC_MapFile>3</DCC_MapFile>
         <BT_BuildType>Debug</BT_BuildType>
@@ -136,7 +136,7 @@
         <DCC_Optimize>false</DCC_Optimize>
         <AppDPIAwarenessMode>system</AppDPIAwarenessMode>
         <VerInfo_Release>6</VerInfo_Release>
-        <VerInfo_Build>10</VerInfo_Build>
+        <VerInfo_Build>12</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <BT_BuildType>Debug</BT_BuildType>

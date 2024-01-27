@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 876
     Height = 680
-    ActivePage = tsItem
+    ActivePage = tsQuest
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -2055,22 +2055,9 @@ object MainForm: TMainForm
             TabOrder = 8
             Text = ''
           end
-          object edqmsQuestId: TLabeledEdit
-            Left = 799
-            Top = 299
-            Width = 33
-            Height = 21
-            Hint = 'quest_mail_sender Questid (equals quest_template.ID)'
-            Color = 33023
-            EditLabel.Width = 58
-            EditLabel.Height = 13
-            EditLabel.Caption = 'Questid qms'
-            TabOrder = 9
-            Text = ''
-          end
           object edqorID: TLabeledEdit
             Left = 799
-            Top = 339
+            Top = 299
             Width = 33
             Height = 21
             Hint = 'quest_offer_reward ID (equals quest_template.ID)'
@@ -2078,7 +2065,7 @@ object MainForm: TMainForm
             EditLabel.Width = 29
             EditLabel.Height = 13
             EditLabel.Caption = 'ID qor'
-            TabOrder = 10
+            TabOrder = 9
             Text = ''
           end
         end
@@ -5918,8 +5905,6 @@ object MainForm: TMainForm
         Align = alClient
         MultiLine = True
         TabOrder = 0
-        ExplicitWidth = 864
-        ExplicitHeight = 642
         object tsSearchCreature: TTabSheet
           Caption = 'Search'
           object Label5: TLabel
@@ -6106,7 +6091,6 @@ object MainForm: TMainForm
             Height = 105
             Align = alTop
             TabOrder = 0
-            ExplicitWidth = 856
             DesignSize = (
               860
               105)
@@ -6190,7 +6174,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 4
               OnClick = btSearchCreatureClick
-              ExplicitLeft = 736
             end
             object btClearSearchCreature: TBitBtn
               Left = 739
@@ -6201,7 +6184,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 5
               OnClick = btClearSearchCreatureClick
-              ExplicitLeft = 735
             end
             object edSearchCreatureSubName: TLabeledEdit
               Left = 264
@@ -6377,8 +6359,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 856
-            ExplicitHeight = 430
           end
           object Panel5: TPanel
             Left = 0
@@ -6387,8 +6367,6 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
-            ExplicitTop = 535
-            ExplicitWidth = 856
             object btEditCreature: TBitBtn
               Left = 112
               Top = 10
@@ -6640,7 +6618,6 @@ object MainForm: TMainForm
                 item
                   Width = 300
                 end>
-              ExplicitWidth = 854
             end
             object btBrowseCreaturePopup: TBitBtn
               Left = 424
@@ -13904,7 +13881,6 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 864
       end
     end
     object tsGameObject: TTabSheet
@@ -16654,6 +16630,7 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 864
       end
       object PageControl5: TPageControl
         Left = 0
@@ -16663,6 +16640,8 @@ object MainForm: TMainForm
         ActivePage = tsSearchItem
         Align = alClient
         TabOrder = 1
+        ExplicitWidth = 864
+        ExplicitHeight = 642
         object tsSearchItem: TTabSheet
           Caption = 'Search'
           object Panel10: TPanel
@@ -16672,6 +16651,7 @@ object MainForm: TMainForm
             Height = 105
             Align = alTop
             TabOrder = 0
+            ExplicitWidth = 856
             DesignSize = (
               860
               105)
@@ -16797,6 +16777,7 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 7
               OnClick = btSearchItemClick
+              ExplicitLeft = 739
             end
             object btClearSearchItem: TBitBtn
               Left = 743
@@ -16807,6 +16788,7 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 8
               OnClick = btClearSearchItemClick
+              ExplicitLeft = 739
             end
             object edSearchItemClass: TJvComboEdit
               Left = 223
@@ -17126,6 +17108,8 @@ object MainForm: TMainForm
               end
               item
               end>
+            ExplicitWidth = 856
+            ExplicitHeight = 448
           end
           object Panel11: TPanel
             Left = 0
@@ -17134,6 +17118,8 @@ object MainForm: TMainForm
             Height = 61
             Align = alBottom
             TabOrder = 2
+            ExplicitTop = 553
+            ExplicitWidth = 856
             object btEditItem: TBitBtn
               Left = 112
               Top = 10
@@ -17385,6 +17371,7 @@ object MainForm: TMainForm
                 item
                   Width = 300
                 end>
+              ExplicitWidth = 854
             end
             object btBrowseItemPopup: TBitBtn
               Left = 424
@@ -29341,8 +29328,8 @@ object MainForm: TMainForm
   end
   object MyTempQuery: TFDQuery
     Connection = MyTrinityConnection
-    Left = 800
-    Top = 360
+    Left = 808
+    Top = 456
   end
   object MyLootQuery: TFDQuery
     Connection = MyTrinityConnection
