@@ -1,4 +1,4 @@
 Truice DB Structure last checked against revision
-4ac2241403ca9fd12f14d71f87214e044fb0f592 30.12.2023
-[2023_12_03_00_world.sql]
+b4783d6cace49ae0cfe2b0d5059ba776840b307b 27.01.2024
+[2024_01_20_00_world.sql]
 

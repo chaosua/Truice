@@ -21,7 +21,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '11';
+  VERSION_4   = '13';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -2505,7 +2505,6 @@ begin
   end;
 
   ID :=  edQuestID.Text;
-  //Locales :=
   QTilte := edQuestTitle.Text;
   QTilte := StringReplace(QTilte, '''', '\''', [rfReplaceAll]);
   QTilte := StringReplace(QTilte, ' ', '%', [rfReplaceAll]);
@@ -2522,10 +2521,17 @@ begin
 
   if QTilte<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((qt.`LogTitle` LIKE ''%s'') OR (lq.title LIKE ''%1:s''))',[WhereStr, QTilte])
-    else
-      WhereStr := Format('WHERE ((qt.`LogTitle` LIKE ''%s'')OR (lq.title LIKE ''%0:s''))',[QTilte]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((qt.`LogTitle` LIKE ''%s'') OR (lq.`title` LIKE ''%1:s'' AND lq.`locale`=''%2:s''))',[WhereStr, QTilte, loc])
+      else
+        WhereStr := Format('WHERE ((qt.`LogTitle` LIKE ''%s'') OR (lq.`title` LIKE ''%0:s'' AND lq.`locale`=''%1:s''))',[QTilte, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `LogTitle` LIKE ''%s'' ',[WhereStr, QTilte])
+      else
+        WhereStr := Format('WHERE `LogTitle` LIKE ''%s''',[QTilte]);
+    end;
   end;
 
   if qgq<>'' then
@@ -2594,7 +2600,13 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID=lq.Id %s',[WhereStr]);
+  if loc<>'enUS' then
+  QueryStr := Format('SELECT qt.`ID`, MAX(qt.`LogTitle`) AS `LogTitle`, MAX(''%s'') AS `locale`, '+
+      '(SELECT `Title` FROM `quest_template_locale` WHERE `ID` = qt.`ID` AND `locale` = ''%0:s'') AS `Title`, '+
+      '(SELECT `Details` FROM `quest_template_locale` WHERE `ID` = qt.`ID` AND `locale` = ''%0:s'') AS `Details` '+
+      'FROM `quest_template` qt LEFT OUTER JOIN `quest_template_locale` lq ON qt.`ID` = lq.`ID` '+
+      ' %1:s GROUP BY qt.`ID`',[loc, WhereStr])
+  else QueryStr := Format('SELECT `ID`, `LogTitle`, `QuestDescription` as `Details` FROM `quest_template` qt %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvQuest.Items.BeginUpdate;
@@ -2609,6 +2621,7 @@ begin
         begin
          Field := MyQuery.FindField(lvQuest.Columns[i].Caption);
           t := '';
+          if (i=1) AND (loc='enUS') then t:=loc;
           if Assigned(Field) then
           begin
             t := Field.AsString;
@@ -4297,18 +4310,32 @@ begin
 
   if CName<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%1:s''))',[WhereStr, CName])
-    else
-      WhereStr := Format('WHERE ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%0:s''))',[CName]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CName, loc])
+      else
+        WhereStr := Format('WHERE ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CName, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, CName])
+      else
+        WhereStr := Format('WHERE `name` LIKE ''%s''',[CName]);
+    end;
   end;
 
   if CSubName<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%1:s''))',[WhereStr, CSubName])
-    else
-      WhereStr := Format('WHERE ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%0:s''))',[CSubName]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CSubName, loc])
+      else
+        WhereStr := Format('WHERE ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CSubName, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `subname` LIKE ''%s'' ',[WhereStr, CSubName])
+      else
+        WhereStr := Format('WHERE `subname` LIKE ''%s''',[CSubName]);
+    end;
   end;
 
   npcflag := edSearchCreaturenpcflag.Text;
@@ -4352,7 +4379,16 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT *,(SELECT count(guid) from `creature` where creature.id = ct.entry) as `Count` FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.entry=lc.entry %s',[WhereStr]);
+  if loc<>'enUS' then
+    QueryStr := Format('SELECT ct.`entry`, MAX(ct.`name`) as `name`, MAX(ct.`subname`) as `subname`, ct.`npcflag`, ct.`minlevel`, ct.`maxlevel`, '+
+      '(SELECT count(guid) from `creature` where creature.`id` = ct.`entry`) as `Count`, '+
+      '(SELECT `Title` FROM `creature_template_locale` WHERE `entry` = ct.`entry` AND `locale` = ''%0:s'') AS Title '+
+      'FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.`entry`=lc.`entry` %s'+
+      'GROUP BY ct.`entry`',[loc, WhereStr])
+  else QueryStr := Format('SELECT `entry`, `name`, `subname`, `npcflag`, `minlevel`, `maxlevel`, '+
+      '(SELECT count(guid) from `creature` where creature.`id` = ct.`entry`) as `Count` '+
+      'FROM `creature_template` ct %s',[WhereStr]);
+
   MyQuery.SQL.Text := QueryStr;
   lvSearchCreature.Items.BeginUpdate;
   try
@@ -6735,10 +6771,17 @@ begin
 
   if CName<>'%%' then
   begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%1:s''))',[WhereStr, CName])
-    else
-      WhereStr := Format('WHERE ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%0:s''))',[CName]);
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%1:s'' AND lg.`locale`=''%2:s'' ))',[WhereStr, CName, loc])
+      else
+        WhereStr := Format('WHERE ((gt.`name` LIKE ''%s'') OR (lg.`name` LIKE ''%0:s'' AND lg.`locale`=''%1:s'' ))',[CName, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, CName])
+      else
+        WhereStr := Format('WHERE `name` LIKE ''%s''',[CName]);
+    end;
   end;
 
   type_ := StrToIntDef(edSearchGOtype.Text,-1);
@@ -6789,7 +6832,16 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  QueryStr := Format('SELECT *, (SELECT count(guid) from `gameobject` where gameobject.id = gt.entry) as `Count` FROM `gameobject_template` gt LEFT OUTER JOIN `gameobject_template_locale` lg ON gt.entry=lg.entry %s',[WhereStr]);
+  if loc<>'enUS' then
+    QueryStr := Format('SELECT gt.`entry`, MAX(gt.`name`) as `name`, gt.`type`, '+
+      '(SELECT `faction` from `gameobject_template_addon` WHERE gameobject_template_addon.`entry` = gt.`entry`) as `faction`, '+
+      '(SELECT count(guid) from `gameobject` where gameobject.`id` = gt.`entry`) as `Count` '+
+      'FROM `gameobject_template` gt LEFT OUTER JOIN `gameobject_template_locale` lg ON gt.`entry`=lg.`entry` %s '+
+      'GROUP BY gt.`entry`',[WhereStr])
+  else QueryStr := Format('SELECT `entry`, `name`, `type`, '+
+      '(SELECT `faction` from `gameobject_template_addon` WHERE gameobject_template_addon.`entry` = gt.`entry`) as `faction`, '+
+      '(SELECT count(guid) from `gameobject` where gameobject.`id` = gt.`entry`) as `Count` '+
+      'FROM `gameobject_template` gt %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvSearchGO.Items.BeginUpdate;
@@ -9289,20 +9341,17 @@ begin
 
   if Name<>'%%' then
   begin
-   if (loc<>'enUS') then begin
-    if (WhereStr<> '') then
-      WhereStr := Format('%s AND ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%1:s'' AND li.`locale` = ''%s''))',[WhereStr, Name, loc])
-    else
-      WhereStr := Format('WHERE ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%0:s'' AND li.`locale` = ''%s''))',[Name, loc]);
-   end
-   else begin
-    if (WhereStr<> '') then
-      WhereStr := Format('%s AND (it.`name` LIKE ''%s'')',[WhereStr, Name])
-    else
-      WhereStr := Format('WHERE (it.`name` LIKE ''%s'')',[Name]);
-   end;
-
-
+    if loc<>'enUS' then begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%1:s'' AND li.`locale`=''%2:s''))',[WhereStr, Name, loc])
+      else
+        WhereStr := Format('WHERE ((it.`name` LIKE ''%s'') OR (li.`name` LIKE ''%0:s'' AND li.`locale`=''%1:s''))',[Name, loc]);
+    end else begin
+      if WhereStr<> '' then
+        WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, Name])
+      else
+        WhereStr := Format('WHERE `name` LIKE ''%s''',[Name]);
+    end;
   end;
 
   class_ := StrToIntDef(edSearchItemClass.Text, -1);
@@ -9371,18 +9420,13 @@ begin
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
-  if (loc<>'enUS') then begin
-      if (Name<>'%%') then begin
-        if ID<>'' then
-          QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s LIMIT 1',[WhereStr])
-        else
-          QueryStr := Format('SELECT * FROM `item_template` it LEFT OUTER JOIN item_template_locale li ON it.entry=li.ID %s',[WhereStr])
-      end
-      else
-          QueryStr := Format('SELECT * FROM `item_template` it %s',[WhereStr])
-  end
-  else
-      QueryStr := Format('SELECT * FROM `item_template` it %s',[WhereStr]);
+  if loc<>'enUS' then
+    QueryStr := Format('SELECT it.`entry`, MAX(it.`name`) as `name`, it.`class`, it.`subclass`, it.`Quality`, it.`InventoryType`, '+
+      'it.`itemset`, it.`RequiredLevel` '+
+      'FROM `item_template` it LEFT OUTER JOIN `item_template_locale` li ON it.`entry`=li.`ID` %s'+
+      'GROUP BY it.`entry`',[WhereStr])
+  else QueryStr := Format('SELECT `entry`, `name`, `class`, `subclass`, `Quality`, `InventoryType`, '+
+      '`itemset`, `RequiredLevel` FROM `item_template` %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvSearchItem.Items.BeginUpdate;

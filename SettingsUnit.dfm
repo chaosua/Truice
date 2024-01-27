@@ -459,9 +459,9 @@ object SettingsForm: TSettingsForm
         object lbLanguage: TLabel
           Left = 16
           Top = 16
-          Width = 48
+          Width = 134
           Height = 13
-          Caption = 'Language'
+          Caption = 'Language ( Truice interface)'
         end
         object lbLocales: TLabel
           Left = 16
@@ -471,6 +471,13 @@ object SettingsForm: TSettingsForm
           Caption = 
             'Locales (Quest locales tab will load proper translation if exist' +
             's)'
+        end
+        object lblovales2: TLabel
+          Left = 16
+          Top = 83
+          Width = 255
+          Height = 13
+          Caption = 'Affects Search Tabs (search names in *_locale tables)'
         end
         object cbxLanguage: TComboBox
           Left = 16
@@ -482,7 +489,7 @@ object SettingsForm: TSettingsForm
         end
         object cbxLocales: TComboBox
           Left = 16
-          Top = 83
+          Top = 102
           Width = 313
           Height = 21
           Style = csDropDownList
@@ -677,7 +684,7 @@ object SettingsForm: TSettingsForm
       350
       41)
     object btOK: TButton
-      Left = 180
+      Left = 176
       Top = 6
       Width = 75
       Height = 25
@@ -686,10 +693,10 @@ object SettingsForm: TSettingsForm
       ModalResult = 1
       TabOrder = 0
       OnClick = btOKClick
-      ExplicitLeft = 176
+      ExplicitLeft = 172
     end
     object btCancel: TButton
-      Left = 261
+      Left = 257
       Top = 6
       Width = 75
       Height = 25
@@ -698,7 +705,7 @@ object SettingsForm: TSettingsForm
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
-      ExplicitLeft = 257
+      ExplicitLeft = 253
     end
   end
 end
