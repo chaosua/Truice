@@ -52,6 +52,7 @@ type
     lbDBCLocale: TLabel;
     cbxLocales: TComboBox;
     lbLocales: TLabel;
+    LbLocales2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btDelClick(Sender: TObject);
     procedure btUpClick(Sender: TObject);
