@@ -1721,7 +1721,6 @@ type
     btGOQuestItemDel: TSpeedButton;
     btShowGOQuestItemScript: TButton;
     btFullGOQuestItemScript: TButton;
-    edSQLlimit: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2454,7 +2453,7 @@ procedure TMainForm.SearchQuest;
 var
   i, PrevQuestId_, NextQuestId_: integer;
   loc, ID, QTilte, QueryStr, WhereStr, qgq, qtq, who, key, t, QuestSortID,
-  QuestFlags, limit: string;
+  QuestFlags: string;
   Field: TField;
 begin
   loc:= LoadLocales();
@@ -2462,7 +2461,6 @@ begin
   qgq := '';
   qtq := '';
   QuestSortID := '';
-  limit:=edSQLlimit.Text;
 
   if edQuestStarterSearch.Text<>'' then
   begin
@@ -2609,18 +2607,16 @@ begin
       WhereStr := Format('WHERE (qt.`NextQuestID`=%d)',[NextQuestId_]);
   end;
 
-
   if Trim(WhereStr)='' then
     if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
 
- // QueryStr := Format('SELECT * FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID=lq.Id %s LIMIT %s',[WhereStr, limit]);
    if loc<>'enUS' then
    QueryStr := Format('SELECT qt.ID, MAX(qt.`LogTitle`) AS LogTitle, MAX(''%s'') AS locale, '+
-       '(SELECT Title FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'' LIMIT 1) AS Title, '+
-       '(SELECT Details FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'' LIMIT 1) AS Details '+
+       '(SELECT Title FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'') AS Title, '+
+       '(SELECT Details FROM quest_template_locale WHERE ID = qt.ID AND locale = ''%0:s'') AS Details '+
        'FROM quest_template qt LEFT OUTER JOIN quest_template_locale lq ON qt.ID = lq.ID '+
-       ' %1:s GROUP BY qt.ID LIMIT %2:s ;',[loc, WhereStr, limit])
-   else QueryStr := Format('SELECT ID, LogTitle, QuestDescription as Details FROM quest_template qt %s LIMIT %s',[WhereStr, limit]);
+       ' %1:s GROUP BY qt.ID',[loc, WhereStr])
+   else QueryStr := Format('SELECT ID, LogTitle, QuestDescription as Details FROM quest_template qt %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvQuest.Items.BeginUpdate;
@@ -2635,6 +2631,7 @@ begin
         begin
          Field := MyQuery.FindField(lvQuest.Columns[i].Caption);
           t := '';
+          if (i=1) AND (loc='enUS') then t:=loc;
           if Assigned(Field) then
           begin
             t := Field.AsString;
