@@ -3758,7 +3758,7 @@ begin
     begin
         if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
            ((Pos('ed'+s+'l',Components[i].Name)=1) or (Pos('ed'+s+'d',Components[i].Name)=1)
-             or (Pos('ed'+s+'p',Components[i].Name)=1)) or (Pos('ed'+s+'e',Components[i].Name)=1 or (Pos('ed'+s+'tloc',Components[i].Name)=1) then
+             or (Pos('ed'+s+'p',Components[i].Name)=1) or (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'tloc',Components[i].Name)=1) ) then
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
@@ -8084,6 +8084,8 @@ begin
   loc:= Keyloc;
   Result := '';
   sets := '';
+  if loc='' then loc:=LoadLocales();
+  
   MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s and locale= ''%s'';',[tn, KeyName, KeyValue, loc]);
   MyTempQuery.Open;
   if (MyTempQuery.Eof=false) then
