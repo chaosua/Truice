@@ -420,7 +420,6 @@ type
     edctArmorModifier: TLabeledEdit;
     edctDamageModifier: TLabeledEdit;
     edctExperienceModifier: TLabeledEdit;
-    cbctRacialLeader: TCheckBox;
     edctmovementId: TLabeledEdit;
     edctRegenHealth: TLabeledEdit;
     edctmechanic_immune_mask: TJvComboEdit;
@@ -1721,6 +1720,13 @@ type
     btGOQuestItemDel: TSpeedButton;
     btShowGOQuestItemScript: TButton;
     btFullGOQuestItemScript: TButton;
+    cbctRacialLeader: TCheckBox;
+    gbCreatureLocale: TGroupBox;
+    edctlocentry: TLabeledEdit;
+    edctloclocale: TLabeledEdit;
+    edctlocVerifiedBuild: TLabeledEdit;
+    edctlocName: TLabeledEdit;
+    edctlocTitle: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -3727,7 +3733,7 @@ begin
            (Pos('ed'+s+'g',Components[i].Name)=1)  or (Pos('ed'+s+'x',Components[i].Name)=1)  or (Pos('ed'+s+'m',Components[i].Name)=1)  or
            (Pos('ed'+s+'s',Components[i].Name)=1) or (Pos('ed'+s+'r',Components[i].Name)=1) or (Pos('ed'+s+'i',Components[i].Name)=1) or
            (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1) or
-           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1)
+           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1) or (Pos('ed'+s+'tloc',Components[i].Name)=1)
            ) then TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or
            (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1) or (Pos('lv'+s+'e',Components[i].Name)=1) or (Pos('lv'+s+'i',Components[i].Name)=1) or
@@ -4646,9 +4652,11 @@ var
   i: integer;
   isvendor, istrainer, isEquip: boolean;
   npcflag: integer;
+  loc:string;
 begin
   ShowHourGlassCursor;
   ClearFields(ttNPC);
+  loc:=Loadlocales();
   if Entry<1 then exit;
   // load full description for creature
   MyQuery.SQL.Text := Format('SELECT * FROM `creature_template` WHERE `entry`=%d',[Entry]);
@@ -4735,6 +4743,18 @@ begin
     edcsEntry.Text := edctskinloot.Text;
     edcventry.Text := IntToStr(Entry);	//vendor
     edcrID.Text := IntToStr(Entry);		//trainer
+
+    MyQuery.SQL.Text := Format('SELECT * FROM `creature_template_locale` WHERE `entry`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
+    MyQuery.Open;
+      if (MyQuery.Eof=false) then begin
+        edctlocentry.Text := MyQuery.FieldByName('entry').AsString;
+        edctloclocale.Text := MyQuery.FieldByName('locale').AsString;
+        edctlocName.Text := MyQuery.FieldByName('Name').AsString;
+        edctlocTitle.Text := MyQuery.FieldByName('Title').AsString;
+        edctlocVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      end;
+    MyQuery.Close;
+
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[82]+#10#13+E.Message);
@@ -4743,18 +4763,41 @@ end;
 
 procedure TMainForm.CompleteCreatureScript;
 var
-  ctentry, Fields, Values: string;
+  ctentry, loc, Fields, Values, Script, s1, s2: string;
 begin
   mectLog.Clear;
   ctentry := edctEntry.Text;
   if ctentry='' then exit;
   SetFieldsAndValues(Fields, Values, 'creature_template', PFX_CREATURE_TEMPLATE, mectLog);
   case SyntaxStyle of
-    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `creature_template` WHERE (`entry`=%s);'#13#10+
       'INSERT INTO `creature_template` (%s) VALUES (%s);'#13#10,[ctentry, Fields, Values]);
-    ssReplace: mectScript.Text := Format('REPLACE INTO `creature_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: mectScript.Text := MakeUpdate('creature_template', PFX_CREATURE_TEMPLATE, 'entry', ctentry);
+    ssReplace: s1 := Format('REPLACE INTO `creature_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: s1 := MakeUpdate('creature_template', PFX_CREATURE_TEMPLATE, 'entry', ctentry);
   end;
+
+
+  if edctlocentry.Text<>'' then begin
+    ctentry:=edctlocentry.Text;
+    loc:= edctloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, mectLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `creature_template_locale` WHERE `entry` = %s AND locale=''%s'';'#13#10+
+                      'INSERT INTO `creature_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
+                      ,[ctentry, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `creature_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdate('creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, 'entry', ctentry);
+    end;
+  end;
+    //Add all scripts together
+    Script := s1+s2;
+    //Format all quest script
+    mectScript.Text := Script;
 end;
 
 procedure TMainForm.CompleteCreatureTemplateAddonScript;
