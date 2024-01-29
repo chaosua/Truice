@@ -73,8 +73,9 @@ const
   PFX_GAME_EVENT                    = 'ge';
   PFX_GAMEOBJECT                    = 'gl';
   PFX_GAMEOBJECT_TEMPLATE_ADDON     = 'gota';
-  PFX_GAMEOBJECT_QUESTITEM         = 'goqi';
+  PFX_GAMEOBJECT_QUESTITEM          = 'goqi';
   PFX_GAMEOBJECT_LOOT_TEMPLATE      = 'go';
+  PFX_GAMEOBJECT_TEMPLATE_LOCALE    = 'gtloc';
   PFX_ITEM_TEMPLATE                 = 'it';
   PFX_ITEM_LOOT_TEMPLATE            = 'il';
   PFX_ITEM_ENCHANTMENT_TEMPLATE     = 'ie';
@@ -1727,6 +1728,12 @@ type
     edctlocVerifiedBuild: TLabeledEdit;
     edctlocName: TLabeledEdit;
     edctlocTitle: TLabeledEdit;
+    gbGameobjectLocale: TGroupBox;
+    edgtlocentry: TLabeledEdit;
+    edgtloclocale: TLabeledEdit;
+    edgtlocVerifiedBuild: TLabeledEdit;
+    edgtlocname: TLabeledEdit;
+    edgtloccastBarCaption: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2338,7 +2345,7 @@ type
 
     {other}
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
-    function MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
+    function MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string; Keyloc: string): string;
     procedure CompleteFishingLootScript;
     procedure SearchPageText;
     procedure SearchGameEvent;
@@ -3758,6 +3765,12 @@ begin
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
     end;
+    if s='g' then
+    begin
+        if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
+           ((Pos('ed'+s+'tloc',Components[i].Name)=1) {or}) then
+             TCustomEdit(Components[i]).Clear;
+    end;
   end;
 end;
 
@@ -4791,7 +4804,7 @@ begin
       ssReplace: s2 := Format(#13#10+
                       'REPLACE INTO `creature_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
                       ,[Fields, Values]);
-      ssUpdate: s2 := MakeUpdate('creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, 'entry', ctentry);
+      ssUpdate: s2 := MakeUpdateLocales('creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, 'entry', ctentry, loc);
     end;
   end;
     //Add all scripts together
@@ -6359,10 +6372,10 @@ end;
 
 procedure TMainForm.CompleteLocalesQuest;
 var
-  Fields, Values, Script, quest, s1, s2, s3, locale : string;
+  Fields, Values, Script, quest, s1, s2, s3, loc : string;
 begin
   meqtLog.Clear;
-  locale := edqtloclocale.Text;
+//  loc := edqtloclocale.Text;
 //  quest:= edqtlocID.Text;
 //  if quest='' then exit;
 //  meqtScript.Text := MakeUpdateLocales('quest_template_locale', PFX_LOCALES_QUEST, 'Id', quest);
@@ -6370,51 +6383,57 @@ begin
   // quest__template_locale
   quest:= edqtlocID.Text;
   if quest<>'' then begin
-  Fields:= ''; Values:= '';
-  SetFieldsAndValues(Fields, Values, 'quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, meqtLog);
-   case SyntaxStyle of
-ssInsertDelete: s1 := Format(#13#10 +
+    loc:= edqtloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, meqtLog);
+    case SyntaxStyle of
+      ssInsertDelete: s1 := Format(#13#10 +
                       'DELETE FROM `quest_template_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10 +
                       'INSERT INTO `quest_template_locale` (%s) VALUES (%s);'#13#10#13#10
-                      ,[quest, locale, Fields, Values]);
-    ssReplace: s1 := Format(#13#10+
+                      ,[quest, loc, Fields, Values]);
+      ssReplace: s1 := Format(#13#10+
                       'REPLACE INTO `quest_template_locale` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
-    ssUpdate: s1 := MakeUpdateLocales('quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, 'ID', quest);
+      ssUpdate: s1 := MakeUpdateLocales('quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, 'ID', quest, loc);
    end;
   end;
 
   // quest_request_items_locale
   quest:= edqorlocID.Text;
   if quest<>'' then begin
-  Fields:= ''; Values:= '';
-  SetFieldsAndValues(Fields, Values, 'quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, meqtLog);
-   case SyntaxStyle of
-    ssInsertDelete: s2 := Format(#13#10+
+    loc:= edqorloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, meqtLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
                       'DELETE FROM `quest_offer_reward_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
                       'INSERT INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
-                      ,[quest, locale, Fields, Values]);
-    ssReplace: s2 := Format(#13#10+
+                      ,[quest, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
                       'REPLACE INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
-    ssUpdate: s2 := MakeUpdateLocales('quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, 'ID', quest);
+      ssUpdate: s2 := MakeUpdateLocales('quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, 'ID', quest, loc);
    end;
   end;
 
   // quest_request_items_locale
   quest:= edqrilocID.Text;
   if quest<>'' then begin
-  Fields:= ''; Values:= '';
-  SetFieldsAndValues(Fields, Values, 'quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, meqtLog);
-   case SyntaxStyle of
-    ssInsertDelete: s3 := Format(#13#10+
+    loc:= edqriloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, meqtLog);
+    case SyntaxStyle of
+      ssInsertDelete: s3 := Format(#13#10+
                       'DELETE FROM `quest_request_items_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
                       'INSERT INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
-                      ,[quest, locale, Fields, Values]);
-    ssReplace: s3 := Format(#13#10+
+                      ,[quest, loc, Fields, Values]);
+      ssReplace: s3 := Format(#13#10+
                       'REPLACE INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
-    ssUpdate: s3 := MakeUpdateLocales('quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, 'ID', quest);
+      ssUpdate: s3 := MakeUpdateLocales('quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, 'ID', quest, loc);
    end;
   end;
   //Add all scripts together
@@ -7040,9 +7059,11 @@ end;
 procedure TMainForm.LoadGO(Entry: integer);
 var
   t: integer;
+  loc:string;
 begin
   ShowHourGlassCursor;
   ClearFields(ttObject);
+  loc:=LoadLocales();
   if Entry<1 then exit;
   // load full description for GO
   MyQuery.SQL.Text := Format('SELECT * FROM `gameobject_template` WHERE `entry`=%d',[Entry]);
@@ -7082,6 +7103,17 @@ begin
     LoadQueryToListView(Format('SELECT `GameObjectEntry`, `idx`, `itemId`, `VerifiedBuild` FROM `gameobject_questitem` WHERE (`GameObjectEntry`=%d)',
       [Entry]),lvgoqiGOQuestItem);
 
+    MyQuery.SQL.Text := Format('SELECT * FROM `gameobject_template_locale` WHERE `entry`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
+    MyQuery.Open;
+      if (MyQuery.Eof=false) then begin
+        edgtlocentry.Text := MyQuery.FieldByName('entry').AsString;
+        edgtloclocale.Text := MyQuery.FieldByName('locale').AsString;
+        edgtlocname.Text := MyQuery.FieldByName('name').AsString;
+        edgtloccastBarCaption.Text := MyQuery.FieldByName('castBarCaption').AsString;
+        edgtlocVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      end;
+    MyQuery.Close;
+
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[89]+#10#13+E.Message);
@@ -7090,7 +7122,7 @@ end;
 
 procedure TMainForm.CompleteGOScript;
 var
-  gtentry, Fields, Values, s1, s2, Script: string;
+  gtentry, Fields, Values, s1, s2, s3, Script, loc: string;
 begin
   megoLog.Clear;
   gtentry := edgtEntry.Text;
@@ -7103,25 +7135,44 @@ begin
     ssUpdate: s1 := MakeUpdate('gameobject_template', PFX_GAMEOBJECT_TEMPLATE, 'entry', gtentry);
   end;
 
- // gameobject_template_addon
+  //gameobject_template_locale
+  if edgtlocentry.Text<>'' then begin
+    gtentry:=edgtlocentry.Text;
+    loc:= edgtloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'gameobject_template_locale', PFX_GAMEOBJECT_TEMPLATE_LOCALE, megoLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `gameobject_template_locale` WHERE `entry` = %s AND locale=''%s'';'#13#10+
+                      'INSERT INTO `gameobject_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
+                      ,[gtentry, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `gameobject_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdateLocales('gameobject_template_locale', PFX_GAMEOBJECT_TEMPLATE_LOCALE, 'entry', gtentry, loc);
+    end;
+  end;
+
+  // gameobject_template_addon
   if edgotaentry.Text<>'' then begin
   Fields:= ''; Values:= '';
   gtentry:=edgotaentry.Text;
   SetFieldsAndValues(Fields, Values, 'gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, megoLog);
    case SyntaxStyle of
-    ssInsertDelete: s2 := Format(#13#10+
+    ssInsertDelete: s3 := Format(#13#10+
                       'DELETE FROM `gameobject_template_addon` WHERE `entry` = %s;'#13#10+
                       'INSERT INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[gtentry, Fields, Values]);
-    ssReplace: s2 := Format(#13#10+
+    ssReplace: s3 := Format(#13#10+
                       'REPLACE INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
-    ssUpdate: s2 := MakeUpdate('gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, 'entry', gtentry);
+    ssUpdate: s3 := MakeUpdate('gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, 'entry', gtentry);
    end;
   end;
 
   //Add all scripts together
-  Script := s1+s2;
+  Script := s1+s2+s3;
   //Format all go script
   megoScript.Text := Script;
 end;
@@ -8017,13 +8068,13 @@ begin
 end;
 
 //                                  table ;    prefix od variables; ColumnName;  Value
-function TMainForm.MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
+function TMainForm.MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string; Keyloc: string): string;
 var
   i: integer;
   sets, FieldName, ValueFromBase, ValueFromEdit, loc ,FN: string;
   C: TComponent;
 begin
-  loc:= LoadLocales();
+  loc:= Keyloc;
   Result := '';
   sets := '';
   MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s and locale= ''%s'';',[tn, KeyName, KeyValue, loc]);

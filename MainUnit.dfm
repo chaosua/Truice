@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 872
     Height = 679
-    ActivePage = tsCreature
+    ActivePage = tsGameObject
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -13967,7 +13967,7 @@ object MainForm: TMainForm
         Top = 6
         Width = 864
         Height = 645
-        ActivePage = tsSearchGO
+        ActivePage = tsEditGO
         Align = alClient
         TabOrder = 1
         object tsSearchGO: TTabSheet
@@ -15242,6 +15242,75 @@ object MainForm: TMainForm
               EditLabel.Height = 13
               EditLabel.Caption = 'artkit3'
               TabOrder = 8
+              Text = ''
+            end
+          end
+          object gbGameobjectLocale: TGroupBox
+            Left = 471
+            Top = 239
+            Width = 247
+            Height = 188
+            Caption = 'Gameobject locale'
+            Color = clMenuBar
+            ParentBackground = False
+            ParentColor = False
+            TabOrder = 4
+            object edgtlocentry: TLabeledEdit
+              Left = 8
+              Top = 30
+              Width = 89
+              Height = 21
+              Hint = 'entry from gameobject_template'
+              EditLabel.Width = 23
+              EditLabel.Height = 13
+              EditLabel.Caption = 'entry'
+              TabOrder = 0
+              Text = ''
+            end
+            object edgtloclocale: TLabeledEdit
+              Left = 136
+              Top = 30
+              Width = 89
+              Height = 21
+              Hint = 'locale'
+              EditLabel.Width = 28
+              EditLabel.Height = 13
+              EditLabel.Caption = 'locale'
+              TabOrder = 1
+              Text = ''
+            end
+            object edgtlocVerifiedBuild: TLabeledEdit
+              Left = 8
+              Top = 70
+              Width = 89
+              Height = 21
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 2
+              Text = ''
+            end
+            object edgtlocname: TLabeledEdit
+              Left = 8
+              Top = 110
+              Width = 217
+              Height = 21
+              EditLabel.Width = 28
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Name'
+              TabOrder = 3
+              Text = ''
+            end
+            object edgtloccastBarCaption: TLabeledEdit
+              Left = 8
+              Top = 150
+              Width = 217
+              Height = 21
+              Hint = 'subname from creature_template'
+              EditLabel.Width = 72
+              EditLabel.Height = 13
+              EditLabel.Caption = 'castBarCaption'
+              TabOrder = 4
               Text = ''
             end
           end
@@ -29394,8 +29463,8 @@ object MainForm: TMainForm
   end
   object MyQueryAll: TFDQuery
     Connection = MyTrinityConnection
-    Left = 765
-    Top = 265
+    Left = 773
+    Top = 241
   end
   object pmCreature: TPopupMenu
     Left = 65529
@@ -29471,8 +29540,8 @@ object MainForm: TMainForm
     end
   end
   object pmItem: TPopupMenu
-    Left = 625
-    Top = 322
+    Left = 817
+    Top = 538
     object nEditItem: TMenuItem
       Caption = 'Edit Item'
       OnClick = btEditItemClick
@@ -29498,8 +29567,8 @@ object MainForm: TMainForm
     Top = 66
   end
   object ActionList1: TActionList
-    Left = 728
-    Top = 329
+    Left = 816
+    Top = 353
     object BrowseURL1: TBrowseURL
       Category = 'Internet'
       Caption = '&Browse URL'
