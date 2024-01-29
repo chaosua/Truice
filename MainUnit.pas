@@ -75,8 +75,10 @@ const
   PFX_GAMEOBJECT_TEMPLATE_ADDON     = 'gota';
   PFX_GAMEOBJECT_QUESTITEM          = 'goqi';
   PFX_GAMEOBJECT_LOOT_TEMPLATE      = 'go';
+  PFX_GAMEOBJECT_TEMPLATE_LOCALE    = 'gtloc';
   PFX_ITEM_TEMPLATE                 = 'it';
   PFX_ITEM_LOOT_TEMPLATE            = 'il';
+  PFX_ITEM_TEMPLATE_LOCALE          = 'itloc';
   PFX_ITEM_ENCHANTMENT_TEMPLATE     = 'ie';
   PFX_DISENCHANT_LOOT_TEMPLATE      = 'id';
   PFX_PROSPECTING_LOOT_TEMPLATE     = 'ip';
@@ -1295,23 +1297,21 @@ type
     N4: TMenuItem;
     tsLocalesQuest: TTabSheet;
     gbLocalesQuest: TGroupBox;
-    edlqlocale: TLabeledEdit;
-    edlqTitle: TLabeledEdit;
-    edlqDetails: TMemo;
+    edqtloclocale: TLabeledEdit;
+    edqtlocTitle: TLabeledEdit;
+    edqtlocDetails: TMemo;
     l2Details: TLabel;
-    edlqObjectives: TMemo;
+    edqtlocObjectives: TMemo;
     l2Objectives: TLabel;
-    l2EndText: TLabel;
-    edlqEndText: TMemo;
-    edlqRewardText: TMemo;
-    edlqCompletionText: TMemo;
+    edqorlocRewardText: TMemo;
+    edqrilocCompletionText: TMemo;
     l2CompletionText: TLabel;
     l2RewardText: TLabel;
-    edlqObjectiveText1: TLabeledEdit;
-    edlqObjectiveText2: TLabeledEdit;
-    edlqObjectiveText3: TLabeledEdit;
-    edlqObjectiveText4: TLabeledEdit;
-    edlqVerifiedBuild: TLabeledEdit;
+    edqtlocObjectiveText1: TLabeledEdit;
+    edqtlocObjectiveText2: TLabeledEdit;
+    edqtlocObjectiveText3: TLabeledEdit;
+    edqtlocObjectiveText4: TLabeledEdit;
+    edqtlocVerifiedBuild: TLabeledEdit;
     btlqShowFullLocalesScript: TButton;
     editScalingStatDistribution: TLabeledEdit;
     editScalingStatValue: TLabeledEdit;
@@ -1387,7 +1387,7 @@ type
     lbglspawnMask: TLabel;
     lbctgossip_menu_id: TLabel;
     edqtQuestCompletionLog: TLabeledEdit;
-    edlqCompletedText: TLabeledEdit;
+    edqtlocCompletedText: TLabeledEdit;
     edqtRewardXPDifficulty: TLabeledEdit;
     edqtRewardKillHonor: TLabeledEdit;
     edqtRewardFactionOverride1: TLabeledEdit;
@@ -1711,6 +1711,32 @@ type
     btGOQuestItemDel: TSpeedButton;
     btShowGOQuestItemScript: TButton;
     btFullGOQuestItemScript: TButton;
+    GroupBox3: TGroupBox;
+    editlocID: TLabeledEdit;
+    editloclocale: TLabeledEdit;
+    editlocVerifiedBuild: TLabeledEdit;
+    editlocName: TLabeledEdit;
+    editlocDescription: TLabeledEdit;
+    gbGameobjectLocale: TGroupBox;
+    edgtlocentry: TLabeledEdit;
+    edgtloclocale: TLabeledEdit;
+    edgtlocVerifiedBuild: TLabeledEdit;
+    edgtlocname: TLabeledEdit;
+    edgtloccastBarCaption: TLabeledEdit;
+    gbCreatureLocale: TGroupBox;
+    edctlocentry: TLabeledEdit;
+    edctloclocale: TLabeledEdit;
+    edctlocVerifiedBuild: TLabeledEdit;
+    edctlocName: TLabeledEdit;
+    edctlocTitle: TLabeledEdit;
+    edqtlocID: TLabeledEdit;
+    edqtlocEndText: TLabeledEdit;
+    edqorlocID: TLabeledEdit;
+    edqorloclocale: TLabeledEdit;
+    edqorlocVerifiedBuild: TLabeledEdit;
+    edqrilocID: TLabeledEdit;
+    edqriloclocale: TLabeledEdit;
+    edqrilocVerifiedBuild: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2325,7 +2351,7 @@ type
 
     {other}
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
-    function MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
+    function MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string; Keyloc: string): string;
     procedure CompleteFishingLootScript;
     procedure SearchPageText;
     procedure SearchGameEvent;
@@ -3407,42 +3433,50 @@ loc: string;
 begin
   loc:= LoadLocales();
   if (loc<>'enUS') then begin
-  MyQuery.SQL.Text := Format('SELECT loc.locale, loc.Title, loc.Details, loc.Objectives, loc.EndText, loc.CompletedText, loc.ObjectiveText1, loc.ObjectiveText2, loc.ObjectiveText3, loc.ObjectiveText4, loc.VerifiedBuild, rl.RewardText, il.CompletionText '+
-  'FROM `quest_template_locale` loc LEFT OUTER JOIN quest_offer_reward_locale rl on rl.ID = loc.ID AND rl.locale = loc.locale LEFT OUTER JOIN quest_request_items_locale il on il.ID = loc.ID AND il.locale = loc.locale WHERE loc.ID=%d AND loc.locale="%s"',[QuestID, loc]);
-  MyQuery.Open;
-  edlqlocale.EditLabel.Caption:= 'locale';
-  edlqTitle.EditLabel.Caption:= 'Title';
-  l2Details.Caption:= 'Details';
-  l2Objectives.Caption:= 'Objectives';
-  l2EndText.Caption:= 'EndText';
-  edlqCompletedText.EditLabel.Caption:= 'CompletedText';
-  l2RewardText.Caption:= 'RewardText';
-  l2CompletionText.Caption:= 'CompletionText';
-  edlqObjectiveText1.EditLabel.Caption:= 'ObjectiveText1';
-  edlqObjectiveText2.EditLabel.Caption:= 'ObjectiveText2';
-  edlqObjectiveText3.EditLabel.Caption:= 'ObjectiveText3';
-  edlqObjectiveText4.EditLabel.Caption:= 'ObjectiveText4';
-  edlqVerifiedBuild.EditLabel.Caption:= 'VerifiedBuild';
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_locale` '+
+    'WHERE ID=%d AND locale="%s"',[QuestID, loc]);
+    MyQuery.Open;
+    while (MyQuery.Eof=false) do
+    begin
+      edqtlocID.Text:=Inttostr(QuestID);
+      edqtloclocale.Text:=MyQuery.FieldByName('locale').AsString;
+      edqtlocTitle.Text:=MyQuery.FieldByName('Title').AsString;
+      edqtlocDetails.Text:=MyQuery.FieldByName('Details').AsString;
+      edqtlocObjectives.Text:=MyQuery.FieldByName('Objectives').AsString;
+      edqtlocEndText.Text:=MyQuery.FieldByName('EndText').AsString;
+      edqtlocCompletedText.Text:=MyQuery.FieldByName('CompletedText').AsString;
+      edqtlocObjectiveText1.Text:=MyQuery.FieldByName('ObjectiveText1').AsString;
+      edqtlocObjectiveText2.Text:=MyQuery.FieldByName('ObjectiveText2').AsString;
+      edqtlocObjectiveText3.Text:=MyQuery.FieldByName('ObjectiveText3').AsString;
+      edqtlocObjectiveText4.Text:=MyQuery.FieldByName('ObjectiveText4').AsString;
+      edqtlocVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
+      MyQuery.Next;
+    end;
+    MyQuery.Close;
 
+    //quest_offer_reward_locale
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward_locale` '+
+     'WHERE ID=%d AND locale="%s"',[QuestID, loc]);
+    MyQuery.Open;
+    if (MyQuery.Eof=false) then begin
+      edqorlocID.TEXT := MyQuery.FieldByName('ID').AsString;
+      edqorloclocale.TEXT := MyQuery.FieldByName('locale').AsString;
+      edqorlocRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+      edqorlocVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
+    end;
+    MyQuery.Close;
 
-  while (MyQuery.Eof=false) do
-  begin
-    edlqlocale.Text:=MyQuery.FieldByName('locale').AsString;
-    edlqTitle.Text:=MyQuery.FieldByName('Title').AsString;
-    edlqDetails.Text:=MyQuery.FieldByName('Details').AsString;
-    edlqObjectives.Text:=MyQuery.FieldByName('Objectives').AsString;
-    edlqEndText.Text:=MyQuery.FieldByName('EndText').AsString;
-    edlqCompletedText.Text:=MyQuery.FieldByName('CompletedText').AsString;
-    edlqObjectiveText1.Text:=MyQuery.FieldByName('ObjectiveText1').AsString;
-    edlqObjectiveText2.Text:=MyQuery.FieldByName('ObjectiveText2').AsString;
-    edlqObjectiveText3.Text:=MyQuery.FieldByName('ObjectiveText3').AsString;
-    edlqObjectiveText4.Text:=MyQuery.FieldByName('ObjectiveText4').AsString;
-    edlqVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
-	edlqRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
-	edlqCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
-    MyQuery.Next;
-  end;
-  MyQuery.Close;
+    //quest_request_items_locale
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items_locale` '+
+     'WHERE ID=%d AND locale="%s"',[QuestID, loc]);
+    MyQuery.Open;
+    if (MyQuery.Eof=false) then begin
+      edqrilocID.TEXT := MyQuery.FieldByName('ID').AsString;
+      edqriloclocale.TEXT := MyQuery.FieldByName('locale').AsString;
+      edqrilocCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
+      edqrilocVerifiedBuild.Text:=MyQuery.FieldByName('VerifiedBuild').AsString;
+    end;
+    MyQuery.Close;
   end;
 end;
 
@@ -3710,7 +3744,7 @@ begin
            ((Pos('ed'+s+'v',Components[i].Name)=1) or (Pos('ed'+s+'p',Components[i].Name)=1) or (Pos('ed'+s+'a',Components[i].Name)=1)  or
            (Pos('ed'+s+'g',Components[i].Name)=1)  or (Pos('ed'+s+'x',Components[i].Name)=1)  or (Pos('ed'+s+'m',Components[i].Name)=1)  or
            (Pos('ed'+s+'s',Components[i].Name)=1) or (Pos('ed'+s+'r',Components[i].Name)=1) or (Pos('ed'+s+'i',Components[i].Name)=1) or
-           (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1)) then
+           (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1) or (Pos('ed'+s+'tloc',Components[i].Name)=1) ) then
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or
            (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1)) then
@@ -3722,7 +3756,7 @@ begin
            ((Pos('ed'+s+'l',Components[i].Name)=1) or (Pos('ed'+s+'d',Components[i].Name)=1)
              or (Pos('ed'+s+'p',Components[i].Name)=1)) or (Pos('ed'+s+'e',Components[i].Name)=1) then
              TCustomEdit(Components[i]).Clear;
-        if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
+        if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1) or (Pos('ed'+s+'tloc',Components[i].Name)=1) ) then
           TCustomListView(Components[i]).Clear;
     end;
     if s='h' then
@@ -3733,6 +3767,12 @@ begin
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
+    end;
+    if s='g' then
+    begin
+        if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
+           ((Pos('ed'+s+'tloc',Components[i].Name)=1) {or}) then
+             TCustomEdit(Components[i]).Clear;
     end;
   end;
 end;
@@ -4633,9 +4673,11 @@ var
   i: integer;
   isvendor, istrainer, isEquip: boolean;
   npcflag: integer;
+  loc:string;
 begin
   ShowHourGlassCursor;
   ClearFields(ttNPC);
+  loc:=Loadlocales();
   if Entry<1 then exit;
   // load full description for creature
   MyQuery.SQL.Text := Format('SELECT * FROM `creature_template` WHERE `entry`=%d',[Entry]);
@@ -4739,6 +4781,18 @@ begin
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
     edcventry.Text := IntToStr(Entry);	//vendor
+
+    MyQuery.SQL.Text := Format('SELECT * FROM `creature_template_locale` WHERE `entry`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
+    MyQuery.Open;
+      if (MyQuery.Eof=false) then begin
+        edctlocentry.Text := MyQuery.FieldByName('entry').AsString;
+        edctloclocale.Text := MyQuery.FieldByName('locale').AsString;
+        edctlocName.Text := MyQuery.FieldByName('Name').AsString;
+        edctlocTitle.Text := MyQuery.FieldByName('Title').AsString;
+        edctlocVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      end;
+    MyQuery.Close;
+
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[82]+#10#13+E.Message);
@@ -4747,7 +4801,7 @@ end;
 
 procedure TMainForm.CompleteCreatureScript;
 var
-  ctentry, Fields, Values, s1, s2, Script: string;
+  ctentry, Fields, Values, s1, s2, s3, loc, Script: string;
 begin
   mectLog.Clear;
   ctentry := edctEntry.Text;
@@ -4769,19 +4823,37 @@ begin
 
   SetFieldsAndValues(Fields, Values, 'creature_default_trainer', PFX_CREATURE_DEFAULT_TRAINER, mectLog);
    case SyntaxStyle of
-    ssInsertDelete: s2 := Format(#13#10+
+    ssInsertDelete: s3 := Format(#13#10+
                       'DELETE FROM `creature_default_trainer` WHERE `CreatureID` = %s;'#13#10+
                       'INSERT INTO `creature_default_trainer` (%s) VALUES (%s);'#13#10+#13#10
                       ,[ctentry, Fields, Values]);
-    ssReplace: s2 := Format(#13#10+
+    ssReplace: s3 := Format(#13#10+
                       'REPLACE INTO `creature_default_trainer` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
-    ssUpdate: s2 := MakeUpdate('creature_default_trainer', PFX_CREATURE_DEFAULT_TRAINER, 'CreatureID', ctentry);
+    ssUpdate: s3 := MakeUpdate('creature_default_trainer', PFX_CREATURE_DEFAULT_TRAINER, 'CreatureID', ctentry);
    end;
   end;
 
+  if edctlocentry.Text<>'' then begin
+    ctentry:=edctlocentry.Text;
+    loc:= edctloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, mectLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `creature_template_locale` WHERE `entry` = %s AND locale=''%s'';'#13#10+
+                      'INSERT INTO `creature_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
+                      ,[ctentry, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `creature_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdateLocales('creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, 'entry', ctentry, loc);
+    end;
+  end;
+
   //Add all scripts together
-  Script := s1+s2;
+  Script := s1+s2+s3;
   //Format all go script
   mectScript.Text := Script;
 end;
@@ -6364,12 +6436,73 @@ end;
 
 procedure TMainForm.CompleteLocalesQuest;
 var
-  lqentry : string;
+  Fields, Values, Script, quest, s1, s2, s3, loc : string;
 begin
   meqtLog.Clear;
-  lqentry:= edqtId.Text;
-  if lqentry='' then exit;
-  meqtScript.Text := MakeUpdateLocales('quest_template_locale', PFX_LOCALES_QUEST, 'Id', lqentry);
+//  lqentry:= edqtId.Text;
+//  if lqentry='' then exit;
+//  meqtScript.Text := MakeUpdateLocales('quest_template_locale', PFX_LOCALES_QUEST, 'Id', lqentry, loc);
+
+  // quest__template_locale
+  quest:= edqtlocID.Text;
+  if quest<>'' then begin
+    loc:= edqtloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, meqtLog);
+    case SyntaxStyle of
+      ssInsertDelete: s1 := Format(#13#10 +
+                      'DELETE FROM `quest_template_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10 +
+                      'INSERT INTO `quest_template_locale` (%s) VALUES (%s);'#13#10#13#10
+                      ,[quest, loc, Fields, Values]);
+      ssReplace: s1 := Format(#13#10+
+                      'REPLACE INTO `quest_template_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s1 := MakeUpdateLocales('quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, 'ID', quest, loc);
+   end;
+  end;
+
+  // quest_request_items_locale
+  quest:= edqorlocID.Text;
+  if quest<>'' then begin
+    loc:= edqorloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, meqtLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `quest_offer_reward_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
+                      'INSERT INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdateLocales('quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, 'ID', quest, loc);
+   end;
+  end;
+
+  // quest_request_items_locale
+  quest:= edqrilocID.Text;
+  if quest<>'' then begin
+    loc:= edqriloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, meqtLog);
+    case SyntaxStyle of
+      ssInsertDelete: s3 := Format(#13#10+
+                      'DELETE FROM `quest_request_items_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
+                      'INSERT INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[quest, loc, Fields, Values]);
+      ssReplace: s3 := Format(#13#10+
+                      'REPLACE INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s3 := MakeUpdateLocales('quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, 'ID', quest, loc);
+   end;
+  end;
+  //Add all scripts together
+  Script := s1+s2+s3;
+  //Format all quest script
+  meqtScript.Text := Script;
 end;
 
 procedure TMainForm.CompleteCreatureSmartAIScript;
@@ -6976,9 +7109,11 @@ end;
 procedure TMainForm.LoadGO(Entry: integer);
 var
   t: integer;
+  loc:string;
 begin
   ShowHourGlassCursor;
   ClearFields(ttObject);
+  loc:=LoadLocales();
   if Entry<1 then exit;
   // load full description for GO
   MyQuery.SQL.Text := Format('SELECT * FROM `gameobject_template` WHERE `entry`=%d',[Entry]);
@@ -7016,6 +7151,17 @@ begin
     LoadQueryToListView(Format('SELECT `GameObjectEntry`, `idx`, `itemId`, `VerifiedBuild` FROM `gameobject_questitem` WHERE (`GameObjectEntry`=%d)',
       [Entry]),lvgoqiGOQuestItem);
 
+    MyQuery.SQL.Text := Format('SELECT * FROM `gameobject_template_locale` WHERE `entry`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
+    MyQuery.Open;
+      if (MyQuery.Eof=false) then begin
+        edgtlocentry.Text := MyQuery.FieldByName('entry').AsString;
+        edgtloclocale.Text := MyQuery.FieldByName('locale').AsString;
+        edgtlocname.Text := MyQuery.FieldByName('name').AsString;
+        edgtloccastBarCaption.Text := MyQuery.FieldByName('castBarCaption').AsString;
+        edgtlocVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      end;
+    MyQuery.Close;
+
   except
     on E: Exception do
       raise Exception.Create(dmMain.Text[89]+#10#13+E.Message);
@@ -7024,7 +7170,7 @@ end;
 
 procedure TMainForm.CompleteGOScript;
 var
-  gtentry, Fields, Values, s1, s2, Script: string;
+  gtentry, Fields, Values, s1, s2, s3, Script, loc: string;
 begin
   megoLog.Clear;
   gtentry := edgtEntry.Text;
@@ -7037,25 +7183,44 @@ begin
     ssUpdate: s1 := MakeUpdate('gameobject_template', PFX_GAMEOBJECT_TEMPLATE, 'entry', gtentry);
   end;
 
+  //gameobject_template_locale
+  if edgtlocentry.Text<>'' then begin
+    gtentry:=edgtlocentry.Text;
+    loc:= edgtloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'gameobject_template_locale', PFX_GAMEOBJECT_TEMPLATE_LOCALE, megoLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `gameobject_template_locale` WHERE `entry` = %s AND locale=''%s'';'#13#10+
+                      'INSERT INTO `gameobject_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
+                      ,[gtentry, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `gameobject_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdateLocales('gameobject_template_locale', PFX_GAMEOBJECT_TEMPLATE_LOCALE, 'entry', gtentry, loc);
+    end;
+  end;
+
  // gameobject_template_addon
   if edgotaentry.Text<>'' then begin
   Fields:= ''; Values:= '';
   gtentry:=edgotaentry.Text;
   SetFieldsAndValues(Fields, Values, 'gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, megoLog);
    case SyntaxStyle of
-    ssInsertDelete: s2 := Format(#13#10+
+    ssInsertDelete: s3 := Format(#13#10+
                       'DELETE FROM `gameobject_template_addon` WHERE `entry` = %s;'#13#10+
                       'INSERT INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[gtentry, Fields, Values]);
-    ssReplace: s2 := Format(#13#10+
+    ssReplace: s3 := Format(#13#10+
                       'REPLACE INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[Fields, Values]);
-    ssUpdate: s2 := MakeUpdate('gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, 'entry', gtentry);
+    ssUpdate: s3 := MakeUpdate('gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, 'entry', gtentry);
    end;
   end;
 
   //Add all scripts together
-  Script := s1+s2;
+  Script := s1+s2+s3;
   //Format all go script
   megoScript.Text := Script;
 end;
@@ -7938,16 +8103,17 @@ begin
   MyTempQuery.Close;
 end;
 
-function TMainForm.MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
+function TMainForm.MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string; Keyloc: string): string;
 var
   i: integer;
   sets, FieldName, ValueFromBase, ValueFromEdit, loc ,FN: string;
   C: TComponent;
 begin
-  loc:= LoadLocales();
+  loc:= Keyloc;
   Result := '';
   sets := '';
-  MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s AND locale= "%s"',[tn, KeyName, KeyValue, loc]);
+  if loc='' then loc:=Loadlocales();
+  MyTempQuery.SQL.Text := Format('SELECT * FROM `%s` WHERE `%s` = %s and locale= ''%s'';',[tn, KeyName, KeyValue, loc]);
   MyTempQuery.Open;
   if (MyTempQuery.Eof=false) then
   begin
@@ -7983,7 +8149,7 @@ begin
       end;
     end;
     if sets<>'' then
-      Result := Format('UPDATE `%s` %s WHERE `%s` = %s AND locale= "%s";',[tn, sets, KeyName, KeyValue, loc])
+      Result := Format('UPDATE `%s` %s WHERE `%s` = %s AND locale=''%s'';'#13#10,[tn, sets, KeyName, KeyValue, loc])
   end;
   MyTempQuery.Close;
 end;
@@ -9252,26 +9418,52 @@ end;
 
 procedure TMainForm.CompleteItemScript;
 var
-  entry, Fields, Values: string;
+  entry, Fields, Values, Script, loc, s1, s2: string;
 begin
   meitLog.Clear;
   entry := editEntry.Text;
   if entry='' then exit;
   SetFieldsAndValues(Fields, Values, 'item_template', PFX_ITEM_TEMPLATE, meitLog);
   case SyntaxStyle of
-    ssInsertDelete: meitScript.Text := Format('DELETE FROM `item_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `item_template` WHERE (`entry`=%s);'#13#10+
       'INSERT INTO `item_template` (%s) VALUES (%s);'#13#10,[entry, Fields, Values]);
-    ssReplace: meitScript.Text := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: meitScript.Text := MakeUpdate('item_template', PFX_ITEM_TEMPLATE, 'entry', entry)
+    ssReplace: s1 := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: s1 := MakeUpdate('item_template', PFX_ITEM_TEMPLATE, 'entry', entry)
    else
-   meitScript.Text := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+     s1 := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
   end;
+
+  if editlocID.Text<>'' then begin
+    entry:=editlocID.Text;
+    loc:= editloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'item_template_locale', PFX_ITEM_TEMPLATE_LOCALE, meitLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `item_template_locale` WHERE `ID` = %s AND locale=''%s'';'#13#10+
+                      'INSERT INTO `item_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
+                      ,[entry, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `item_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdateLocales('item_template_locale', PFX_ITEM_TEMPLATE_LOCALE, 'ID', entry, loc);
+    end;
+  end;
+
+  //Add all scripts together
+  Script := s1+s2;
+  //Format all quest script
+  meitScript.Text := Script;
 end;
 
 procedure TMainForm.LoadItem(Entry: integer);
+var
+  loc: string;
 begin
   ShowHourGlassCursor;
   ClearFields(ttItem);
+  loc:=LoadLocales();
   if Entry<1 then exit;
   // load full description for item
   MyQuery.SQL.Text := Format('SELECT * FROM `item_template` WHERE `entry`=%d',[Entry]);
@@ -9309,6 +9501,17 @@ begin
     else if editRandomSuffix.Text<>'0' then
       LoadQueryToListView(Format('SELECT * FROM `item_enchantment_template`'+
        ' WHERE (`entry`=%d)',[StrToIntDef(editRandomSuffix.Text,0)]), lvitEnchantment);
+
+    MyQuery.SQL.Text := Format('SELECT * FROM `item_template_locale` WHERE `ID`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
+    MyQuery.Open;
+      if (MyQuery.Eof=false) then begin
+        editlocID.Text := MyQuery.FieldByName('ID').AsString;
+        editloclocale.Text := MyQuery.FieldByName('locale').AsString;
+        editlocName.Text := MyQuery.FieldByName('Name').AsString;
+        editlocDescription.Text := MyQuery.FieldByName('Description').AsString;
+        editlocVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      end;
+    MyQuery.Close;
 
   except
     on E: Exception do
