@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 872
     Height = 679
-    ActivePage = tsGameObject
+    ActivePage = tsItem
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -16772,7 +16772,7 @@ object MainForm: TMainForm
         Top = 9
         Width = 864
         Height = 642
-        ActivePage = tsSearchItem
+        ActivePage = tsItemTemplate
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet
@@ -19183,7 +19183,7 @@ object MainForm: TMainForm
             object editScalingStatDistribution: TLabeledEdit
               Left = 10
               Top = 283
-              Width = 136
+              Width = 127
               Height = 21
               Hint = 'ScalingStatDistribution'
               EditLabel.Width = 106
@@ -19197,7 +19197,7 @@ object MainForm: TMainForm
             object editScalingStatValue: TLabeledEdit
               Left = 10
               Top = 321
-              Width = 136
+              Width = 127
               Height = 21
               Hint = 'ScalingStatValue'
               EditLabel.Width = 81
@@ -19213,7 +19213,7 @@ object MainForm: TMainForm
             Left = 552
             Top = 81
             Width = 145
-            Height = 186
+            Height = 151
             Caption = 'resistance'
             TabOrder = 17
             object editholy_res: TLabeledEdit
@@ -19992,86 +19992,86 @@ object MainForm: TMainForm
             end
           end
           object gbitOther: TGroupBox
-            Left = 9
-            Top = 415
-            Width = 695
+            Left = -4
+            Top = 418
+            Width = 699
             Height = 186
             Caption = 'other'
             TabOrder = 22
             object lbitLanguageID: TLabel
-              Left = 101
+              Left = 91
               Top = 60
               Width = 59
               Height = 13
               Caption = 'LanguageID'
             end
             object lbitPageMaterial: TLabel
-              Left = 101
+              Left = 91
               Top = 101
               Width = 62
               Height = 13
               Caption = 'PageMaterial'
             end
             object lbitMaterial: TLabel
-              Left = 13
+              Left = 7
               Top = 18
               Width = 37
               Height = 13
               Caption = 'Material'
             end
             object lbitBagFamily: TLabel
-              Left = 189
+              Left = 170
               Top = 60
               Width = 48
               Height = 13
               Caption = 'BagFamily'
             end
             object lbitsheath: TLabel
-              Left = 13
+              Left = 7
               Top = 60
               Width = 32
               Height = 13
               Caption = 'sheath'
             end
             object lbitPageText: TLabel
-              Left = 101
+              Left = 91
               Top = 19
               Width = 46
               Height = 13
               Caption = 'PageText'
             end
             object lbitMap: TLabel
-              Left = 277
+              Left = 250
               Top = 59
               Width = 21
               Height = 13
               Caption = 'Map'
             end
             object lbitFoodType: TLabel
-              Left = 568
-              Top = 17
+              Left = 509
+              Top = 138
               Width = 48
               Height = 13
               Caption = 'FoodType'
             end
             object lbitarea: TLabel
-              Left = 277
+              Left = 250
               Top = 19
               Width = 21
               Height = 13
               Caption = 'area'
             end
             object lbitflagsCustom: TLabel
-              Left = 367
-              Top = 141
+              Left = 250
+              Top = 137
               Width = 57
               Height = 13
               Caption = 'flagsCustom'
             end
             object editDisenchantID: TLabeledEdit
-              Left = 364
+              Left = 335
               Top = 114
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 
                 'Refers to disenchant_loot_template.entry.'#13#10'DisenchantID does not' +
@@ -20084,9 +20084,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editArmorDamageModifier: TLabeledEdit
-              Left = 452
+              Left = 420
               Top = 114
-              Width = 110
+              Width = 70
               Height = 21
               EditLabel.Width = 104
               EditLabel.Height = 13
@@ -20095,9 +20095,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editstartquest: TLabeledEdit
-              Left = 364
+              Left = 335
               Top = 34
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 'ID of a quest that this item starts.'
               EditLabel.Width = 46
@@ -20107,9 +20107,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editlockid: TLabeledEdit
-              Left = 364
+              Left = 335
               Top = 74
-              Width = 80
+              Width = 70
               Height = 21
               EditLabel.Width = 28
               EditLabel.Height = 13
@@ -20118,9 +20118,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editRandomSuffix: TLabeledEdit
-              Left = 452
+              Left = 420
               Top = 74
-              Width = 110
+              Width = 70
               Height = 21
               EditLabel.Width = 66
               EditLabel.Height = 13
@@ -20129,9 +20129,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editRandomProperty: TLabeledEdit
-              Left = 452
+              Left = 420
               Top = 34
-              Width = 110
+              Width = 70
               Height = 21
               EditLabel.Width = 79
               EditLabel.Height = 13
@@ -20140,9 +20140,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editTotemCategory: TLabeledEdit
-              Left = 188
+              Left = 170
               Top = 114
-              Width = 80
+              Width = 70
               Height = 21
               EditLabel.Width = 72
               EditLabel.Height = 13
@@ -20151,9 +20151,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editScriptName: TLabeledEdit
-              Left = 276
+              Left = 250
               Top = 114
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 'Here can be added script entries defined in MaNGOS core code.'
               EditLabel.Width = 55
@@ -20163,9 +20163,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editLanguageID: TJvComboEdit
-              Left = 100
+              Left = 91
               Top = 74
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 'Language that this item is written in.'
               ButtonWidth = 22
@@ -20202,9 +20202,9 @@ object MainForm: TMainForm
               OnButtonClick = LangButtonClick
             end
             object editPageMaterial: TJvComboEdit
-              Left = 100
+              Left = 91
               Top = 114
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 'The background of the page window (and to some extent the font)'
               ButtonWidth = 22
@@ -20241,9 +20241,9 @@ object MainForm: TMainForm
               OnButtonClick = editPageMaterialButtonClick
             end
             object editMaterial: TJvComboEdit
-              Left = 12
+              Left = 7
               Top = 34
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 
                 'The material the item is made of. Affects the sound that the ite' +
@@ -20282,9 +20282,9 @@ object MainForm: TMainForm
               OnButtonClick = editMaterialButtonClick
             end
             object editsheath: TJvComboEdit
-              Left = 12
+              Left = 7
               Top = 74
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 'How the weapon is put away (to the side, on the back, etc.)'
               ButtonWidth = 22
@@ -20321,9 +20321,9 @@ object MainForm: TMainForm
               OnButtonClick = editsheathButtonClick
             end
             object editBagFamily: TJvComboEdit
-              Left = 188
+              Left = 170
               Top = 74
-              Width = 80
+              Width = 70
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
@@ -20359,9 +20359,9 @@ object MainForm: TMainForm
               OnButtonClick = editBagFamilyButtonClick
             end
             object editSoundOverrideSubclass: TLabeledEdit
-              Left = 12
+              Left = 7
               Top = 114
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 
                 'SoundOverrideSubclass.'#13#10'Weapons have special sounds on impact. T' +
@@ -20375,9 +20375,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editPageText: TJvComboEdit
-              Left = 100
+              Left = 91
               Top = 34
-              Width = 80
+              Width = 70
               Height = 21
               Hint = 
                 'ID of a TEXT in the item_page table, the text for a book or lett' +
@@ -20417,9 +20417,9 @@ object MainForm: TMainForm
               OnButtonClick = GetPage
             end
             object editMap: TJvComboEdit
-              Left = 276
+              Left = 250
               Top = 74
-              Width = 80
+              Width = 70
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
@@ -20455,9 +20455,9 @@ object MainForm: TMainForm
               OnButtonClick = GetMap
             end
             object editFoodType: TJvComboEdit
-              Left = 568
-              Top = 34
-              Width = 77
+              Left = 509
+              Top = 154
+              Width = 70
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
@@ -20493,9 +20493,9 @@ object MainForm: TMainForm
               OnButtonClick = editFoodTypeButtonClick
             end
             object editmaxMoneyLoot: TLabeledEdit
-              Left = 568
-              Top = 114
-              Width = 80
+              Left = 420
+              Top = 154
+              Width = 70
               Height = 21
               EditLabel.Width = 72
               EditLabel.Height = 13
@@ -20504,9 +20504,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editminMoneyLoot: TLabeledEdit
-              Left = 568
-              Top = 74
-              Width = 80
+              Left = 335
+              Top = 154
+              Width = 70
               Height = 21
               EditLabel.Width = 69
               EditLabel.Height = 13
@@ -20515,9 +20515,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editarea: TJvComboEdit
-              Left = 276
+              Left = 250
               Top = 34
-              Width = 80
+              Width = 70
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
@@ -20553,9 +20553,9 @@ object MainForm: TMainForm
               OnButtonClick = GetArea
             end
             object editDuration: TLabeledEdit
-              Left = 190
+              Left = 170
               Top = 34
-              Width = 78
+              Width = 70
               Height = 21
               EditLabel.Width = 40
               EditLabel.Height = 13
@@ -20564,9 +20564,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editItemLimitCategory: TLabeledEdit
-              Left = 13
-              Top = 156
-              Width = 162
+              Left = 7
+              Top = 154
+              Width = 70
               Height = 21
               EditLabel.Width = 83
               EditLabel.Height = 13
@@ -20575,9 +20575,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editHolidayId: TLabeledEdit
-              Left = 188
-              Top = 156
-              Width = 83
+              Left = 91
+              Top = 154
+              Width = 70
               Height = 21
               EditLabel.Width = 44
               EditLabel.Height = 13
@@ -20586,9 +20586,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editVerifiedBuild: TLabeledEdit
-              Left = 277
-              Top = 156
-              Width = 79
+              Left = 170
+              Top = 154
+              Width = 70
               Height = 21
               EditLabel.Width = 58
               EditLabel.Height = 13
@@ -20597,9 +20597,9 @@ object MainForm: TMainForm
               Text = ''
             end
             object editflagsCustom: TJvComboEdit
-              Left = 367
-              Top = 156
-              Width = 77
+              Left = 250
+              Top = 154
+              Width = 70
               Height = 21
               ButtonWidth = 22
               ClickKey = 13
@@ -20853,6 +20853,75 @@ object MainForm: TMainForm
             EditLabel.Caption = 'FlagsExtra'
             TabOrder = 25
             Text = ''
+          end
+          object GroupBox3: TGroupBox
+            Left = 530
+            Top = 346
+            Width = 167
+            Height = 175
+            Caption = 'Item locale'
+            Color = clMenuBar
+            ParentBackground = False
+            ParentColor = False
+            TabOrder = 26
+            object editlocID: TLabeledEdit
+              Left = 8
+              Top = 30
+              Width = 70
+              Height = 21
+              Hint = 'entry from item_template'
+              EditLabel.Width = 11
+              EditLabel.Height = 13
+              EditLabel.Caption = 'ID'
+              TabOrder = 0
+              Text = ''
+            end
+            object editloclocale: TLabeledEdit
+              Left = 8
+              Top = 70
+              Width = 70
+              Height = 21
+              Hint = 'locale'
+              EditLabel.Width = 28
+              EditLabel.Height = 13
+              EditLabel.Caption = 'locale'
+              TabOrder = 1
+              Text = ''
+            end
+            object editlocVerifiedBuild: TLabeledEdit
+              Left = 85
+              Top = 70
+              Width = 70
+              Height = 21
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 2
+              Text = ''
+            end
+            object editlocName: TLabeledEdit
+              Left = 8
+              Top = 107
+              Width = 145
+              Height = 21
+              EditLabel.Width = 28
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Name'
+              TabOrder = 3
+              Text = ''
+            end
+            object editlocDescription: TLabeledEdit
+              Left = 8
+              Top = 144
+              Width = 145
+              Height = 21
+              Hint = 'subname from creature_template'
+              EditLabel.Width = 53
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Description'
+              TabOrder = 4
+              Text = ''
+            end
           end
         end
         object tsItemLoot: TTabSheet
@@ -29341,8 +29410,8 @@ object MainForm: TMainForm
   end
   object MyQuery: TFDQuery
     Connection = MyTrinityConnection
-    Left = 272
-    Top = 616
+    Left = 16
+    Top = 408
   end
   object pmQuest: TPopupMenu
     Left = 829
@@ -29374,8 +29443,8 @@ object MainForm: TMainForm
     end
   end
   object MainMenu: TMainMenu
-    Left = 464
-    Top = 584
+    Left = 736
+    Top = 328
     object nFile: TMenuItem
       Caption = 'File'
       object nReconnect: TMenuItem
@@ -29516,8 +29585,8 @@ object MainForm: TMainForm
   end
   object pmBrowseSite: TPopupMenu
     AutoPopup = False
-    Left = 185
-    Top = 610
+    Left = 65529
+    Top = 330
     object pmwowhead: TMenuItem
       Caption = 'wowhead'
       OnClick = pmSiteClick

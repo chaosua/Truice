@@ -77,6 +77,7 @@ const
   PFX_GAMEOBJECT_LOOT_TEMPLATE      = 'go';
   PFX_GAMEOBJECT_TEMPLATE_LOCALE    = 'gtloc';
   PFX_ITEM_TEMPLATE                 = 'it';
+  PFX_ITEM_TEMPLATE_LOCALE          = 'itloc';
   PFX_ITEM_LOOT_TEMPLATE            = 'il';
   PFX_ITEM_ENCHANTMENT_TEMPLATE     = 'ie';
   PFX_DISENCHANT_LOOT_TEMPLATE      = 'id';
@@ -1734,6 +1735,12 @@ type
     edgtlocVerifiedBuild: TLabeledEdit;
     edgtlocname: TLabeledEdit;
     edgtloccastBarCaption: TLabeledEdit;
+    GroupBox3: TGroupBox;
+    editlocID: TLabeledEdit;
+    editloclocale: TLabeledEdit;
+    editlocVerifiedBuild: TLabeledEdit;
+    editlocName: TLabeledEdit;
+    editlocDescription: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -3751,7 +3758,7 @@ begin
     begin
         if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
            ((Pos('ed'+s+'l',Components[i].Name)=1) or (Pos('ed'+s+'d',Components[i].Name)=1)
-             or (Pos('ed'+s+'p',Components[i].Name)=1)) or (Pos('ed'+s+'e',Components[i].Name)=1) then
+             or (Pos('ed'+s+'p',Components[i].Name)=1)) or (Pos('ed'+s+'e',Components[i].Name)=1 or (Pos('ed'+s+'tloc',Components[i].Name)=1) then
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
@@ -9338,26 +9345,52 @@ end;
 
 procedure TMainForm.CompleteItemScript;
 var
-  entry, Fields, Values: string;
+  entry, Fields, Values, Script, loc, s1, s2: string;
 begin
   meitLog.Clear;
   entry := editEntry.Text;
   if entry='' then exit;
   SetFieldsAndValues(Fields, Values, 'item_template', PFX_ITEM_TEMPLATE, meitLog);
   case SyntaxStyle of
-    ssInsertDelete: meitScript.Text := Format('DELETE FROM `item_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `item_template` WHERE (`entry`=%s);'#13#10+
       'INSERT INTO `item_template` (%s) VALUES (%s);'#13#10,[entry, Fields, Values]);
-    ssReplace: meitScript.Text := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: meitScript.Text := MakeUpdate('item_template', PFX_ITEM_TEMPLATE, 'entry', entry)
+    ssReplace: s1 := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: s1 := MakeUpdate('item_template', PFX_ITEM_TEMPLATE, 'entry', entry)
    else
-   meitScript.Text := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    s1 := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
   end;
+
+  if editlocID.Text<>'' then begin
+    entry:=editlocID.Text;
+    loc:= editloclocale.Text;
+    if loc='' then loc:=LoadLocales();
+    Fields:= ''; Values:= '';
+    SetFieldsAndValues(Fields, Values, 'item_template_locale', PFX_ITEM_TEMPLATE_LOCALE, meitLog);
+    case SyntaxStyle of
+      ssInsertDelete: s2 := Format(#13#10+
+                      'DELETE FROM `item_template_locale` WHERE `ID` = %s AND locale=''%s'';'#13#10+
+                      'INSERT INTO `item_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
+                      ,[entry, loc, Fields, Values]);
+      ssReplace: s2 := Format(#13#10+
+                      'REPLACE INTO `item_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10+#13#10
+                      ,[Fields, Values]);
+      ssUpdate: s2 := MakeUpdateLocales('item_template_locale', PFX_ITEM_TEMPLATE_LOCALE, 'ID', entry, loc);
+    end;
+  end;
+
+  //Add all scripts together
+  Script := s1+s2;
+  //Format all quest script
+  meitScript.Text := Script;
 end;
 
 procedure TMainForm.LoadItem(Entry: integer);
+var
+  loc: string;
 begin
   ShowHourGlassCursor;
   ClearFields(ttItem);
+  loc:=LoadLocales();
   if Entry<1 then exit;
   // load full description for item
   MyQuery.SQL.Text := Format('SELECT * FROM `item_template` WHERE `entry`=%d',[Entry]);
@@ -9395,6 +9428,17 @@ begin
     else if editRandomSuffix.Text<>'0' then
       LoadQueryToListView(Format('SELECT * FROM `item_enchantment_template`'+
        ' WHERE (`entry`=%d)',[StrToIntDef(editRandomSuffix.Text,0)]), lvitEnchantment);
+
+    MyQuery.SQL.Text := Format('SELECT * FROM `item_template_locale` WHERE `ID`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
+    MyQuery.Open;
+      if (MyQuery.Eof=false) then begin
+        editlocID.Text := MyQuery.FieldByName('ID').AsString;
+        editloclocale.Text := MyQuery.FieldByName('locale').AsString;
+        editlocName.Text := MyQuery.FieldByName('Name').AsString;
+        editlocDescription.Text := MyQuery.FieldByName('Description').AsString;
+        editlocVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      end;
+    MyQuery.Close;
 
   except
     on E: Exception do
