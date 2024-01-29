@@ -3734,7 +3734,8 @@ begin
            ((Pos('ed'+s+'t',Components[i].Name)=1) or (Pos('ed'+s+'l',Components[i].Name)=1) or (Pos('ed'+s+'o',Components[i].Name)=1) or
             (Pos('me'+s+'t',Components[i].Name)=1) or (Pos('me'+s+'l',Components[i].Name)=1) or (Pos('me'+s+'o',Components[i].Name)=1) or
             (Pos('ed'+s+'riloc',Components[i].Name)=1) or (Pos('ed'+s+'orloc',Components[i].Name)=1) or
-            (Pos('ed'+s+'d',Components[i].Name)=1) or (Pos('ed'+s+'ri',Components[i].Name)=1) or (Pos('ed'+s+'ms',Components[i].Name)=1) ) then
+            (Pos('ed'+s+'d',Components[i].Name)=1) or (Pos('ed'+s+'ri',Components[i].Name)=1) or (Pos('ed'+s+'ms',Components[i].Name)=1) or
+            (Pos('ed'+s+'tloc',Components[i].Name)=1) {or} ) then
            TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
@@ -3747,8 +3748,8 @@ begin
            (Pos('ed'+s+'g',Components[i].Name)=1)  or (Pos('ed'+s+'x',Components[i].Name)=1)  or (Pos('ed'+s+'m',Components[i].Name)=1)  or
            (Pos('ed'+s+'s',Components[i].Name)=1) or (Pos('ed'+s+'r',Components[i].Name)=1) or (Pos('ed'+s+'i',Components[i].Name)=1) or
            (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1) or
-           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1) or (Pos('ed'+s+'tloc',Components[i].Name)=1)
-           ) then TCustomEdit(Components[i]).Clear;
+           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1) {or} ) then
+            TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or
            (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1) or (Pos('lv'+s+'e',Components[i].Name)=1) or (Pos('lv'+s+'i',Components[i].Name)=1) or
            (Pos('lv'+s+'tr',Components[i].Name)=1) or (Pos('lv'+s+'ts',Components[i].Name)=1)) then
@@ -3758,7 +3759,7 @@ begin
     begin
         if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
            ((Pos('ed'+s+'l',Components[i].Name)=1) or (Pos('ed'+s+'d',Components[i].Name)=1)
-             or (Pos('ed'+s+'p',Components[i].Name)=1) or (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'tloc',Components[i].Name)=1) ) then
+             or (Pos('ed'+s+'p',Components[i].Name)=1) or (Pos('ed'+s+'e',Components[i].Name)=1) {or} ) then
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
@@ -3771,12 +3772,6 @@ begin
              TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'o',Components[i].Name)=1) or (Pos('lv'+s+'l',Components[i].Name)=1) or (Pos('lv'+s+'t',Components[i].Name)=1)) then
           TCustomListView(Components[i]).Clear;
-    end;
-    if s='g' then
-    begin
-        if ((Components[i] is TLabeledEdit) or (Components[i] is TJvComboEdit) or (Components[i] is TMemo)) and
-           ((Pos('ed'+s+'tloc',Components[i].Name)=1) {or}) then
-             TCustomEdit(Components[i]).Clear;
     end;
   end;
 end;
