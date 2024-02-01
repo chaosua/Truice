@@ -21,7 +21,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '13';
+  VERSION_4   = '15';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -4660,7 +4660,7 @@ begin
 
     LoadQueryToListView(Format('SELECT `SourceTypeOrReferenceId` as `StorId`,  `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`,  '+
       '`ConditionTypeOrReference` as `CTOR`, `ConditionTarget` as `ct`,  `ConditionValue1` as `cv1`, `ConditionValue2` as `cv2`,  `ConditionValue3` as `cv3`, '+
-      '`NegativeCondition` as `NegativeC`, `ErrorTextId`,  `ScriptName`,  `Comment` FROM `conditions` WHERE `SourceTypeOrReferenceId`=%d AND `SourceGroup`=%d AND `SourceEntry`=%d',[SourceTypeOrReferenceId, SourceGroup, SourceEntry]), lvcConditions);
+      '`NegativeCondition` as `NegativeC`, `ErrorType`, `ErrorTextId`,  `ScriptName`,  `Comment` FROM `conditions` WHERE `SourceTypeOrReferenceId`=%d AND `SourceGroup`=%d AND `SourceEntry`=%d',[SourceTypeOrReferenceId, SourceGroup, SourceEntry]), lvcConditions);
 end;
 
 procedure TMainForm.LoadCreature(Entry: integer);
@@ -5878,7 +5878,7 @@ procedure TMainForm.lvcConditionsChange(Sender: TObject; Item: TListItem;
   Change: TItemChange);
 begin
   btConditionsUpd.Enabled := Assigned(TJvListView(Sender).Selected);
- btConditionsDel.Enabled := Assigned(TJvListView(Sender).Selected);
+  btConditionsDel.Enabled := Assigned(TJvListView(Sender).Selected);
 end;
 
 procedure TMainForm.LoadCreatureLocation(GUID: integer);
@@ -8177,7 +8177,7 @@ begin
       SubItems[8] := TCustomEdit(FindComponent(pfx + 'event_param2')).Text;
       SubItems[9] := TCustomEdit(FindComponent(pfx + 'event_param3')).Text;
       SubItems[10] := TCustomEdit(FindComponent(pfx + 'event_param4')).Text;
-	  SubItems[11] := TCustomEdit(FindComponent(pfx + 'event_param5')).Text;
+  	  SubItems[11] := TCustomEdit(FindComponent(pfx + 'event_param5')).Text;
       SubItems[12] := TCustomEdit(FindComponent(pfx + 'action_type')).Text;
       SubItems[13] := TCustomEdit(FindComponent(pfx + 'action_param1')).Text;
       SubItems[14] := TCustomEdit(FindComponent(pfx + 'action_param2')).Text;
@@ -8189,7 +8189,7 @@ begin
       SubItems[20] := TCustomEdit(FindComponent(pfx + 'target_param1')).Text;
       SubItems[21] := TCustomEdit(FindComponent(pfx + 'target_param2')).Text;
       SubItems[22] := TCustomEdit(FindComponent(pfx + 'target_param3')).Text;
-	  SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_param4')).Text;
+	    SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_param4')).Text;
       SubItems[24] := TCustomEdit(FindComponent(pfx + 'target_x')).Text;
       SubItems[25] := TCustomEdit(FindComponent(pfx + 'target_y')).Text;
       SubItems[26] := TCustomEdit(FindComponent(pfx + 'target_z')).Text;
@@ -8216,9 +8216,10 @@ begin
       SubItems[7] := TCustomEdit(FindComponent(pfx + 'ConditionValue2')).Text;
       SubItems[8] := TCustomEdit(FindComponent(pfx + 'ConditionValue3')).Text;
       SubItems[9] := TCustomEdit(FindComponent(pfx + 'NegativeCondition')).Text;
-      SubItems[10] := TCustomEdit(FindComponent(pfx + 'ErrorTextId')).Text;
-      SubItems[11] := TCustomEdit(FindComponent(pfx + 'ScriptName')).Text;
-      SubItems[12] := TCustomEdit(FindComponent(pfx + 'Comment')).Text;
+      SubItems[10] := TCustomEdit(FindComponent(pfx + 'ErrorType')).Text;
+      SubItems[11] := TCustomEdit(FindComponent(pfx + 'ErrorTextId')).Text;
+      SubItems[12] := TCustomEdit(FindComponent(pfx + 'ScriptName')).Text;
+      SubItems[13] := TCustomEdit(FindComponent(pfx + 'Comment')).Text;
     end;
   end;
 end;
@@ -8294,7 +8295,7 @@ begin
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param1')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param2')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param3')).Text);
-	SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param4')).Text);
+	  SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param4')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_x')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_y')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_z')).Text);
@@ -8318,6 +8319,7 @@ begin
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'ConditionValue2')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'ConditionValue3')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'NegativeCondition')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'ErrorType')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'ErrorTextId')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'ScriptName')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'Comment')).Text);
@@ -8428,9 +8430,10 @@ begin
       TCustomEdit(FindComponent(pfx + 'ConditionValue2')).Text := SubItems[7];
       TCustomEdit(FindComponent(pfx + 'ConditionValue3')).Text := SubItems[8];
       TCustomEdit(FindComponent(pfx + 'NegativeCondition')).Text := SubItems[9];
-      TCustomEdit(FindComponent(pfx + 'ErrorTextId')).Text := SubItems[10];
-      TCustomEdit(FindComponent(pfx + 'ScriptName')).Text := SubItems[11];
-      TCustomEdit(FindComponent(pfx + 'Comment')).Text := SubItems[12];
+      TCustomEdit(FindComponent(pfx + 'ErrorType')).Text := SubItems[10];
+      TCustomEdit(FindComponent(pfx + 'ErrorTextId')).Text := SubItems[11];
+      TCustomEdit(FindComponent(pfx + 'ScriptName')).Text := SubItems[12];
+      TCustomEdit(FindComponent(pfx + 'Comment')).Text := SubItems[13];
     end;
   end;
 end;
@@ -8641,7 +8644,7 @@ begin
   begin
     for i := 0 to lvList.Items.Count - 2 do
     begin
-      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+', '+'"'+'%s'+'"'+'),'#13#10,[
+      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+', '+'"'+'%s'+'"'+'),'#13#10,[
         lvList.Items[i].Caption,
         lvList.Items[i].SubItems[0],
         lvList.Items[i].SubItems[1],
@@ -8655,11 +8658,12 @@ begin
         lvList.Items[i].SubItems[9],
         lvList.Items[i].SubItems[10],
         lvList.Items[i].SubItems[11],
-        lvList.Items[i].SubItems[12]
+        lvList.Items[i].SubItems[12],
+        lvList.Items[i].SubItems[13]
       ]);
     end;
     i := lvList.Items.Count - 1;
-    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+', '+'"'+'%s'+'"'+');',[
+    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+', '+'"'+'%s'+'"'+');',[
       lvList.Items[i].Caption,
       lvList.Items[i].SubItems[0],
       lvList.Items[i].SubItems[1],
@@ -8673,14 +8677,15 @@ begin
       lvList.Items[i].SubItems[9],
       lvList.Items[i].SubItems[10],
       lvList.Items[i].SubItems[11],
-      lvList.Items[i].SubItems[12]
+      lvList.Items[i].SubItems[12],
+      lvList.Items[i].SubItems[13]
     ]);
   end;
   if values<>'' then
   begin
       Memo.Text := Format('DELETE FROM `%0:s` WHERE (`SourceTypeOrReferenceId`=%1:s AND `SourceGroup`=%2:s AND `SourceEntry`=%3:s);'#13#10+
         'INSERT INTO `%0:s` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, '+
-				'`ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorTextId`, '+
+				'`ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, '+
 				'`ScriptName`, `Comment`) VALUES '#13#10'%4:s',[TableName, SourceTypeOrReferenceId, SourceGroup, SourceEntry, Values]);
   end
   else
@@ -10041,13 +10046,13 @@ end;
 
 procedure TMainForm.linkSmartAIInfoClick(Sender: TObject);
 begin
-  BrowseURL1.URL := 'https://trinitycore.atlassian.net/wiki/spaces/tc/pages/2130108/smart+scripts';
+  BrowseURL1.URL := 'https://trinitycore.info/database/335/world/smart_scripts';
   BrowseURL1.Execute;
 end;
 
 procedure TMainForm.linkConditionInfoClick(Sender: TObject);
 begin
-  BrowseURL1.URL := 'https://trinitycore.atlassian.net/wiki/spaces/tc/pages/2130002/conditions';
+  BrowseURL1.URL := 'https://trinitycore.info/database/335/world/conditions';
   BrowseURL1.Execute;
 end;
 
@@ -11832,8 +11837,10 @@ begin
   case t of
     0:  //SOURCE_TYPE_NONE
         begin
-        	lbcSourceGroup.Caption := '';
-            lbcSourceEntry.Caption := '';
+            lbcSourceGroup.Caption := 'SourceGroup(0)';
+            lbcSourceEntry.Caption := 'SourceEntry(0)';
+            lbcSourceId.Caption := 'SourceId(0)';
+            lbcConditionTarget.Caption := 'ConditionTarget(0)';
             lbcSourceTypeOrReferenceId.Hint := 'Only used in Reference Templates!';
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
@@ -12034,6 +12041,32 @@ begin
             lbcSourceId.Font.Style := [fsbold];
             lbcConditionTarget.Caption := '0 or 1';
             lbcConditionTarget.Hint := '0 - Invoker; 1 - Object';
+            edcConditionTarget.Hint := lbcConditionTarget.Hint;
+        end;
+    24: //SOURCE_TYPE_SPELL_PROC
+        begin
+            lbcSourceGroup.Caption := 'SourceGroup(0)';
+           // edcSourceGroup.Text:='0';
+            lbcSourceGroup.Font.Color := clRed;
+            lbcSourceEntry.Caption := 'Spell ID';
+            lbcSourceId.Caption := 'SourceId (0)';
+          //  edcSourceId.Text:='0';
+            lbcSourceId.Font.Color := clRed;
+            lbcConditionTarget.Caption := '0 or 1';
+            lbcConditionTarget.Hint := '0 = Actor 1 = ActionTarget';
+            edcConditionTarget.Hint := lbcConditionTarget.Hint;
+        end;
+    30: //SOURCE_TYPE_AREATRIGGER_CLIENT_TRIGGERED
+        begin
+            lbcSourceGroup.Caption := 'SourceGroup(0)';
+           // edcSourceGroup.Text:='0';
+            lbcSourceGroup.Font.Color := clRed;
+            lbcSourceEntry.Caption := 'Areatrigger ID';
+            lbcSourceId.Caption := 'SourceId (0)';
+          //  edcSourceId.Text:='0';
+            lbcSourceId.Font.Color := clRed;
+            lbcConditionTarget.Caption := '0 or 1';
+            lbcConditionTarget.Hint := '0 = Actor 1 = ActionTarget';
             edcConditionTarget.Hint := lbcConditionTarget.Hint;
         end;
     end;
@@ -12337,6 +12370,110 @@ begin
             lbcConditionValue3.Caption := '';
             lbcConditionValue2.Hint := 'ComparisionType: 0 = Percentage of max HP must be equal; 1 = Percentage of max HP must be higher; 2 = Percentage of max HP must be lesser; 3 = Percentage of max HP must be equal or higher; 4 = Percentage of max HP must be equal or lower';
             edcConditionValue2.Hint := lbcConditionValue2.Hint;
+        end;
+    39:  //CONDITION_REALM_ACHIEVEMENT
+        begin
+            lbcConditionValue1.Caption := 'Achievement ID';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    40:  //CONDITION_IN_WATER
+        begin
+            lbcConditionValue1.Caption := '';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+            lbcNegativeCondition.Caption := '0 or 1';
+            lbcNegativeCondition.Font.Color := clRed;
+            lbcNegativeCondition.Font.Style := [fsbold];
+            lbcNegativeCondition.Hint := '0 - target needs to be on land'#13#10'1 - target needs to be in water';
+            edcNegativeCondition.Hint := lbcNegativeCondition.Hint;
+        end;
+    42:  //CONDITION_STAND_STATE
+        begin
+            lbcConditionValue1.Caption := 'stateType (0/1) ';
+            lbcConditionValue1.Hint := '0 = Exact state used in ConditionValue2'#13#10'1 = Any type of state in ConditionValue2';
+            edcConditionValue1.Hint := lbcConditionValue1.Hint;
+            lbcConditionValue2.Caption := 'Exact/generic state';
+            lbcConditionValue2.Hint := 'Exact stand state, or generic state (stand / sit), depending on value 1'#13#10+
+                                         '0 = Standing 1 = Sitting';
+            edcConditionValue2.Hint := lbcConditionValue2.Hint;
+            lbcConditionValue3.Caption := '';
+        end;
+    43:  //CONDITION_DAILY_QUEST_DONE
+        begin
+            lbcConditionValue1.Caption := 'quest ID';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    44:  //CONDITION_CHARMED
+        begin
+            lbcConditionValue1.Caption := '';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    45:  //CONDITION_PET_TYPE
+        begin
+            lbcConditionValue1.Caption := 'mask';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    46:  //CONDITION_TAXI
+        begin
+            lbcConditionValue1.Caption := '';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    47:  //CONDITION_QUESTSTATE
+        begin
+            lbcConditionValue1.Caption := 'quest ID';
+            lbcConditionValue2.Caption := 'state_mask';
+            lbcConditionValue2.Hint := 'true if player is in any of the provided quest states for the quest '#13#10+
+                                        '1 = not taken, 2 = completed'#13#10+
+                                        '8 = in progress, 32 = failed, 64 = rewarded';
+            edcConditionValue2.Hint := lbcConditionValue2.Hint;
+            lbcConditionValue3.Caption := '';
+        end;
+    48:  //CONDITION_QUEST_OBJECTIVE_PROGRESS
+        begin
+            lbcConditionValue1.Caption := 'quest ID';
+            lbcConditionValue2.Caption := 'Objective index';
+            lbcConditionValue2.Hint := 'a value from 0 to 3';
+            edcConditionValue2.Hint := lbcConditionValue2.Hint;
+            lbcConditionValue3.Caption := 'Counter';
+        end;
+    49:  //CONDITION_DIFFICULTY_ID
+        begin
+            lbcConditionTypeOrReference.Hint := 'true if target"s map has difficulty id';
+            edcConditionTypeOrReference.Hint := lbcConditionTypeOrReference.Hint;
+            lbcConditionValue1.Caption := 'Difficulty ';
+            lbcConditionValue1.Hint := '0 None, 1 Normal, etc';
+            edcConditionValue1.Hint := lbcConditionValue1.Hint;
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    50:  //CONDITION_GAMEMASTER
+        begin
+            lbcConditionTypeOrReference.Hint := 'true if player is gamemaster (or can be gamemaster)';
+            edcConditionTypeOrReference.Hint := lbcConditionTypeOrReference.Hint;
+            lbcConditionValue1.Caption := 'canBeGM';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
+        end;
+    51:  //CONDITION_OBJECT_ENTRY_GUID
+        begin
+            lbcConditionTypeOrReference.Hint := 'true if object is type TypeID and the entry is 0 or matches entry of the object or matches guid of the object';
+            edcConditionTypeOrReference.Hint := lbcConditionTypeOrReference.Hint;
+            lbcConditionValue1.Caption := 'TypeID';
+            lbcConditionValue2.Caption := 'entry';
+            lbcConditionValue3.Caption := 'guid';
+        end;
+    52:  //CONDITION_TYPE_MASK
+        begin
+            lbcConditionTypeOrReference.Hint := 'true if object is type object"s TypeMask matches provided TypeMask';
+            edcConditionTypeOrReference.Hint := lbcConditionTypeOrReference.Hint;
+            lbcConditionValue1.Caption := 'TypeMask';
+            lbcConditionValue2.Caption := '';
+            lbcConditionValue3.Caption := '';
         end;
     end;
     Condition_TypeOrReference := t;
