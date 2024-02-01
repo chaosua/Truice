@@ -1358,7 +1358,6 @@ type
 
     editHolidayId: TLabeledEdit;
     edgtunk1: TLabeledEdit;
-    editFlagsExtra: TLabeledEdit;
     edqtRequiredItemId5: TJvComboEdit;
     edqtRequiredItemCount5: TLabeledEdit;
     edqtRequiredItemCount6: TLabeledEdit;
@@ -1454,6 +1453,7 @@ type
     edcyevent_param3: TJvComboEdit;
     edcyevent_param4: TJvComboEdit;
     edcyevent_param5: TJvComboEdit;
+    edcyevent_param6: TJvComboEdit;
     edcConditionTarget: TJvComboEdit;
     edcConditionValue1: TJvComboEdit;
     edcConditionValue2: TJvComboEdit;
@@ -1503,6 +1503,7 @@ type
     lbcyevent_param3: TLabel;
     lbcyevent_param4: TLabel;
     lbcyevent_param5: TLabel;
+    lbcyevent_param6: TLabel;
     lbcConditionValue1: TLabel;
     lbcConditionValue2: TLabel;
     lbcConditionValue3: TLabel;
@@ -1740,6 +1741,8 @@ type
     editlocVerifiedBuild: TLabeledEdit;
     editlocName: TLabeledEdit;
     editlocDescription: TLabeledEdit;
+    editFlagsExtra: TJvComboEdit;
+    Label7: TLabel;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -1928,6 +1931,7 @@ type
     procedure GetPage(Sender: TObject);
     procedure GetMap(Sender: TObject);
     procedure GetItemFlags(Sender: TObject);
+    procedure GetItemFlagsExtra(Sender: TObject);
     procedure nRebuildSpellListClick(Sender: TObject);
     procedure edotEntryButtonClick(Sender: TObject);
     procedure btScriptFishingLootClick(Sender: TObject);
@@ -4170,6 +4174,9 @@ begin
     DeleteFile(s+'CSV\ItemBonding.csv');
     DeleteFile(s+'CSV\ItemClass.csv');
     DeleteFile(s+'CSV\ItemDmgType.csv');
+    DeleteFile(s+'CSV\ItemFlags.csv');
+    DeleteFile(s+'CSV\ItemFlagsCustom.csv');
+    DeleteFile(s+'CSV\ItemFlagsExtra.csv');
     DeleteFile(s+'CSV\ItemInventoryType.csv');
     DeleteFile(s+'CSV\ItemMaterial.csv');
     DeleteFile(s+'CSV\ItemPageMaterial.csv');
@@ -4643,7 +4650,7 @@ begin
 
     LoadQueryToListView(Format('SELECT `entryorguid` as `entry`,  `source_type` as `src`, `id`, `link`, `event_type` as `et`,  '+
       '`event_phase_mask` as `epm`, `event_chance` as `ec`, `event_flags` as `ef`, `event_param1` as `ep1`, `event_param2` as `ep2`, '+
-      '`event_param3` as `ep3`, `event_param4` as `ep4`, `event_param5` as `ep5`, `action_type` as `at`, `action_param1` as `a1`, `action_param2` as `a2`, '+
+      '`event_param3` as `ep3`, `event_param4` as `ep4`, `event_param5` as `ep5`, `event_param6` as `ep6`,`action_type` as `at`, `action_param1` as `a1`, `action_param2` as `a2`, '+
       '`action_param3` as `a3`, `action_param4` as `a4`, `action_param5` as `a5`, `action_param6` as `a6`, `target_type` as `tt`, '+
       '`target_param1` as `t1`, `target_param2` as `t2`, `target_param3` as `t3`, `target_param4` as `t4`, `target_x` as `tx`, `target_y` as `ty`, '+
       '`target_z` as `tz`, `target_o` as `to`, `comment` as `cmt` FROM `smart_scripts` WHERE `entryorguid`=%d AND `source_type`=%d',[entryorguid, sourcetype]), lvcySmartAI);
@@ -5606,10 +5613,11 @@ begin
         lvQuickList.HideSelection := false;
         lvQuickList.Font.Name := F.lvList.Font.Name;
         with lvQuickList.Columns.Add do
-          Width := 25;
+          Width := 50;
         with lvQuickList.Columns.Add do
-          Width := 129; //menu selection
-        lvQuickList.Width := 164;
+          Width := 150; //menu selection
+        lvQuickList.Width := 250;
+        lvQuickList.Height := 300;
         SetList(lvQuickList, Name, Sort);
         edit := TJvComboEdit(sender);
         QLPrepare;
@@ -8149,24 +8157,25 @@ begin
       SubItems[8] := TCustomEdit(FindComponent(pfx + 'event_param2')).Text;
       SubItems[9] := TCustomEdit(FindComponent(pfx + 'event_param3')).Text;
       SubItems[10] := TCustomEdit(FindComponent(pfx + 'event_param4')).Text;
-	  SubItems[11] := TCustomEdit(FindComponent(pfx + 'event_param5')).Text;
-      SubItems[12] := TCustomEdit(FindComponent(pfx + 'action_type')).Text;
-      SubItems[13] := TCustomEdit(FindComponent(pfx + 'action_param1')).Text;
-      SubItems[14] := TCustomEdit(FindComponent(pfx + 'action_param2')).Text;
-      SubItems[15] := TCustomEdit(FindComponent(pfx + 'action_param3')).Text;
-      SubItems[16] := TCustomEdit(FindComponent(pfx + 'action_param4')).Text;
-      SubItems[17] := TCustomEdit(FindComponent(pfx + 'action_param5')).Text;
-      SubItems[18] := TCustomEdit(FindComponent(pfx + 'action_param6')).Text;
-      SubItems[19] := TCustomEdit(FindComponent(pfx + 'target_type')).Text;
-      SubItems[20] := TCustomEdit(FindComponent(pfx + 'target_param1')).Text;
-      SubItems[21] := TCustomEdit(FindComponent(pfx + 'target_param2')).Text;
-      SubItems[22] := TCustomEdit(FindComponent(pfx + 'target_param3')).Text;
-	  SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_param4')).Text;
-      SubItems[24] := TCustomEdit(FindComponent(pfx + 'target_x')).Text;
-      SubItems[25] := TCustomEdit(FindComponent(pfx + 'target_y')).Text;
-      SubItems[26] := TCustomEdit(FindComponent(pfx + 'target_z')).Text;
-      SubItems[27] := TCustomEdit(FindComponent(pfx + 'target_o')).Text;
-      SubItems[28] := TCustomEdit(FindComponent(pfx + 'comment')).Text;
+      SubItems[11] := TCustomEdit(FindComponent(pfx + 'event_param5')).Text;
+      SubItems[12] := TCustomEdit(FindComponent(pfx + 'event_param6')).Text;
+      SubItems[13] := TCustomEdit(FindComponent(pfx + 'action_type')).Text;
+      SubItems[14] := TCustomEdit(FindComponent(pfx + 'action_param1')).Text;
+      SubItems[15] := TCustomEdit(FindComponent(pfx + 'action_param2')).Text;
+      SubItems[16] := TCustomEdit(FindComponent(pfx + 'action_param3')).Text;
+      SubItems[17] := TCustomEdit(FindComponent(pfx + 'action_param4')).Text;
+      SubItems[18] := TCustomEdit(FindComponent(pfx + 'action_param5')).Text;
+      SubItems[19] := TCustomEdit(FindComponent(pfx + 'action_param6')).Text;
+      SubItems[20] := TCustomEdit(FindComponent(pfx + 'target_type')).Text;
+      SubItems[21] := TCustomEdit(FindComponent(pfx + 'target_param1')).Text;
+      SubItems[22] := TCustomEdit(FindComponent(pfx + 'target_param2')).Text;
+      SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_param3')).Text;
+      SubItems[24] := TCustomEdit(FindComponent(pfx + 'target_param4')).Text;
+      SubItems[25] := TCustomEdit(FindComponent(pfx + 'target_x')).Text;
+      SubItems[26] := TCustomEdit(FindComponent(pfx + 'target_y')).Text;
+      SubItems[27] := TCustomEdit(FindComponent(pfx + 'target_z')).Text;
+      SubItems[28] := TCustomEdit(FindComponent(pfx + 'target_o')).Text;
+      SubItems[29] := TCustomEdit(FindComponent(pfx + 'comment')).Text;
     end;
   end;
 end;
@@ -8255,6 +8264,7 @@ begin
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param3')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param4')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param5')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'event_param6')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_type')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param1')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'action_param2')).Text);
@@ -8266,7 +8276,7 @@ begin
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param1')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param2')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param3')).Text);
-	SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param4')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param4')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_x')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_y')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_z')).Text);
@@ -8362,23 +8372,24 @@ begin
       TCustomEdit(FindComponent(pfx + 'event_param3')).Text := SubItems[9];
       TCustomEdit(FindComponent(pfx + 'event_param4')).Text := SubItems[10];
       TCustomEdit(FindComponent(pfx + 'event_param5')).Text := SubItems[11];
-      TCustomEdit(FindComponent(pfx + 'action_type')).Text := SubItems[12];
-      TCustomEdit(FindComponent(pfx + 'action_param1')).Text := SubItems[13];
-      TCustomEdit(FindComponent(pfx + 'action_param2')).Text := SubItems[14];
-      TCustomEdit(FindComponent(pfx + 'action_param3')).Text := SubItems[15];
-      TCustomEdit(FindComponent(pfx + 'action_param4')).Text := SubItems[16];
-      TCustomEdit(FindComponent(pfx + 'action_param5')).Text := SubItems[17];
-      TCustomEdit(FindComponent(pfx + 'action_param6')).Text := SubItems[18];
-      TCustomEdit(FindComponent(pfx + 'target_type')).Text := SubItems[19];
-      TCustomEdit(FindComponent(pfx + 'target_param1')).Text := SubItems[20];
-      TCustomEdit(FindComponent(pfx + 'target_param2')).Text := SubItems[21];
-      TCustomEdit(FindComponent(pfx + 'target_param3')).Text := SubItems[22];
-	  TCustomEdit(FindComponent(pfx + 'target_param4')).Text := SubItems[23];
-      TCustomEdit(FindComponent(pfx + 'target_x')).Text := SubItems[24];
-      TCustomEdit(FindComponent(pfx + 'target_y')).Text := SubItems[25];
-      TCustomEdit(FindComponent(pfx + 'target_z')).Text := SubItems[26];
-      TCustomEdit(FindComponent(pfx + 'target_o')).Text := SubItems[27];
-      TCustomEdit(FindComponent(pfx + 'comment')).Text := SubItems[28];
+      TCustomEdit(FindComponent(pfx + 'event_param6')).Text := SubItems[12];
+      TCustomEdit(FindComponent(pfx + 'action_type')).Text := SubItems[13];
+      TCustomEdit(FindComponent(pfx + 'action_param1')).Text := SubItems[14];
+      TCustomEdit(FindComponent(pfx + 'action_param2')).Text := SubItems[15];
+      TCustomEdit(FindComponent(pfx + 'action_param3')).Text := SubItems[16];
+      TCustomEdit(FindComponent(pfx + 'action_param4')).Text := SubItems[17];
+      TCustomEdit(FindComponent(pfx + 'action_param5')).Text := SubItems[18];
+      TCustomEdit(FindComponent(pfx + 'action_param6')).Text := SubItems[19];
+      TCustomEdit(FindComponent(pfx + 'target_type')).Text := SubItems[20];
+      TCustomEdit(FindComponent(pfx + 'target_param1')).Text := SubItems[21];
+      TCustomEdit(FindComponent(pfx + 'target_param2')).Text := SubItems[22];
+      TCustomEdit(FindComponent(pfx + 'target_param3')).Text := SubItems[23];
+	  TCustomEdit(FindComponent(pfx + 'target_param4')).Text := SubItems[24];
+      TCustomEdit(FindComponent(pfx + 'target_x')).Text := SubItems[25];
+      TCustomEdit(FindComponent(pfx + 'target_y')).Text := SubItems[26];
+      TCustomEdit(FindComponent(pfx + 'target_z')).Text := SubItems[27];
+      TCustomEdit(FindComponent(pfx + 'target_o')).Text := SubItems[28];
+      TCustomEdit(FindComponent(pfx + 'comment')).Text := SubItems[29];
     end;
   end;
 end;
@@ -8517,7 +8528,7 @@ begin
   begin
     for i := 0 to lvList.Items.Count - 2 do
     begin
-      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+'),'#13#10,[
+      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+'),'#13#10,[
         lvList.Items[i].Caption,
         lvList.Items[i].SubItems[0],
         lvList.Items[i].SubItems[1],
@@ -8546,12 +8557,12 @@ begin
         lvList.Items[i].SubItems[24],
         lvList.Items[i].SubItems[25],
         lvList.Items[i].SubItems[26],
-        lvList.Items[i].SubItems[27],
-        lvList.Items[i].SubItems[28]
+      lvList.Items[i].SubItems[28],
+      lvList.Items[i].SubItems[29]
       ]);
     end;
     i := lvList.Items.Count - 1;
-    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+');',[
+    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, '+'"'+'%s'+'"'+');',[
       lvList.Items[i].Caption,
       lvList.Items[i].SubItems[0],
       lvList.Items[i].SubItems[1],
@@ -8581,14 +8592,15 @@ begin
       lvList.Items[i].SubItems[25],
       lvList.Items[i].SubItems[26],
       lvList.Items[i].SubItems[27],
-      lvList.Items[i].SubItems[28]
+      lvList.Items[i].SubItems[28],
+      lvList.Items[i].SubItems[29]
     ]);
   end;
   if values<>'' then
   begin
       Memo.Text := Format('DELETE FROM `%0:s` WHERE (`entryorguid`=%1:s AND `source_type`=%2:s);'#13#10+
         'INSERT INTO `%0:s` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, '+
-				'`event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, '+
+				'`event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, `event_param6`,'+
 				'`action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, '+
 				'`action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, '+
 				'`target_y`, `target_z`, `target_o`, `comment`) VALUES '#13#10'%3:s',[TableName, entry, sourcetype, Values]);
@@ -10097,6 +10109,11 @@ begin
   GetSomeFlags(Sender, 'ItemFlags');
 end;
 
+procedure TMainForm.GetItemFlagsExtra(Sender: TObject);
+begin
+  GetSomeFlags(Sender, 'ItemFlagsExtra');
+end;
+
 procedure TMainForm.editFoodTypeButtonClick(Sender: TObject);
 begin
   GetValueFromSimpleList(Sender, 148, 'ItemPetFood', false);
@@ -10956,6 +10973,7 @@ begin
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
             lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'In combat';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -10965,7 +10983,8 @@ begin
             lbcyevent_param2.Caption := 'InitialMax';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'Out of combat';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -10975,7 +10994,8 @@ begin
             lbcyevent_param2.Caption := 'HPMax%';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'At Health Pct';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -10985,7 +11005,8 @@ begin
             lbcyevent_param2.Caption := 'ManaMax%';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'At Mana Pct';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -10995,7 +11016,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Aggro';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11005,7 +11027,8 @@ begin
             lbcyevent_param2.Caption := 'CooldownMax1';
             lbcyevent_param3.Caption := 'Player only (0 / 1)';
             lbcyevent_param4.Caption := 'If param3=0';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_param3.Hint := 'if 0, set entry in param 4';
             edcyevent_param3.Hint := lbcyevent_param3.Hint;
             lbcyevent_param4.Hint := 'enter creature entry to kill';
@@ -11019,7 +11042,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Death';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11029,7 +11053,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Evade Attack';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11039,18 +11064,20 @@ begin
             lbcyevent_param2.Caption := 'School';
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature/Gameobject Spell Hit';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     9:  //SMART_EVENT_RANGE
         begin
-            lbcyevent_param1.Caption := 'MinDist';
-            lbcyevent_param2.Caption := 'MaxDist';
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param2.Caption := 'InitialMax';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'On Target In Range';
+            lbcyevent_param5.Caption := 'MinDist';
+            lbcyevent_param6.Caption := 'MaxDist';
+            lbcyevent_type.Hint := 'On Victim In Range';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     10:  //SMART_EVENT_OOC_LOS
@@ -11228,6 +11255,7 @@ begin
             lbcyevent_param5.Caption := 'PlayerOnly (0/1)';
             lbcyevent_param5.Hint := '0-triggred by npcs and players. 1-triggred by players only';
             edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target In Distance In Combat';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11633,12 +11661,13 @@ begin
         end;
     67:  //SMART_EVENT_IS_BEHIND_TARGET
         begin
-            lbcyevent_param1.Caption := 'cooldownMin';
-            lbcyevent_param2.Caption := 'CooldownMax';
-            lbcyevent_param3.Caption := '';
-            lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_param5.Caption := 'RangeMin';
+            lbcyevent_param6.Caption := 'RangeMax';
+            lbcyevent_type.Hint := 'On Creature is behind target.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     68:  //SMART_EVENT_GAME_EVENT_START
@@ -11703,12 +11732,13 @@ begin
         end;
     74:  //SMART_EVENT_FRIENDLY_HEALTH_PCT
         begin
-            lbcyevent_param1.Caption := 'minHpPct';
-            lbcyevent_param2.Caption := 'maxHpPct';
-            lbcyevent_param3.Caption := 'repeatMin';
-            lbcyevent_param4.Caption := 'repeatMax';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_param5.Caption := 'Hp Percentage';
+            lbcyevent_param6.Caption := 'range';
+            lbcyevent_type.Hint := 'When a friendly creature within range falls below the HP Percentage';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     75:  //SMART_EVENT_DISTANCE_CREATURE
@@ -11739,6 +11769,178 @@ begin
             lbcyevent_param4.Caption := 'cooldownMax';
 			lbcyevent_param5.Caption := '';
             lbcyevent_type.Hint := 'If the value of specified counterID is equal to a specified value';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    82:  //SMART_EVENT_SUMMONED_UNIT_DIES
+        begin
+            lbcyevent_param1.Caption := 'CreatureId (0 all)';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := '';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    101:  //SMART_EVENT_NEAR_PLAYERS
+        begin
+            lbcyevent_param1.Caption := 'minPlayers';
+            lbcyevent_param1.Hint := '';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'Range (yards)';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'FirstCheck (ms)';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := 'RepeatMin (ms)';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := 'RepeatMax (ms)';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := '';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'Event will trigger if there are more or equal than minPlayers in range.';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    102:  //SMART_EVENT_NEAR_PLAYERS_NEGATION
+        begin
+            lbcyevent_param1.Caption := 'minPlayers';
+            lbcyevent_param1.Hint := '';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'Range (yards)';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'FirstCheck (ms)';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := 'RepeatMin (ms)';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := 'RepeatMax (ms)';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := '';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'Event will trigger if there are less than maxPlayers in range.';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    103:  //SMART_EVENT_NEAR_UNIT
+        begin
+            lbcyevent_param1.Caption := 'Unit type to check';
+            lbcyevent_param1.Hint := '0: creature 1: gob';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'Entry (template)';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'Count';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := 'Range';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := 'Timer (ms)';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := '';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'Will check for >= count of specified entry within range';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    104:  //SMART_EVENT_NEAR_UNIT_NEGATION
+        begin
+            lbcyevent_param1.Caption := 'Unit type to check';
+            lbcyevent_param1.Hint := '0: creature 1: gob';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'Entry (template)';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'Count';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := 'Range';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := 'Timer (ms)';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := '';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'Will check for < count of specified entry within range';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    105:  //SMART_EVENT_AREA_CASTING
+        begin
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param1.Hint := '';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := 'RangeMin';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := 'RangeMax';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'Check threat list for hostiles casting. If none are found, repeat in 1200ms';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    106:  //SMART_EVENT_AREA_RANGE
+        begin
+            lbcyevent_param1.Caption := 'InitialMin';
+            lbcyevent_param1.Hint := '';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'InitialMax';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'RepeatMin';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := 'RepeatMax';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := 'RangeMin';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := 'RangeMax';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'Check threat list for hostiles in range. If none are found, repeat in 1200ms';
+            edcyevent_type.Hint := lbcyevent_type.Hint;
+        end;
+    107:  //SMART_EVENT_SUMMONED_UNIT_EVADE
+        begin
+            lbcyevent_param1.Caption := 'CreatureId (0 all)';
+            lbcyevent_param1.Hint := '';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param2.Hint := '';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
+            lbcyevent_param3.Caption := 'CooldownMax';
+            lbcyevent_param3.Hint := '';
+            edcyevent_param3.Hint := lbcyevent_param3.Hint;
+            lbcyevent_param4.Caption := '';
+            lbcyevent_param4.Hint := '';
+            edcyevent_param4.Hint := lbcyevent_param4.Hint;
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Hint := '';
+            edcyevent_param5.Hint := lbcyevent_param5.Hint;
+            lbcyevent_param6.Caption := '';
+            lbcyevent_param6.Hint := '';
+            edcyevent_param6.Hint := lbcyevent_param6.Hint;
+            lbcyevent_type.Hint := 'On Summoned Unit Evade';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     end;
@@ -13795,6 +13997,430 @@ begin
             lbcyaction_type.Hint := 'if avaliable, last used invoker will cast spellId with castFlags on targets';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
+    135:  //SMART_ACTION_PLAY_CINEMATIC
+        begin
+            lbcyaction_param1.Caption := 'entry';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    136:  //SMART_ACTION_SET_MOVEMENT_SPEED
+        begin
+            lbcyaction_param1.Caption := 'movementType';
+            lbcyaction_param2.Caption := 'speedInteger';
+            lbcyaction_param3.Caption := 'speedFraction';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'MOVE_WALK = 0, MOVE_RUN = 1, MOVE_RUN_BACK = 2, MOVE_SWIM = 3, MOVE_SWIM_BACK= 4, MOVE_TURN_RATE= 5, MOVE_FLIGHT = 6, MOVE_FLIGHT_BACK = 7, MOVE_PITCH_RATE = 8';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    142:  //SMART_ACTION_PLAY_CINEMATIC
+        begin
+            lbcyaction_param1.Caption := 'percent';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    201:  //SMART_ACTION_MOVE_TO_POS_TARGET
+        begin
+            lbcyaction_param1.Caption := 'pointid';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    203:  //SMART_ACTION_EXIT_VEHICLE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    204:  //SMART_ACTION_SET_UNIT_MOVEMENT_FLAGS
+        begin
+            lbcyaction_param1.Caption := 'flags';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    205:  //SMART_ACTION_SET_COMBAT_DISTANCE
+        begin
+            lbcyaction_param1.Caption := 'combatDistance';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    206:  //SMART_ACTION_SET_CASTER_COMBAT_DIST
+        begin
+            lbcyaction_param1.Caption := 'followDistance';
+            lbcyaction_param2.Caption := 'resetToMax';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    207:  //SMART_ACTION_SET_HOVER
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    208:  //SMART_ACTION_ADD_IMMUNITY
+        begin
+            lbcyaction_param1.Caption := 'type';
+            lbcyaction_param2.Caption := 'id';
+            lbcyaction_param3.Caption := 'value';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    209:  //SMART_ACTION_REMOVE_IMMUNITY
+        begin
+            lbcyaction_param1.Caption := 'type';
+            lbcyaction_param2.Caption := 'id';
+            lbcyaction_param3.Caption := 'value';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    210:  //SMART_ACTION_FALL
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    211:  //SMART_ACTION_SET_EVENT_FLAG_RESET
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    212:  //SMART_ACTION_STOP_MOTION
+        begin
+            lbcyaction_param1.Caption := 'stopMoving';
+            lbcyaction_param2.Caption := 'movementExpired';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    213:  //SMART_ACTION_NO_ENVIRONMENT_UPDATE
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    214:  //SMART_ACTION_ZONE_UNDER_ATTACK
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    215:  //SMART_ACTION_LOAD_GRID
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    216:  //SMART_ACTION_MUSIC
+        begin
+            lbcyaction_param1.Caption := 'SoundId';
+            lbcyaction_param2.Caption := 'onlySelf';
+            lbcyaction_param3.Caption := 'type';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := ' 	Plays the specified sound file as music. Type can be one of these values:'#13#10+
+                '0: Play music for the specified target(s)  '#13#10+
+                '1: Play music for all players in the entire zone '#13#10+
+                '2: Play music for all players in the area.';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    217:  //SMART_ACTION_RANDOM_MUSIC
+        begin
+            lbcyaction_param1.Caption := 'SoundId1';
+            lbcyaction_param2.Caption := 'SoundId2';
+            lbcyaction_param3.Caption := 'SoundId3';
+            lbcyaction_param4.Caption := 'SoundId4';
+            lbcyaction_param5.Caption := 'onlySelf';
+            lbcyaction_param6.Caption := 'type';
+            lbcyaction_type.Hint := 'Plays randomly one of the specified sound files as music. Type can be one of these values:'#13#10+
+                '0: Play music for the specified target(s) '#13#10+
+                '1: Play music for all players in the entire zone  '#13#10+
+                '2: Play music for all players in the area.';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    218:  //SMART_ACTION_CUSTOM_CAST
+        begin
+            lbcyaction_param1.Caption := 'spellId';
+            lbcyaction_param2.Caption := 'castFlag';
+            lbcyaction_param3.Caption := 'bp0';
+            lbcyaction_param4.Caption := 'bp1';
+            lbcyaction_param5.Caption := 'bp2';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    219:  //SMART_ACTION_CONE_SUMMON
+        begin
+            lbcyaction_param1.Caption := 'entry';
+            lbcyaction_param2.Hint := '0 = permanent';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param2.Caption := 'Duration (ms)';
+            lbcyaction_param3.Hint := 'between rings';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_param3.Caption := 'Distance (yards)';
+            lbcyaction_param4.Hint := 'between each summons in a row';
+            edcyaction_param4.Hint := lbcyaction_param4.Hint;
+            lbcyaction_param4.Caption := 'Distance (yards)';
+            lbcyaction_param5.Hint := 'of the cone';
+            edcyaction_param5.Hint := lbcyaction_param5.Hint;
+            lbcyaction_param5.Caption := 'Length (yards)';
+            lbcyaction_param6.Hint := 'angle 1°-360°';
+            edcyaction_param6.Hint := lbcyaction_param6.Hint;
+            lbcyaction_param6.Caption := 'Width of the cone ';
+            lbcyaction_type.Hint := 'Allows you to spawn creatures in a cone (As seen in later expansions). Useful for custom cone aoes';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+
+        end;
+    220:  //SMART_ACTION_PLAYER_TALK
+        begin
+            lbcyaction_param1.Caption := 'acore_string.id';
+            lbcyaction_param2.Caption := 'yell? (0/1)';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Make the player say something';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    221:  //SMART_ACTION_VORTEX_SUMMON
+        begin
+            lbcyaction_param1.Caption := 'SMART_ACTION_VORTEX_SUMMON';
+            lbcyaction_param2.Hint := '0 = permanent';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param2.Caption := 'Duration (ms)';
+            lbcyaction_param3.Caption := 'Spiral scaling';
+            lbcyaction_param4.Caption := 'Spiral appearance';
+            lbcyaction_param5.Caption := 'range max';
+            lbcyaction_param6.Caption := 'phi_delta';
+            lbcyaction_type.Hint := 'Allows you to summon creature in a customizable spiral(/vortex). '#13#10+
+              'Parameters can be confusing, exmaple parameters for testing: '#13#10+
+              '5000 - summon duration, 5 - Spiral Scaling,'#13#10+
+              '25 - spiral appearance, 60 - range max, 40 - phi delta';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    222:  //SMART_ACTION_CU_ENCOUNTER_START
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Resets all cooldowns and removes exhausted debuffs when action is called';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    223:  //SMART_ACTION_DO_ACTION
+        begin
+            lbcyaction_param1.Caption := 'ActionId';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Allows to call for a DoAction in code';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    224:  //SMART_ACTION_ATTACK_STOP
+        begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Stop melee, spell casting during combat, chasing the target and facing';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    225:  //SMART_ACTION_SET_GUID
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Hint := '0 = Self Guid, 1 = Invoker Guid';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Allows the target to perform an action similar to DO_ACTION, but allows a guid to be sent';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    226:  //SMART_ACTION_DISABLE
+        begin
+            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Hint := '0 = Disable, 1 = Enable';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Disable the targeted creatures, setting them Invisible and Immune to All';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    227:  //SMART_ACTION_SET_SCALE
+        begin
+            lbcyaction_param1.Caption := 'scale';
+            lbcyaction_param1.Hint := 'This value is the percentage of the new scale the targets will take.'#13#10'100 = default';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Sets the scale for the targeted creatures';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    228:  //SMART_ACTION_SUMMON_RADIAL
+        begin
+            lbcyaction_param1.Caption := 'summonEntry';
+            lbcyaction_param1.Hint := 'CreatureID to be summoned';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := 'summonDuration';
+            lbcyaction_param2.Hint := 'duration in ms which the summons will despawn after, if 0 then despawn on death';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param3.Caption := 'repetitions';
+            lbcyaction_param3.Hint := 'amount of creatures to be summoned';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_param4.Caption := 'startAngle ';
+            lbcyaction_param4.Hint := 'offset in degrees, 0: same as source';
+            edcyaction_param4.Hint := lbcyaction_param4.Hint;
+            lbcyaction_param5.Caption := 'stepAngle';
+            lbcyaction_param5.Hint := 'how many degrees to turn for each summon';
+            edcyaction_param5.Hint := lbcyaction_param5.Hint;
+            lbcyaction_param6.Caption := 'dist';
+            lbcyaction_param6.Hint := 'distance offset';
+            edcyaction_param6.Hint := lbcyaction_param6.Hint;
+            lbcyaction_type.Hint := 'Summons a set of creatures in a radial pattern, with orientation change specified in parameters';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    229:  //SMART_ACTION_PLAY_SPELL_VISUAL
+        begin
+            lbcyaction_param1.Caption := 'visualId';
+            lbcyaction_param1.Hint := 'can be found within SpellVisual.dbc';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Makes the targets play the VisualKit ID specified';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    230:  //SMART_ACTION_FOLLOW_GROUP
+        begin
+            lbcyaction_param1.Caption := 'Follow State';
+            lbcyaction_param1.Hint := '0: Stop Follow, 1: Start Follow';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := 'Smart Follow Type';
+            lbcyaction_param3.Caption := 'Distance from Leader';
+            lbcyaction_param3.Hint := 'divided by 100 (300 = 3.f yards)';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := 'Makes the targets follow the source creature in the specified formation. See Smart Follow Types below';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+    231:  //SMART_ACTION_ORIENTATION_TARGET
+        begin
+            lbcyaction_param1.Caption := 'Type';
+            lbcyaction_param1.Hint := '0: Reset to default,'#13#10' 1: Use target.o parameter, '#13#10'2: Targets face this unit, '#13#10'3: Use parameters to target a specific creature)';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Caption := 'target_type';
+            lbcyaction_param2.Hint := '';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param3.Caption := 'target_param1';
+            lbcyaction_param3.Hint := '';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_param4.Caption := 'target_param2 ';
+            lbcyaction_param4.Hint := '';
+            edcyaction_param4.Hint := lbcyaction_param4.Hint;
+            lbcyaction_param5.Caption := 'target_param3';
+            lbcyaction_param5.Hint := '';
+            edcyaction_param5.Hint := lbcyaction_param5.Hint;
+            lbcyaction_param6.Caption := 'target_param4';
+            lbcyaction_param6.Hint := '';
+            edcyaction_param6.Hint := lbcyaction_param6.Hint;
+            lbcyaction_type.Hint := 'Makes the targets face a specific orientation. '#13#10+
+              'If type = 3, then use the parameters as if it were a smart target and they will face the newly-selected unit';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
+        end;
+
+
     end;
     SAI_Action := t;
 end;
@@ -14202,6 +14828,80 @@ begin
             edcytarget_param1.Hint := lbcytarget_param1.Hint;
             lbcytarget_type.Hint := '';
             edcytarget_type.Hint := lbcytarget_type.Hint;
+        end;
+    201:  //SMART_TARGET_PLAYER_WITH_AURA
+        begin
+            lbcytarget_type.Hint := 'Target players with or without aura';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
+
+            lbcytarget_param1.Caption := 'SpellID';
+            lbcytarget_param2.Caption := 'Negative (0/1)';
+            lbcytarget_param3.Caption := 'MaxDist';
+            lbcytarget_param4.Caption := 'MinDist';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_o.Caption := 'Number to resize the target list';
+        end;
+    202:  //SMART_TARGET_RANDOM_POINT
+        begin
+            lbcytarget_type.Hint := 'This only works with SMART_ACTION_SUMMON_CREATURE, SMART_ACTION_MOVE_TO_POS and SMART_ACTION_JUMP_TO_POS';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
+            lbcytarget_param2.Hint := 'for summoning creature';
+            edcytarget_param2.Hint := lbcytarget_param2.Hint;
+            lbcytarget_param3.Hint := 'else use xyz';
+            edcytarget_param3.Hint := lbcytarget_param3.Hint;
+            lbcytarget_param1.Caption := 'range (yards)';
+            lbcytarget_param2.Caption := 'amount';
+            lbcytarget_param3.Caption := 'self as middle (0/1)';
+            lbcytarget_param4.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_o.Caption := '';
+        end;
+    203:  //SMART_TARGET_RANDOM_POINT
+        begin
+            lbcytarget_type.Hint := 'Target a Tank/Healer/DPS role. Based on the players spec.';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
+            lbcytarget_param2.Hint := 'Tanks(1), Healer(2), Damage(4)';
+            edcytarget_param2.Hint := lbcytarget_param2.Hint;
+            lbcytarget_param1.Caption := 'rangeMax (yards)';
+            lbcytarget_param2.Caption := 'TargetMask';
+            lbcytarget_param3.Caption := 'Resize list';
+            lbcytarget_param4.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_o.Caption := '';
+        end;
+    204:  //SMART_TARGET_SUMMONED_CREATURES
+        begin
+            lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
+            lbcytarget_param1.Caption := 'creature_template.Entry';
+            lbcytarget_param2.Caption := '';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_param4.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_o.Caption := '';
+        end;
+    205:  //SMART_TARGET_SUMMONED_CREATURES
+        begin
+            lbcytarget_type.Hint := '';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
+            lbcytarget_param2.Hint := 'creature(1), gameobject(2)';
+            edcytarget_param2.Hint := lbcytarget_param2.Hint;
+            lbcytarget_param1.Caption := 'data index';
+            lbcytarget_param2.Caption := 'Type';
+            lbcytarget_param3.Caption := '';
+            lbcytarget_param4.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_o.Caption := '';
         end;
     end;
     SAI_Target := t;
