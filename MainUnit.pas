@@ -22,7 +22,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '12';
+  VERSION_4   = '14';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -302,7 +302,6 @@ type
     edqtRewardFactionValue1: TLabeledEdit;
     edqtRewardFactionValue2: TLabeledEdit;
     edqtRewardMoney: TLabeledEdit;
-    edqtRewardBonusMoney: TLabeledEdit;
     edqtRewardFactionValue3: TLabeledEdit;
     edqtRewardFactionValue4: TLabeledEdit;
     edqtRewardFactionValue5: TLabeledEdit;
@@ -9970,7 +9969,7 @@ end;
 
 procedure TMainForm.linkSmartAIInfoClick(Sender: TObject);
 begin
-  BrowseURL1.URL := 'https://trinitycore.atlassian.net/wiki/spaces/tc/pages/2130108/smart+scripts';
+  BrowseURL1.URL := 'https://www.azerothcore.org/wiki/smart_scripts';
   BrowseURL1.Execute;
 end;
 

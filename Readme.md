@@ -42,8 +42,8 @@ ZeosDBO 7.3 from testing branch (SVN rev4068) (last commit with ZeosLib https://
 http://sourceforge.net/projects/zeoslib/ (new link)
 http://svn.code.sf.net/p/zeoslib/code-0
 
-**Original topic on TC forum:**
-https://talk.trinitycore.org/t/truice-2018-win32/31568/
+**Original topic on AC forum:**
+https://github.com/azerothcore/azerothcore-wotlk/discussions/18241
 
 **Truice Download:**
 https://github.com/chaosua/Truice/releases
