@@ -6474,22 +6474,6 @@ begin
   meqtScript.Text := Script;
 end;
 
-procedure TMainForm.CompleteCreatureSmartAIScript;
-var
-  id, Fields, Values: string;
-begin
-  mecyLog.Clear;
-  id := edcyentryorguid.Text;
-  if id='' then exit;
-  SetFieldsAndValues(MyQuery, Fields, Values, 'smart_scripts', PFX_CREATURE_SMARTAI, mecyLog);
-  case SyntaxStyle of
-    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE (`id`=%s);'#13#10+
-      'INSERT INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[id, Fields, Values]);
-    ssReplace: mecyScript.Text := Format('REPLACE INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: mecyScript.Text := MakeUpdate('smart_scripts', PFX_CREATURE_SMARTAI, 'entryorguid', id);
-  end;
-end;
-
 procedure TMainForm.CompleteConditionsScript;
 var
   id, Fields, Values: string;
@@ -8542,6 +8526,28 @@ begin
     Memo.Text := Format('DELETE FROM `%s` WHERE (`entry`=%s);', [TableName, entry]);
 end;
 
+procedure TMainForm.CompleteCreatureSmartAIScript;
+var
+  entryorguid, source_type, id, link, Fields, Values: string;
+begin
+  mecyLog.Clear;
+  entryorguid := edcyentryorguid.Text;
+  source_type := edcysource_type.Text;
+  id := edcyid.Text;
+  link := edcylink.Text;
+  if entryorguid='' then exit;
+  if source_type='' then exit;
+  if id='' then exit;
+  if link='' then exit;
+  SetFieldsAndValues(MyQuery, Fields, Values, 'smart_scripts', PFX_CREATURE_SMARTAI, mecyLog);
+  case SyntaxStyle of
+    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE `entryorguid`=%s AND `source_type`=%s AND id=%s AND `link`=%s ;'#13#10+
+      'INSERT INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[entryorguid, source_type, id, link, Fields, Values]);
+    ssReplace: mecyScript.Text := Format('REPLACE INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: mecyScript.Text := MakeUpdate('smart_scripts', PFX_CREATURE_SMARTAI, 'entryorguid', entryorguid);
+  end;
+end;
+
 procedure TMainForm.ShowFullSmartAIScript(TableName: string; lvList: TJvListView;
   Memo: TMemo; entry: string; sourcetype: string);
 var
@@ -8549,12 +8555,16 @@ var
   Values: string;
 begin
   Memo.Clear;
+  mecyLog.Clear;
   Values := '';
   if lvList.Items.Count<>0 then
   begin
     for i := 0 to lvList.Items.Count - 2 do
     begin
-      Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+'),'#13#10,[
+    Values := Values + Format(' '+
+      '(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+
+       '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+
+       '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+'),'#13#10,[
         lvList.Items[i].Caption,
         lvList.Items[i].SubItems[0],
         lvList.Items[i].SubItems[1],
@@ -8583,12 +8593,16 @@ begin
         lvList.Items[i].SubItems[24],
         lvList.Items[i].SubItems[25],
         lvList.Items[i].SubItems[26],
-      lvList.Items[i].SubItems[28],
-      lvList.Items[i].SubItems[29]
+        lvList.Items[i].SubItems[27],
+        lvList.Items[i].SubItems[28],
+        lvList.Items[i].SubItems[29]
       ]);
     end;
     i := lvList.Items.Count - 1;
-    Values := Values + Format('(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s, '+'"'+'%s'+'"'+');',[
+    Values := Values + Format(' '+
+      '(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+
+       '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+
+       '%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '+'"'+'%s'+'"'+');'#13#10,[
       lvList.Items[i].Caption,
       lvList.Items[i].SubItems[0],
       lvList.Items[i].SubItems[1],
@@ -8622,6 +8636,7 @@ begin
       lvList.Items[i].SubItems[29]
     ]);
   end;
+
   if values<>'' then
   begin
       Memo.Text := Format('DELETE FROM `%0:s` WHERE (`entryorguid`=%1:s AND `source_type`=%2:s);'#13#10+
@@ -13198,14 +13213,15 @@ begin
         end;
     41:  //SMART_ACTION_FORCE_DESPAWN
         begin
-            lbcyaction_param1.Caption := 'timer';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param1.Caption := 'timer ms';
+            lbcyaction_param2.Caption := 'Respawn s';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := 'Despawn Target after param1 Milliseconds';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+
         end;
     42:  //SMART_ACTION_SET_INVINCIBILITY_HP_LEVEL
         begin
