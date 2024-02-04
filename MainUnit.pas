@@ -10622,6 +10622,7 @@ var
   ID, loc: string;
 begin
   ID := TCustomEdit(Sender).Text;
+  if ID='' then Exit;
   loc:=edptloclocale.Text;
   if loc='' then loc:=LoadLocales();
   if loc='enUS' then begin
