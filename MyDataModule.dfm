@@ -1,5 +1,4 @@
 object dmMain: TdmMain
-  OldCreateOrder = False
   OnDestroy = DataModuleDestroy
   Height = 352
   Width = 426
@@ -14,7 +13,6 @@ object dmMain: TdmMain
   end
   object MyQuery: TFDQuery
     Connection = MainForm.MyTrinityConnection
-    Params = <>
     Left = 128
     Top = 144
   end

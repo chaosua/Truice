@@ -1,8 +1,10 @@
 [CONNECT]
 gbAdvanced=Advanced Options
 lbCharSet=Charset
+Label1=cp1251 (fixes cyrylic fonts at locales tabs)
+Label2=you can try utf8 or other supported charset of your DB
 btConnect=Connect
-btCancel=Cancel
+btCancel=Exit
 btDetails=Details >>
 btClear=Clear
 gbConnect=Connect to MySQL Server

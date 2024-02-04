@@ -31,7 +31,7 @@ const
   SCRIPT_TAB_NO_ITEM        = 10;
   SCRIPT_TAB_NO_SMARTAI     = 1;
   SCRIPT_TAB_NO_CONDITIONS  = 1;
-  SCRIPT_TAB_NO_OTHER       = 3;
+  SCRIPT_TAB_NO_OTHER       = 4;
   SCRIPT_TAB_NO_CHARACTER   = 3;
 
   WM_FREEQL = WM_USER + 1;
@@ -85,11 +85,11 @@ const
   PFX_MILLING_LOOT_TEMPLATE         = 'im';
   PFX_REFERENCE_LOOT_TEMPLATE       = 'ir';
   PFX_PAGE_TEXT                     = 'pt';
+  PFX_PAGE_TEXT_LOCALE              = 'ptloc';
   PFX_CREATURE_TEXT                 = 'ctt';
   PFX_FISHING_LOOT_TEMPLATE         = 'ot';
   PFX_CHARACTER                     = 'ht';
   PFX_CHARACTER_INVENTORY           = 'hi';
-  mob_smartai = 'SmartAI';
   PFX_LOCALES_QUEST                 = 'lq';
   PFX_LOCALES_NPC_TEXT              = 'lx';
 
@@ -1743,6 +1743,21 @@ type
     editlocDescription: TLabeledEdit;
     editFlagsExtra: TJvComboEdit;
     Label7: TLabel;
+    tsPageTextLocale: TTabSheet;
+    GroupBox4: TGroupBox;
+    btClearSearchPageTextLocale: TBitBtn;
+    btSearchPageTextLocale: TBitBtn;
+    edSearchPageTextLocaleText: TLabeledEdit;
+    edSearchPageTextLocaleEntry: TLabeledEdit;
+    Panel19: TPanel;
+    Label8: TLabel;
+    Label10: TLabel;
+    edptlocID: TJvComboEdit;
+    edptlocText: TMemo;
+    btScriptPageTextLocale: TButton;
+    edptlocVerifiedBuild: TLabeledEdit;
+    lvSearchPageTextLocale: TJvListView;
+    edptloclocale: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -1960,6 +1975,11 @@ type
       Selected: Boolean);
     procedure btScriptPageTextClick(Sender: TObject);
     procedure LoadPageText(Sender: TObject);
+    procedure btSearchPageTextLocaleClick(Sender: TObject);
+    procedure lvSearchPageTextLocaleSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btScriptPageTextlocaleClick(Sender: TObject);
+    procedure LoadPageTextLocale(Sender: TObject);
     procedure btSQLOpenClick(Sender: TObject);
     procedure btScriptCreatureLocationCustomToAllClick(Sender: TObject);
     procedure btFullScriptProsLootClick(Sender: TObject);
@@ -2357,10 +2377,12 @@ type
     function MakeUpdate(tn: string; pfx: string; KeyName: string; KeyValue: string): string;
     function MakeUpdateLocales(tn: string; pfx: string; KeyName: string; KeyValue: string; Keyloc: string): string;
     procedure CompleteFishingLootScript;
-    procedure SearchPageText;
     procedure SearchGameEvent;
-    procedure CompletePageTextScript;
     procedure CompleteGameEventScript;
+    procedure SearchPageText;
+    procedure SearchPageTextLocale;
+    procedure CompletePageTextScript;
+    procedure CompletePageTextLocaleScript;
 
     procedure EditThis(objtype: string; entry: string);
 
@@ -4284,6 +4306,7 @@ begin
   edgeannounce.Clear;
   edSearchPageTextText.Clear;
   edSearchPageTextNextPage.Clear;
+  edSearchPageTextLocaleText.Clear;
   edQuestID.Clear;
   edQuestTitle.Clear;
   edQuestStarterSearch.Clear;
@@ -9104,23 +9127,6 @@ begin
   end;
 end;
 
-{procedure TMainForm.LoadCreatureQuestItem(Entry: integer);
-begin
-  if Entry<1 then Exit;
-  MyQuery.SQL.Text := Format('SELECT * FROM `creature_questitem` WHERE (`CreatureEntry`= %d)',[Entry]);
-  MyQuery.Open;
-  try
-    FillFields(MyQuery, PFX_CREATURE_QUESTITEM);
-    if edcqiVerifiedBuild.Text=''  then  edcqiVerifiedBuild.Text:='NULL';
-
-    MyQuery.Close;
-  except
-    on E: Exception do
-      raise Exception.Create(dmMain.Text[159]+#10#13+E.Message);
-  end;
-end;
-}
-
 procedure TMainForm.CompleteCreatureQuestItemScript;
 var
   entry, itemidx, Fields, Values: string;
@@ -10222,8 +10228,9 @@ procedure TMainForm.tsOtherScriptShow(Sender: TObject);
 begin
   case PageControl6.ActivePageIndex of
     0: CompleteFishingLootScript;
-    1: CompletePageTextScript;
-    2: CompleteGameEventScript;
+    1: CompleteGameEventScript;
+    2: CompletePageTextScript;
+    3: CompletePageTextLocaleScript;
   end;
 end;
 
@@ -10466,6 +10473,7 @@ begin
     ssUpdate: mectScript.Text := MakeUpdate('creature_text', PFX_CREATURE_TEXT, 'CreatureID', CreatureID) ;
   end;
 end;
+
 procedure TMainForm.btSearchPageTextClick(Sender: TObject);
 begin
   SearchPageText();
@@ -10506,6 +10514,148 @@ begin
       'INSERT INTO `page_text` (%s) VALUES (%s);'#13#10,[ID, Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `page_text` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdate('page_text', PFX_PAGE_TEXT, 'ID', ID) ;
+  end;
+end;
+
+procedure TMainForm.btSearchPageTextLocaleClick(Sender: TObject);
+begin
+  SearchPageTextlocale();
+  with lvSearchPageTextLocale do
+    if Items.Count > 0 then
+    begin
+      SetFocus;
+      Selected := Items[0];
+    end;
+end;
+
+procedure TMainForm.SearchPageTextLocale;
+var
+  i: integer;
+  ID, Name, loc, QueryStr, WhereStr, t: string;
+  Field: TField;
+begin
+  ID :=  edSearchPageTextLocaleEntry.Text;
+  loc:=LoadLocales();
+
+if loc<>'enUS' then begin
+  Name := edSearchPageTextLocaleText.Text;
+  Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
+  Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
+  Name := '%'+Name+'%';
+
+  QueryStr := '';
+  WhereStr := '';
+
+  if ID<>'' then
+  begin
+    if pos('-', ID)=0 then
+      WhereStr := Format('WHERE (`ID` in (%s))',[ID])
+    else
+      WhereStr := Format('WHERE (`ID` >= %s) AND (`ID` <= %s)',[MidStr(ID,1,pos('-',id)-1), MidStr(ID,pos('-',id)+1,length(id))]);
+  end;
+
+  if Name<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`Text` LIKE ''%s'')',[WhereStr, Name])
+    else
+      WhereStr := Format('WHERE (`Text` LIKE ''%s'')',[Name]);
+  end;
+
+  if Trim(WhereStr)='' then
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+
+  if loc<>'' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`locale` = ''%s'') ORDER BY `ID`',[WhereStr, loc])
+    else
+      WhereStr := Format('WHERE (`locale` = ''%s'') ORDER BY `ID`',[loc]);
+  end;
+
+  QueryStr := Format('SELECT * FROM `page_text_locale` %s',[WhereStr]);
+
+  MyQuery.SQL.Text := QueryStr;
+  lvSearchPageText.Items.BeginUpdate;
+  try
+    MyQuery.Open;
+    lvSearchPageTextLocale.Clear;
+    while (MyQuery.Eof=false) do
+    begin
+      with lvSearchPageTextLocale.Items.Add do
+      begin
+        for i := 0 to lvSearchPageTextLocale.Columns.Count - 1 do
+        begin
+          Field := MyQuery.FindField(lvSearchPageTextLocale.Columns[i].Caption);
+          t := '';
+          if Assigned(Field) then
+          begin
+            t := Field.AsString;
+            if i=0 then Caption := t;
+          end;
+          if i<>0 then SubItems.Add(t);
+        end;
+        MyQuery.Next;
+      end;
+    end;
+  finally
+    lvSearchPageTextLocale.Items.EndUpdate;
+    MyQuery.Close;
+  end;
+end
+    else ShowMessage(dmMain.Text[160]);
+end;
+
+procedure TMainForm.lvSearchPageTextLocaleSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    edptlocID.Text := Item.Caption;
+    edptloclocale.Text := DollToSym(Item.SubItems[0]);
+    edptlocText.Text := DollToSym(Item.SubItems[1]);
+    edptlocVerifiedBuild.Text := Item.SubItems[2];
+  end;
+end;
+
+procedure TMainForm.LoadPageTextLocale(Sender: TObject);
+var
+  ID, loc: string;
+begin
+  ID := TCustomEdit(Sender).Text;
+  loc:=edptloclocale.Text;
+  if loc='' then loc:=LoadLocales();
+  if loc='enUS' then begin
+   ShowMessage(dmMain.Text[160]);
+   Exit;
+  end;
+
+  MyTempQuery.SQL.Text := Format('SELECT * FROM `page_text_locale` WHERE `ID`=%s AND `locale`=''%s''', [ID, loc]);
+  MyTempQuery.Open;
+  if (MyTempQuery.Eof=false) then
+    FillFields(MyTempQuery, PFX_PAGE_TEXT_LOCALE);
+  MyTempQuery.Close;
+end;
+
+procedure TMainForm.btScriptPageTextLocaleClick(Sender: TObject);
+begin
+  PageControl6.ActivePageIndex := SCRIPT_TAB_NO_OTHER;
+end;
+
+procedure TMainForm.CompletePageTextLocaleScript;
+var
+  ID, Fields, loc, Values: string;
+begin
+  meotLog.Clear;
+  ID :=  edptlocID.Text;
+  loc:= edptloclocale.Text;
+  if (ID='') then Exit;
+  if (loc='') then loc:=LoadLocales();
+  SetFieldsAndValues(Fields, Values, 'page_text_locale', PFX_PAGE_TEXT_LOCALE, meotLog);
+  case SyntaxStyle of
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `page_text_locale` WHERE (`ID`=%s) AND (`locale`=''%s'');'#13#10+
+                                  'INSERT INTO `page_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[ID, loc, Fields, Values]);
+    ssReplace: meotScript.Text := Format('REPLACE INTO `page_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[Fields, Values]);
+    ssUpdate: meotScript.Text := MakeUpdateLocales('page_text_locale', PFX_PAGE_TEXT_LOCALE, 'ID', ID, loc) ;
   end;
 end;
 
