@@ -6523,22 +6523,6 @@ begin
   meqtScript.Text := Script;
 end;
 
-procedure TMainForm.CompleteCreatureSmartAIScript;
-var
-  id, Fields, Values: string;
-begin
-  mecyLog.Clear;
-  id := edcyentryorguid.Text;
-  if id='' then exit;
-  SetFieldsAndValues(MyQuery, Fields, Values, 'smart_scripts', PFX_CREATURE_SMARTAI, mecyLog);
-  case SyntaxStyle of
-    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE (`id`=%s);'#13#10+
-      'INSERT INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[id, Fields, Values]);
-    ssReplace: mecyScript.Text := Format('REPLACE INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: mecyScript.Text := MakeUpdate('smart_scripts', PFX_CREATURE_SMARTAI, 'entryorguid', id);
-  end;
-end;
-
 procedure TMainForm.CompleteConditionsScript;
 var
   id, Fields, Values: string;
@@ -8426,7 +8410,7 @@ begin
       TCustomEdit(FindComponent(pfx + 'target_param1')).Text := SubItems[20];
       TCustomEdit(FindComponent(pfx + 'target_param2')).Text := SubItems[21];
       TCustomEdit(FindComponent(pfx + 'target_param3')).Text := SubItems[22];
-	  TCustomEdit(FindComponent(pfx + 'target_param4')).Text := SubItems[23];
+      TCustomEdit(FindComponent(pfx + 'target_param4')).Text := SubItems[23];
       TCustomEdit(FindComponent(pfx + 'target_x')).Text := SubItems[24];
       TCustomEdit(FindComponent(pfx + 'target_y')).Text := SubItems[25];
       TCustomEdit(FindComponent(pfx + 'target_z')).Text := SubItems[26];
@@ -8561,6 +8545,28 @@ begin
   end
   else
     Memo.Text := Format('DELETE FROM `%s` WHERE (`entry`=%s);', [TableName, entry]);
+end;
+
+procedure TMainForm.CompleteCreatureSmartAIScript;
+var
+  entryorguid, source_type, id, link, Fields, Values: string;
+begin
+  mecyLog.Clear;
+  entryorguid := edcyentryorguid.Text;
+  source_type := edcysource_type.Text;
+  id := edcyid.Text;
+  link := edcylink.Text;
+  if entryorguid='' then exit;
+  if source_type='' then exit;
+  if id='' then exit;
+  if link='' then exit;
+  SetFieldsAndValues(MyQuery, Fields, Values, 'smart_scripts', PFX_CREATURE_SMARTAI, mecyLog);
+  case SyntaxStyle of
+    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE `entryorguid`=%s AND `source_type`=%s AND `id`=%s AND `link`=%s ;'#13#10+
+      'INSERT INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[entryorguid, source_type, id, link, Fields, Values]);
+    ssReplace: mecyScript.Text := Format('REPLACE INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: mecyScript.Text := MakeUpdate('smart_scripts', PFX_CREATURE_SMARTAI, 'entryorguid', entryorguid);
+  end;
 end;
 
 procedure TMainForm.ShowFullSmartAIScript(TableName: string; lvList: TJvListView;
