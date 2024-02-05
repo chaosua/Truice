@@ -8541,7 +8541,7 @@ begin
   if link='' then exit;
   SetFieldsAndValues(MyQuery, Fields, Values, 'smart_scripts', PFX_CREATURE_SMARTAI, mecyLog);
   case SyntaxStyle of
-    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE `entryorguid`=%s AND `source_type`=%s AND id=%s AND `link`=%s ;'#13#10+
+    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE `entryorguid`=%s AND `source_type`=%s AND `id`=%s AND `link`=%s ;'#13#10+
       'INSERT INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[entryorguid, source_type, id, link, Fields, Values]);
     ssReplace: mecyScript.Text := Format('REPLACE INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: mecyScript.Text := MakeUpdate('smart_scripts', PFX_CREATURE_SMARTAI, 'entryorguid', entryorguid);
@@ -11194,15 +11194,15 @@ begin
         end;
     5:  //SMART_EVENT_KILL
         begin
-            lbcyevent_param1.Caption := 'CooldownMin0';
-            lbcyevent_param2.Caption := 'CooldownMax1';
-            lbcyevent_param3.Caption := 'Player only (0 / 1)';
-            lbcyevent_param4.Caption := 'If param3=0';
+            lbcyevent_param1.Caption := 'CooldownMin';
+            lbcyevent_param2.Caption := 'CooldownMax';
+            lbcyevent_param3.Caption := 'Player only (0/1)';
+            lbcyevent_param4.Caption := 'CreatureEntry';
             lbcyevent_param5.Caption := '';
             lbcyevent_param6.Caption := '';
-            lbcyevent_param3.Hint := 'if 0, set entry in param 4';
+            lbcyevent_param3.Hint := 'Player if 1, Creature if 0';
             edcyevent_param3.Hint := lbcyevent_param3.Hint;
-            lbcyevent_param4.Hint := 'enter creature entry to kill';
+            lbcyevent_param4.Hint := 'If param3 is 0 then creature Entry';
             edcyevent_param4.Hint := lbcyevent_param4.Hint;
             lbcyevent_type.Hint := 'On Creature Kill';
             edcyevent_type.Hint := lbcyevent_type.Hint;
@@ -11242,25 +11242,26 @@ begin
         end;
     9:  //SMART_EVENT_RANGE
         begin
-            lbcyevent_param1.Caption := 'InitialMin';
-            lbcyevent_param2.Caption := 'InitialMax';
-            lbcyevent_param3.Caption := 'RepeatMin';
-            lbcyevent_param4.Caption := 'RepeatMax';
-            lbcyevent_param5.Caption := 'MinDist';
-            lbcyevent_param6.Caption := 'MaxDist';
+            lbcyevent_param1.Caption := 'InitialMin ms';
+            lbcyevent_param2.Caption := 'InitialMax ms';
+            lbcyevent_param3.Caption := 'RepeatMin ms';
+            lbcyevent_param4.Caption := 'RepeatMax ms';
+            lbcyevent_param5.Caption := 'MinDist y';
+            lbcyevent_param6.Caption := 'MaxDist y';
             lbcyevent_type.Hint := 'On Victim In Range';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     10:  //SMART_EVENT_OOC_LOS
         begin
-            lbcyevent_param1.Caption := 'NoHostile';
+            lbcyevent_param1.Caption := 'NoHostile 0/1';
             lbcyevent_param2.Caption := 'MaxRange';
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
-            lbcyevent_param5.Caption := 'PlayerOnly (0/1)';
+            lbcyevent_param5.Caption := 'PlayerOnly 0/1';
+            lbcyevent_param6.Caption := '';
             lbcyevent_param5.Hint := '0-triggred by npcs and players. 1-triggred by players only';
             edcyevent_param5.Hint := lbcyevent_param5.Hint;
-            lbcyevent_type.Hint := 'On Target In Distance Line of Sight Out of Combat';
+            lbcyevent_type.Hint := 'On Target In Distance Out of Combat';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     11:  //SMART_EVENT_RESPAWN
@@ -11270,7 +11271,8 @@ begin
             lbcyevent_param3.Caption := 'Area id (if type is 2)';
             lbcyevent_param4.Caption := '';
             lbcyevent_param5.Caption := '';
-			lbcyevent_param1.Hint := '0 = none, 1 = map, 2 = area';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_param1.Hint := '0 = none, 1 = map, 2 = area';
             edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_type.Hint := 'On Creature/Gameobject Respawn';
             edcyevent_type.Hint := lbcyevent_type.Hint;
@@ -11281,7 +11283,8 @@ begin
             lbcyevent_param2.Caption := 'HPMax%';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Health Percentage';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11291,10 +11294,11 @@ begin
             lbcyevent_param2.Caption := 'RepeatMax';
             lbcyevent_param3.Caption := 'Spellid';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_param3.Hint := 'if 0, check is done for all spells';
             edcyevent_param3.Hint := lbcyevent_param3.Hint;
-            lbcyevent_type.Hint := 'On Victim Casting Spell';
+            lbcyevent_type.Hint := 'On Target Casting Spell';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     14:  //SMART_EVENT_FRIENDLY_HEALTH
@@ -11303,7 +11307,8 @@ begin
             lbcyevent_param2.Caption := 'Radius';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Friendly Health Deficit';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11313,7 +11318,8 @@ begin
             lbcyevent_param2.Caption := 'RepeatMin';
             lbcyevent_param3.Caption := 'RepeatMax';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Friendly Crowd Controlled';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11323,7 +11329,8 @@ begin
             lbcyevent_param2.Caption := 'Radius';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := 'onlyInCombat';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Friendly Missing Buff';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11332,9 +11339,10 @@ begin
             lbcyevent_param1.Caption := 'CretureId (0 all)';
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
-            lbcyevent_param4.Caption := 'On Creature/GOB Summoned Unit';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On Creature/GO Summoned Unit';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     18:  //SMART_EVENT_TARGET_MANA_PCT
@@ -11343,27 +11351,30 @@ begin
             lbcyevent_param2.Caption := 'ManaMax%';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Mana Percentage';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     19:  //SMART_EVENT_ACCEPTED_QUEST
         begin
             lbcyevent_param1.Caption := 'QuestID (0 any)';
-            lbcyevent_param2.Caption := '';
-            lbcyevent_param3.Caption := '';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Accepted Quest';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     20:  //SMART_EVENT_REWARD_QUEST
         begin
             lbcyevent_param1.Caption := 'QuestID (0 any)';
-            lbcyevent_param2.Caption := '';
-            lbcyevent_param3.Caption := '';
+            lbcyevent_param2.Caption := 'CooldownMin';
+            lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Rewarded Quest';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11373,7 +11384,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Reached Home';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11382,9 +11394,10 @@ begin
             lbcyevent_param1.Caption := 'EmoteId';
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
-            lbcyevent_param4.Caption := 'condition';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'val1,val2,val3 (?)';
+            lbcyevent_param4.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On Receive Emote.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     23:  //SMART_EVENT_HAS_AURA
@@ -11393,7 +11406,8 @@ begin
             lbcyevent_param2.Caption := 'Stacks';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Has Aura';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11403,7 +11417,8 @@ begin
             lbcyevent_param2.Caption := 'Stacks';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Buffed With Spell';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11413,8 +11428,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'Called after combat, when the creature respawns or at spawn.';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'After Combat, On Respawn or Spawn';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     26:  //SMART_EVENT_IC_LOS
@@ -11436,8 +11452,9 @@ begin
             lbcyevent_param2.Caption := 'CooldownMax';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'When a passenger is boarded';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     28:  //SMART_EVENT_PASSENGER_REMOVED
@@ -11446,17 +11463,21 @@ begin
             lbcyevent_param2.Caption := 'CooldownMax';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'When a passenger is removed';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     29:  //SMART_EVENT_CHARMED
         begin
-            lbcyevent_param1.Caption := '';
+            lbcyevent_param1.Caption := 'onRemove';
+            lbcyevent_param1.Hint := '0 - on apply, 1 - on remove';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Charmed';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11466,7 +11487,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Charmed';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11476,7 +11498,8 @@ begin
             lbcyevent_param2.Caption := 'School';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Spell Hit';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11486,7 +11509,8 @@ begin
             lbcyevent_param2.Caption := 'MaxDmg';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Damaged';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11496,18 +11520,20 @@ begin
             lbcyevent_param2.Caption := 'MaxDmg';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Target Damaged';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     34:  //SMART_EVENT_MOVEMENTINFORM
         begin
-            lbcyevent_param1.Caption := 'MovementType (any)';
+            lbcyevent_param1.Caption := 'MovementType (0 any)';
             lbcyevent_param2.Caption := 'PointID';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'ESCORT_MOTION_TYPE = 17, POINT_MOTION_TYPE = 8';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     35:  //SMART_EVENT_SUMMON_DESPAWNED
@@ -11516,7 +11542,8 @@ begin
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Summoned Unit Despawned';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11526,7 +11553,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Corpse Removed';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11536,17 +11564,23 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On AI initialization. When the creature spawns (not respawns, resets or evedes)';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     38:  //SMART_EVENT_DATA_SET
         begin
-            lbcyevent_param1.Caption := 'Id';
+            lbcyevent_param1.Caption := 'Field';
+            lbcyevent_param1.Hint := 'First parameter of SMART_ACTION_SET_DATA';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := 'Value';
+            lbcyevent_param2.Hint := 'Second parameter of SMART_ACTION_SET_DATA';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature/Gameobject Data Set, Can be used with SMART_ACTION_SET_DATA';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11556,7 +11590,8 @@ begin
             lbcyevent_param2.Caption := 'pathId (0 any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Waypoint ID Started';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11566,7 +11601,8 @@ begin
             lbcyevent_param2.Caption := 'pathId (0 any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Waypoint ID Reached';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11576,7 +11612,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11586,7 +11623,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11596,7 +11634,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11606,7 +11645,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11616,7 +11656,8 @@ begin
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11626,7 +11667,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11636,8 +11678,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'On Target Quest Accepted';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     48:  //SMART_EVENT_QUEST_OBJ_COPLETETION
@@ -11646,8 +11689,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'On Target Quest Objective Completed';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     49:  //SMART_EVENT_QUEST_COMPLETION
@@ -11656,8 +11700,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'On Target Quest Completed';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     50:  //SMART_EVENT_QUEST_REWARDED
@@ -11666,8 +11711,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'On Target Quest Rewarded';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     51:  //SMART_EVENT_QUEST_FAIL
@@ -11676,17 +11722,19 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'On Target Quest Field';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := '';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     52:  //SMART_EVENT_TEXT_OVER
         begin
-            lbcyevent_param1.Caption := 'GroupId (creature_text)';
-            lbcyevent_param2.Caption := 'CreatureId (0 = any)';
+            lbcyevent_param1.Caption := 'creature_text.GroupId';
+            lbcyevent_param2.Caption := 'Creature.Id (0 = any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On TEXT_OVER Event Triggered After SMART_ACTION_TALK';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11696,7 +11744,8 @@ begin
             lbcyevent_param2.Caption := 'MaxHeal';
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Received Healing';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11706,7 +11755,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Just spawned';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11716,7 +11766,8 @@ begin
             lbcyevent_param2.Caption := 'pathID (0 any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Paused at Waypoint ID';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11726,7 +11777,8 @@ begin
             lbcyevent_param2.Caption := 'pathID (0 any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Resumed after Waypoint ID';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11736,7 +11788,8 @@ begin
             lbcyevent_param2.Caption := 'pathID (0 any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Stopped On Waypoint ID';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11746,18 +11799,22 @@ begin
             lbcyevent_param2.Caption := 'pathID (0 any)';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On Creature Waypoint Path Ended';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     59:  //SMART_EVENT_TIMED_EVENT_TRIGGERED
         begin
             lbcyevent_param1.Caption := 'Id';
+            lbcyevent_param1.Hint := 'First parameter of SMART_ACTION_CREATE_TIMED_EVENT';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'Called when a timed event called by action CREATE_TIMED_EVENT is triggered';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     60:  //SMART_EVENT_UPDATE
@@ -11766,8 +11823,9 @@ begin
             lbcyevent_param2.Caption := 'InitialMax';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On Update should be used as timer. Basicaly functions like UPDATE_IC and UPDATE_OOC in one';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     61:  //SMART_EVENT_LINK
@@ -11776,18 +11834,24 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := 'used to link together multiple events';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'Used to link together multiple events as a chain of events.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     62:  //SMART_EVENT_GOSSIP_SELECT
         begin
-            lbcyevent_param1.Caption := 'menuID';
-            lbcyevent_param2.Caption := 'actionID';
+            lbcyevent_param1.Caption := 'gossip MenuID';
+            lbcyevent_param1.Hint := 'gossip_menu_option.MenuID';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
+            lbcyevent_param2.Caption := 'gossip OptionID';
+            lbcyevent_param2.Hint := 'gossip_menu_option.OptionID';
+            edcyevent_param2.Hint := lbcyevent_param2.Hint;
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On gossip clicked (gossip_menu_option).';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     63:  //SMART_EVENT_JUST_CREATED
@@ -11796,18 +11860,25 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On Gameobject Just spawned';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     64:  //SMART_EVENT_GOSSIP_HELLO
         begin
-            lbcyevent_param1.Caption := '';
+            lbcyevent_param1.Caption := '0 or 1 or 2';
+            lbcyevent_param1.Hint := 'event_para_1 (only)'#13#10+
+            '0 = no filter set, always execute action'#13#10+
+            '1 = GossipHello only filter set, skip action if reportUse'#13#10+
+            '2 = reportUse only filter set, skip action if GossipHello.';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On Right-Click Creature/Gameobject that have gossip enabled.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     65:  //SMART_EVENT_FOLLOW_COMPLETED
@@ -11816,8 +11887,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On Stop Following';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     66:  //SMART_EVENT_EVENT_PHASE_CHANGE
@@ -11826,7 +11898,8 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On event phase mask set';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11847,8 +11920,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On game_event started.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     69:  //SMART_EVENT_GAME_EVENT_END
@@ -11857,28 +11931,35 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On game_event ended.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
-    70:  //SMART_EVENT_GO_LOOT_STATE_CHANGED
+    70:  //SMART_EVENT_GO_STATE_CHANGED
         begin
-            lbcyevent_param1.Caption := 'go LootState';
+            lbcyevent_param1.Caption := 'go State';
+            lbcyevent_param1.Hint := 'State (0 - Active, 1 - Ready, 2 - Active alternative) ';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := ' 	State (0 - Active, 1 - Ready, 2 - Active alternative) ';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'On GO state changed';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     71:  //SMART_EVENT_GO_EVENT_INFORM
         begin
             lbcyevent_param1.Caption := 'eventId';
+            lbcyevent_param1.Hint := 'event id from gameobject template';
+            edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'Called when GO becomes the target of an event happening.'#13#10'This is called in cases like building damaged/destroyed/rebuild, a goober is used etc';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     72:  //SMART_EVENT_ACTION_DONE
@@ -11887,8 +11968,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := ' id=1001 spellclick, id=1002 fall on ground, id=1003 charge ';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := ' id=1001 spellclick, id=1002 fall on ground, id=1003 charge'#13#10'manual values or enum EventId passed by SmartAI::DoAction()';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     73:  //SMART_EVENT_ON_SPELLCLICK
@@ -11897,8 +11979,9 @@ begin
             lbcyevent_param2.Caption := '';
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
-			lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
+            lbcyevent_type.Hint := 'on unit spellclick.look at npc_spell_click_tables';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     74:  //SMART_EVENT_FRIENDLY_HEALTH_PCT
@@ -11917,8 +12000,9 @@ begin
             lbcyevent_param1.Caption := 'database guid';
             lbcyevent_param2.Caption := 'database entry';
             lbcyevent_param3.Caption := 'distance';
-            lbcyevent_param4.Caption := 'repeat interval (ms)';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param4.Caption := 'repeat interval ms';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On creature guid OR any instance of creature entry is within distance.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11928,7 +12012,8 @@ begin
             lbcyevent_param2.Caption := 'database entry';
             lbcyevent_param3.Caption := 'distance';
             lbcyevent_param4.Caption := 'repeat interval (ms)';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'On gameobject guid OR any instance of gameobject entry is within distance.';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11938,7 +12023,8 @@ begin
             lbcyevent_param2.Caption := 'value';
             lbcyevent_param3.Caption := 'cooldownMin';
             lbcyevent_param4.Caption := 'cooldownMax';
-			lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
+            lbcyevent_param6.Caption := '';
             lbcyevent_type.Hint := 'If the value of specified counterID is equal to a specified value';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
