@@ -52,7 +52,7 @@ const
   PFX_CREATURE_TEMPLATE             = 'ct';
   PFX_CREATURE_TEMPLATE_ADDON       = 'cd';
   PFX_CREATURE_TEMPLATE_LOCALE      = 'ctloc';
-  PFX_CREATURE_TEMPLATE_MOVEMENT   	= 'cm';
+  PFX_CREATURE_TEMPLATE_MOVEMENT    = 'cm';
   PFX_CREATURE_TEMPLATE_RESISTANCE  = 'ctr';
   PFX_CREATURE_TEMPLATE_SPELL       = 'cts';
   PFX_CREATURE_ONKILL_REPUTATION    = 'ck';
@@ -2816,76 +2816,76 @@ begin
     FillFields(MyQuery, PFX_QUEST_TEMPLATE);
     MyQuery.Close;
 
-	// load data for quest from addon table
-	MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_addon` WHERE `ID`=%d', [QuestID]);
-	MyQuery.Open;
+    // load data for quest from addon table
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_addon` WHERE `ID`=%d', [QuestID]);
+    MyQuery.Open;
     if (MyQuery.Eof=false) then
-    edqtaID.Text := MyQuery.FieldByName('ID').AsString;
-		edqtaMaxLevel.Text := MyQuery.FieldByName('MaxLevel').AsString;
-		edqtaAllowableClasses.Text := MyQuery.FieldByName('AllowableClasses').AsString;
-		edqtaSourceSpellID.Text := MyQuery.FieldByName('SourceSpellID').AsString;
-		edqtaPrevQuestID.Text := MyQuery.FieldByName('PrevQuestID').AsString;
-		edqtaNextQuestID.Text := MyQuery.FieldByName('NextQuestID').AsString;
-		edqtaExclusiveGroup.Text := MyQuery.FieldByName('ExclusiveGroup').AsString;
-		edqtaBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
-		edqtaRewardMailTemplateID.Text := MyQuery.FieldByName('RewardMailTemplateID').AsString;
-		edqtaRewardMailDelay.Text := MyQuery.FieldByName('RewardMailDelay').AsString;
-		edqtaRequiredSkillID.Text := MyQuery.FieldByName('RequiredSkillID').AsString;
-		edqtaRequiredSkillPoints.Text := MyQuery.FieldByName('RequiredSkillPoints').AsString;
-		edqtaRequiredMinRepFaction.Text := MyQuery.FieldByName('RequiredMinRepFaction').AsString;
-		edqtaRequiredMaxRepFaction.Text := MyQuery.FieldByName('RequiredMaxRepFaction').AsString;
-		edqtaRequiredMinRepValue.Text := MyQuery.FieldByName('RequiredMinRepValue').AsString;
-		edqtaRequiredMaxRepValue.Text := MyQuery.FieldByName('RequiredMaxRepValue').AsString;
-		edqtaProvidedItemCount.Text := MyQuery.FieldByName('ProvidedItemCount').AsString;
-		edqtaSpecialFlags.Text := MyQuery.FieldByName('SpecialFlags').AsString;
+      edqtaID.Text := MyQuery.FieldByName('ID').AsString;
+      edqtaMaxLevel.Text := MyQuery.FieldByName('MaxLevel').AsString;
+      edqtaAllowableClasses.Text := MyQuery.FieldByName('AllowableClasses').AsString;
+      edqtaSourceSpellID.Text := MyQuery.FieldByName('SourceSpellID').AsString;
+      edqtaPrevQuestID.Text := MyQuery.FieldByName('PrevQuestID').AsString;
+      edqtaNextQuestID.Text := MyQuery.FieldByName('NextQuestID').AsString;
+      edqtaExclusiveGroup.Text := MyQuery.FieldByName('ExclusiveGroup').AsString;
+      edqtaBreadcrumbForQuestId.Text := MyQuery.FieldByName('BreadcrumbForQuestId').AsString;
+      edqtaRewardMailTemplateID.Text := MyQuery.FieldByName('RewardMailTemplateID').AsString;
+      edqtaRewardMailDelay.Text := MyQuery.FieldByName('RewardMailDelay').AsString;
+      edqtaRequiredSkillID.Text := MyQuery.FieldByName('RequiredSkillID').AsString;
+      edqtaRequiredSkillPoints.Text := MyQuery.FieldByName('RequiredSkillPoints').AsString;
+      edqtaRequiredMinRepFaction.Text := MyQuery.FieldByName('RequiredMinRepFaction').AsString;
+      edqtaRequiredMaxRepFaction.Text := MyQuery.FieldByName('RequiredMaxRepFaction').AsString;
+      edqtaRequiredMinRepValue.Text := MyQuery.FieldByName('RequiredMinRepValue').AsString;
+      edqtaRequiredMaxRepValue.Text := MyQuery.FieldByName('RequiredMaxRepValue').AsString;
+      edqtaProvidedItemCount.Text := MyQuery.FieldByName('ProvidedItemCount').AsString;
+      edqtaSpecialFlags.Text := MyQuery.FieldByName('SpecialFlags').AsString;
     MyQuery.Close;
 
-	MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=%d', [QuestID]);
-	MyQuery.Open;
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=%d', [QuestID]);
+    MyQuery.Open;
     if (MyQuery.Eof=false) then
-    edqriID.Text := MyQuery.FieldByName('ID').AsString;
-		edqriEmoteOnComplete.Text := MyQuery.FieldByName('EmoteOnComplete').AsString;
-		edqriEmoteOnIncomplete.Text := MyQuery.FieldByName('EmoteOnIncomplete').AsString;
-		edqriCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
-  	edqriVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      edqriID.Text := MyQuery.FieldByName('ID').AsString;
+      edqriEmoteOnComplete.Text := MyQuery.FieldByName('EmoteOnComplete').AsString;
+      edqriEmoteOnIncomplete.Text := MyQuery.FieldByName('EmoteOnIncomplete').AsString;
+      edqriCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
+      edqriVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
-	MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
-	MyQuery.Open;
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
+    MyQuery.Open;
     if (MyQuery.Eof=false) then
-    edqorID.Text := MyQuery.FieldByName('ID').AsString;
-		edqorEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
-		edqorEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
-		edqorEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
-		edqorEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
-		edqorEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
-		edqorEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
-		edqorEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqorEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
-		edqorRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
-    edqorVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      edqorID.Text := MyQuery.FieldByName('ID').AsString;
+      edqorEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
+      edqorEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
+      edqorEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
+      edqorEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
+      edqorEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
+      edqorEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
+      edqorEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
+      edqorEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+      edqorRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
+      edqorVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
-	MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
-	MyQuery.Open;
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
+    MyQuery.Open;
     if (MyQuery.Eof=false) then
-		edqdID.Text := MyQuery.FieldByName('ID').AsString;
-		edqdEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
-		edqdEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
-		edqdEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
-		edqdEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
-		edqdEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
-		edqdEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
-		edqdEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
-		edqdEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
-		edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
+      edqdID.Text := MyQuery.FieldByName('ID').AsString;
+      edqdEmote1.Text := MyQuery.FieldByName('Emote1').AsString;
+      edqdEmote2.Text := MyQuery.FieldByName('Emote2').AsString;
+      edqdEmote3.Text := MyQuery.FieldByName('Emote3').AsString;
+      edqdEmote4.Text := MyQuery.FieldByName('Emote4').AsString;
+      edqdEmoteDelay1.Text := MyQuery.FieldByName('EmoteDelay1').AsString;
+      edqdEmoteDelay2.Text := MyQuery.FieldByName('EmoteDelay2').AsString;
+      edqdEmoteDelay3.Text := MyQuery.FieldByName('EmoteDelay3').AsString;
+      edqdEmoteDelay4.Text := MyQuery.FieldByName('EmoteDelay4').AsString;
+      edqdVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
 
     MyQuery.SQL.Text := Format('SELECT * FROM `quest_mail_sender` WHERE `Questid`=%d', [QuestID]);
-	  MyQuery.Open;
+    MyQuery.Open;
     if (MyQuery.Eof=false) then
       //edqmsQuestId.Text := MyQuery.FieldByName('QuestId').AsString;
-	    edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString
+      edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString
     else edqmsRewardMailSenderEntry.Clear;
     MyQuery.Close;
 
@@ -4712,13 +4712,13 @@ begin
 
     // is creature vendor?
     if npcflag and 128 = 128 then
-		  isvendor := true
+      isvendor := true
     else isvendor := false;
 
     // is creature trainer?
     if npcflag and 16 = 16 then
-		  istrainer := true
-	  else istrainer := false;
+      istrainer := true
+    else istrainer := false;
 
     if MyQuery.FieldByName('entry').AsInteger <> 0 then isEquip:= true else isEquip:= false;
 
@@ -4750,16 +4750,16 @@ begin
      [Entry]),lvctsCreatureTemplateSpell);
 
     if (isvendor=true) then 
-	  begin
-		    LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
-        ' LEFT OUTER JOIN `item_template` i ON i.`entry` = v.`item` WHERE (v.`entry`=%d)',
-        [Entry]),lvcvNPCVendor);
-	  end;
+    begin
+      LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
+      ' LEFT OUTER JOIN `item_template` i ON i.`entry` = v.`item` WHERE (v.`entry`=%d)',
+      [Entry]),lvcvNPCVendor);
+    end;
 
     if (isEquip=true) then
     begin
-		    LoadCreatureEquip(StrToIntDef(edctentry.Text,0));
-	  end;
+      LoadCreatureEquip(StrToIntDef(edctentry.Text,0));
+    end;
 
     if (istrainer=true) then
     begin
@@ -4798,7 +4798,7 @@ begin
     edcoEntry.Text := edctlootid.Text;
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
-    edcventry.Text := IntToStr(Entry);	//vendor
+    edcventry.Text := IntToStr(Entry);    //vendor
 
     MyQuery.SQL.Text := Format('SELECT * FROM `creature_template_locale` WHERE `entry`=%d AND `locale`= ''%s'' ;', [Entry, loc]);
     MyQuery.Open;
@@ -7134,14 +7134,14 @@ begin
     MyQuery.Open;
     if (MyQuery.Eof=false) then
       edgotaentry.Text := edgtentry.Text;
-	   	edgotafaction.Text := MyQuery.FieldByName('faction').AsString;
-		  edgotaflags.Text := MyQuery.FieldByName('flags').AsString;
-	   	edgotamingold.Text := MyQuery.FieldByName('mingold').AsString;
-	   	edgotamaxgold.Text := MyQuery.FieldByName('maxgold').AsString;
-	  	edgotaartkit0.Text := MyQuery.FieldByName('artkit0').AsString;
-	   	edgotaartkit1.Text := MyQuery.FieldByName('artkit1').AsString;
-	   	edgotaartkit2.Text := MyQuery.FieldByName('artkit2').AsString;
-	   	edgotaartkit3.Text := MyQuery.FieldByName('artkit3').AsString;
+      edgotafaction.Text := MyQuery.FieldByName('faction').AsString;
+      edgotaflags.Text := MyQuery.FieldByName('flags').AsString;
+      edgotamingold.Text := MyQuery.FieldByName('mingold').AsString;
+      edgotamaxgold.Text := MyQuery.FieldByName('maxgold').AsString;
+      edgotaartkit0.Text := MyQuery.FieldByName('artkit0').AsString;
+      edgotaartkit1.Text := MyQuery.FieldByName('artkit1').AsString;
+      edgotaartkit2.Text := MyQuery.FieldByName('artkit2').AsString;
+      edgotaartkit3.Text := MyQuery.FieldByName('artkit3').AsString;
     MyQuery.Close;
 
     LoadQueryToListView(Format('SELECT `guid`, `id`, `map`, `position_x`,'+
@@ -8184,7 +8184,7 @@ begin
       SubItems[8] := TCustomEdit(FindComponent(pfx + 'event_param2')).Text;
       SubItems[9] := TCustomEdit(FindComponent(pfx + 'event_param3')).Text;
       SubItems[10] := TCustomEdit(FindComponent(pfx + 'event_param4')).Text;
-  	  SubItems[11] := TCustomEdit(FindComponent(pfx + 'event_param5')).Text;
+      SubItems[11] := TCustomEdit(FindComponent(pfx + 'event_param5')).Text;
       SubItems[12] := TCustomEdit(FindComponent(pfx + 'action_type')).Text;
       SubItems[13] := TCustomEdit(FindComponent(pfx + 'action_param1')).Text;
       SubItems[14] := TCustomEdit(FindComponent(pfx + 'action_param2')).Text;
@@ -8196,7 +8196,7 @@ begin
       SubItems[20] := TCustomEdit(FindComponent(pfx + 'target_param1')).Text;
       SubItems[21] := TCustomEdit(FindComponent(pfx + 'target_param2')).Text;
       SubItems[22] := TCustomEdit(FindComponent(pfx + 'target_param3')).Text;
-	    SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_param4')).Text;
+      SubItems[23] := TCustomEdit(FindComponent(pfx + 'target_param4')).Text;
       SubItems[24] := TCustomEdit(FindComponent(pfx + 'target_x')).Text;
       SubItems[25] := TCustomEdit(FindComponent(pfx + 'target_y')).Text;
       SubItems[26] := TCustomEdit(FindComponent(pfx + 'target_z')).Text;
@@ -8302,7 +8302,7 @@ begin
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param1')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param2')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param3')).Text);
-	  SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param4')).Text);
+    SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_param4')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_x')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_y')).Text);
     SubItems.Add(TCustomEdit(FindComponent(pfx + 'target_z')).Text);
@@ -8652,10 +8652,10 @@ begin
   begin
       Memo.Text := Format('DELETE FROM `%0:s` WHERE (`entryorguid`=%1:s AND `source_type`=%2:s);'#13#10+
         'INSERT INTO `%0:s` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, '+
-            	'`event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, '+
-            	'`action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, '+
-            	'`action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, '+
-            	'`target_y`, `target_z`, `target_o`, `comment`) VALUES '#13#10'%3:s',[TableName, entry, sourcetype, Values]);
+        '`event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `event_param5`, '+
+        '`action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, '+
+        '`action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_param4`, `target_x`, '+
+        '`target_y`, `target_z`, `target_o`, `comment`) VALUES '#13#10'%3:s',[TableName, entry, sourcetype, Values]);
   end
   else
     Memo.Text := Format('DELETE FROM `%s` WHERE (`entryorguid`=%s AND `source_type`=%s);', [TableName, entry, sourcetype]);
@@ -8714,8 +8714,8 @@ begin
   begin
       Memo.Text := Format('DELETE FROM `%0:s` WHERE (`SourceTypeOrReferenceId`=%1:s AND `SourceGroup`=%2:s AND `SourceEntry`=%3:s);'#13#10+
         'INSERT INTO `%0:s` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, '+
-            	'`ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, '+
-            	'`ScriptName`, `Comment`) VALUES '#13#10'%4:s',[TableName, SourceTypeOrReferenceId, SourceGroup, SourceEntry, Values]);
+        '`ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, '+
+        '`ScriptName`, `Comment`) VALUES '#13#10'%4:s',[TableName, SourceTypeOrReferenceId, SourceGroup, SourceEntry, Values]);
   end
   else
     Memo.Text := Format('DELETE FROM `%s` WHERE (`SourceTypeOrReferenceId`=%s AND `SourceGroup`=%s AND `SourceEntry`=%s);', [TableName, SourceTypeOrReferenceId, SourceGroup, SourceEntry]);
@@ -8776,8 +8776,8 @@ end;
 procedure TMainForm.btgtGotoSmartAIClick(Sender: TObject);
 begin
   edcyentryorguid.Text := edgtentry.Text;
-	edcysource_type.Text := '1';
-	PageControl1.ActivePageIndex := 4;
+  edcysource_type.Text := '1';
+  PageControl1.ActivePageIndex := 4;
   btcyLoadClick(Sender);
 end;
 
@@ -10522,15 +10522,15 @@ begin
     edcttGroupID.Text := Item.SubItems[0];
     edcttID.Text := Item.SubItems[1];
     edcttText.Text := Item.SubItems[2];
-	edcttType.Text := Item.SubItems[3];
-	edcttLanguage.Text := Item.SubItems[4];
-	edcttProbability.Text := Item.SubItems[5];
-	edcttEmote.Text := Item.SubItems[6];
-	edcttDuration.Text := Item.SubItems[7];
-	edcttSound.Text := Item.SubItems[8];
-	edcttBroadcastTextId.Text := Item.SubItems[9];
-	edcttTextRange.Text := Item.SubItems[10];
-	edcttcomment.Text := Item.SubItems[11];
+    edcttType.Text := Item.SubItems[3];
+    edcttLanguage.Text := Item.SubItems[4];
+    edcttProbability.Text := Item.SubItems[5];
+    edcttEmote.Text := Item.SubItems[6];
+    edcttDuration.Text := Item.SubItems[7];
+    edcttSound.Text := Item.SubItems[8];
+    edcttBroadcastTextId.Text := Item.SubItems[9];
+    edcttTextRange.Text := Item.SubItems[10];
+    edcttcomment.Text := Item.SubItems[11];
   end;
 end;
 
@@ -11445,7 +11445,7 @@ begin
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := 'condition';
-		        lbcyevent_param5.Caption := '';
+            lbcyevent_param5.Caption := '';
             lbcyevent_type.Hint := 'val1,val2,val3 (?)';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
@@ -11508,7 +11508,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := ' 	On Player/NPC Left Creature (Vehicle)';
+            lbcyevent_type.Hint := 'On Player/NPC Left Creature (Vehicle)';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     29:  //SMART_EVENT_CHARMED
@@ -11937,7 +11937,7 @@ begin
             lbcyevent_param3.Caption := '';
             lbcyevent_param4.Caption := '';
             lbcyevent_param5.Caption := '';
-            lbcyevent_type.Hint := ' 	State (0 - Active, 1 - Ready, 2 - Active alternative) ';
+            lbcyevent_type.Hint := 'State (0 - Active, 1 - Ready, 2 - Active alternative)';
             edcyevent_type.Hint := lbcyevent_type.Hint;
         end;
     71:  //SMART_EVENT_GO_EVENT_INFORM
@@ -12121,7 +12121,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     1:  //SOURCE_TYPE_CREATURE_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12129,7 +12129,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     2:  //OURCE_TYPE_DISENCHANT_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12137,7 +12137,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     3:  //SOURCE_TYPE_FISHING_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12145,7 +12145,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     4:  //SOURCE_TYPE_GAMEOBJECT_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12153,7 +12153,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     5:  //SOURCE_TYPE_ITEM_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12161,7 +12161,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     6:  //SOURCE_TYPE_MAIL_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12169,7 +12169,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     7:  //SOURCE_TYPE_MILLING_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12177,7 +12177,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     8:  //SOURCE_TYPE_PICKPOCKETING_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12185,7 +12185,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     9:  //SOURCE_TYPE_PROSPECTING_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12193,7 +12193,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     10: //SOURCE_TYPE_REFERENCE_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12201,7 +12201,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     11: //SOURCE_TYPE_SKINNING_LOOT_TEMPLATE
-    	begin
+        begin
             lbcSourceGroup.Caption := 'loot entry';
             lbcSourceEntry.Caption := 'item id';
             lbcConditionTarget.Caption := '';
@@ -12272,7 +12272,7 @@ begin
             edcConditionTarget.Hint := lbcConditionTarget.Hint;
         end;
     19: //SOURCE_TYPE_QUEST_ACCEPT
-    	begin
+        begin
             lbcSourceGroup.Caption := '?';
             lbcSourceEntry.Caption := 'quest_id';
             lbcConditionTarget.Caption := '';
@@ -12280,7 +12280,7 @@ begin
             edcSourceTypeOrReferenceId.Hint := lbcSourceTypeOrReferenceId.Hint;
         end;
     20: //SOURCE_TYPE_QUEST_SHOW_MARK
-    	begin
+        begin
             lbcSourceGroup.Caption := '?';
             lbcSourceEntry.Caption := 'quest_id';
             lbcConditionTarget.Caption := '';
@@ -13266,7 +13266,7 @@ begin
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_param2.Hint := 'If you want the NPC to say %s calls for help! Use 1 on param2, 0 for no message.';
             edcyaction_param2.Hint := lbcyaction_param2.Hint;
-            lbcyaction_type.Hint := ' 	Emote: ''%s calls for help!';
+            lbcyaction_type.Hint := 'Emote: ''%s calls for help!';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     40:  //SMART_ACTION_SET_SHEATH
@@ -13501,7 +13501,7 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := ' 	Only works for creatures with inhabit air.';
+            lbcyaction_type.Hint := 'Only works for creatures with inhabit air.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     61:  //SMART_ACTION_SET_SWIMM
@@ -13750,7 +13750,7 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := ' 	Add npcflags to creature taget';
+            lbcyaction_type.Hint := 'Add npcflags to creature taget';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     83:  //SMART_ACTION_REMOVE_NPC_FLAG
@@ -14833,7 +14833,7 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := ' 	Closest player within specified range.';
+            lbcytarget_type.Hint := 'Closest player within specified range.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     22:  //SMART_TARGET_ACTION_INVOKER_VEHICLE
