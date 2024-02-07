@@ -14908,10 +14908,10 @@ begin
         end;
     3:  //SMART_TARGET_HOSTILE_SECOND_AGGRO
         begin
-            lbcytarget_param1.Caption := '';
-            lbcytarget_param2.Caption := '';
-            lbcytarget_param3.Caption := '';
-            lbcytarget_param4.Caption := '';
+            lbcytarget_param1.Caption := 'Max Range (0: Unlimited)';
+            lbcytarget_param2.Caption := 'Player Only (0/1)';
+            lbcytarget_param3.Caption := 'Power Type + 1';
+            lbcytarget_param4.Caption := 'Missing Aura';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
@@ -14921,10 +14921,10 @@ begin
         end;
     4:  //SMART_TARGET_HOSTILE_LAST_AGGRO
         begin
-            lbcytarget_param1.Caption := '';
-            lbcytarget_param2.Caption := '';
-            lbcytarget_param3.Caption := '';
-            lbcytarget_param4.Caption := '';
+            lbcytarget_param1.Caption := 'Max Range (0: Unlimited)';
+            lbcytarget_param2.Caption := 'Player Only (0/1)';
+            lbcytarget_param3.Caption := 'Power Type + 1';
+            lbcytarget_param4.Caption := 'Missing Aura';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
@@ -14934,10 +14934,10 @@ begin
         end;
     5:  //SMART_TARGET_HOSTILE_RANDOM
         begin
-            lbcytarget_param1.Caption := '';
-            lbcytarget_param2.Caption := '';
-            lbcytarget_param3.Caption := '';
-            lbcytarget_param4.Caption := '';
+            lbcytarget_param1.Caption := 'Max Range (0: Unlimited)';
+            lbcytarget_param2.Caption := 'Player Only (0/1)';
+            lbcytarget_param3.Caption := 'Power Type + 1';
+            lbcytarget_param4.Caption := 'Missing Aura';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
@@ -14947,10 +14947,10 @@ begin
         end;
     6:  //SMART_TARGET_HOSTILE_RANDOM_NOT_TOP
         begin
-            lbcytarget_param1.Caption := '';
-            lbcytarget_param2.Caption := '';
-            lbcytarget_param3.Caption := '';
-            lbcytarget_param4.Caption := '';
+            lbcytarget_param1.Caption := 'Max Range (0: Unlimited)';
+            lbcytarget_param2.Caption := 'Player Only (0/1)';
+            lbcytarget_param3.Caption := 'Power Type + 1';
+            lbcytarget_param4.Caption := 'Missing Aura';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
@@ -14981,7 +14981,7 @@ begin
             lbcytarget_y.Caption := 'y';
             lbcytarget_z.Caption := 'z';
             lbcytarget_o.Caption := 'o';
-            lbcytarget_type.Hint := 'Use xyz from event params';
+            lbcytarget_type.Hint := 'Use xyzo from event params';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     9:  //SMART_TARGET_CREATURE_RANGE
@@ -14989,37 +14989,43 @@ begin
             lbcytarget_param1.Caption := 'Creature Entry (0 any)';
             lbcytarget_param2.Caption := 'minDist';
             lbcytarget_param3.Caption := 'maxDist';
-            lbcytarget_param4.Caption := 'Number of targets (0 all)';
+            lbcytarget_param4.Caption := 'Alive State (0,1,2)';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_param4.Hint := '1 alive, 2 dead, 0 both';
+            edcytarget_param4.Hint := lbcytarget_param4.Hint;
+            lbcytarget_type.Hint := 'All creatures with the specified ID within the specified range and the specified alive state.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     10:  //SMART_TARGET_CREATURE_GUID
         begin
-            lbcytarget_param1.Caption := 'guid';
-            lbcytarget_param2.Caption := 'entry';
-            lbcytarget_param3.Caption := '';
+            lbcytarget_param1.Caption := 'creature.guid';
+            lbcytarget_param2.Caption := 'Creature Entry';
+            lbcytarget_param3.Caption := 'getFromHashMap 0/1';
             lbcytarget_param4.Caption := '';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_param3.Hint := 'this does not work in instances';
+            edcytarget_param3.Hint := lbcytarget_param3.Hint;
+            lbcytarget_type.Hint := 'Creature with specified GUID and/or specified creature template ID.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     11:  //SMART_TARGET_CREATURE_DISTANCE
         begin
             lbcytarget_param1.Caption := 'Creature Entry (0 any)';
             lbcytarget_param2.Caption := 'maxDist';
-            lbcytarget_param3.Caption := 'Number of targets (0 all)';
+            lbcytarget_param3.Caption := 'Alive state (0,1,2)';
             lbcytarget_param4.Caption := '';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
+            lbcytarget_param3.Hint := '1 alive, 2 dead, 0 both';
+            edcytarget_param3.Hint := lbcytarget_param3.Hint;
             lbcytarget_type.Hint := '';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
@@ -15038,41 +15044,43 @@ begin
         end;
     13:  //SMART_TARGET_GAMEOBJECT_RANGE
         begin
-            lbcytarget_param1.Caption := 'goEntry (0 any)';
+            lbcytarget_param1.Caption := 'GO entry (0 any)';
             lbcytarget_param2.Caption := 'minDist';
             lbcytarget_param3.Caption := 'maxDist';
-            lbcytarget_param4.Caption := 'Number of targets (0 all)';
+            lbcytarget_param4.Caption := '';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'All game objects with the specified ID within the specified range.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     14:  //SMART_TARGET_GAMEOBJECT_GUID
         begin
-            lbcytarget_param1.Caption := 'guid';
-            lbcytarget_param2.Caption := 'entry';
+            lbcytarget_param1.Caption := 'GO guid';
+            lbcytarget_param2.Caption := 'GO entry';
+            lbcytarget_param3.Caption := 'getFromHashMap 0/1';
+            lbcytarget_param4.Caption := '';
+            lbcytarget_x.Caption := '';
+            lbcytarget_y.Caption := '';
+            lbcytarget_z.Caption := '';
+            lbcytarget_o.Caption := '';
+            lbcytarget_param3.Hint := 'this does not work in instances';
+            edcytarget_param3.Hint := lbcytarget_param3.Hint;
+            lbcytarget_type.Hint := ' Object with specified GUID and/or specified game object template ID.';
+            edcytarget_type.Hint := lbcytarget_type.Hint;
+        end;
+    15:  //SMART_TARGET_GAMEOBJECT_DISTANCE
+        begin
+            lbcytarget_param1.Caption := 'GO Entry (0 any)';
+            lbcytarget_param2.Caption := 'maxDist';
             lbcytarget_param3.Caption := '';
             lbcytarget_param4.Caption := '';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
-            edcytarget_type.Hint := lbcytarget_type.Hint;
-        end;
-    15:  //SMART_TARGET_GAMEOBJECT_DISTANCE
-        begin
-            lbcytarget_param1.Caption := 'goEntry (0 any)';
-            lbcytarget_param2.Caption := 'maxDist';
-            lbcytarget_param3.Caption := 'Number of targets (0 all)';
-            lbcytarget_param4.Caption := '';
-            lbcytarget_x.Caption := '';
-            lbcytarget_y.Caption := '';
-            lbcytarget_z.Caption := '';
-            lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'All objects with the specified ID within the specified distance.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     16:  //SMART_TARGET_INVOKER_PARTY
@@ -15092,13 +15100,13 @@ begin
         begin
             lbcytarget_param1.Caption := 'minDist';
             lbcytarget_param2.Caption := 'maxDist';
-            lbcytarget_param3.Caption := '';
+            lbcytarget_param3.Caption := 'maxCount';
             lbcytarget_param4.Caption := '';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'All players up to maxCount within the specified range. Excluding GMs and Dead.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     18:  //SMART_TARGET_PLAYER_DISTANCE
@@ -15111,14 +15119,14 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := ' All players within the specified distance.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     19:  //SMART_TARGET_CLOSEST_CREATURE
         begin
             lbcytarget_param1.Caption := 'Creature Entry (0 any)';
             lbcytarget_param2.Caption := 'maxDist';
-            lbcytarget_param3.Caption := 'dead? (0/1)';
+            lbcytarget_param3.Caption := 'dead (0/1)';
             lbcytarget_param4.Caption := '';
             lbcytarget_x.Caption := '';
             lbcytarget_y.Caption := '';
@@ -15126,12 +15134,12 @@ begin
             lbcytarget_o.Caption := '';
             lbcytarget_param2.Hint := 'param2 = 0 -> 100 yards';
             edcytarget_param2.Hint := lbcytarget_param2.Hint;
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'Closest creature with the specified ID within the specified range.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     20:  //SMART_TARGET_CLOSEST_GAMEOBJECT
         begin
-            lbcytarget_param1.Caption := 'goEntry (0 any)';
+            lbcytarget_param1.Caption := 'GO Entry (0 any)';
             lbcytarget_param2.Caption := 'maxDist';
             lbcytarget_param3.Caption := '';
             lbcytarget_param4.Caption := '';
@@ -15141,7 +15149,7 @@ begin
             lbcytarget_o.Caption := '';
             lbcytarget_param2.Hint := 'param2 = 0 -> 100 yards';
             edcytarget_param2.Hint := lbcytarget_param2.Hint;
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := ' Closest object with specified ID within specified range.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     21:  //SMART_TARGET_CLOSEST_PLAYER
@@ -15154,7 +15162,7 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'Closest player within specified range.';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     22:  //SMART_TARGET_ACTION_INVOKER_VEHICLE
@@ -15172,7 +15180,7 @@ begin
         end;
     23:  //SMART_TARGET_OWNER_OR_SUMMONER
         begin
-            lbcytarget_param1.Caption := '';
+            lbcytarget_param1.Caption := 'use owner of owner 0/1';
             lbcytarget_param2.Caption := '';
             lbcytarget_param3.Caption := '';
             lbcytarget_param4.Caption := '';
@@ -15185,7 +15193,7 @@ begin
         end;
     24:  //SMART_TARGET_THREAT_LIST
         begin
-            lbcytarget_param1.Caption := '';
+            lbcytarget_param1.Caption := 'maxDist (0 any)';
             lbcytarget_param2.Caption := '';
             lbcytarget_param3.Caption := '';
             lbcytarget_param4.Caption := '';
@@ -15193,7 +15201,7 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := 'All units on creature''s threat list';
+            lbcytarget_type.Hint := 'All units on creature''s threat list within the specified distance if maxDist > 0';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     25:  //SMART_TARGET_CLOSEST_ENEMY
@@ -15206,9 +15214,9 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_param1.Hint := 'Any attackable target (creature or player) within maxDist';
+            lbcytarget_param1.Hint := '';
             edcytarget_param1.Hint := lbcytarget_param1.Hint;
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'Any attackable target (creature or player) within maxDist';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     26:  //SMART_TARGET_CLOSEST_FRIENDLY
@@ -15221,9 +15229,9 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_param1.Hint := 'Any friendly unit (creature, player or pet) within maxDist';
+            lbcytarget_param1.Hint := '';
             edcytarget_param1.Hint := lbcytarget_param1.Hint;
-            lbcytarget_type.Hint := '';
+            lbcytarget_type.Hint := 'Any friendly unit (creature, player or pet) within maxDist';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     27:  //SMART_TARGET_LOOT_RECIPIENTS
@@ -15236,7 +15244,7 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_type.Hint := 'All tagging players';
+            lbcytarget_type.Hint := 'All players that have tagged this creature (for kill credit)';
             edcytarget_type.Hint := lbcytarget_type.Hint;
         end;
     28:  //SMART_TARGET_FARTHEST
@@ -15262,7 +15270,7 @@ begin
             lbcytarget_y.Caption := '';
             lbcytarget_z.Caption := '';
             lbcytarget_o.Caption := '';
-            lbcytarget_param1.Hint := 'Vehicle can target unit in given seat, 0=all seats';
+            lbcytarget_param1.Hint := 'vehicle can target it''s own accessory';
             edcytarget_param1.Hint := lbcytarget_param1.Hint;
             lbcytarget_type.Hint := '';
             edcytarget_type.Hint := lbcytarget_type.Hint;
@@ -15271,7 +15279,6 @@ begin
         begin
             lbcytarget_type.Hint := 'Target players with or without aura';
             edcytarget_type.Hint := lbcytarget_type.Hint;
-
             lbcytarget_param1.Caption := 'Spell ID';
             lbcytarget_param2.Caption := 'Negative (0/1)';
             lbcytarget_param3.Caption := 'MaxDist';
