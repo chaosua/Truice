@@ -11197,7 +11197,7 @@ begin
             lbcyevent_param1.Caption := 'CooldownMin';
             lbcyevent_param2.Caption := 'CooldownMax';
             lbcyevent_param3.Caption := 'Player only (0/1)';
-            lbcyevent_param4.Caption := 'CreatureEntry';
+            lbcyevent_param4.Caption := 'Creature Entry';
             lbcyevent_param5.Caption := '';
             lbcyevent_param6.Caption := '';
             lbcyevent_param3.Hint := 'Player if 1, Creature if 0';
@@ -11231,7 +11231,7 @@ begin
         end;
     8:  //SMART_EVENT_SPELLHIT
         begin
-            lbcyevent_param1.Caption := 'SpellID';
+            lbcyevent_param1.Caption := 'Spell ID';
             lbcyevent_param2.Caption := 'School';
             lbcyevent_param3.Caption := 'CooldownMin';
             lbcyevent_param4.Caption := 'CooldownMax';
@@ -11292,7 +11292,7 @@ begin
         begin
             lbcyevent_param1.Caption := 'RepeatMin';
             lbcyevent_param2.Caption := 'RepeatMax';
-            lbcyevent_param3.Caption := 'Spellid';
+            lbcyevent_param3.Caption := 'Spell ID';
             lbcyevent_param4.Caption := '';
             lbcyevent_param5.Caption := '';
             lbcyevent_param6.Caption := '';
@@ -11325,7 +11325,7 @@ begin
         end;
     16:  //SMART_EVENT_FRIENDLY_MISSING_BUFF
         begin
-            lbcyevent_param1.Caption := 'SpellId';
+            lbcyevent_param1.Caption := 'Spell ID';
             lbcyevent_param2.Caption := 'Radius';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
@@ -11358,7 +11358,7 @@ begin
         end;
     19:  //SMART_EVENT_ACCEPTED_QUEST
         begin
-            lbcyevent_param1.Caption := 'QuestID (0 any)';
+            lbcyevent_param1.Caption := 'Quest ID (0 any)';
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
@@ -11369,7 +11369,7 @@ begin
         end;
     20:  //SMART_EVENT_REWARD_QUEST
         begin
-            lbcyevent_param1.Caption := 'QuestID (0 any)';
+            lbcyevent_param1.Caption := 'Quest ID (0 any)';
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
@@ -11391,7 +11391,7 @@ begin
         end;
     22:  //SMART_EVENT_RECEIVE_EMOTE
         begin
-            lbcyevent_param1.Caption := 'EmoteId';
+            lbcyevent_param1.Caption := 'Emote ID';
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
@@ -11402,7 +11402,7 @@ begin
         end;
     23:  //SMART_EVENT_HAS_AURA
         begin
-            lbcyevent_param1.Caption := 'SpellID';
+            lbcyevent_param1.Caption := 'Spell ID';
             lbcyevent_param2.Caption := 'Stacks';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
@@ -11413,7 +11413,7 @@ begin
         end;
     24:  //SMART_EVENT_TARGET_BUFFED
         begin
-            lbcyevent_param1.Caption := 'SpellID';
+            lbcyevent_param1.Caption := 'Spell ID';
             lbcyevent_param2.Caption := 'Stacks';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
@@ -11494,7 +11494,7 @@ begin
         end;
     31:  //SMART_EVENT_SPELLHIT_TARGET
         begin
-            lbcyevent_param1.Caption := 'SpellId';
+            lbcyevent_param1.Caption := 'Spell ID';
             lbcyevent_param2.Caption := 'School';
             lbcyevent_param3.Caption := 'RepeatMin';
             lbcyevent_param4.Caption := 'RepeatMax';
@@ -12030,7 +12030,7 @@ begin
         end;
     82:  //SMART_EVENT_SUMMONED_UNIT_DIES
         begin
-            lbcyevent_param1.Caption := 'CreatureId (0 all)';
+            lbcyevent_param1.Caption := 'Creature Entry (0 all)';
             lbcyevent_param2.Caption := 'CooldownMin';
             lbcyevent_param3.Caption := 'CooldownMax';
             lbcyevent_param4.Caption := '';
@@ -12179,7 +12179,7 @@ begin
         end;
     107:  //SMART_EVENT_SUMMONED_UNIT_EVADE
         begin
-            lbcyevent_param1.Caption := 'CreatureId (0 all)';
+            lbcyevent_param1.Caption := 'Creature Entry (0 all)';
             lbcyevent_param1.Hint := '';
             edcyevent_param1.Hint := lbcyevent_param1.Hint;
             lbcyevent_param2.Caption := 'CooldownMin';
@@ -12339,7 +12339,7 @@ begin
     16: //SOURCE_TYPE_CREATURE_TEMPLATE_VEHICLE
         begin
             lbcSourceGroup.Caption := '';
-            lbcSourceEntry.Caption := 'creature_template.entry';
+            lbcSourceEntry.Caption := 'Creature Entry';
             lbcConditionTarget.Caption := '0 or 1';
             lbcConditionTarget.Hint := '0 - Player riding a vehicle; 1 - Vehicle creature';
             edcConditionTarget.Hint := lbcConditionTarget.Hint;
@@ -12383,7 +12383,7 @@ begin
         end;
     21: //SOURCE_TYPE_VEHICLE_SPELL
         begin
-            lbcSourceGroup.Caption := 'creature_template.entry';
+            lbcSourceGroup.Caption := 'Creature Entry';
             lbcSourceEntry.Caption := 'spell id';
             lbcConditionTarget.Caption := '0 or 1';
             lbcConditionTarget.Hint := '0 - Player for which spell bar is shown; 1 - Vehicle creature';
@@ -12404,9 +12404,9 @@ begin
         end;
     23: //SOURCE_TYPE_NPC_VENDOR
         begin
-            lbcSourceGroup.Caption := 'creature_template.entry';
+            lbcSourceGroup.Caption := 'Creature Entry';
             lbcSourceEntry.Caption := 'npc_vendor.entry';
-            lbcSourceId.Caption := 'item_template.entry';
+            lbcSourceId.Caption := 'Item Entry';
             lbcSourceId.Font.Color := clRed;
             lbcSourceId.Font.Style := [fsbold];
             lbcConditionTarget.Caption := '0 or 1';
@@ -12841,12 +12841,14 @@ begin
         begin
             lbcyaction_param1.Caption := 'creature_text.groupid';
             lbcyaction_param2.Caption := 'duration (in ms)';
-            lbcyaction_param3.Caption := '';
+            lbcyaction_param3.Caption := 'talktype (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_param2.Hint := 'Duration to wait before SMART_EVENT_TEXT_OVER event is triggered';
             edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param3.Hint := '0 It will try to trigger talk of the target'#13#10'1 Set target as talk target (used for $vars in texts and whisper target)';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -12858,29 +12860,29 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Sets faction to creature.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     3:  //SMART_ACTION_MORPH_TO_ENTRY_OR_MODEL
         begin
-            lbcyaction_param1.Caption := 'CreatureID';
+            lbcyaction_param1.Caption := 'Creature Entry';
             lbcyaction_param2.Caption := 'ModelID';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'Take DisplayID of creature (param1) OR Turn to DisplayID (param2) OR Both = 0 for Demorph';
+            lbcyaction_param1.Hint := '';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
-            lbcyaction_param2.Hint := 'Take DisplayID of creature (param1) OR Turn to DisplayID (param2) OR Both = 0 for Demorph';
+            lbcyaction_param2.Hint := '';
             edcyaction_param2.Hint := lbcyaction_param1.Hint;
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'ake DisplayID of creature (param1) OR Turn to DisplayID (param2) OR Both = 0 for Demorph';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     4:  //SMART_ACTION_SOUND
         begin
             lbcyaction_param1.Caption := 'Sound id';
             lbcyaction_param2.Caption := 'onlySelf (0/1)';
-            lbcyaction_param3.Caption := 'Distance (0/1)';
+            lbcyaction_param3.Caption := 'TextRange (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
@@ -12895,7 +12897,7 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'Play Emote';
+            lbcyaction_type.Hint := 'Makes the target perform an Emote';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     6:  //SMART_ACTION_FAIL_QUEST
@@ -12922,14 +12924,15 @@ begin
         end;
     8:  //SMART_ACTION_SET_REACT_STATE
         begin
-            lbcyaction_param1.Caption := 'State';
+            lbcyaction_param1.Caption := 'ReactState';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'React State. Can be aggressive (0), defensive (1) or passive (2).';
+            lbcyaction_type.Hint := 'React State. Can be Passive (0), Defensive (1), Aggressive (2).';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            edcyaction_param1.Hint := lbcyaction_type.Hint;
         end;
     9:  //SMART_ACTION_ACTIVATE_GOBJECT
         begin
@@ -12944,41 +12947,43 @@ begin
         end;
     10:  //SMART_ACTION_RANDOM_EMOTE
         begin
-            lbcyaction_param1.Caption := 'EmoteId1';
-            lbcyaction_param2.Caption := 'EmoteId2';
-            lbcyaction_param3.Caption := 'EmoteId3';
-            lbcyaction_param4.Caption := 'EmoteId4';
-            lbcyaction_param5.Caption := 'EmoteId5';
-            lbcyaction_param6.Caption := 'EmoteId6';
+            lbcyaction_param1.Caption := 'Emote ID1';
+            lbcyaction_param2.Caption := 'Emote ID2';
+            lbcyaction_param3.Caption := 'Emote ID3';
+            lbcyaction_param4.Caption := 'Emote ID4';
+            lbcyaction_param5.Caption := 'Emote ID5';
+            lbcyaction_param6.Caption := 'Emote ID6';
             lbcyaction_type.Hint := 'Play Random Emote';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     11:  //SMART_ACTION_CAST
         begin
-            lbcyaction_param1.Caption := 'SpellId';
+            lbcyaction_param1.Caption := 'Spell ID';
             lbcyaction_param2.Caption := 'CastFlags';
-            lbcyaction_param3.Caption := '';
-            lbcyaction_param4.Caption := '';
+            lbcyaction_param3.Caption := 'triggeredFlags';
+            lbcyaction_param4.Caption := 'limitTargets (0 all)';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'Cast Spell ID at Target';
+            lbcyaction_type.Hint := 'Cast Spell ID at Target(s)';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     12:  //SMART_ACTION_SUMMON_CREATURE
         begin
-            lbcyaction_param1.Caption := 'CreatureID';
+            lbcyaction_param1.Caption := 'Creature Entry';
             lbcyaction_param2.Caption := 'Summon type';
             lbcyaction_param3.Caption := 'duration in ms';
-            lbcyaction_param4.Caption := 'StorageID (always 0)';
-            lbcyaction_param5.Caption := 'attackInvoker';
+            lbcyaction_param4.Caption := 'attackInvoker (0/1/2)';
+            lbcyaction_param5.Caption := 'attackScriptOwner (0/1)';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'Summon Unit';
+            lbcyaction_type.Hint := 'Summon Unit; attackInvoker 1: attack target; attackInvoker 2: attack actual invoker';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            lbcyaction_param4.Hint := '1: attack target; 2: attack actual invoker';
+            edcyaction_param4.Hint := lbcyaction_type.Hint;
         end;
     13:  //SMART_ACTION_THREAT_SINGLE_PCT
         begin
-            lbcyaction_param1.Caption := 'Threat%';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param1.Caption := 'Threat% inc';
+            lbcyaction_param2.Caption := 'Threat% dec';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -12988,8 +12993,8 @@ begin
         end;
     14:  //SMART_ACTION_THREAT_ALL_PCT
         begin
-            lbcyaction_param1.Caption := 'Threat%';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param1.Caption := 'Threat% inc';
+            lbcyaction_param2.Caption := 'Threat% dec';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -12999,7 +13004,7 @@ begin
         end;
     15:  //SMART_ACTION_CALL_AREAEXPLOREDOREVENTHAPPENS
         begin
-            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param1.Caption := 'Quest ID';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13010,10 +13015,18 @@ begin
         end;
     16:  //SMART_ACTION_UNUSED_16
         begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     17:  //SMART_ACTION_SET_EMOTE_STATE
         begin
-            lbcyaction_param1.Caption := 'emoteID';
+            lbcyaction_param1.Caption := 'Emote ID';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13024,33 +13037,35 @@ begin
         end;
     18:  //SMART_ACTION_SET_UNIT_FLAG
         begin
-            lbcyaction_param1.Caption := 'creature_template.unit_flags';
-            lbcyaction_param2.Caption := 'Type. If 0, targets creature_template.unit_flags, if > 0, targets creature_template.unit_flags2';
+            lbcyaction_param1.Caption := 'unit_flags /unit_flags2';
+            lbcyaction_param2.Caption := 'Flags Type (0/1)';
+            lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'may be more than one field OR''d together';
+            lbcyaction_param1.Hint := '0: creature_template.unit_flags'#13#10'1: creature_template.unit_flags2';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'Can set Multi-able flags at once';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     19:  //SMART_ACTION_REMOVE_UNIT_FLAG
         begin
-            lbcyaction_param1.Caption := 'unit_flags';
-            lbcyaction_param2.Caption := 'Type. If 0, targets creature_template.unit_flags, if > 0, targets creature_template.unit_flags2';
+            lbcyaction_param1.Caption := 'unit_flags /unit_flags2';
+            lbcyaction_param2.Caption := 'Flags Type (0/1)';
+            lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'may be more than one field OR''d together';
+            lbcyaction_param1.Hint := '0: creature_template.unit_flags'#13#10'1: creature_template.unit_flags2';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'Can Remove Multi-able flags at once';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     20:  //SMART_ACTION_AUTO_ATTACK
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'AllowAttackState  0/1';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13063,7 +13078,7 @@ begin
         end;
     21:  //SMART_ACTION_ALLOW_COMBAT_MOVEMENT
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'AllowCombatMovement  0/1';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13084,20 +13099,20 @@ begin
             lbcyaction_param6.Caption := '';
             lbcyaction_param1.Hint := 'smart_scripts.event_phase_mask';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Set event phase 0-12 (the actual values, no bit mask!)';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     23:  //SMART_ACTION_INC_EVENT_PHASE
         begin
-            lbcyaction_param1.Caption := 'Value';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param1.Caption := 'Increment';
+            lbcyaction_param2.Caption := 'Decrement';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'may be negative to decrement phase, should not be 0';
+            lbcyaction_param1.Hint := '';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Set param1 OR param2 (not both). Value 0 has no effect.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     24:  //SMART_ACTION_EVADE
@@ -13113,20 +13128,20 @@ begin
         end;
     25:  //SMART_ACTION_FLEE_FOR_ASSIST
         begin
-            lbcyaction_param1.Caption := '0 / 1. 0 = no "<name> starts fleeing" messages, 1 = message.';
+            lbcyaction_param1.Caption := 'Message 0/1';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'If you want the fleeing NPC to say [%s attempts to run away in fear!] on flee, use 1 on param1. 0 for no message.';
+            lbcyaction_param1.Hint := 'If you want the fleeing NPC to say attempts to flee text on flee, use 1 on param1. For no message use 0.';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'If you want the fleeing NPC to say ''%s attempts to run away in fear'' on flee, use 1 on param1. 0 for no message.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     26:  //SMART_ACTION_CALL_GROUPEVENTHAPPENS
         begin
-            lbcyaction_param1.Caption := 'QuestID';
+            lbcyaction_param1.Caption := 'Quest ID';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13135,19 +13150,29 @@ begin
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
-    27:  //NONE
+    27:  //SMART_ACTION_COMBAT_STOP
         begin
+            lbcyaction_param1.Caption := '';
+            lbcyaction_param2.Caption := '';
+            lbcyaction_param3.Caption := '';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
+            lbcyaction_param6.Caption := '';
+            lbcyaction_type.Hint := '';
+            edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     28:  //SMART_ACTION_REMOVEAURASFROMSPELL
         begin
-            lbcyaction_param1.Caption := 'Spellid';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param1.Caption := 'Spell ID';
+            lbcyaction_param2.Caption := 'charges ';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_param1.Hint := '0 removes all auras';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_param2.Hint := '0 removes all aura';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -13155,7 +13180,7 @@ begin
         begin
             lbcyaction_param1.Caption := 'Distance';
             lbcyaction_param2.Caption := 'Angle';
-            lbcyaction_param3.Caption := 'EndCreatureEntry';
+            lbcyaction_param3.Caption := 'End Creature Entry';
             lbcyaction_param4.Caption := 'credit';
             lbcyaction_param5.Caption := 'creditType';
             lbcyaction_param6.Caption := '';
@@ -13165,7 +13190,7 @@ begin
             edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_param5.Hint := '0 = Monsterkill; 1 = Event';
             edcyaction_param5.Hint := lbcyaction_param5.Hint;
-            lbcyaction_type.Hint := 'Follow Target';
+            lbcyaction_type.Hint := 'Follow Target. If target type is NONE or SELF, Stop Follow';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     30:  //SMART_ACTION_RANDOM_PHASE
@@ -13181,8 +13206,8 @@ begin
         end;
     31:  //SMART_ACTION_RANDOM_PHASE_RANGE
         begin
-            lbcyaction_param1.Caption := 'phasemask minimum';
-            lbcyaction_param2.Caption := 'phasemask maximum';
+            lbcyaction_param1.Caption := 'event phasemask min';
+            lbcyaction_param2.Caption := 'event phasemask max';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -13203,7 +13228,7 @@ begin
         end;
     33:  //SMART_ACTION_CALL_KILLEDMONSTER
         begin
-            lbcyaction_param1.Caption := 'creature_template.entry';
+            lbcyaction_param1.Caption := 'Creature ID';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13217,9 +13242,11 @@ begin
             lbcyaction_param1.Caption := 'Field';
             lbcyaction_param2.Caption := 'Data';
             lbcyaction_param3.Caption := '';
-            lbcyaction_param4.Caption := '';
-            lbcyaction_param5.Caption := '';
+            lbcyaction_param4.Caption := 'Type (0/1';
+            lbcyaction_param5.Caption := ')';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param4.Hint := '0: Set data'#13#10'1: SetBossState';
+            edcyaction_param4.Hint := lbcyaction_param4.Hint;
             lbcyaction_type.Hint := 'Set Instance Data';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -13236,52 +13263,56 @@ begin
         end;
     36:  //SMART_ACTION_UPDATE_TEMPLATE
         begin
-            lbcyaction_param1.Caption := 'Creature_template.entry';
-            lbcyaction_param2.Caption := 'Team';
+            lbcyaction_param1.Caption := 'Creature Entry';
+            lbcyaction_param2.Caption := 'UpdateLevel';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param2.Hint := 'updates creature_template to given entry';
+            lbcyaction_param2.Hint := '';
             edcyaction_param2.Hint := lbcyaction_param2.Hint;
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'updates creature_template to given entry';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     37:  //SMART_ACTION_DIE
         begin
-            lbcyaction_param1.Caption := '';
+            lbcyaction_param1.Caption := 'Milliseconds';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'if param1 is set, it will die after param1 milliseconds.'#13#10'0: no delay, the target will die instantly';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'Kill Target';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     38:  //SMART_ACTION_SET_IN_COMBAT_WITH_ZONE
         begin
-            lbcyaction_param1.Caption := '';
+            lbcyaction_param1.Caption := 'Range yards';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_param1.Hint := 'Range in yards for all players to be forced into combat with the creature. Only used in the open world.'#13#10'eave as 0 if used in an instance.';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_type.Hint := 'Sets the creature in combat with its zone, can be used in instances and open world. Useful for creatures inside instances so all players will be set in combat until the fight ends.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     39:  //SMART_ACTION_CALL_FOR_HELP
         begin
-            lbcyaction_param1.Caption := 'radius';
-            lbcyaction_param2.Caption := 'say calls for help text';
+            lbcyaction_param1.Caption := 'radius yards';
+            lbcyaction_param2.Caption := 'say calls for help 0/1';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
             lbcyaction_param1.Hint := 'Radius in yards that other creatures must be to acknowledge the cry for help';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
-            lbcyaction_param2.Hint := 'If you want the NPC to say %s calls for help! Use 1 on param2, 0 for no message.';
+            lbcyaction_param2.Hint := '0: no message  1: say txt';
             edcyaction_param2.Hint := lbcyaction_param2.Hint;
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'If you want the NPC to say ''%s calls for help!''. Use 1 on param1, 0 for no message.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     40:  //SMART_ACTION_SET_SHEATH
@@ -13292,20 +13323,20 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := '0-unarmed, 1-melee, 2-ranged';
+            lbcyaction_param1.Hint := '0: unarmed, 1: melee, 2: ranged';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     41:  //SMART_ACTION_FORCE_DESPAWN
         begin
-            lbcyaction_param1.Caption := 'timer ms';
+            lbcyaction_param1.Caption := 'Despawn ms';
             lbcyaction_param2.Caption := 'Respawn s';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'Despawn Target after param1 Milliseconds';
+            lbcyaction_type.Hint := 'Despawn Target after param1 in Milliseconds. Respawn after param2 in seconds.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
 
         end;
@@ -13317,13 +13348,13 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'Only one of these params should be used(in case you set values in both,the script will chose percent)';
+            lbcyaction_type.Hint := 'If you use both params, only percent will be used.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     43:  //SMART_ACTION_MOUNT_TO_ENTRY_OR_MODEL
         begin
-            lbcyaction_param1.Caption := 'Creature_template.entry';
-            lbcyaction_param2.Caption := 'Creature_template.modelID';
+            lbcyaction_param1.Caption := 'Creature Entry';
+            lbcyaction_param2.Caption := 'Creature_template.modelIdx';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -13361,29 +13392,32 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'move self forward for the specified distance (point movement)';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     47:  //SMART_ACTION_SET_VISIBILITY
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'Visible (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_param1.Hint := '0: invisible  1: visible';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_type.Hint := 'Makes creature Visible = 1 or Invisible = 0';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     48:  //SMART_ACTION_SET_ACTIVE
         begin
-            lbcyaction_param1.Caption := '';
+            lbcyaction_param1.Caption := 'Active (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_param1.Hint := '0: inactive  1: active';
+            lbcyaction_type.Hint := 'If a creature or GO is set active it will stay active even if no player is near. Take care, though, as it needs additional ressources (CPU/RAM) to keep them active (other objects/creatures nearby stay active).';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     49:  //SMART_ACTION_ATTACK_START
@@ -13394,18 +13428,23 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Allows basic melee swings to creature.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     50:  //SMART_ACTION_SUMMON_GO
         begin
-            lbcyaction_param1.Caption := 'Gameobject_template.entry';
-            lbcyaction_param2.Caption := 'DespawnTime in ms';
-            lbcyaction_param3.Caption := '';
-            lbcyaction_param4.Caption := '';
+            lbcyaction_param1.Caption := 'Gameobject Entry';
+            lbcyaction_param2.Caption := 'DespawnTime sec';
+            lbcyaction_param3.Caption := 'targetSummon (0/1)';
+            lbcyaction_param4.Caption := 'summonType (0/1)';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_param3.Hint := '1: tarhet will summon the Gameobject at the position of the actor';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_param4.Hint := '0 - after a specified time OR when the summoner dies'#13#10'1 - after a specified time';
+            edcyaction_param4.Hint := lbcyaction_param4.Hint;
+            lbcyaction_type.Hint := 'Spawns Gameobject, use target_type to set spawn position;'#13#10'if an entity is specified as target and also coordinates are set (target x,y,z) those coordinates are handled as offset from the target''s position;'+
+                                    'if targetSummon is 1 then the target will summon the GO on the position of the actor';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     51:  //SMART_ACTION_KILL_UNIT
@@ -13416,7 +13455,7 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Kill creature';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     52:  //SMART_ACTION_ACTIVATE_TAXI
@@ -13427,62 +13466,62 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Sends player to flight path. You have to be close to Flight Master, which gives Taxi ID you need.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     53:  //SMART_ACTION_WP_START
         begin
-            lbcyaction_param1.Caption := 'run(0)/walk(1)';
+            lbcyaction_param1.Caption := 'walk(0)/run(1)';
             lbcyaction_param2.Caption := 'waypoints.entry';
             lbcyaction_param3.Caption := 'canRepeat';
-            lbcyaction_param4.Caption := 'quest_template.id';
+            lbcyaction_param4.Caption := 'Quest ID';
             lbcyaction_param5.Caption := 'despawntime';
             lbcyaction_param6.Caption := 'reactState';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Creature starts Waypoint Movement. Use waypoints table to create movement.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     54:  //SMART_ACTION_WP_PAUSE
         begin
-            lbcyaction_param1.Caption := 'time';
+            lbcyaction_param1.Caption := 'time ms';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Creature pauses its Waypoint Movement for given time.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     55:  //SMART_ACTION_WP_STOP
         begin
             lbcyaction_param1.Caption := 'despawnTime';
-            lbcyaction_param2.Caption := 'quest_template.id';
+            lbcyaction_param2.Caption := 'Quest ID';
             lbcyaction_param3.Caption := 'fail (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Creature stops its Waypoint Movement.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     56:  //SMART_ACTION_ADD_ITEM
         begin
-            lbcyaction_param1.Caption := 'Item_template.entry';
+            lbcyaction_param1.Caption := 'Item Entry';
             lbcyaction_param2.Caption := 'count';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Adds item(s) to player.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     57:  //SMART_ACTION_REMOVE_ITEM
         begin
-            lbcyaction_param1.Caption := 'Item_template.entry';
+            lbcyaction_param1.Caption := 'Item Entry';
             lbcyaction_param2.Caption := 'count';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Removes item(s) from player.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     58:  //SMART_ACTION_INSTALL_AI_TEMPLATE
@@ -13493,12 +13532,14 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'see Predefined SAI templates';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     59:  //SMART_ACTION_SET_RUN
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'run (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13509,18 +13550,18 @@ begin
         end;
     60:  //SMART_ACTION_SET_FLY
         begin
-            lbcyaction_param1.Caption := '0/1';
-            lbcyaction_param2.Caption := '';
-            lbcyaction_param3.Caption := '';
+            lbcyaction_param1.Caption := 'fly (0/1)';
+            lbcyaction_param2.Caption := 'speed';
+            lbcyaction_param3.Caption := 'disable gravity (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Only works for creatures with inhabit air.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     61:  //SMART_ACTION_SET_SWIMM
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'swim (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13540,16 +13581,17 @@ begin
             lbcyaction_type.Hint := 'Continue this action with the TARGET_TYPE column. Use any target_type, and use target_x, target_y, target_z, target_o as the coordinates [target_type = 8 (SMART_TARGET_POSITION)]';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
-    63:  //SMART_ACTION_STORE_VARIABLE_DECIMAL
+    63:  //SMART_ACTION_SET_COUNTER
         begin
-            lbcyaction_param1.Caption := 'varID';
-            lbcyaction_param2.Caption := 'number';
-            lbcyaction_param3.Caption := '';
+            lbcyaction_param1.Caption := 'counterID';
+            lbcyaction_param2.Caption := 'value';
+            lbcyaction_param3.Caption := 'reset (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'If reset is 0 the counter with the specified ID is increased by the given value; if reset is 1 the counter is set to the value.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            edcyaction_param3.Hint := lbcyaction_type.Hint;
         end;
     64:  //SMART_ACTION_STORE_TARGET_LIST
         begin
@@ -13570,20 +13612,20 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Creature continues in its Waypoint Movement.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     66:  //SMART_ACTION_SET_ORIENTATION
         begin
-            lbcyaction_param1.Caption := 'see tooltip';
-            lbcyaction_param2.Caption := '';
-            lbcyaction_param3.Caption := '';
+            lbcyaction_param1.Caption := 'Quick Change (0/1)';
+            lbcyaction_param2.Caption := 'Random orientation (0/1)';
+            lbcyaction_param3.Caption := 'Turn angle degrees';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'use target_type 8 (SMART_TYPE_POSITION) and define o or npc will face target';
-            edcyaction_param1.Hint := lbcyaction_param1.Hint;
-            lbcyaction_type.Hint := 'set target_o. 0 = North, West = 1.5, South = 3, East = 4.5';
+            lbcyaction_param3.Hint := 'The value will turn the creature counterclockwise. target_type must be NONE';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_type.Hint := 'Used to alter the source''s orientation. Depends on the script target.'#13#10'If SMART_TARGET_SELF, facing will be the same as in HomePosition, For SMART_TARGET_POSITION you need to set target_o : 0 = North, West = 1.5, South = 3, East = 4.5';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     67:  //SMART_ACTION_CREATE_TIMED_EVENT
@@ -13611,37 +13653,40 @@ begin
     69:  //SMART_ACTION_MOVE_TO_POS
         begin
             lbcyaction_param1.Caption := 'PointId';
-            lbcyaction_param2.Caption := '';
-            lbcyaction_param3.Caption := '';
-            lbcyaction_param4.Caption := '';
+            lbcyaction_param2.Caption := 'isTransport (0/1)';
+            lbcyaction_param3.Caption := 'controlled (0/1)';
+            lbcyaction_param4.Caption := 'ContactDistance';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'PointId is called by SMART_EVENT_MOVEMENTINFORM. Continue this action with the TARGET_TYPE column. Use any target_type, and use target_x, target_y, target_z, target_o as the coordinates';
+            lbcyaction_type.Hint := 'PointId is called by SMART_EVENT_MOVEMENTINFORM. Continue this action with the TARGET_TYPE column.'+
+                                    'Use any target_type, and use target_x, target_y, target_z as the coordinates; if an entity is specified as target and also coordinates are set (target x,y,z)'+
+                                    'those coordinates are handled as offset from the target''s position';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
-    70:  //SMART_ACTION_ENABLE_TEMP_GOBJ
+    70:  //SMART_ACTION_RESPAWN_TARGET
         begin
-            lbcyaction_param1.Caption := 'Despawn timer';
+            lbcyaction_param1.Caption := 'Respawn sec';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'DespawnTimer (sec)';
+            lbcyaction_param1.Hint := 'RespawnTimer (sec)';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
         end;
     71:  //SMART_ACTION_EQUIP
         begin
-            lbcyaction_param1.Caption := 'equipentry';
+            lbcyaction_param1.Caption := 'creature_equip ID';
             lbcyaction_param2.Caption := 'Slotmask';
             lbcyaction_param3.Caption := 'slot1';
             lbcyaction_param4.Caption := 'Slot2';
             lbcyaction_param5.Caption := 'Slot3';
             lbcyaction_param6.Caption := '';
-            lbcyaction_param1.Hint := 'Creature_equip_template.entry';
+            lbcyaction_param1.Hint := 'creature_equip_template.ID';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'only slots with mask set will be sent to client, bits are 1, 2, 4, leaving mask 0 is defaulted to mask 7 (send all), Slots1-3 are only used if no entry is set';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            edcyaction_param2.Hint := lbcyaction_type.Hint;
         end;
     72:  //SMART_ACTION_CLOSE_GOSSIP
         begin
@@ -13651,7 +13696,7 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'gossip_menu_option.action_menu_id must be 0, and target_type must be 7';
+            lbcyaction_type.Hint := 'Closes gossip window.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     73:  //SMART_ACTION_TRIGGER_TIMED_EVENT
@@ -13662,7 +13707,7 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Calls SNART_EVENT_TIMED_EVENT_TRIGGERED with given ID';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     74:  //SMART_ACTION_REMOVE_TIMED_EVENT
@@ -13673,13 +13718,13 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Interrups the event called from  SNART_ACTION_TRIGGER_TIMED_EVENT. 0 is NOT a propper value';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     75:  //SMART_ACTION_ADD_AURA
         begin
-            lbcyaction_param1.Caption := 'Spellid';
-            lbcyaction_param2.Caption := 'targets';
+            lbcyaction_param1.Caption := 'Spell ID';
+            lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -13733,20 +13778,24 @@ begin
         end;
     80:  //SMART_ACTION_CALL_TIMED_ACTIONLIST
         begin
-            lbcyaction_param1.Caption := 'EntryOrGuid';
+            lbcyaction_param1.Caption := 'EntryOrGuid*100';
             lbcyaction_param2.Caption := 'timer update type';
-            lbcyaction_param3.Caption := '';
+            lbcyaction_param3.Caption := 'allowOverride (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'entryorguid with 00 added after the entry, or 01, 02, 03 etc. for multiple action lists';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_param2.Hint := '0 = OOC; 1 = IC; 2 = ALWAYS';
             edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param3.Hint := '0: Must finish current actionlist'#13#10'1: Allow starting new actionlist during previous actionlist';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     81:  //SMART_ACTION_SET_NPC_FLAG
         begin
-            lbcyaction_param1.Caption := 'Creature_template.npcflag';
+            lbcyaction_param1.Caption := 'Creature npcflag';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13757,7 +13806,7 @@ begin
         end;
     82:  //SMART_ACTION_ADD_NPC_FLAG
         begin
-            lbcyaction_param1.Caption := 'Number to add to flag';
+            lbcyaction_param1.Caption := 'Creature npcflag';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13768,7 +13817,7 @@ begin
         end;
     83:  //SMART_ACTION_REMOVE_NPC_FLAG
         begin
-            lbcyaction_param1.Caption := 'Number to remove from flag';
+            lbcyaction_param1.Caption := 'Creature npcflag';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13779,35 +13828,45 @@ begin
         end;
     84:  //SMART_ACTION_SIMPLE_TALK
         begin
-            lbcyaction_param1.Caption := 'Creature_text.groupID';
+            lbcyaction_param1.Caption := 'Creature_text.GroupID';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'can be used to make players say groupID, Text_over event is not triggered, whisper can not be used (Target units will say the text)';
+            lbcyaction_type.Hint := 'Makes a player say text. SMART_EVENT_TEXT_OVER is not triggered and whispers can not be used.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     85:  //SMART_ACTION_SELF_CAST
         begin
-            lbcyaction_param1.Caption := 'SpellID';
-            lbcyaction_param2.Caption := 'triggerFlags';
-            lbcyaction_param3.Caption := '';
-            lbcyaction_param4.Caption := '';
+            lbcyaction_param1.Caption := 'Spell ID';
+            lbcyaction_param2.Caption := 'castFlags';
+            lbcyaction_param3.Caption := 'triggeredFlags';
+            lbcyaction_param4.Caption := 'limitTargets (0 all)';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'Will cast spellId with triggerFlags on self';
+            lbcyaction_param2.Hint := '1: Interrupt any spell'#13#10'2: Triggered (this makes spell cost zero mana and have no cast time)'#13#10'32: Only casts the spell if the target does not have an aura from the spell'+
+                                      '64: Prevent combat movement on cast, allow on fail range, mana, LOS'#13#10'128: Only cast if the source''s threatlist is higher than one. This includes pets'+
+                                      '256: Only cast if the target has power type mana';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param3.Hint := 'smart_scripts#triggered-flags';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_type.Hint := 'Makes the target cast spell on self.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     86:  //SMART_ACTION_CROSS_CAST
         begin
-            lbcyaction_param1.Caption := 'SpellID';
+            lbcyaction_param1.Caption := 'Spell ID';
             lbcyaction_param2.Caption := 'castFlags';
             lbcyaction_param3.Caption := 'CasterTargetType';
             lbcyaction_param4.Caption := 'CasterTarget param1';
             lbcyaction_param5.Caption := 'CasterTarget param2';
             lbcyaction_param6.Caption := 'CasterTarget param3';
-            lbcyaction_type.Hint := '( + the original target fields as Destination target), CasterTargets will cast spellID on all Targets (use with caution if targeting multiple * multiple units)';
+            lbcyaction_param2.Hint := '1: Interrupt any spell'#13#10'2: Triggered (this makes spell cost zero mana and have no cast time)'#13#10'32: Only casts the spell if the target does not have an aura from the spell'+
+                                      '64: Prevent combat movement on cast, allow on fail range, mana, LOS'#13#10'128: Only cast if the source''s threatlist is higher than one. This includes pets'+
+                                      '256: Only cast if the target has power type mana';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_type.Hint := 'This action is used to make selected caster (in CasterTargetType) to cast spell. Actual target is entered in target_type as normally.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     87:  //SMART_ACTION_CALL_RANDOM_TIMED_ACTIONLIST
@@ -13818,6 +13877,13 @@ begin
             lbcyaction_param4.Caption := 'EntryOrGuid 4';
             lbcyaction_param5.Caption := 'EntryOrGuid 5';
             lbcyaction_param6.Caption := 'EntryOrGuid 6';
+            lbcyaction_param1.Hint := 'entryorguid * 100 + n';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            edcyaction_param3.Hint := lbcyaction_param2.Hint;
+            edcyaction_param4.Hint := lbcyaction_param2.Hint;
+            edcyaction_param5.Hint := lbcyaction_param2.Hint;
+            edcyaction_param6.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := 'Will select one entry from the ones provided. 0 is ignored';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -13829,6 +13895,9 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'entryorguid * 100 + n';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := 'Will select one entry from the ones provided. 0 is ignored';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -13840,45 +13909,49 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'Creature moves to random position in given radius. If radius is 0, then stop movement';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     90:  //SMART_ACTION_SET_UNIT_FIELD_BYTES_1
         begin
             lbcyaction_param1.Caption := 'value';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param2.Caption := 'type';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param2.Hint := '0: targets stand states'#13#10'1:targets talent related for pets'#13#10'2:targets stand flags'#13#10'3:targets stand misc flags ';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     91:  //SMART_ACTION_REMOVE_UNIT_FIELD_BYTES_1
         begin
             lbcyaction_param1.Caption := 'value';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param2.Caption := 'type';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param2.Hint := '0: targets stand states'#13#10'1:targets talent related for pets'#13#10'2:targets stand flags'#13#10'3:targets stand misc flags ';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     92:  //SMART_ACTION_INTERRUPT_SPELL
         begin
             lbcyaction_param1.Caption := 'With delay (0/1)';
-            lbcyaction_param2.Caption := 'SpellId';
+            lbcyaction_param2.Caption := 'Spell ID';
             lbcyaction_param3.Caption := 'Instant (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'This action allows you to interrupt the current spell being cast. If you do not set the spellId, the core will find the current spell depending on the withDelay and the withInstant values.';
+            lbcyaction_type.Hint := 'This action allows you to interrupt the current spell being cast. If you do not set the Spell ID, the core will find the current spell depending on the withDelay and the withInstant values.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     93:  //SMART_ACTION_SEND_GO_CUSTOM_ANIM
         begin
-            lbcyaction_param1.Caption := 'anim id';
+            lbcyaction_param1.Caption := 'animprogress (0-255)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13889,7 +13962,7 @@ begin
         end;
     94:  //SMART_ACTION_SET_DYNAMIC_FLAG
         begin
-            lbcyaction_param1.Caption := 'creature.dynamicflags';
+            lbcyaction_param1.Caption := 'creature dynamicflags';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13900,7 +13973,7 @@ begin
         end;
     95:  //SMART_ACTION_ADD_DYNAMIC_FLAG
         begin
-            lbcyaction_param1.Caption := 'creature.dynamicflags';
+            lbcyaction_param1.Caption := 'creature dynamicflags';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13911,7 +13984,7 @@ begin
         end;
     96:  //SMART_ACTION_REMOVE_DYNAMIC_FLAG
         begin
-            lbcyaction_param1.Caption := 'creature.dynamicflags';
+            lbcyaction_param1.Caption := 'creature dynamicflags';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -13922,35 +13995,39 @@ begin
         end;
     97:  //SMART_ACTION_JUMP_TO_POS
         begin
-            lbcyaction_param1.Caption := 'speedXY';
-            lbcyaction_param2.Caption := 'speedZ';
-            lbcyaction_param3.Caption := 'targetX';
-            lbcyaction_param4.Caption := 'targetY';
-            lbcyaction_param5.Caption := 'targetZ';
+            lbcyaction_param1.Caption := 'speed XY';
+            lbcyaction_param2.Caption := 'speed Z';
+            lbcyaction_param3.Caption := 'selfJump (0/1)';
+            lbcyaction_param4.Caption := '';
+            lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '';
+            lbcyaction_type.Hint := 'If selfJump is 1 the actor will jump to the target (you can add an offset from the target''s position by also specifying target coordinates); if selfJump is 0 the targeted creature will jump to the target position';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     98:  //SMART_ACTION_SEND_GOSSIP_MENU
         begin
-            lbcyaction_param1.Caption := 'Gossip_menu_option.menuId';
-            lbcyaction_param2.Caption := 'Gossip_menu_option.npc_text_id';
+            lbcyaction_param1.Caption := 'Gossip_menu.Entry';
+            lbcyaction_param2.Caption := 'Gossip_menu.text_id';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param2.Hint := 'same value as npc_text.ID';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
             lbcyaction_type.Hint := 'Can be used together with SMART_EVENT_GOSSIP_HELLO to set custom gossip.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     99:  //SMART_ACTION_GO_SET_LOOT_STATE
         begin
-            lbcyaction_param1.Caption := 'state';
+            lbcyaction_param1.Caption := 'LootState';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'LootState (0 - Not ready, 1 - Ready, 2 - Activated, 3 - Just deactivated)';
+            lbcyaction_param1.Hint := '0 - Not ready, 1 - Ready, 2 - Activated, 3 - Just deactivated';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     100:  //SMART_ACTION_SEND_TARGET_TO_TARGET
@@ -13966,40 +14043,47 @@ begin
         end;
     101:  //SMART_ACTION_SET_HOME_POS
         begin
-            lbcyaction_param1.Caption := '';
+            lbcyaction_param1.Caption := 'Pos type (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '0: if the target is a creature, set it''s current position as it''s new home position if the target is SMART_TARGET_POSITION, use this position as new home position for the actor'+
+                                      '1: if the target is a creature, reset it''s home position to the one from the DB; if the target is SMART_TARGET_POSITION,'#13#10'reset the actor''s home position to the one from the DB (the actual values of the target position are ignored)';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'Useful for those npc that move and need to stay in that position on evade. Used with SMART_TARGET_SELF (sets home pos to actual position) or with SMART_TARGET_POSITION (sets home pos to a specified one)';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     102:  //SMART_ACTION_SET_HEALTH_REGEN
         begin
-            lbcyaction_param1.Caption := '0 or 1';
+            lbcyaction_param1.Caption := 'Regeneration (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '0 - disable, 1 - enable HP regeneration';
+            lbcyaction_param1.Hint := '0 - disable, 1 - enable HP regeneration';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_type.Hint := 'Sets the current creatures health regen on or off.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     103:  //SMART_ACTION_SET_ROOT
         begin
-            lbcyaction_param1.Caption := '0 or 1';
+            lbcyaction_param1.Caption := 'Regeneration (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := '0 - disable, 1 - enable creature movement';
+            lbcyaction_param1.Hint := '0 - disable, 1 - enable creature movement';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
+            lbcyaction_type.Hint := 'Enables or disables creature movement';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     104:  //SMART_ACTION_SET_GO_FLAG
         begin
-            lbcyaction_param1.Caption := 'gameobject_template.flags';
+            lbcyaction_param1.Caption := 'GO_template_addon.flags';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14010,7 +14094,7 @@ begin
         end;
     105:  //SMART_ACTION_ADD_GO_FLAG
         begin
-            lbcyaction_param1.Caption := 'gameobject_template.flags';
+            lbcyaction_param1.Caption := 'GO_template_addon.flags';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14021,7 +14105,7 @@ begin
         end;
     106:  //SMART_ACTION_REMOVE_GO_FLAG
         begin
-            lbcyaction_param1.Caption := 'gameobject_template.flags';
+            lbcyaction_param1.Caption := 'GO_template_addon.flags';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14032,12 +14116,14 @@ begin
         end;
     107:  //SMART_ACTION_SUMMON_CREATURE_GROUP
         begin
-            lbcyaction_param1.Caption := 'creature_summon_groups.groupId';
+            lbcyaction_param1.Caption := 'GroupId';
             lbcyaction_param2.Caption := 'attack invoker (0/1)';
-            lbcyaction_param3.Caption := '';
+            lbcyaction_param3.Caption := 'attackScriptOwner (0/1)';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := 'creature_summon_groups.groupId';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := 'Use creature_summon_groups table. SAI target has no effect, use 0.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -14076,7 +14162,7 @@ begin
         end;
     111:  //SMART_ACTION_GAME_EVENT_STOP
         begin
-            lbcyaction_param1.Caption := 'Game event id';
+            lbcyaction_param1.Caption := 'game_event.eventEntry';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14087,7 +14173,7 @@ begin
         end;
     112:  //SMART_ACTION_GAME_EVENT_START
         begin
-            lbcyaction_param1.Caption := 'Game event id';
+            lbcyaction_param1.Caption := 'game_event.eventEntry';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14107,15 +14193,15 @@ begin
             lbcyaction_type.Hint := 'Make target follow closest waypoint to its location';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
-    114:  //SMART_ACTION_MOVE_OFFSET
+    114:  //SMART_ACTION_RISE_UP
         begin
-            lbcyaction_param1.Caption := '';
+            lbcyaction_param1.Caption := 'distance';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'With target_type=1, use target_x, target_y, target_z.';
+            lbcyaction_type.Hint := 'move up for the specified distance (warning: TC 3.3.5 uses another action here: SMART_ACTION_MOVE_OFFSET)';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     115:  //SMART_ACTION_RANDOM_SOUND
@@ -14125,13 +14211,13 @@ begin
             lbcyaction_param3.Caption := 'soundId3';
             lbcyaction_param4.Caption := 'soundId4';
             lbcyaction_param5.Caption := 'onlySelf (0/1)';
-            lbcyaction_param6.Caption := 'Distance Sound (0/1)';
+            lbcyaction_param6.Caption := 'Distance (0/1)';
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     116:  //SMART_ACTION_SET_CORPSE_DELAY
         begin
-            lbcyaction_param1.Caption := 'timer';
+            lbcyaction_param1.Caption := 'timer sec';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14142,12 +14228,14 @@ begin
         end;
     117:  //SMART_ACTION_DISABLE_EVADE
         begin
-            lbcyaction_param1.Caption := 'disable evade (1) / re-enable (0)';
+            lbcyaction_param1.Caption := 'evade disabled (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '1 = disabled, 0 = enabled';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -14159,6 +14247,8 @@ begin
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
+            lbcyaction_param1.Hint := '0: Active 1: Ready 2:Active Alternative';
+            edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_type.Hint := '';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
@@ -14220,7 +14310,7 @@ begin
     124:  //SMART_ACTION_LOAD_EQUIPMENT
         begin
             lbcyaction_param1.Caption := 'Id';
-            lbcyaction_param2.Caption := '';
+            lbcyaction_param2.Caption := 'force';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
             lbcyaction_param5.Caption := '';
@@ -14329,13 +14419,19 @@ begin
         end;
     134:  //SMART_ACTION_INVOKER_CAST
         begin
-            lbcyaction_param1.Caption := 'SpellID';
+            lbcyaction_param1.Caption := 'Spell ID';
             lbcyaction_param2.Caption := 'castFlags';
-            lbcyaction_param3.Caption := '';
-            lbcyaction_param4.Caption := '';
+            lbcyaction_param3.Caption := 'TriggerFlags';
+            lbcyaction_param4.Caption := 'LimitTargets (0 all)';
             lbcyaction_param5.Caption := '';
             lbcyaction_param6.Caption := '';
-            lbcyaction_type.Hint := 'if avaliable, last used invoker will cast spellId with castFlags on targets';
+            lbcyaction_param2.Hint := '1: Interrupt any spell'#13#10'2: Triggered (this makes spell cost zero mana and have no cast time)'#13#10'32: Only casts the spell if the target does not have an aura from the spell'+
+                                      '64: Prevent combat movement on cast, allow on fail range, mana, LOS'#13#10'128: Only cast if the source''s threatlist is higher than one. This includes pets'+
+                                      '256: Only cast if the target has power type mana';
+            edcyaction_param2.Hint := lbcyaction_param2.Hint;
+            lbcyaction_param3.Hint := 'smart_scripts#triggered-flags';
+            edcyaction_param3.Hint := lbcyaction_param3.Hint;
+            lbcyaction_type.Hint := 'Make our action invoker type cast a spell to our target type';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
     135:  //SMART_ACTION_PLAY_CINEMATIC
@@ -14359,6 +14455,7 @@ begin
             lbcyaction_param6.Caption := '';
             lbcyaction_type.Hint := 'MOVE_WALK = 0, MOVE_RUN = 1, MOVE_RUN_BACK = 2, MOVE_SWIM = 3, MOVE_SWIM_BACK= 4, MOVE_TURN_RATE= 5, MOVE_FLIGHT = 6, MOVE_FLIGHT_BACK = 7, MOVE_PITCH_RATE = 8';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            edcyaction_param1.Hint := lbcyaction_type.Hint;
         end;
     142:  //SMART_ACTION_PLAY_CINEMATIC
         begin
@@ -14428,7 +14525,7 @@ begin
         end;
     207:  //SMART_ACTION_SET_HOVER
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'Hover (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14472,7 +14569,7 @@ begin
         end;
     211:  //SMART_ACTION_SET_EVENT_FLAG_RESET
         begin
-            lbcyaction_param1.Caption := '0/1';
+            lbcyaction_param1.Caption := 'Flag reset (0/1)';
             lbcyaction_param2.Caption := '';
             lbcyaction_param3.Caption := '';
             lbcyaction_param4.Caption := '';
@@ -14538,6 +14635,7 @@ begin
                 '1: Play music for all players in the entire zone '#13#10+
                 '2: Play music for all players in the area.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            edcyaction_param3.Hint := lbcyaction_type.Hint;
         end;
     217:  //SMART_ACTION_RANDOM_MUSIC
         begin
@@ -14552,10 +14650,11 @@ begin
                 '1: Play music for all players in the entire zone  '#13#10+
                 '2: Play music for all players in the area.';
             edcyaction_type.Hint := lbcyaction_type.Hint;
+            edcyaction_param6.Hint := lbcyaction_type.Hint;
         end;
     218:  //SMART_ACTION_CUSTOM_CAST
         begin
-            lbcyaction_param1.Caption := 'spellId';
+            lbcyaction_param1.Caption := 'Spell ID';
             lbcyaction_param2.Caption := 'castFlag';
             lbcyaction_param3.Caption := 'bp0';
             lbcyaction_param4.Caption := 'bp1';
@@ -14688,7 +14787,7 @@ begin
     228:  //SMART_ACTION_SUMMON_RADIAL
         begin
             lbcyaction_param1.Caption := 'summonEntry';
-            lbcyaction_param1.Hint := 'CreatureID to be summoned';
+            lbcyaction_param1.Hint := 'Creature Entry to be summoned';
             edcyaction_param1.Hint := lbcyaction_param1.Hint;
             lbcyaction_param2.Caption := 'summonDuration';
             lbcyaction_param2.Hint := 'duration in ms which the summons will despawn after, if 0 then despawn on death';
@@ -14760,8 +14859,6 @@ begin
               'If type = 3, then use the parameters as if it were a smart target and they will face the newly-selected unit';
             edcyaction_type.Hint := lbcyaction_type.Hint;
         end;
-
-
     end;
     SAI_Action := t;
 end;
@@ -14889,7 +14986,7 @@ begin
         end;
     9:  //SMART_TARGET_CREATURE_RANGE
         begin
-            lbcytarget_param1.Caption := 'creatureEntry (0 any)';
+            lbcytarget_param1.Caption := 'Creature Entry (0 any)';
             lbcytarget_param2.Caption := 'minDist';
             lbcytarget_param3.Caption := 'maxDist';
             lbcytarget_param4.Caption := 'Number of targets (0 all)';
@@ -14915,7 +15012,7 @@ begin
         end;
     11:  //SMART_TARGET_CREATURE_DISTANCE
         begin
-            lbcytarget_param1.Caption := 'creatureEntry (0 any)';
+            lbcytarget_param1.Caption := 'Creature Entry (0 any)';
             lbcytarget_param2.Caption := 'maxDist';
             lbcytarget_param3.Caption := 'Number of targets (0 all)';
             lbcytarget_param4.Caption := '';
@@ -15019,7 +15116,7 @@ begin
         end;
     19:  //SMART_TARGET_CLOSEST_CREATURE
         begin
-            lbcytarget_param1.Caption := 'creatureEntry (0 any)';
+            lbcytarget_param1.Caption := 'Creature Entry (0 any)';
             lbcytarget_param2.Caption := 'maxDist';
             lbcytarget_param3.Caption := 'dead? (0/1)';
             lbcytarget_param4.Caption := '';
@@ -15175,7 +15272,7 @@ begin
             lbcytarget_type.Hint := 'Target players with or without aura';
             edcytarget_type.Hint := lbcytarget_type.Hint;
 
-            lbcytarget_param1.Caption := 'SpellID';
+            lbcytarget_param1.Caption := 'Spell ID';
             lbcytarget_param2.Caption := 'Negative (0/1)';
             lbcytarget_param3.Caption := 'MaxDist';
             lbcytarget_param4.Caption := 'MinDist';
@@ -15220,7 +15317,7 @@ begin
         begin
             lbcytarget_type.Hint := '';
             edcytarget_type.Hint := lbcytarget_type.Hint;
-            lbcytarget_param1.Caption := 'creature_template.Entry';
+            lbcytarget_param1.Caption := 'Creature Entry';
             lbcytarget_param2.Caption := '';
             lbcytarget_param3.Caption := '';
             lbcytarget_param4.Caption := '';
@@ -15510,7 +15607,7 @@ begin
     end;
     10:
     begin
-      TJvComboEdit(FindComponent('ed'+pfx+'datalong')).Hint  := 'creature id to summon';
+      TJvComboEdit(FindComponent('ed'+pfx+'datalong')).Hint  := 'Creature Entry to summon';
       TJvComboEdit(FindComponent('ed'+pfx+'datalong2')).Hint := 'lifetime of creature (in ms)';
       TJvComboEdit(FindComponent('ed'+pfx+'dataint')).Hint  := 'always empty';
       TJvComboEdit(FindComponent('ed'+pfx+'x')).Hint  :=        'coord x';

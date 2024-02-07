@@ -132,6 +132,7 @@ btCancel=Cancel
 Caption=Unit Flags
 btCancel=Cancel
 btOK=OK
+btCheckAll=CheckAll
 
 [WHOQUEST]
 Caption=Quester 
