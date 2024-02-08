@@ -22,16 +22,16 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '14';
+  VERSION_4   = '16';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
-  SCRIPT_TAB_NO_CREATURE    = 20;
+  SCRIPT_TAB_NO_CREATURE    = 19;
   SCRIPT_TAB_NO_GAMEOBJECT  = 7;
   SCRIPT_TAB_NO_ITEM        = 10;
   SCRIPT_TAB_NO_SMARTAI     = 1;
   SCRIPT_TAB_NO_CONDITIONS  = 1;
-  SCRIPT_TAB_NO_OTHER       = 4;
+  SCRIPT_TAB_NO_OTHER       = 6;
   SCRIPT_TAB_NO_CHARACTER   = 3;
 
   WM_FREEQL = WM_USER + 1;
@@ -87,6 +87,7 @@ const
   PFX_PAGE_TEXT                     = 'pt';
   PFX_PAGE_TEXT_LOCALE              = 'ptloc';
   PFX_CREATURE_TEXT                 = 'ctt';
+  PFX_CREATURE_TEXT_LOCALE          = 'cttloc';
   PFX_FISHING_LOOT_TEMPLATE         = 'ot';
   PFX_CHARACTER                     = 'ht';
   PFX_CHARACTER_INVENTORY           = 'hi';
@@ -864,28 +865,6 @@ type
     btFullScriptFishLoot: TButton;
     edotZone: TJvComboEdit;
     btGetLootForZone: TButton;
-    tsCreatureText: TTabSheet;
-    cttSearchCreatureText: TJvListView;
-    cttGroupBox: TGroupBox;
-    cttClearSearchCreatureText: TBitBtn;
-    btSearchCreatureText: TBitBtn;
-    edSearchCreatureText: TLabeledEdit;
-    edSearchCreatureTextCreatureID: TLabeledEdit;
-    cttPanel13: TPanel;
-    edcttCreatureId: TLabeledEdit;
-    edcttGroupID: TLabeledEdit;
-    edcttText: TLabeledEdit;
-    btScriptCreatureText: TButton;
-    edcttID: TLabeledEdit;
-    edcttType: TLabeledEdit;
-    edcttLanguage: TLabeledEdit;
-    edcttProbability: TLabeledEdit;
-    edcttEmote: TLabeledEdit;
-    edcttDuration: TLabeledEdit;
-    edcttSound: TLabeledEdit;
-    edcttBroadcastTextId: TLabeledEdit;
-    edcttTextRange: TLabeledEdit;
-    edcttcomment: TLabeledEdit;
     tsPageText: TTabSheet;
     lvSearchPageText: TJvListView;
     GroupBox1: TGroupBox;
@@ -1758,6 +1737,43 @@ type
     edptlocVerifiedBuild: TLabeledEdit;
     lvSearchPageTextLocale: TJvListView;
     edptloclocale: TLabeledEdit;
+    tsCreatureText: TTabSheet;
+    tsCreatureTextLocale: TTabSheet;
+    cttGroupBox: TGroupBox;
+    cttClearSearchCreatureText: TBitBtn;
+    btSearchCreatureText: TBitBtn;
+    edSearchCreatureText: TLabeledEdit;
+    edSearchCreatureTextCreatureID: TLabeledEdit;
+    cttSearchCreatureText: TJvListView;
+    cttPanel13: TPanel;
+    edcttCreatureId: TLabeledEdit;
+    edcttGroupID: TLabeledEdit;
+    edcttText: TLabeledEdit;
+    btScriptCreatureText: TButton;
+    edcttID: TLabeledEdit;
+    edcttType: TLabeledEdit;
+    edcttLanguage: TLabeledEdit;
+    edcttProbability: TLabeledEdit;
+    edcttEmote: TLabeledEdit;
+    edcttDuration: TLabeledEdit;
+    edcttSound: TLabeledEdit;
+    edcttBroadcastTextId: TLabeledEdit;
+    edcttTextRange: TLabeledEdit;
+    edcttcomment: TLabeledEdit;
+    GroupBox5: TGroupBox;
+    cttlocClearSearchCreatureText: TBitBtn;
+    btSearchCreatureTextLocale: TBitBtn;
+    edSearchCreatureTextLocaleText: TLabeledEdit;
+    edSearchCreatureTextLocaleCreatureID: TLabeledEdit;
+    edSearchCreatureTextLocaleLocale: TLabeledEdit;
+    cttlocSearchCreatureText: TJvListView;
+    Panel23: TPanel;
+    edcttlocCreatureID: TLabeledEdit;
+    edcttlocGroupID: TLabeledEdit;
+    edcttlocText: TLabeledEdit;
+    btScriptCreatureTextLocale: TButton;
+    edcttlocID: TLabeledEdit;
+    edcttlocLocale: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -1966,10 +1982,17 @@ type
     procedure edqtQuestSortIDButtonClick(Sender: TObject);
     procedure edqtQuestSortIDChange(Sender: TObject);
     procedure edQuestSortIDSearchButtonClick(Sender: TObject);
+
     procedure btSearchCreatureTextClick(Sender: TObject);
     procedure cttSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btScriptCreatureTextClick(Sender: TObject);
+
+    procedure btSearchCreatureTextLocaleClick(Sender: TObject);
+    procedure cttlocSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btScriptCreatureTextLocaleClick(Sender: TObject);
+
     procedure btSearchPageTextClick(Sender: TObject);
     procedure lvSearchPageTextSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
@@ -2278,6 +2301,7 @@ type
     procedure SearchCreature;
     procedure SearchCreatureModelInfo;
     procedure SearchCreatureText;
+    procedure SearchCreatureTextLocale;
 
     procedure LoadCreature(Entry: integer);
     procedure LoadCreatureTemplateAddon(entry: integer);
@@ -2302,6 +2326,7 @@ type
     procedure CompleteCreatureTemplateMovementScript;
     procedure CompleteCreatureOnKillReputationScript;
     procedure CompleteCreatureTextScript;
+    procedure CompleteCreatureTextLocaleScript;
     procedure CompleteCreatureEquipTemplateScript;
     procedure CompleteCreatureQuestItemScript;
     procedure CompleteCreatureTemplateResistanceScript;
@@ -4314,6 +4339,12 @@ begin
   edQuestSortIDSearch.Clear;
   edQuestFlagsSearch.Clear;
   lvQuest.Clear;
+  edSearchCreatureTextCreatureID.Clear;
+  edSearchCreatureText.Clear;
+  cttSearchCreatureText.Clear;
+  edSearchCreatureTextLocaleCreatureID.Clear;
+  edSearchCreatureTextLocaleText.Clear;
+  cttlocSearchCreatureText.Clear;
 end;
 
 {---------- Creature stuff --------------}
@@ -4325,7 +4356,6 @@ begin
   edSearchCreatureSubName.Clear;
   lvSearchCreature.Clear;
   edSearchCreaturenpcflag.Clear;
-  edSearchCreatureTextCreatureID.Clear;
 end;
 
 procedure TMainForm.btSearchCreatureClick(Sender: TObject);
@@ -5053,17 +5083,16 @@ begin
     7: CompleteSkinLootScript;
     8: CompleteNPCVendorScript;
     9: CompleteNPCTrainerScript;
-    10: CompleteCreatureTextScript;
-    11: CompleteCreatureTemplateAddonScript;
-    12: CompleteCreatureAddonScript;
-    13: CompleteCreatureTemplateMovementScript;
-    14: CompleteCreatureOnKillReputationScript;
-    15: {involved in tab - do nothing};
-    16: {smartAi tab - do nothing};
-    17: CompleteCreatureQuestItemScript;
-    18: CompleteCreatureTemplateResistanceScript;
-    19: CompleteCreatureTemplateSpellScript;
-    20: {script tab - do nothing};
+    10: CompleteCreatureTemplateAddonScript;
+    11: CompleteCreatureAddonScript;
+    12: CompleteCreatureTemplateMovementScript;
+    13: CompleteCreatureOnKillReputationScript;
+    14: {involved in tab - do nothing};
+    15: {smartAi tab - do nothing};
+    16: CompleteCreatureQuestItemScript;
+    17: CompleteCreatureTemplateResistanceScript;
+    18: CompleteCreatureTemplateSpellScript;
+    19: {script tab - do nothing};
   end;
 end;
 
@@ -10246,6 +10275,9 @@ begin
     1: CompleteGameEventScript;
     2: CompletePageTextScript;
     3: CompletePageTextLocaleScript;
+    4: CompleteCreatureTextScript;
+    5: CompleteCreatureTextLocaleScript;
+    6: {Script tab - do nothing}
   end;
 end;
 
@@ -10469,23 +10501,153 @@ begin
     edcttcomment.Text := Item.SubItems[11];
   end;
 end;
+
 procedure TMainForm.btScriptCreatureTextClick(Sender: TObject);
 begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
+  PageControl6.ActivePageIndex := SCRIPT_TAB_NO_OTHER;
 end;
+
 procedure TMainForm.CompleteCreatureTextScript;
 var
-  CreatureID, Fields, Values: string;
+  CreatureID, GroupID, ID, Fields, Values: string;
 begin
-  mectLog.Clear;
+  meotLog.Clear;
   CreatureID :=  edcttCreatureId.Text;
+  GroupID := edcttGroupID.Text;
+  ID := edcttID.Text;
   if (CreatureID='') then Exit;
-  SetFieldsAndValues(Fields, Values, 'creature_text', PFX_CREATURE_TEXT, mectLog);
+  if (GroupID='') then Exit;
+  if (ID='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'creature_text', PFX_CREATURE_TEXT, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature_text` WHERE (`CreatureID`=%s);'#13#10+
-      'INSERT INTO `creature_text` (%s) VALUES (%s);'#13#10,[CreatureID, Fields, Values]);
-    ssReplace: mectScript.Text := Format('REPLACE INTO `creature_text` (%s) VALUES (%s);'#13#10,[Fields, Values]);
-    ssUpdate: mectScript.Text := MakeUpdate('creature_text', PFX_CREATURE_TEXT, 'CreatureID', CreatureID) ;
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `creature_text` WHERE `CreatureID`=%s AND `GroupID`=%s AND `ID`=%s ;'#13#10+
+      'INSERT INTO `creature_text` (%s) VALUES (%s);'#13#10,[CreatureID, GroupID, ID,  Fields, Values]);
+    ssReplace: meotScript.Text := Format('REPLACE INTO `creature_text` (%s) VALUES (%s);'#13#10,[Fields, Values]);
+    ssUpdate: meotScript.Text := MakeUpdate('creature_text', PFX_CREATURE_TEXT, 'CreatureID', CreatureID) ;
+  end;
+end;
+
+procedure TMainForm.btSearchCreatureTextLocaleClick(Sender: TObject);
+begin
+  SearchCreatureTextLocale();
+  with cttlocSearchCreatureText do
+    if Items.Count > 0 then
+    begin
+      SetFocus;
+      Selected := Items[0];
+    end;
+end;
+
+procedure TMainForm.SearchCreatureTextLocale;
+var
+  i: integer;
+  CreatureID, Name, loc, QueryStr, WhereStr, t: string;
+  Field: TField;
+begin
+  CreatureID :=  edSearchCreatureTextLocaleCreatureID.Text;
+  Name := edSearchCreatureTextLocaleText.Text;
+  Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
+  Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
+  Name := '%'+Name+'%';
+  loc:=LoadLocales();
+  edSearchCreatureTextLocaleLocale.Text:=loc;
+  QueryStr := '';
+  WhereStr := '';
+
+  if CreatureID<>'' then
+  begin
+    if pos('-', CreatureID)=0 then
+      WhereStr := Format('WHERE (`CreatureID` in (%s))',[CreatureID])
+    else
+      WhereStr := Format('WHERE (`CreatureID` >= %s) AND (`CreatureID` <= %s)',[MidStr(CreatureID,1,pos('-',creatureid)-1), MidStr(CreatureID,pos('-',creatureid)+1,length(creatureid))]);
+  end;
+
+  if Name<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`text` LIKE ''%s'')',[WhereStr, Name])
+    else
+      WhereStr := Format('WHERE (`text` LIKE ''%s'')',[Name]);
+  end;
+
+  if Trim(WhereStr)='' then
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+
+  if loc<>'' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`locale` = ''%s'') ORDER BY `CreatureID`',[WhereStr, loc])
+    else
+      WhereStr := Format('WHERE (`locale` = ''%s'') ORDER BY `CreatureID`',[loc]);
+  end;
+
+  QueryStr := Format('SELECT * FROM `creature_text_locale` %s',[WhereStr]);
+
+  MyQuery.SQL.Text := QueryStr;
+  cttlocSearchCreatureText.Items.BeginUpdate;
+  try
+    MyQuery.Open;
+    cttlocSearchCreatureText.Clear;
+    while (MyQuery.Eof=false) do
+    begin
+      with cttlocSearchCreatureText.Items.Add do
+      begin
+        for i := 0 to cttlocSearchCreatureText.Columns.Count - 1 do
+        begin
+          Field := MyQuery.FindField(cttlocSearchCreatureText.Columns[i].Caption);
+          t := '';
+          if Assigned(Field) then
+          begin
+            t := Field.AsString;
+            if i=0 then Caption := t;
+          end;
+          if i<>0 then SubItems.Add(t);
+        end;
+        MyQuery.Next;
+      end;
+    end;
+  finally
+    cttlocSearchCreatureText.Items.EndUpdate;
+    MyQuery.Close;
+  end;
+end;
+
+procedure TMainForm.cttlocSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    edcttlocCreatureId.Text := Item.Caption;
+    edcttlocGroupID.Text := Item.SubItems[0];
+    edcttlocID.Text := Item.SubItems[1];
+    edcttlocLocale.Text := Item.SubItems[2];
+    edcttlocText.Text := Item.SubItems[3];
+  end;
+end;
+
+procedure TMainForm.btScriptCreatureTextLocaleClick(Sender: TObject);
+begin
+  PageControl6.ActivePageIndex := SCRIPT_TAB_NO_OTHER;
+end;
+
+procedure TMainForm.CompleteCreatureTextLocaleScript;
+var
+  CreatureID, GroupID, ID, loc, Fields, Values: string;
+begin
+  meotLog.Clear;
+  CreatureID :=  edcttlocCreatureId.Text;
+  GroupID := edcttlocGroupID.Text;
+  ID := edcttlocID.Text;
+  if (CreatureID='') then Exit;
+  if (GroupID='') then Exit;
+  if (ID='') then Exit;
+  loc:=edcttloclocale.Text;
+  if (loc='') then loc:=LoadLocales();
+  SetFieldsAndValues(Fields, Values, 'creature_text_locale', PFX_CREATURE_TEXT_LOCALE, meotLog);
+  case SyntaxStyle of
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `creature_text_locale` WHERE `CreatureID`=%s AND `GroupID`=%s AND `ID`=%s AND `locale`=''%s'' ;'#13#10+
+      'INSERT INTO `creature_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[CreatureID, GroupID, ID, loc, Fields, Values]);
+    ssReplace: meotScript.Text := Format('REPLACE INTO `creature_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[Fields, Values]);
+    ssUpdate: meotScript.Text := MakeUpdateLocales('creature_text_locale', PFX_CREATURE_TEXT_LOCALE, 'CreatureID', CreatureID, loc) ;
   end;
 end;
 
