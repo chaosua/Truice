@@ -21,7 +21,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '15';
+  VERSION_4   = '17';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -1768,6 +1768,7 @@ type
     edcttlocID: TLabeledEdit;
     edcttlocLocale: TLabeledEdit;
     cttlocSearchCreatureText: TJvListView;
+    btGoCreatureText: TButton;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2208,6 +2209,7 @@ type
     procedure btcLoadClick(Sender: TObject);
     procedure btctGoToSmartAIClick(Sender: TObject);
     procedure btgtGotoSmartAIClick(Sender: TObject);
+    procedure btctGotoCreatureTextClick(Sender: TObject);
     procedure edcyevent_typeKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure edcConditionTypeOrReferenceKeyUp(Sender: TObject; var Key: Word;
@@ -8810,6 +8812,14 @@ begin
   btcyLoadClick(Sender);
 end;
 
+procedure TMainForm.btctGotoCreatureTextClick(Sender: TObject);
+begin
+  edSearchCreatureTextCreatureID.Text := edctEntry.Text;
+  PageControl1.ActivePageIndex := 6;
+  PageControl6.ActivePageIndex :=4;
+  SearchCreatureText();
+end;
+
 procedure TMainForm.btGOLootDelClick(Sender: TObject);
 begin
   LootDel(lvgoGOLoot);
@@ -10546,6 +10556,70 @@ begin
     end;
 end;
 
+procedure TMainForm.SearchCreatureText;
+var
+  i: integer;
+  CreatureID, Name, QueryStr, WhereStr, t: string;
+  Field: TField;
+begin
+  CreatureID :=  edSearchCreatureTextCreatureID.Text;
+  Name := edSearchCreatureText.Text;
+  Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
+  Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
+  Name := '%'+Name+'%';
+  QueryStr := '';
+  WhereStr := '';
+
+  if CreatureID<>'' then
+  begin
+    if pos('-', CreatureID)=0 then
+      WhereStr := Format('WHERE (`CreatureID` in (%s))',[CreatureID])
+    else
+      WhereStr := Format('WHERE (`CreatureID` >= %s) AND (`CreatureID` <= %s)',[MidStr(CreatureID,1,pos('-',creatureid)-1), MidStr(CreatureID,pos('-',creatureid)+1,length(creatureid))]);
+  end;
+
+  if Name<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`text` LIKE ''%s'')',[WhereStr, Name])
+    else
+      WhereStr := Format('WHERE (`text` LIKE ''%s'')',[Name]);
+  end;
+
+  if Trim(WhereStr)='' then
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+
+  QueryStr := Format('SELECT * FROM `creature_text` %s',[WhereStr]);
+
+  MyQuery.SQL.Text := QueryStr;
+  cttSearchCreatureText.Items.BeginUpdate;
+  try
+    MyQuery.Open;
+    cttSearchCreatureText.Clear;
+    while (MyQuery.Eof=false) do
+    begin
+      with cttSearchCreatureText.Items.Add do
+      begin
+        for i := 0 to cttSearchCreatureText.Columns.Count - 1 do
+        begin
+          Field := MyQuery.FindField(cttSearchCreatureText.Columns[i].Caption);
+          t := '';
+          if Assigned(Field) then
+          begin
+            t := Field.AsString;
+            if i=0 then Caption := t;
+          end;
+          if i<>0 then SubItems.Add(t);
+        end;
+        MyQuery.Next;
+      end;
+    end;
+  finally
+    cttSearchCreatureText.Items.EndUpdate;
+    MyQuery.Close;
+  end;
+end;
+
 procedure TMainForm.cttSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   if Selected then
@@ -10898,70 +10972,6 @@ begin
                                   'INSERT INTO `page_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[ID, loc, Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `page_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdateLocales('page_text_locale', PFX_PAGE_TEXT_LOCALE, 'ID', ID, loc) ;
-  end;
-end;
-
-procedure TMainForm.SearchCreatureText;
-var
-  i: integer;
-  CreatureID, Name, QueryStr, WhereStr, t: string;
-  Field: TField;
-begin
-  CreatureID :=  edSearchCreatureTextCreatureID.Text;
-  Name := edSearchCreatureText.Text;
-  Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
-  Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
-  Name := '%'+Name+'%';
-  QueryStr := '';
-  WhereStr := '';
-
-  if CreatureID<>'' then
-  begin
-    if pos('-', CreatureID)=0 then
-      WhereStr := Format('WHERE (`CreatureID` in (%s))',[CreatureID])
-    else
-      WhereStr := Format('WHERE (`CreatureID` >= %s) AND (`CreatureID` <= %s)',[MidStr(CreatureID,1,pos('-',creatureid)-1), MidStr(CreatureID,pos('-',creatureid)+1,length(creatureid))]);
-  end;
-
-  if Name<>'%%' then
-  begin
-    if WhereStr<> '' then
-      WhereStr := Format('%s AND (`text` LIKE ''%s'')',[WhereStr, Name])
-    else
-      WhereStr := Format('WHERE (`text` LIKE ''%s'')',[Name]);
-  end;
-
-  if Trim(WhereStr)='' then
-    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
-
-  QueryStr := Format('SELECT * FROM `creature_text` %s',[WhereStr]);
-
-  MyQuery.SQL.Text := QueryStr;
-  cttSearchCreatureText.Items.BeginUpdate;
-  try
-    MyQuery.Open;
-    cttSearchCreatureText.Clear;
-    while (MyQuery.Eof=false) do
-    begin
-      with cttSearchCreatureText.Items.Add do
-      begin
-        for i := 0 to cttSearchCreatureText.Columns.Count - 1 do
-        begin
-          Field := MyQuery.FindField(cttSearchCreatureText.Columns[i].Caption);
-          t := '';
-          if Assigned(Field) then
-          begin
-            t := Field.AsString;
-            if i=0 then Caption := t;
-          end;
-          if i<>0 then SubItems.Add(t);
-        end;
-        MyQuery.Next;
-      end;
-    end;
-  finally
-    cttSearchCreatureText.Items.EndUpdate;
-    MyQuery.Close;
   end;
 end;
 
