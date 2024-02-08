@@ -477,6 +477,7 @@ edctlocVerifiedBuild=VerifiedBuild
 edctlocName=Name
 edctlocTitle=Title  (subname)
 ^edctlocTitle=subname from creature_template
+btGoCreatureText=Goto creature_text
 tsCreatureLocation=Creature Location
 lbclCreatureLocationHint=id must be equal to creature_template -> entry
 lbclmap=map
