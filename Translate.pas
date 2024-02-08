@@ -363,7 +363,7 @@ begin
   for i:=0 to LANG_MAX_STRINGS do
   begin
     if dmMain.Text[i]='' then Exit;
-    dmMain.Text[i]:=StringReplace(GetTranslation(Format('TEXT%d',[i]),15,dmMain.Text[i]), '$B', #13#10, [rfReplaceAll]);
+    dmMain.Text[i]:=StringReplace(GetTranslation(Format('TEXT%d',[i]), LANG_CUSTOM, dmMain.Text[i]), '$B$B', #13#10, [rfReplaceAll]);
   end;
 end;
 
