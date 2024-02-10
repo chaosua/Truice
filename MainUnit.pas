@@ -5164,7 +5164,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5195,7 +5195,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5227,7 +5227,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5269,7 +5269,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5300,7 +5300,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5332,7 +5332,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5373,7 +5373,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5405,7 +5405,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5437,7 +5437,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5467,7 +5467,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
@@ -5502,7 +5502,7 @@ begin
 
       //Rewards
       a := '';    b := '';
-      if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
+    //  if MyTempQuery.FieldByName('RewardBonusMoney').AsInteger>0 then a := MyTempQuery.FieldByName('RewardBonusMoney').AsString + ' MML';
       if MyTempQuery.FieldByName('RewardMoney').AsInteger>0 then b := MyTempQuery.FieldByName('RewardMoney').AsString + 'c';
       if (a<>'') and (b<>'') then temp := a + ' + ' + b
       else temp := a + b;
