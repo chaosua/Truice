@@ -113,11 +113,11 @@
         <DCC_LocalDebugSymbols>true</DCC_LocalDebugSymbols>
         <DCC_DebugInformation>2</DCC_DebugInformation>
         <DCC_Define>madExcept;C;$(DCC_Define)</DCC_Define>
-        <VerInfo_Keys>CompanyName=;FileVersion=2.1.6.18;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=2.1.6.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileVersion=2.1.6.16;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=2.1.6.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Release>6</VerInfo_Release>
-        <VerInfo_Build>18</VerInfo_Build>
+        <VerInfo_Build>16</VerInfo_Build>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <BT_BuildType>Debug</BT_BuildType>
