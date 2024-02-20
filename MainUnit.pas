@@ -4786,7 +4786,7 @@ begin
     if (isvendor=true) then 
     begin
       LoadQueryToListView(Format('SELECT v.*, i.`name` FROM `npc_vendor` v'+
-      'LEFT OUTER JOIN `item_template` i ON i.`entry` = v.`item` WHERE (v.`entry`=%d)',
+      ' LEFT OUTER JOIN `item_template` i ON i.`entry` = v.`item` WHERE (v.`entry`=%d)',
       [Entry]),lvcvNPCVendor);
     end;
 
