@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{A5365669-B8DF-4BB4-A71F-A9A40132E993}</ProjectGuid>
+        <ProjectGuid>{0E1299DE-27AE-4DDD-A087-EBB589534A62}</ProjectGuid>
         <MainSource>Truice.dpr</MainSource>
         <Config Condition="'$(Config)'==''">Release</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>

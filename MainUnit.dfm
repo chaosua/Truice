@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 327
   Top = 145
   Caption = 'Truice'
-  ClientHeight = 687
-  ClientWidth = 953
+  ClientHeight = 685
+  ClientWidth = 945
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,9 +22,9 @@ object MainForm: TMainForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 953
-    Height = 687
-    ActivePage = tsCreature
+    Width = 945
+    Height = 685
+    ActivePage = tsOther
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -39,7 +39,7 @@ object MainForm: TMainForm
       object pnQuestTop: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -48,8 +48,8 @@ object MainForm: TMainForm
       object PageControl2: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
+        Width = 937
+        Height = 652
         ActivePage = tsQuestPart2
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
@@ -68,12 +68,12 @@ object MainForm: TMainForm
           object pnSearch: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               105)
             object lbQuestStarterSearch: TLabel
               Left = 8
@@ -196,7 +196,7 @@ object MainForm: TMainForm
               OnChange = edSearchChange
             end
             object btSearch: TBitBtn
-              Left = 818
+              Left = 810
               Top = 25
               Width = 75
               Height = 25
@@ -251,7 +251,7 @@ object MainForm: TMainForm
               OnClick = btSearchClick
             end
             object btClear: TBitBtn
-              Left = 818
+              Left = 810
               Top = 56
               Width = 75
               Height = 25
@@ -425,8 +425,8 @@ object MainForm: TMainForm
           object lvQuest: TJvListView
             Left = 0
             Top = 105
-            Width = 937
-            Height = 460
+            Width = 929
+            Height = 458
             Hint = 'Browse URL'
             Align = alClient
             BorderStyle = bsNone
@@ -467,13 +467,13 @@ object MainForm: TMainForm
           end
           object Panel2: TPanel
             Left = 0
-            Top = 565
-            Width = 937
+            Top = 563
+            Width = 929
             Height = 61
             Align = alBottom
             TabOrder = 2
             DesignSize = (
-              937
+              929
               61)
             object btEditQuest: TBitBtn
               Left = 112
@@ -781,7 +781,7 @@ object MainForm: TMainForm
               OnClick = btCheckQuestClick
             end
             object btCheckAll: TBitBtn
-              Left = 790
+              Left = 782
               Top = 10
               Width = 110
               Height = 25
@@ -847,7 +847,7 @@ object MainForm: TMainForm
             object StatusBar: TStatusBar
               Left = 1
               Top = 41
-              Width = 935
+              Width = 927
               Height = 19
               Panels = <
                 item
@@ -5042,8 +5042,8 @@ object MainForm: TMainForm
           Caption = 'Quest Starters'
           ImageIndex = 3
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbQuestStarterInfo: TLabel
             Left = 8
             Top = 37
@@ -5182,7 +5182,7 @@ object MainForm: TMainForm
           object lvqtStarterTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 871
+            Width = 863
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5224,7 +5224,7 @@ object MainForm: TMainForm
           object lvqtStarterLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 871
+            Width = 863
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5296,8 +5296,8 @@ object MainForm: TMainForm
           Caption = 'Quest enders'
           ImageIndex = 4
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbQuestEnderInfo: TLabel
             Left = 8
             Top = 37
@@ -5436,7 +5436,7 @@ object MainForm: TMainForm
           object lvqtTenderTemplate: TJvListView
             Left = 8
             Top = 53
-            Width = 871
+            Width = 863
             Height = 151
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5478,7 +5478,7 @@ object MainForm: TMainForm
           object lvqtTenderLocation: TJvListView
             Left = 8
             Top = 229
-            Width = 871
+            Width = 863
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -5829,10 +5829,10 @@ object MainForm: TMainForm
           ImageIndex = 2
           OnShow = tsScriptTabShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object btCopyToClipboard: TButton
-            Left = 742
+            Left = 734
             Top = 508
             Width = 137
             Height = 25
@@ -5842,7 +5842,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardClick
           end
           object btExecuteScript: TButton
-            Left = 742
+            Left = 734
             Top = 540
             Width = 137
             Height = 25
@@ -5854,7 +5854,7 @@ object MainForm: TMainForm
           object meqtLog: TMemo
             Left = 8
             Top = 472
-            Width = 719
+            Width = 711
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -5863,7 +5863,7 @@ object MainForm: TMainForm
           object meqtScript: TMemo
             Left = 3
             Top = 9
-            Width = 872
+            Width = 864
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -5884,9 +5884,9 @@ object MainForm: TMainForm
       object PageControl3: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
-        ActivePage = tsEditCreature
+        Width = 937
+        Height = 652
+        ActivePage = tsCreatureLoot
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -5895,12 +5895,12 @@ object MainForm: TMainForm
           object Panel4: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               105)
             object edSearchCreatureEntry: TLabeledEdit
               Left = 8
@@ -5929,7 +5929,7 @@ object MainForm: TMainForm
               OnChange = edSearchCreatureChange
             end
             object btSearchCreature: TBitBtn
-              Left = 821
+              Left = 813
               Top = 23
               Width = 75
               Height = 25
@@ -5984,7 +5984,7 @@ object MainForm: TMainForm
               OnClick = btSearchCreatureClick
             end
             object btClearSearchCreature: TBitBtn
-              Left = 820
+              Left = 812
               Top = 56
               Width = 75
               Height = 25
@@ -6108,8 +6108,8 @@ object MainForm: TMainForm
           object lvSearchCreature: TJvListView
             Left = 0
             Top = 105
-            Width = 937
-            Height = 442
+            Width = 929
+            Height = 440
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -6170,8 +6170,8 @@ object MainForm: TMainForm
           end
           object Panel5: TPanel
             Left = 0
-            Top = 547
-            Width = 937
+            Top = 545
+            Width = 929
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -6420,7 +6420,7 @@ object MainForm: TMainForm
             object StatusBarCreature: TStatusBar
               Left = 1
               Top = 41
-              Width = 935
+              Width = 927
               Height = 19
               Panels = <
                 item
@@ -8010,8 +8010,8 @@ object MainForm: TMainForm
           Caption = 'Creature Location'
           ImageIndex = 2
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbclCreatureLocationHint: TLabel
             Left = 8
             Top = 8
@@ -8059,7 +8059,7 @@ object MainForm: TMainForm
           object lvclCreatureLocation: TJvListView
             Left = 3
             Top = 26
-            Width = 871
+            Width = 863
             Height = 350
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -8289,7 +8289,7 @@ object MainForm: TMainForm
             OnClick = btScriptCreatureLocationCustomToAllClick
           end
           object btFullScriptCreatureLocation: TButton
-            Left = 664
+            Left = 656
             Top = 568
             Width = 210
             Height = 25
@@ -8570,12 +8570,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsCreatureModelInfoShow
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lvCreatureModelSearch: TJvListView
             Left = 11
             Top = 50
-            Width = 867
+            Width = 859
             Height = 223
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -8621,16 +8621,16 @@ object MainForm: TMainForm
           object Panel24: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 50
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             DesignSize = (
-              937
+              929
               50)
             object btCreatureModelSearch: TBitBtn
-              Left = 803
+              Left = 795
               Top = 16
               Width = 75
               Height = 25
@@ -8770,8 +8770,8 @@ object MainForm: TMainForm
           ImageIndex = 14
           OnShow = tsCreatureEquipTemplateShow
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbceItemID1: TLabel
             Left = 169
             Top = 188
@@ -8966,7 +8966,7 @@ object MainForm: TMainForm
           object lvceCreatureEquipTemplate: TJvListView
             Left = 17
             Top = 32
-            Width = 561
+            Width = 553
             Height = 150
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9191,8 +9191,8 @@ object MainForm: TMainForm
           Caption = 'Creature Loot'
           ImageIndex = 5
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbcoitem: TLabel
             Left = 79
             Top = 476
@@ -9392,7 +9392,7 @@ object MainForm: TMainForm
           object lvcoCreatureLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 871
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9660,8 +9660,8 @@ object MainForm: TMainForm
           Caption = 'Pickpocket Loot'
           ImageIndex = 6
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbcpitem: TLabel
             Left = 79
             Top = 476
@@ -9861,7 +9861,7 @@ object MainForm: TMainForm
           object lvcoPickpocketLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 871
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10119,8 +10119,8 @@ object MainForm: TMainForm
           Caption = 'Skin Loot'
           ImageIndex = 7
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbcsitem: TLabel
             Left = 79
             Top = 476
@@ -10320,7 +10320,7 @@ object MainForm: TMainForm
           object lvcoSkinLoot: TJvListView
             Left = 3
             Top = 32
-            Width = 871
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10577,8 +10577,8 @@ object MainForm: TMainForm
           Caption = 'NPC Vendor'
           ImageIndex = 8
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbcvitem: TLabel
             Left = 192
             Top = 474
@@ -10775,7 +10775,7 @@ object MainForm: TMainForm
           object lvcvNPCVendor: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -10983,8 +10983,8 @@ object MainForm: TMainForm
           Caption = 'Trainer Spell'
           ImageIndex = 9
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object lbtsSpellID: TLabel
             Left = 97
             Top = 415
@@ -11190,7 +11190,7 @@ object MainForm: TMainForm
           object lvtsTrainerSpell: TJvListView
             Left = 0
             Top = 27
-            Width = 888
+            Width = 880
             Height = 374
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -12170,7 +12170,7 @@ object MainForm: TMainForm
           object pcCreatureInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 937
+            Width = 929
             Height = 417
             ActivePage = tsCreatureStarts
             Align = alTop
@@ -12180,7 +12180,7 @@ object MainForm: TMainForm
               object lvCreatureStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12236,7 +12236,7 @@ object MainForm: TMainForm
               object lvCreatureEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12292,7 +12292,7 @@ object MainForm: TMainForm
               object lvCreatureObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -12345,7 +12345,7 @@ object MainForm: TMainForm
           object Panel20: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -12379,8 +12379,8 @@ object MainForm: TMainForm
           Caption = 'QuestItem'
           ImageIndex = 17
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object btCreatureQuestItemAdd: TSpeedButton
             Left = 448
             Top = 384
@@ -12568,7 +12568,7 @@ object MainForm: TMainForm
           object lvcqiCreatureQuestItem: TJvListView
             Left = 56
             Top = 32
-            Width = 648
+            Width = 640
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -13286,12 +13286,12 @@ object MainForm: TMainForm
           ImageIndex = 19
           OnShow = tsCreatureScriptShow
           DesignSize = (
-            937
-            608)
+            929
+            606)
           object mectScript: TMemo
             Left = 8
             Top = 9
-            Width = 872
+            Width = 864
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -13306,14 +13306,14 @@ object MainForm: TMainForm
           object mectLog: TMemo
             Left = 8
             Top = 472
-            Width = 719
+            Width = 711
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardCreature: TButton
-            Left = 742
+            Left = 734
             Top = 472
             Width = 137
             Height = 25
@@ -13323,7 +13323,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardCreatureClick
           end
           object btExecuteScriptCreature: TButton
-            Left = 742
+            Left = 734
             Top = 515
             Width = 137
             Height = 25
@@ -13337,7 +13337,7 @@ object MainForm: TMainForm
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -13350,7 +13350,7 @@ object MainForm: TMainForm
       object Panel8: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -13359,8 +13359,8 @@ object MainForm: TMainForm
       object PageControl4: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
+        Width = 937
+        Height = 652
         ActivePage = tsEditGO
         Align = alClient
         TabOrder = 1
@@ -13369,12 +13369,12 @@ object MainForm: TMainForm
           object Panel6: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               105)
             object lbSearchGOtype: TLabel
               Left = 264
@@ -13417,7 +13417,7 @@ object MainForm: TMainForm
               OnChange = edSearchGOChange
             end
             object btSearchGO: TBitBtn
-              Left = 820
+              Left = 812
               Top = 24
               Width = 75
               Height = 25
@@ -13472,7 +13472,7 @@ object MainForm: TMainForm
               OnClick = btSearchGOClick
             end
             object btClearSearchGO: TBitBtn
-              Left = 820
+              Left = 812
               Top = 56
               Width = 75
               Height = 25
@@ -13601,8 +13601,8 @@ object MainForm: TMainForm
           object lvSearchGO: TJvListView
             Left = 0
             Top = 105
-            Width = 937
-            Height = 460
+            Width = 929
+            Height = 458
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -13646,8 +13646,8 @@ object MainForm: TMainForm
           end
           object Panel7: TPanel
             Left = 0
-            Top = 565
-            Width = 937
+            Top = 563
+            Width = 929
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -13896,7 +13896,7 @@ object MainForm: TMainForm
             object StatusBarGO: TStatusBar
               Left = 1
               Top = 41
-              Width = 935
+              Width = 927
               Height = 19
               Panels = <
                 item
@@ -14705,8 +14705,8 @@ object MainForm: TMainForm
           Caption = 'GO Location'
           ImageIndex = 2
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbglGOLocationHint: TLabel
             Left = 8
             Top = 8
@@ -14733,7 +14733,7 @@ object MainForm: TMainForm
           object lvglGOLocation: TJvListView
             Left = 3
             Top = 27
-            Width = 871
+            Width = 863
             Height = 390
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -14943,7 +14943,7 @@ object MainForm: TMainForm
             Text = ''
           end
           object btFullScriptGOLocation: TButton
-            Left = 695
+            Left = 687
             Top = 584
             Width = 201
             Height = 25
@@ -15090,8 +15090,8 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsGOLootShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbgoitem: TLabel
             Left = 97
             Top = 494
@@ -15288,7 +15288,7 @@ object MainForm: TMainForm
           object lvgoGOLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 906
+            Width = 898
             Height = 449
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -15559,7 +15559,7 @@ object MainForm: TMainForm
           object pcGameObjectInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 937
+            Width = 929
             Height = 417
             ActivePage = tsGOStarts
             Align = alTop
@@ -15569,7 +15569,7 @@ object MainForm: TMainForm
               object lvGameObjectStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15624,7 +15624,7 @@ object MainForm: TMainForm
               object lvGameObjectEnds: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15679,7 +15679,7 @@ object MainForm: TMainForm
               object lvGameObjectObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -15732,7 +15732,7 @@ object MainForm: TMainForm
           object Panel21: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -15743,8 +15743,8 @@ object MainForm: TMainForm
           Caption = 'GO QuestItem'
           ImageIndex = 5
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object Label5: TLabel
             Left = 64
             Top = 21
@@ -15932,7 +15932,7 @@ object MainForm: TMainForm
           object lvgoqiGOQuestItem: TJvListView
             Left = 64
             Top = 40
-            Width = 648
+            Width = 640
             Height = 305
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -16088,12 +16088,12 @@ object MainForm: TMainForm
           ImageIndex = 7
           OnShow = tsGOScriptShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object megoScript: TMemo
             Left = 8
             Top = 8
-            Width = 872
+            Width = 864
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -16108,14 +16108,14 @@ object MainForm: TMainForm
           object megoLog: TMemo
             Left = 8
             Top = 472
-            Width = 719
+            Width = 711
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardGO: TButton
-            Left = 742
+            Left = 734
             Top = 508
             Width = 137
             Height = 25
@@ -16125,7 +16125,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardGOClick
           end
           object btExecuteGOScript: TButton
-            Left = 742
+            Left = 734
             Top = 540
             Width = 137
             Height = 25
@@ -16143,7 +16143,7 @@ object MainForm: TMainForm
       object Panel9: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -16152,8 +16152,8 @@ object MainForm: TMainForm
       object PageControl5: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
+        Width = 937
+        Height = 652
         ActivePage = tsItemTemplate
         Align = alClient
         TabOrder = 1
@@ -16162,12 +16162,12 @@ object MainForm: TMainForm
           object Panel10: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               105)
             object lbSearchItemSubClass: TLabel
               Left = 308
@@ -16238,7 +16238,7 @@ object MainForm: TMainForm
               OnChange = edSearchItemChange
             end
             object btSearchItem: TBitBtn
-              Left = 820
+              Left = 812
               Top = 24
               Width = 75
               Height = 25
@@ -16293,7 +16293,7 @@ object MainForm: TMainForm
               OnClick = btSearchItemClick
             end
             object btClearSearchItem: TBitBtn
-              Left = 820
+              Left = 812
               Top = 56
               Width = 75
               Height = 25
@@ -16551,8 +16551,8 @@ object MainForm: TMainForm
           object lvSearchItem: TJvListView
             Left = 0
             Top = 105
-            Width = 937
-            Height = 460
+            Width = 929
+            Height = 458
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -16623,8 +16623,8 @@ object MainForm: TMainForm
           end
           object Panel11: TPanel
             Left = 0
-            Top = 565
-            Width = 937
+            Top = 563
+            Width = 929
             Height = 61
             Align = alBottom
             TabOrder = 2
@@ -16873,7 +16873,7 @@ object MainForm: TMainForm
             object StatusBarItem: TStatusBar
               Left = 1
               Top = 41
-              Width = 935
+              Width = 927
               Height = 19
               Panels = <
                 item
@@ -20311,8 +20311,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsItemLootShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbilitem: TLabel
             Left = 96
             Top = 484
@@ -20518,7 +20518,7 @@ object MainForm: TMainForm
           object lvitItemLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -20775,8 +20775,8 @@ object MainForm: TMainForm
           ImageIndex = 4
           OnShow = tsDisenchantLootShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbiditem: TLabel
             Left = 112
             Top = 453
@@ -20982,7 +20982,7 @@ object MainForm: TMainForm
           object lvitDisLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 401
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21240,8 +21240,8 @@ object MainForm: TMainForm
           ImageIndex = 5
           OnShow = tsProspectingLootShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbipitem: TLabel
             Left = 96
             Top = 484
@@ -21447,7 +21447,7 @@ object MainForm: TMainForm
           object lvitProsLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -21705,8 +21705,8 @@ object MainForm: TMainForm
           ImageIndex = 9
           OnShow = tsMillingLootShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object Label2: TLabel
             Left = 96
             Top = 484
@@ -21903,7 +21903,7 @@ object MainForm: TMainForm
           object lvitMillingLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -22160,8 +22160,8 @@ object MainForm: TMainForm
           Caption = 'Reference Loot'
           ImageIndex = 10
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object Label1: TLabel
             Left = 96
             Top = 484
@@ -22365,7 +22365,7 @@ object MainForm: TMainForm
           object lvitReferenceLoot: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -22666,8 +22666,8 @@ object MainForm: TMainForm
           ImageIndex = 6
           OnShow = tsEnchantmentShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object btieEnchAdd: TSpeedButton
             Left = 736
             Top = 500
@@ -22861,7 +22861,7 @@ object MainForm: TMainForm
           object lvitEnchantment: TJvListView
             Left = 8
             Top = 32
-            Width = 888
+            Width = 880
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -22949,8 +22949,8 @@ object MainForm: TMainForm
           object lvitItemLootedFrom: TJvListView
             Left = 0
             Top = 0
-            Width = 937
-            Height = 626
+            Width = 929
+            Height = 624
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -23022,7 +23022,7 @@ object MainForm: TMainForm
           object Panel22: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -23031,7 +23031,7 @@ object MainForm: TMainForm
           object pcItemInfo: TPageControl
             Left = 0
             Top = 41
-            Width = 937
+            Width = 929
             Height = 417
             ActivePage = tsItemRewardFrom
             Align = alTop
@@ -23041,7 +23041,7 @@ object MainForm: TMainForm
               object lvItemStarts: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -23096,7 +23096,7 @@ object MainForm: TMainForm
               object lvItemObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -23151,7 +23151,7 @@ object MainForm: TMainForm
               object lvItemSourceFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -23206,7 +23206,7 @@ object MainForm: TMainForm
               object lvItemProvidedFor: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -23261,7 +23261,7 @@ object MainForm: TMainForm
               object lvItemRewardFrom: TJvListView
                 Left = 0
                 Top = 0
-                Width = 929
+                Width = 921
                 Height = 389
                 Align = alClient
                 Columns = <
@@ -23317,12 +23317,12 @@ object MainForm: TMainForm
           ImageIndex = 3
           OnShow = tsItemScriptShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object meitScript: TMemo
             Left = 8
             Top = 8
-            Width = 889
+            Width = 881
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -23337,14 +23337,14 @@ object MainForm: TMainForm
           object meitLog: TMemo
             Left = 8
             Top = 472
-            Width = 736
+            Width = 728
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardItem: TButton
-            Left = 759
+            Left = 751
             Top = 508
             Width = 137
             Height = 25
@@ -23354,7 +23354,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardItemClick
           end
           object btExecuteItemScript: TButton
-            Left = 759
+            Left = 751
             Top = 540
             Width = 137
             Height = 25
@@ -23372,8 +23372,8 @@ object MainForm: TMainForm
       object PageControl9: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
+        Width = 937
+        Height = 652
         ActivePage = tsSmartAI
         Align = alClient
         TabOrder = 0
@@ -23381,8 +23381,8 @@ object MainForm: TMainForm
           Caption = 'SmartAI'
           ImageIndex = 19
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object btSmartAIAdd: TSpeedButton
             Left = 706
             Top = 320
@@ -23796,7 +23796,7 @@ object MainForm: TMainForm
           object lvcySmartAI: TJvListView
             Left = 3
             Top = 23
-            Width = 914
+            Width = 906
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -24404,10 +24404,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           OnShow = tsSmartAIScriptShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object btCopyToClipboardSmartAI: TButton
-            Left = 770
+            Left = 762
             Top = 508
             Width = 137
             Height = 25
@@ -24417,7 +24417,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardSmartAIClick
           end
           object btExecuteSmartAIScript: TButton
-            Left = 770
+            Left = 762
             Top = 540
             Width = 137
             Height = 25
@@ -24429,7 +24429,7 @@ object MainForm: TMainForm
           object mecyScript: TMemo
             Left = 11
             Top = 10
-            Width = 900
+            Width = 892
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -24444,7 +24444,7 @@ object MainForm: TMainForm
           object mecyLog: TMemo
             Left = 11
             Top = 472
-            Width = 747
+            Width = 739
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -24455,7 +24455,7 @@ object MainForm: TMainForm
       object Panel25: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -24469,8 +24469,8 @@ object MainForm: TMainForm
       object PageControl10: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
+        Width = 937
+        Height = 652
         ActivePage = tsConditions
         Align = alClient
         TabOrder = 0
@@ -24478,8 +24478,8 @@ object MainForm: TMainForm
           Caption = 'Conditions'
           ImageIndex = 19
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object btConditionsAdd: TSpeedButton
             Left = 699
             Top = 322
@@ -24774,7 +24774,7 @@ object MainForm: TMainForm
           object lvcConditions: TJvListView
             Left = 3
             Top = 23
-            Width = 914
+            Width = 906
             Height = 278
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -25093,10 +25093,10 @@ object MainForm: TMainForm
           ImageIndex = 1
           OnShow = tsConditionsScriptShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object btCopyToClipboardConditions: TButton
-            Left = 770
+            Left = 762
             Top = 508
             Width = 137
             Height = 25
@@ -25106,7 +25106,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardConditionsClick
           end
           object btExecuteConditionsScript: TButton
-            Left = 770
+            Left = 762
             Top = 540
             Width = 137
             Height = 25
@@ -25118,7 +25118,7 @@ object MainForm: TMainForm
           object mecScript: TMemo
             Left = 11
             Top = 10
-            Width = 900
+            Width = 892
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -25133,7 +25133,7 @@ object MainForm: TMainForm
           object mecLog: TMemo
             Left = 11
             Top = 472
-            Width = 747
+            Width = 739
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
@@ -25144,7 +25144,7 @@ object MainForm: TMainForm
       object Panel26: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -25157,7 +25157,7 @@ object MainForm: TMainForm
       object Panel12: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -25166,16 +25166,16 @@ object MainForm: TMainForm
       object PageControl6: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
-        ActivePage = tsCreatureTextLocale
+        Width = 937
+        Height = 652
+        ActivePage = tsBroadcastTextLocale
         Align = alClient
         TabOrder = 1
         object tsFishingLoot: TTabSheet
           Caption = 'Fishing Loot'
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object lbotitem: TLabel
             Left = 96
             Top = 463
@@ -25386,7 +25386,7 @@ object MainForm: TMainForm
           object lvotFishingLoot: TJvListView
             Left = 8
             Top = 72
-            Width = 888
+            Width = 880
             Height = 385
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -25730,15 +25730,15 @@ object MainForm: TMainForm
           object GroupBox2: TGroupBox
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 89
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               89)
             object btClearSearchGameEvent: TBitBtn
-              Left = 820
+              Left = 812
               Top = 56
               Width = 75
               Height = 25
@@ -25748,7 +25748,7 @@ object MainForm: TMainForm
               OnClick = btClearClick
             end
             object btSearchGameEvent: TBitBtn
-              Left = 820
+              Left = 812
               Top = 24
               Width = 75
               Height = 25
@@ -25827,14 +25827,14 @@ object MainForm: TMainForm
           end
           object pnSelectedEventInfo: TPanel
             Left = 0
-            Top = 334
-            Width = 937
+            Top = 332
+            Width = 929
             Height = 292
             Align = alBottom
             Enabled = False
             TabOrder = 1
             DesignSize = (
-              937
+              929
               292)
             object edGameEventCreatureHint: TLabel
               Left = 8
@@ -26381,7 +26381,7 @@ object MainForm: TMainForm
               OnButtonClick = edgeGOguidButtonClick
             end
             object btScriptGameEvent: TButton
-              Left = 661
+              Left = 653
               Top = 256
               Width = 217
               Height = 25
@@ -26395,15 +26395,15 @@ object MainForm: TMainForm
           object Panel17: TPanel
             Left = 0
             Top = 89
-            Width = 937
-            Height = 245
+            Width = 929
+            Height = 243
             Align = alClient
             TabOrder = 2
             object lvSearchGameEvent: TJvListView
               Left = 1
               Top = 1
-              Width = 935
-              Height = 143
+              Width = 927
+              Height = 141
               Align = alClient
               BorderStyle = bsNone
               Columns = <
@@ -26478,8 +26478,8 @@ object MainForm: TMainForm
             end
             object Panel18: TPanel
               Left = 1
-              Top = 144
-              Width = 935
+              Top = 142
+              Width = 927
               Height = 100
               Align = alBottom
               BevelOuter = bvNone
@@ -26785,28 +26785,179 @@ object MainForm: TMainForm
             end
           end
         end
-        object tsPageText: TTabSheet
-          Caption = 'Page Text'
+        object tsBroadcastText: TTabSheet
+          Caption = 'Broadcast Text'
           ImageIndex = 2
-          object lvSearchPageText: TJvListView
+          object GroupBox6: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 929
+            Height = 89
+            Align = alTop
+            TabOrder = 0
+            DesignSize = (
+              929
+              89)
+            object lbbttAboutID: TLabel
+              Left = 151
+              Top = 15
+              Width = 402
+              Height = 15
+              Caption = 
+                'Search by single (id), comma separated (id1, id2, id3) or in ran' +
+                'ge (Id1-Id2)'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Microsoft Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object cttClearSearchBroadcastText: TBitBtn
+              Left = 723
+              Top = 56
+              Width = 75
+              Height = 25
+              Anchors = [akTop, akRight]
+              Caption = 'Clear'
+              TabOrder = 2
+              OnClick = btClearClick
+            end
+            object btSearchBroadcastText: TBitBtn
+              Left = 723
+              Top = 24
+              Width = 75
+              Height = 25
+              Anchors = [akTop, akRight]
+              Caption = 'Search'
+              Default = True
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                080000000000000100000000000000000000000100000000000000000000FFFF
+                FF00957D6E00F9C6940043454800AEAEAE00E4D3CE006567690094949400C0A3
+                8800D5BBA700FFE2B300FFF0DA00C3C3C300787A7B00E3E2E400DEB48F005858
+                58008888880079706900F2D3B600FFF5EE00C5B0A700FFD3A100D2D2D200EEEE
+                EE00FFE8C400B6B8BA00897D7B009D9D9D00F9DBC3006E6E6E005F5F5F00CBCB
+                CC00C1BBBA008A7C6F0081818100FFCC9A00908C8B00FFE8CD0073737300B3B3
+                B30096989A00746B670063636300AAAAAA006B6969007D7B780048484800FFE4
+                C0006864650073716E005C5C5C0076767600858585008B8B8B009A9A9A007C7B
+                7C005A5A5A00717171008D8D8D009292920097979700686969006B6B6B005D5E
+                5E008A898900FFCA99007A7A7A00977D6D004747470072727200828080009898
+                980062626300C0C0C00000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000004B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                2B022E4B4B4B4B4B4B4B4B4B4B4B4B3F0325100E4B3945134B4B4B4B4B4B4A26
+                31270B3407091743334B4B4B4B461D1B161514042A0A0C1A234B4B4B40443D19
+                0F1C32412122061E2F4B4B302D051D3828303A24010148424B4B4B1136180D29
+                49243B28202C4B4B4B4B4B4B47243D123C3E081F4B4B4B4B4B4B4B4B4B4B4B4B
+                37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
+              Margin = 4
+              TabOrder = 3
+              OnClick = btSearchBroadcastTextClick
+            end
+            object edSearchBroadcastTextMaleText: TLabeledEdit
+              Left = 11
+              Top = 56
+              Width = 250
+              Height = 21
+              EditLabel.Width = 44
+              EditLabel.Height = 13
+              EditLabel.Caption = 'MaleText'
+              TabOrder = 1
+              Text = ''
+            end
+            object edSearchBroadcastTextID: TLabeledEdit
+              Left = 11
+              Top = 18
+              Width = 134
+              Height = 21
+              EditLabel.Width = 11
+              EditLabel.Height = 13
+              EditLabel.Caption = 'ID'
+              TabOrder = 0
+              Text = ''
+            end
+            object edSearchBroadcastTextFemaleText: TLabeledEdit
+              Left = 297
+              Top = 56
+              Width = 250
+              Height = 21
+              EditLabel.Width = 55
+              EditLabel.Height = 13
+              EditLabel.Caption = 'FemaleText'
+              TabOrder = 4
+              Text = ''
+            end
+          end
+          object lvSearchBroadcastText: TJvListView
             Left = 0
             Top = 89
-            Width = 937
-            Height = 319
+            Width = 929
+            Height = 294
             Align = alClient
             BorderStyle = bsNone
             Columns = <
               item
-                Caption = 'id'
-                Width = 60
+                Caption = 'ID'
               end
               item
-                Caption = 'Text'
-                Width = 700
+                Caption = 'LanguageID'
               end
               item
-                Caption = 'NextPageId'
-                Width = 80
+                Caption = 'MaleText'
+              end
+              item
+                Caption = 'FemaleText'
+              end
+              item
+                Caption = 'EmoteID1'
+              end
+              item
+                Caption = 'EmoteID2'
+              end
+              item
+                Caption = 'EmoteID3'
+              end
+              item
+                Caption = 'EmoteDelay1'
+              end
+              item
+                Caption = 'EmoteDelay2'
+              end
+              item
+                Caption = 'EmoteDelay3'
+              end
+              item
+                Caption = 'SoundEntriesId'
+              end
+              item
+                Caption = 'EmotesID'
+              end
+              item
+                Caption = 'Flags'
               end
               item
                 Caption = 'VerifiedBuild'
@@ -26814,10 +26965,12 @@ object MainForm: TMainForm
             HideSelection = False
             ReadOnly = True
             RowSelect = True
-            TabOrder = 0
+            TabOrder = 1
             ViewStyle = vsReport
-            OnSelectItem = lvSearchPageTextSelectItem
-            ColumnsOrder = '0=60,1=700,2=80,3=50'
+            OnSelectItem = lvSearchBroadcastTextSelectItem
+            ColumnsOrder = 
+              '0=50,1=50,2=50,3=50,4=50,5=50,6=50,7=50,8=50,9=50,10=50,11=50,12' +
+              '=50,13=50'
             ExtendedColumns = <
               item
               end
@@ -26826,280 +26979,107 @@ object MainForm: TMainForm
               item
               end
               item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end
+              item
               end>
           end
-          object GroupBox1: TGroupBox
+          object Panel27: TPanel
             Left = 0
-            Top = 0
-            Width = 937
-            Height = 89
-            Align = alTop
-            TabOrder = 1
-            DesignSize = (
-              937
-              89)
-            object btClearSearchPageText: TBitBtn
-              Left = 820
-              Top = 56
-              Width = 75
-              Height = 25
-              Anchors = [akTop, akRight]
-              Caption = 'Clear'
-              TabOrder = 4
-              OnClick = btClearClick
-            end
-            object btSearchPageText: TBitBtn
-              Left = 820
-              Top = 24
-              Width = 75
-              Height = 25
-              Anchors = [akTop, akRight]
-              Caption = 'Search'
-              Default = True
-              Glyph.Data = {
-                36050000424D3605000000000000360400002800000010000000100000000100
-                080000000000000100000000000000000000000100000000000000000000FFFF
-                FF00957D6E00F9C6940043454800AEAEAE00E4D3CE006567690094949400C0A3
-                8800D5BBA700FFE2B300FFF0DA00C3C3C300787A7B00E3E2E400DEB48F005858
-                58008888880079706900F2D3B600FFF5EE00C5B0A700FFD3A100D2D2D200EEEE
-                EE00FFE8C400B6B8BA00897D7B009D9D9D00F9DBC3006E6E6E005F5F5F00CBCB
-                CC00C1BBBA008A7C6F0081818100FFCC9A00908C8B00FFE8CD0073737300B3B3
-                B30096989A00746B670063636300AAAAAA006B6969007D7B780048484800FFE4
-                C0006864650073716E005C5C5C0076767600858585008B8B8B009A9A9A007C7B
-                7C005A5A5A00717171008D8D8D009292920097979700686969006B6B6B005D5E
-                5E008A898900FFCA99007A7A7A00977D6D004747470072727200828080009898
-                980062626300C0C0C00000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000000000000000000004B4B4B4B4B4B
-                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
-                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
-                2B022E4B4B4B4B4B4B4B4B4B4B4B4B3F0325100E4B3945134B4B4B4B4B4B4A26
-                31270B3407091743334B4B4B4B461D1B161514042A0A0C1A234B4B4B40443D19
-                0F1C32412122061E2F4B4B302D051D3828303A24010148424B4B4B1136180D29
-                49243B28202C4B4B4B4B4B4B47243D123C3E081F4B4B4B4B4B4B4B4B4B4B4B4B
-                37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
-                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
-              Margin = 4
-              TabOrder = 3
-              OnClick = btSearchPageTextClick
-            end
-            object edSearchPageTextNextPage: TLabeledEdit
-              Left = 536
-              Top = 32
-              Width = 81
-              Height = 21
-              EditLabel.Width = 56
-              EditLabel.Height = 13
-              EditLabel.Caption = 'NextPageId'
-              TabOrder = 2
-              Text = ''
-            end
-            object edSearchPageTextText: TLabeledEdit
-              Left = 96
-              Top = 32
-              Width = 433
-              Height = 21
-              EditLabel.Width = 21
-              EditLabel.Height = 13
-              EditLabel.Caption = 'Text'
-              TabOrder = 1
-              Text = ''
-            end
-            object edSearchPageTextEntry: TLabeledEdit
-              Left = 8
-              Top = 32
-              Width = 81
-              Height = 21
-              EditLabel.Width = 9
-              EditLabel.Height = 13
-              EditLabel.Caption = 'Id'
-              TabOrder = 0
-              Text = ''
-            end
-          end
-          object Panel13: TPanel
-            Left = 0
-            Top = 408
-            Width = 937
-            Height = 218
+            Top = 383
+            Width = 929
+            Height = 241
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
             DesignSize = (
-              937
-              218)
-            object lbptId: TLabel
-              Left = 8
-              Top = 16
-              Width = 9
+              929
+              241)
+            object lbbttEmoteID1: TLabel
+              Left = 166
+              Top = 9
+              Width = 47
               Height = 13
-              Caption = 'Id'
+              Caption = 'EmoteID1'
             end
-            object lbpttext: TLabel
-              Left = 88
-              Top = 16
-              Width = 17
+            object lbbttEmoteID2: TLabel
+              Left = 248
+              Top = 9
+              Width = 47
               Height = 13
-              Caption = 'text'
+              Caption = 'EmoteID2'
             end
-            object lbptNextPageId: TLabel
-              Left = 8
-              Top = 64
-              Width = 56
+            object lbbttEmoteID3: TLabel
+              Left = 325
+              Top = 9
+              Width = 47
               Height = 13
-              Caption = 'NextPageId'
+              Caption = 'EmoteID3'
             end
-            object edptid: TJvComboEdit
-              Left = 8
-              Top = 32
-              Width = 73
+            object edbttID: TLabeledEdit
+              Left = 11
+              Top = 25
+              Width = 70
               Height = 21
-              ButtonWidth = 22
-              ClickKey = 13
-              Glyph.Data = {
-                36050000424D3605000000000000360400002800000010000000100000000100
-                080000000000000100000000000000000000000100000000000000000000FFFF
-                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
-                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
-                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
-                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
-                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
-                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
-                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
-                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
-                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
-                0100C0C0C0000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
-                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
-                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
-                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
-                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
-                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
-                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
-                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
-                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
+              EditLabel.Width = 11
+              EditLabel.Height = 13
+              EditLabel.Caption = 'ID'
               TabOrder = 0
               Text = ''
-              OnButtonClick = LoadPageText
             end
-            object edptNextPageId: TJvComboEdit
-              Left = 8
-              Top = 80
-              Width = 73
+            object edbttLanguageID: TLabeledEdit
+              Left = 87
+              Top = 25
+              Width = 70
               Height = 21
-              ButtonWidth = 22
-              ClickKey = 13
-              Glyph.Data = {
-                36050000424D3605000000000000360400002800000010000000100000000100
-                080000000000000100000000000000000000000100000000000000000000FFFF
-                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
-                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
-                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
-                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
-                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
-                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
-                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
-                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
-                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
-                0100C0C0C0000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
-                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
-                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
-                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
-                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
-                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
-                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
-                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
-                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
+              EditLabel.Width = 59
+              EditLabel.Height = 13
+              EditLabel.Caption = 'LanguageID'
               TabOrder = 1
               Text = ''
-              OnButtonClick = LoadPageText
             end
-            object edpttext: TMemo
-              Left = 88
-              Top = 33
-              Width = 790
-              Height = 176
-              Anchors = [akLeft, akTop, akRight, akBottom]
-              ScrollBars = ssVertical
-              TabOrder = 2
-            end
-            object btScriptPageText: TButton
+            object edbttMaleText: TLabeledEdit
               Left = 8
-              Top = 183
-              Width = 75
+              Top = 92
+              Width = 460
+              Height = 21
+              EditLabel.Width = 44
+              EditLabel.Height = 13
+              EditLabel.Caption = 'MaleText'
+              TabOrder = 2
+              Text = ''
+            end
+            object btScriptBroadcastText: TButton
+              Left = 474
+              Top = 126
+              Width = 70
               Height = 25
               Anchors = [akLeft, akBottom]
-              Caption = 'Script'
+              Caption = 'Show Script'
               TabOrder = 3
-              OnClick = btScriptPageTextClick
+              OnClick = btScriptBroadcastTextClick
             end
-            object edptVerifiedBuild: TLabeledEdit
-              Left = 8
-              Top = 125
-              Width = 71
+            object edbttVerifiedBuild: TLabeledEdit
+              Left = 477
+              Top = 65
+              Width = 70
               Height = 21
               EditLabel.Width = 58
               EditLabel.Height = 13
@@ -27107,33 +27087,239 @@ object MainForm: TMainForm
               TabOrder = 4
               Text = ''
             end
+            object edbttFlags: TLabeledEdit
+              Left = 401
+              Top = 65
+              Width = 70
+              Height = 21
+              EditLabel.Width = 25
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Flags'
+              TabOrder = 5
+              Text = ''
+            end
+            object edbttEmotesID: TLabeledEdit
+              Left = 477
+              Top = 25
+              Width = 70
+              Height = 21
+              EditLabel.Width = 46
+              EditLabel.Height = 13
+              EditLabel.Caption = 'EmotesID'
+              TabOrder = 6
+              Text = ''
+            end
+            object edbttSoundEntriesId: TLabeledEdit
+              Left = 401
+              Top = 25
+              Width = 70
+              Height = 21
+              EditLabel.Width = 72
+              EditLabel.Height = 13
+              EditLabel.Caption = 'SoundEntriesId'
+              TabOrder = 7
+              Text = ''
+            end
+            object edbttEmoteDelay3: TLabeledEdit
+              Left = 325
+              Top = 65
+              Width = 70
+              Height = 21
+              EditLabel.Width = 63
+              EditLabel.Height = 13
+              EditLabel.Caption = 'EmoteDelay3'
+              TabOrder = 8
+              Text = ''
+            end
+            object edbttEmoteDelay1: TLabeledEdit
+              Left = 166
+              Top = 65
+              Width = 70
+              Height = 21
+              EditLabel.Width = 63
+              EditLabel.Height = 13
+              EditLabel.Caption = 'EmoteDelay1'
+              TabOrder = 9
+              Text = ''
+            end
+            object edbttEmoteDelay2: TLabeledEdit
+              Left = 248
+              Top = 65
+              Width = 70
+              Height = 21
+              EditLabel.Width = 63
+              EditLabel.Height = 13
+              EditLabel.Caption = 'EmoteDelay2'
+              TabOrder = 10
+              Text = ''
+            end
+            object edbttFemaleText: TLabeledEdit
+              Left = 8
+              Top = 129
+              Width = 460
+              Height = 21
+              EditLabel.Width = 55
+              EditLabel.Height = 13
+              EditLabel.Caption = 'FemaleText'
+              TabOrder = 11
+              Text = ''
+            end
+            object edbttEmoteID1: TJvComboEdit
+              Left = 166
+              Top = 25
+              Width = 70
+              Height = 21
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              TabOrder = 12
+              Text = ''
+              OnButtonClick = GetEmote
+            end
+            object edbttEmoteID2: TJvComboEdit
+              Left = 248
+              Top = 25
+              Width = 70
+              Height = 21
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              TabOrder = 13
+              Text = ''
+              OnButtonClick = GetEmote
+            end
+            object edbttEmoteID3: TJvComboEdit
+              Left = 325
+              Top = 25
+              Width = 70
+              Height = 21
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36030000424D3603000000000000360000002800000010000000100000000100
+                18000000000000030000120B0000120B00000000000000000000FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD79C64
+                DB9E63FFFFFFFFFFFFFFFFFFFFFFFFDA9E63D89D65FFFFFFFFFFFFFFFFFFFFFF
+                FFD79C64DB9E63FFFFFFC2773FEBB36FEDB570D19059FFFFFFFFFFFFC57D44ED
+                B571EBB26ECC9164FFFFFFFFFFFFC27840EBB36FECB470D1915AC48355D5955B
+                D89960CA8C5FFFFFFFFFFFFFC68457D8995FD6965BCE9974FFFFFFFFFFFFC380
+                52D6975DD99A61CB8D5FFFFFFFC68A65C17F54FFFFFFFFFFFFFFFFFFFFFFFFC2
+                8157C58963FFFFFFFFFFFFFFFFFFFFFFFFC68B65C17F54FFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+              TabOrder = 14
+              Text = ''
+              OnButtonClick = GetEmote
+            end
           end
         end
-        object tsPageTextLocale: TTabSheet
-          Caption = 'PageText Locale'
+        object tsBroadcastTextLocale: TTabSheet
+          Caption = 'BroadcastText Locale'
           ImageIndex = 3
-          object GroupBox4: TGroupBox
+          object GroupBox7: TGroupBox
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 89
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               89)
-            object btClearSearchPageTextLocale: TBitBtn
-              Left = 717
+            object lbbttlocAboutID: TLabel
+              Left = 151
+              Top = 15
+              Width = 402
+              Height = 15
+              Caption = 
+                'Search by single (id), comma separated (id1, id2, id3) or in ran' +
+                'ge (Id1-Id2)'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Microsoft Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object cttClearSearchBroadcastTextLocale: TBitBtn
+              Left = 719
               Top = 56
               Width = 75
               Height = 25
               Anchors = [akTop, akRight]
               Caption = 'Clear'
-              TabOrder = 3
+              TabOrder = 2
               OnClick = btClearClick
             end
-            object btSearchPageTextLocale: TBitBtn
-              Left = 717
+            object btSearchBroadcastTextLocale: TBitBtn
+              Left = 719
               Top = 24
               Width = 75
               Height = 25
@@ -27184,158 +27370,60 @@ object MainForm: TMainForm
                 37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
                 4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
               Margin = 4
-              TabOrder = 2
-              OnClick = btSearchPageTextLocaleClick
-            end
-            object edSearchPageTextLocaleText: TLabeledEdit
-              Left = 95
-              Top = 32
-              Width = 433
-              Height = 21
-              EditLabel.Width = 21
-              EditLabel.Height = 13
-              EditLabel.Caption = 'Text'
-              TabOrder = 1
-              Text = ''
-            end
-            object edSearchPageTextLocaleEntry: TLabeledEdit
-              Left = 8
-              Top = 32
-              Width = 81
-              Height = 21
-              EditLabel.Width = 9
-              EditLabel.Height = 13
-              EditLabel.Caption = 'Id'
-              TabOrder = 0
-              Text = ''
-            end
-          end
-          object Panel19: TPanel
-            Left = 0
-            Top = 408
-            Width = 937
-            Height = 218
-            Align = alBottom
-            BevelOuter = bvNone
-            TabOrder = 1
-            DesignSize = (
-              937
-              218)
-            object Label8: TLabel
-              Left = 8
-              Top = 16
-              Width = 9
-              Height = 13
-              Caption = 'Id'
-            end
-            object Label6: TLabel
-              Left = 88
-              Top = 16
-              Width = 17
-              Height = 13
-              Caption = 'text'
-            end
-            object edptlocID: TJvComboEdit
-              Left = 9
-              Top = 35
-              Width = 73
-              Height = 21
-              ButtonWidth = 22
-              ClickKey = 13
-              Glyph.Data = {
-                36050000424D3605000000000000360400002800000010000000100000000100
-                080000000000000100000000000000000000000100000000000000000000FFFF
-                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
-                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
-                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
-                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
-                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
-                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
-                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
-                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
-                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
-                0100C0C0C0000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
-                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
-                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
-                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
-                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
-                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
-                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
-                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
-                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 0
-              Text = ''
-              OnButtonClick = LoadPageTextLocale
-            end
-            object edptlocText: TMemo
-              Left = 88
-              Top = 33
-              Width = 679
-              Height = 176
-              Anchors = [akLeft, akTop, akRight, akBottom]
-              ScrollBars = ssVertical
-              TabOrder = 1
-            end
-            object btScriptPageTextLocale: TButton
-              Left = 8
-              Top = 183
-              Width = 75
-              Height = 25
-              Anchors = [akLeft, akBottom]
-              Caption = 'Script'
-              TabOrder = 2
-              OnClick = btScriptPageTextlocaleClick
-            end
-            object edptlocVerifiedBuild: TLabeledEdit
-              Left = 8
-              Top = 125
-              Width = 71
-              Height = 21
-              EditLabel.Width = 58
-              EditLabel.Height = 13
-              EditLabel.Caption = 'VerifiedBuild'
               TabOrder = 3
+              OnClick = btSearchBroadcastTextLocaleClick
+            end
+            object edSearchBroadcastTextLocaleMaleText: TLabeledEdit
+              Left = 11
+              Top = 56
+              Width = 250
+              Height = 21
+              EditLabel.Width = 44
+              EditLabel.Height = 13
+              EditLabel.Caption = 'MaleText'
+              TabOrder = 1
               Text = ''
             end
-            object edptloclocale: TLabeledEdit
-              Left = 8
-              Top = 77
-              Width = 71
+            object edSearchBroadcastTextLocaleID: TLabeledEdit
+              Left = 11
+              Top = 18
+              Width = 134
+              Height = 21
+              EditLabel.Width = 11
+              EditLabel.Height = 13
+              EditLabel.Caption = 'ID'
+              TabOrder = 0
+              Text = ''
+            end
+            object edSearchBroadcastTextLocaleFemaleText: TLabeledEdit
+              Left = 297
+              Top = 56
+              Width = 250
+              Height = 21
+              EditLabel.Width = 55
+              EditLabel.Height = 13
+              EditLabel.Caption = 'FemaleText'
+              TabOrder = 4
+              Text = ''
+            end
+            object edSearchBroadcastTextLocalelocale: TLabeledEdit
+              Left = 576
+              Top = 18
+              Width = 81
               Height = 21
               EditLabel.Width = 28
               EditLabel.Height = 13
               EditLabel.Caption = 'locale'
-              TabOrder = 4
+              Enabled = False
+              TabOrder = 5
               Text = ''
             end
           end
-          object lvSearchPageTextLocale: TJvListView
+          object lvSearchBroadcastTextLocale: TJvListView
             Left = 0
             Top = 89
-            Width = 937
-            Height = 319
+            Width = 929
+            Height = 294
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -27346,21 +27434,27 @@ object MainForm: TMainForm
                 Caption = 'locale'
               end
               item
-                Caption = 'Text'
-                Width = 600
+                AutoSize = True
+                Caption = 'MaleText'
+              end
+              item
+                AutoSize = True
+                Caption = 'FemaleText'
               end
               item
                 Caption = 'VerifiedBuild'
-                Width = 80
+                Width = 60
               end>
             HideSelection = False
             ReadOnly = True
             RowSelect = True
-            TabOrder = 2
+            TabOrder = 1
             ViewStyle = vsReport
-            OnSelectItem = lvSearchPageTextLocaleSelectItem
-            ColumnsOrder = '0=50,1=50,2=600,3=80'
+            OnSelectItem = lvSearchBroadcastTextLocaleSelectItem
+            ColumnsOrder = '0=50,1=50,2=150,3=150,4=60'
             ExtendedColumns = <
+              item
+              end
               item
               end
               item
@@ -27370,6 +27464,83 @@ object MainForm: TMainForm
               item
               end>
           end
+          object Panel28: TPanel
+            Left = 0
+            Top = 383
+            Width = 929
+            Height = 241
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 2
+            DesignSize = (
+              929
+              241)
+            object edbttlocID: TLabeledEdit
+              Left = 11
+              Top = 25
+              Width = 70
+              Height = 21
+              EditLabel.Width = 11
+              EditLabel.Height = 13
+              EditLabel.Caption = 'ID'
+              TabOrder = 0
+              Text = ''
+            end
+            object edbttloclocale: TLabeledEdit
+              Left = 87
+              Top = 25
+              Width = 70
+              Height = 21
+              EditLabel.Width = 59
+              EditLabel.Height = 13
+              EditLabel.Caption = 'LanguageID'
+              TabOrder = 1
+              Text = ''
+            end
+            object edbttlocMaleText: TLabeledEdit
+              Left = 11
+              Top = 68
+              Width = 460
+              Height = 21
+              EditLabel.Width = 44
+              EditLabel.Height = 13
+              EditLabel.Caption = 'MaleText'
+              TabOrder = 2
+              Text = ''
+            end
+            object btScriptBroadcastTextLocale: TButton
+              Left = 477
+              Top = 102
+              Width = 70
+              Height = 25
+              Anchors = [akLeft, akBottom]
+              Caption = 'Show Script'
+              TabOrder = 3
+              OnClick = btScriptBroadcastTextLocaleClick
+            end
+            object edbttlocVerifiedBuild: TLabeledEdit
+              Left = 163
+              Top = 25
+              Width = 70
+              Height = 21
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 4
+              Text = ''
+            end
+            object edbttlocFemaleText: TLabeledEdit
+              Left = 11
+              Top = 105
+              Width = 460
+              Height = 21
+              EditLabel.Width = 55
+              EditLabel.Height = 13
+              EditLabel.Caption = 'FemaleText'
+              TabOrder = 5
+              Text = ''
+            end
+          end
         end
         object tsCreatureText: TTabSheet
           Caption = 'Creature Text'
@@ -27377,15 +27548,15 @@ object MainForm: TMainForm
           object cttGroupBox: TGroupBox
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 89
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               89)
             object cttClearSearchCreatureText: TBitBtn
-              Left = 820
+              Left = 812
               Top = 56
               Width = 75
               Height = 25
@@ -27395,7 +27566,7 @@ object MainForm: TMainForm
               OnClick = btClearClick
             end
             object btSearchCreatureText: TBitBtn
-              Left = 820
+              Left = 812
               Top = 24
               Width = 75
               Height = 25
@@ -27472,11 +27643,11 @@ object MainForm: TMainForm
               Text = ''
             end
           end
-          object cttSearchCreatureText: TJvListView
+          object lvSearchCreatureText: TJvListView
             Left = 0
             Top = 89
-            Width = 937
-            Height = 319
+            Width = 929
+            Height = 317
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -27537,7 +27708,7 @@ object MainForm: TMainForm
             RowSelect = True
             TabOrder = 1
             ViewStyle = vsReport
-            OnSelectItem = cttSearchCreatureTextSelectItem
+            OnSelectItem = lvSearchCreatureTextSelectItem
             ColumnsOrder = 
               '0=63,1=52,2=28,3=250,4=39,5=60,6=62,7=42,8=52,9=44,10=92,11=65,1' +
               '2=180'
@@ -27571,14 +27742,14 @@ object MainForm: TMainForm
           end
           object cttPanel13: TPanel
             Left = 0
-            Top = 408
-            Width = 937
+            Top = 406
+            Width = 929
             Height = 218
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
             DesignSize = (
-              937
+              929
               218)
             object edcttCreatureId: TLabeledEdit
               Left = 8
@@ -27741,15 +27912,15 @@ object MainForm: TMainForm
           object GroupBox5: TGroupBox
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 89
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               89)
             object cttlocClearSearchCreatureText: TBitBtn
-              Left = 820
+              Left = 812
               Top = 55
               Width = 75
               Height = 25
@@ -27759,7 +27930,7 @@ object MainForm: TMainForm
               OnClick = btClearClick
             end
             object btSearchCreatureTextLocale: TBitBtn
-              Left = 820
+              Left = 812
               Top = 24
               Width = 75
               Height = 25
@@ -27850,14 +28021,14 @@ object MainForm: TMainForm
           end
           object Panel23: TPanel
             Left = 0
-            Top = 408
-            Width = 937
+            Top = 406
+            Width = 929
             Height = 218
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 1
             DesignSize = (
-              937
+              929
               218)
             object edcttlocCreatureID: TLabeledEdit
               Left = 8
@@ -27925,11 +28096,11 @@ object MainForm: TMainForm
               Text = ''
             end
           end
-          object cttlocSearchCreatureText: TJvListView
+          object lvSearchCreatureTextLocale: TJvListView
             Left = 0
             Top = 89
-            Width = 937
-            Height = 319
+            Width = 929
+            Height = 317
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -27958,7 +28129,7 @@ object MainForm: TMainForm
             RowSelect = True
             TabOrder = 2
             ViewStyle = vsReport
-            OnSelectItem = cttlocSearchCreatureTextSelectItem
+            OnSelectItem = lvSearchCreatureTextLocaleSelectItem
             ColumnsOrder = '0=63,1=52,2=28,3=60,4=250'
             ExtendedColumns = <
               item
@@ -27973,17 +28144,603 @@ object MainForm: TMainForm
               end>
           end
         end
+        object tsPageText: TTabSheet
+          Caption = 'Page Text'
+          ImageIndex = 6
+          object lvSearchPageText: TJvListView
+            Left = 0
+            Top = 89
+            Width = 929
+            Height = 317
+            Align = alClient
+            BorderStyle = bsNone
+            Columns = <
+              item
+                Caption = 'id'
+                Width = 60
+              end
+              item
+                Caption = 'Text'
+                Width = 700
+              end
+              item
+                Caption = 'NextPageId'
+                Width = 80
+              end
+              item
+                Caption = 'VerifiedBuild'
+              end>
+            HideSelection = False
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 0
+            ViewStyle = vsReport
+            OnSelectItem = lvSearchPageTextSelectItem
+            ColumnsOrder = '0=60,1=700,2=80,3=50'
+            ExtendedColumns = <
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end>
+          end
+          object GroupBox1: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 929
+            Height = 89
+            Align = alTop
+            TabOrder = 1
+            DesignSize = (
+              929
+              89)
+            object btClearSearchPageText: TBitBtn
+              Left = 812
+              Top = 56
+              Width = 75
+              Height = 25
+              Anchors = [akTop, akRight]
+              Caption = 'Clear'
+              TabOrder = 4
+              OnClick = btClearClick
+            end
+            object btSearchPageText: TBitBtn
+              Left = 812
+              Top = 24
+              Width = 75
+              Height = 25
+              Anchors = [akTop, akRight]
+              Caption = 'Search'
+              Default = True
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                080000000000000100000000000000000000000100000000000000000000FFFF
+                FF00957D6E00F9C6940043454800AEAEAE00E4D3CE006567690094949400C0A3
+                8800D5BBA700FFE2B300FFF0DA00C3C3C300787A7B00E3E2E400DEB48F005858
+                58008888880079706900F2D3B600FFF5EE00C5B0A700FFD3A100D2D2D200EEEE
+                EE00FFE8C400B6B8BA00897D7B009D9D9D00F9DBC3006E6E6E005F5F5F00CBCB
+                CC00C1BBBA008A7C6F0081818100FFCC9A00908C8B00FFE8CD0073737300B3B3
+                B30096989A00746B670063636300AAAAAA006B6969007D7B780048484800FFE4
+                C0006864650073716E005C5C5C0076767600858585008B8B8B009A9A9A007C7B
+                7C005A5A5A00717171008D8D8D009292920097979700686969006B6B6B005D5E
+                5E008A898900FFCA99007A7A7A00977D6D004747470072727200828080009898
+                980062626300C0C0C00000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000004B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                2B022E4B4B4B4B4B4B4B4B4B4B4B4B3F0325100E4B3945134B4B4B4B4B4B4A26
+                31270B3407091743334B4B4B4B461D1B161514042A0A0C1A234B4B4B40443D19
+                0F1C32412122061E2F4B4B302D051D3828303A24010148424B4B4B1136180D29
+                49243B28202C4B4B4B4B4B4B47243D123C3E081F4B4B4B4B4B4B4B4B4B4B4B4B
+                37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
+              Margin = 4
+              TabOrder = 3
+              OnClick = btSearchPageTextClick
+            end
+            object edSearchPageTextNextPage: TLabeledEdit
+              Left = 536
+              Top = 32
+              Width = 81
+              Height = 21
+              EditLabel.Width = 56
+              EditLabel.Height = 13
+              EditLabel.Caption = 'NextPageId'
+              TabOrder = 2
+              Text = ''
+            end
+            object edSearchPageTextText: TLabeledEdit
+              Left = 96
+              Top = 32
+              Width = 433
+              Height = 21
+              EditLabel.Width = 21
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Text'
+              TabOrder = 1
+              Text = ''
+            end
+            object edSearchPageTextEntry: TLabeledEdit
+              Left = 8
+              Top = 32
+              Width = 81
+              Height = 21
+              EditLabel.Width = 9
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Id'
+              TabOrder = 0
+              Text = ''
+            end
+          end
+          object Panel13: TPanel
+            Left = 0
+            Top = 406
+            Width = 929
+            Height = 218
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 2
+            DesignSize = (
+              929
+              218)
+            object lbptId: TLabel
+              Left = 8
+              Top = 16
+              Width = 9
+              Height = 13
+              Caption = 'Id'
+            end
+            object lbpttext: TLabel
+              Left = 88
+              Top = 16
+              Width = 17
+              Height = 13
+              Caption = 'text'
+            end
+            object lbptNextPageId: TLabel
+              Left = 8
+              Top = 64
+              Width = 56
+              Height = 13
+              Caption = 'NextPageId'
+            end
+            object edptid: TJvComboEdit
+              Left = 8
+              Top = 32
+              Width = 73
+              Height = 21
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                080000000000000100000000000000000000000100000000000000000000FFFF
+                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
+                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
+                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
+                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
+                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
+                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
+                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
+                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
+                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
+                0100C0C0C0000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
+                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
+                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
+                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
+                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
+                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
+                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
+                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
+                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
+              TabOrder = 0
+              Text = ''
+              OnButtonClick = LoadPageText
+            end
+            object edptNextPageId: TJvComboEdit
+              Left = 8
+              Top = 80
+              Width = 73
+              Height = 21
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                080000000000000100000000000000000000000100000000000000000000FFFF
+                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
+                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
+                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
+                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
+                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
+                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
+                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
+                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
+                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
+                0100C0C0C0000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
+                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
+                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
+                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
+                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
+                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
+                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
+                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
+                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
+              TabOrder = 1
+              Text = ''
+              OnButtonClick = LoadPageText
+            end
+            object edpttext: TMemo
+              Left = 88
+              Top = 33
+              Width = 782
+              Height = 176
+              Anchors = [akLeft, akTop, akRight, akBottom]
+              ScrollBars = ssVertical
+              TabOrder = 2
+            end
+            object btScriptPageText: TButton
+              Left = 8
+              Top = 183
+              Width = 75
+              Height = 25
+              Anchors = [akLeft, akBottom]
+              Caption = 'Script'
+              TabOrder = 3
+              OnClick = btScriptPageTextClick
+            end
+            object edptVerifiedBuild: TLabeledEdit
+              Left = 8
+              Top = 125
+              Width = 71
+              Height = 21
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 4
+              Text = ''
+            end
+          end
+        end
+        object tsPageTextLocale: TTabSheet
+          Caption = 'PageText Locale'
+          ImageIndex = 7
+          object GroupBox4: TGroupBox
+            Left = 0
+            Top = 0
+            Width = 929
+            Height = 89
+            Align = alTop
+            TabOrder = 0
+            DesignSize = (
+              929
+              89)
+            object btClearSearchPageTextLocale: TBitBtn
+              Left = 709
+              Top = 56
+              Width = 75
+              Height = 25
+              Anchors = [akTop, akRight]
+              Caption = 'Clear'
+              TabOrder = 3
+              OnClick = btClearClick
+            end
+            object btSearchPageTextLocale: TBitBtn
+              Left = 709
+              Top = 24
+              Width = 75
+              Height = 25
+              Anchors = [akTop, akRight]
+              Caption = 'Search'
+              Default = True
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                080000000000000100000000000000000000000100000000000000000000FFFF
+                FF00957D6E00F9C6940043454800AEAEAE00E4D3CE006567690094949400C0A3
+                8800D5BBA700FFE2B300FFF0DA00C3C3C300787A7B00E3E2E400DEB48F005858
+                58008888880079706900F2D3B600FFF5EE00C5B0A700FFD3A100D2D2D200EEEE
+                EE00FFE8C400B6B8BA00897D7B009D9D9D00F9DBC3006E6E6E005F5F5F00CBCB
+                CC00C1BBBA008A7C6F0081818100FFCC9A00908C8B00FFE8CD0073737300B3B3
+                B30096989A00746B670063636300AAAAAA006B6969007D7B780048484800FFE4
+                C0006864650073716E005C5C5C0076767600858585008B8B8B009A9A9A007C7B
+                7C005A5A5A00717171008D8D8D009292920097979700686969006B6B6B005D5E
+                5E008A898900FFCA99007A7A7A00977D6D004747470072727200828080009898
+                980062626300C0C0C00000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000004B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                2B022E4B4B4B4B4B4B4B4B4B4B4B4B3F0325100E4B3945134B4B4B4B4B4B4A26
+                31270B3407091743334B4B4B4B461D1B161514042A0A0C1A234B4B4B40443D19
+                0F1C32412122061E2F4B4B302D051D3828303A24010148424B4B4B1136180D29
+                49243B28202C4B4B4B4B4B4B47243D123C3E081F4B4B4B4B4B4B4B4B4B4B4B4B
+                37354B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B
+                4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B4B}
+              Margin = 4
+              TabOrder = 2
+              OnClick = btSearchPageTextLocaleClick
+            end
+            object edSearchPageTextLocaleText: TLabeledEdit
+              Left = 95
+              Top = 32
+              Width = 433
+              Height = 21
+              EditLabel.Width = 21
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Text'
+              TabOrder = 1
+              Text = ''
+            end
+            object edSearchPageTextLocaleEntry: TLabeledEdit
+              Left = 8
+              Top = 32
+              Width = 81
+              Height = 21
+              EditLabel.Width = 9
+              EditLabel.Height = 13
+              EditLabel.Caption = 'Id'
+              TabOrder = 0
+              Text = ''
+            end
+          end
+          object Panel19: TPanel
+            Left = 0
+            Top = 406
+            Width = 929
+            Height = 218
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 1
+            DesignSize = (
+              929
+              218)
+            object Label8: TLabel
+              Left = 8
+              Top = 16
+              Width = 9
+              Height = 13
+              Caption = 'Id'
+            end
+            object Label6: TLabel
+              Left = 88
+              Top = 16
+              Width = 17
+              Height = 13
+              Caption = 'text'
+            end
+            object edptlocID: TJvComboEdit
+              Left = 9
+              Top = 35
+              Width = 73
+              Height = 21
+              ButtonWidth = 22
+              ClickKey = 13
+              Glyph.Data = {
+                36050000424D3605000000000000360400002800000010000000100000000100
+                080000000000000100000000000000000000000100000000000000000000FFFF
+                FF00F28C0000FBC87E00B2795C00B8570C00E69D4B00CC782E00D39C7900A961
+                3300D66E0000F9B85A00ED972800CE854B00B6917700D97C1700B7642000F6A7
+                3700AE684D00EDB36C00CB6D1900F5971600DF8D3000B7856800D0946A00E680
+                0000C25A0000BF712900D08E5700CB650100B4652D00EFA64800D2813500CC76
+                2100DD770000CB6A0E00E9860900AF715500BA5B1500A8654600F5B86C00C06A
+                2300BB540000D8740700BA8D7000D27A2600C6702200BE631E00EB850000BB67
+                2700CF854400B7611A00D6771400CF6A0200B7806400B57D6000B68D7200D36A
+                0000CB6F1500B8886B00B0745800AC6B4F00B8692900C16D2500D0966D00E079
+                0000C06D2100CD752400CD660000B2662E00A8664800AA623400F18B0000CA65
+                0100C0C0C0000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000004A4A4A4A4A4A
+                4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A33384A4A4A4A4A4A4A4A4A4A4A4A4A2103
+                433B4A4A4A4A4A4A4A4A4A4A4A3F13280B14364A4A4A4A4A4A4A4A4A4A4A2906
+                1F1123044A4A4A4A4A4A4A4A4A4A4A3E160C151D254A4A4A4A4A4A4A4A4A4A4A
+                450F244844124A4A4A4A4A4A4A4A4A4A4A093519020A274A4A4A4A4A4A4A4A4A
+                4A4749413039464A4A4A4A4A4A4A4A4A1E3A2B221A3D4A4A4A4A4A4A4A4A4A31
+                072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
+                1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
+                0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
+              TabOrder = 0
+              Text = ''
+              OnButtonClick = LoadPageTextLocale
+            end
+            object edptlocText: TMemo
+              Left = 88
+              Top = 33
+              Width = 671
+              Height = 176
+              Anchors = [akLeft, akTop, akRight, akBottom]
+              ScrollBars = ssVertical
+              TabOrder = 1
+            end
+            object btScriptPageTextLocale: TButton
+              Left = 8
+              Top = 183
+              Width = 75
+              Height = 25
+              Anchors = [akLeft, akBottom]
+              Caption = 'Script'
+              TabOrder = 2
+              OnClick = btScriptPageTextlocaleClick
+            end
+            object edptlocVerifiedBuild: TLabeledEdit
+              Left = 8
+              Top = 125
+              Width = 71
+              Height = 21
+              EditLabel.Width = 58
+              EditLabel.Height = 13
+              EditLabel.Caption = 'VerifiedBuild'
+              TabOrder = 3
+              Text = ''
+            end
+            object edptloclocale: TLabeledEdit
+              Left = 8
+              Top = 77
+              Width = 71
+              Height = 21
+              EditLabel.Width = 28
+              EditLabel.Height = 13
+              EditLabel.Caption = 'locale'
+              TabOrder = 4
+              Text = ''
+            end
+          end
+          object lvSearchPageTextLocale: TJvListView
+            Left = 0
+            Top = 89
+            Width = 929
+            Height = 317
+            Align = alClient
+            BorderStyle = bsNone
+            Columns = <
+              item
+                Caption = 'ID'
+              end
+              item
+                Caption = 'locale'
+              end
+              item
+                Caption = 'Text'
+                Width = 600
+              end
+              item
+                Caption = 'VerifiedBuild'
+                Width = 80
+              end>
+            HideSelection = False
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 2
+            ViewStyle = vsReport
+            OnSelectItem = lvSearchPageTextLocaleSelectItem
+            ColumnsOrder = '0=50,1=50,2=600,3=80'
+            ExtendedColumns = <
+              item
+              end
+              item
+              end
+              item
+              end
+              item
+              end>
+          end
+        end
         object tsOtherScript: TTabSheet
           Caption = 'Script'
-          ImageIndex = 6
+          ImageIndex = 8
           OnShow = tsOtherScriptShow
           DesignSize = (
-            937
-            626)
+            929
+            624)
           object meotScript: TMemo
             Left = 8
             Top = 8
-            Width = 872
+            Width = 864
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -27998,14 +28755,14 @@ object MainForm: TMainForm
           object meotLog: TMemo
             Left = 8
             Top = 472
-            Width = 719
+            Width = 711
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardOther: TButton
-            Left = 742
+            Left = 734
             Top = 508
             Width = 137
             Height = 25
@@ -28015,7 +28772,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardOtherClick
           end
           object btExecuteOtherScript: TButton
-            Left = 742
+            Left = 734
             Top = 540
             Width = 137
             Height = 25
@@ -28033,7 +28790,7 @@ object MainForm: TMainForm
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 10
         Align = alTop
         BevelOuter = bvNone
@@ -28043,8 +28800,8 @@ object MainForm: TMainForm
       object PageControl8: TPageControl
         Left = 0
         Top = 10
-        Width = 945
-        Height = 649
+        Width = 937
+        Height = 647
         ActivePage = tsCharSearch
         Align = alClient
         TabOrder = 1
@@ -28053,12 +28810,12 @@ object MainForm: TMainForm
           object Panel16: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 105
             Align = alTop
             TabOrder = 0
             DesignSize = (
-              937
+              929
               105)
             object edCharGuid: TLabeledEdit
               Left = 8
@@ -28087,7 +28844,7 @@ object MainForm: TMainForm
               OnChange = edSearchCreatureChange
             end
             object btCharSearch: TBitBtn
-              Left = 820
+              Left = 812
               Top = 24
               Width = 75
               Height = 25
@@ -28142,7 +28899,7 @@ object MainForm: TMainForm
               OnClick = btCharSearchClick
             end
             object btCharClear: TBitBtn
-              Left = 820
+              Left = 812
               Top = 56
               Width = 75
               Height = 25
@@ -28169,8 +28926,8 @@ object MainForm: TMainForm
           object lvSearchChar: TJvListView
             Left = 0
             Top = 105
-            Width = 937
-            Height = 497
+            Width = 929
+            Height = 495
             Align = alClient
             BorderStyle = bsNone
             Columns = <
@@ -28221,8 +28978,8 @@ object MainForm: TMainForm
           end
           object StatusBarChar: TStatusBar
             Left = 0
-            Top = 602
-            Width = 937
+            Top = 600
+            Width = 929
             Height = 19
             Panels = <
               item
@@ -29205,8 +29962,8 @@ object MainForm: TMainForm
           Caption = 'Inventory'
           ImageIndex = 3
           DesignSize = (
-            937
-            621)
+            929
+            619)
           object btCharInvDel: TSpeedButton
             Left = 800
             Top = 499
@@ -29408,7 +30165,7 @@ object MainForm: TMainForm
           object lvCharacterInventory: TJvListView
             Left = 8
             Top = 32
-            Width = 871
+            Width = 863
             Height = 434
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -29497,12 +30254,12 @@ object MainForm: TMainForm
           ImageIndex = 2
           OnShow = tsCharacterScriptShow
           DesignSize = (
-            937
-            621)
+            929
+            619)
           object mehtScript: TMemo
             Left = 8
             Top = 8
-            Width = 872
+            Width = 864
             Height = 457
             Anchors = [akLeft, akTop, akRight]
             Font.Charset = DEFAULT_CHARSET
@@ -29517,14 +30274,14 @@ object MainForm: TMainForm
           object mehtLog: TMemo
             Left = 8
             Top = 472
-            Width = 719
+            Width = 711
             Height = 97
             Anchors = [akLeft, akTop, akRight]
             ScrollBars = ssVertical
             TabOrder = 1
           end
           object btCopyToClipboardChar: TButton
-            Left = 742
+            Left = 734
             Top = 508
             Width = 137
             Height = 25
@@ -29534,7 +30291,7 @@ object MainForm: TMainForm
             OnClick = btCopyToClipboardCharClick
           end
           object btExecuteScriptChar: TButton
-            Left = 742
+            Left = 734
             Top = 540
             Width = 137
             Height = 25
@@ -29552,7 +30309,7 @@ object MainForm: TMainForm
       object Panel14: TPanel
         Left = 0
         Top = 0
-        Width = 945
+        Width = 937
         Height = 5
         Align = alTop
         BevelOuter = bvNone
@@ -29561,8 +30318,8 @@ object MainForm: TMainForm
       object PageControl7: TPageControl
         Left = 0
         Top = 5
-        Width = 945
-        Height = 654
+        Width = 937
+        Height = 652
         ActivePage = tsSQL1
         Align = alClient
         TabOrder = 1
@@ -29571,16 +30328,16 @@ object MainForm: TMainForm
           object Panel15: TPanel
             Left = 0
             Top = 0
-            Width = 937
+            Width = 929
             Height = 113
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
             DesignSize = (
-              937
+              929
               113)
             object btSQLOpen: TBitBtn
-              Left = 805
+              Left = 797
               Top = 8
               Width = 75
               Height = 25
@@ -29592,7 +30349,7 @@ object MainForm: TMainForm
             object SQLEdit: TMemo
               Left = 8
               Top = 8
-              Width = 790
+              Width = 782
               Height = 89
               Anchors = [akLeft, akTop, akRight]
               Font.Charset = RUSSIAN_CHARSET
@@ -29613,8 +30370,8 @@ object MainForm: TMainForm
           object JvDBGrid1: TJvDBGrid
             Left = 0
             Top = 113
-            Width = 937
-            Height = 513
+            Width = 929
+            Height = 511
             Align = alClient
             Ctl3D = False
             DataSource = DataSource

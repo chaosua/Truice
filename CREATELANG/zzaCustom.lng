@@ -158,5 +158,5 @@ TEXT156=LootMode
 TEXT157=The error has accured while loading Creature EventAI:
 TEXT158=Please specify a source type!
 TEXT159=The error has accured while loading Creature Template Movement:
-TEXT160=Detected enUS locale. Nothing to search. Please select locale in Settings language tab or use Page Text tab instead!
+TEXT160=Detected enUS locale. Nothing to search. Please select locale in Settings language section or use another tab instead!
 

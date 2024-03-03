@@ -30,7 +30,7 @@ const
   SCRIPT_TAB_NO_ITEM        = 10;
   SCRIPT_TAB_NO_SMARTAI     = 1;
   SCRIPT_TAB_NO_CONDITIONS  = 1;
-  SCRIPT_TAB_NO_OTHER       = 6;
+  SCRIPT_TAB_NO_OTHER       = 8;
   SCRIPT_TAB_NO_CHARACTER   = 3;
 
   WM_FREEQL = WM_USER + 1;
@@ -84,10 +84,12 @@ const
   PFX_PROSPECTING_LOOT_TEMPLATE     = 'ip';
   PFX_MILLING_LOOT_TEMPLATE         = 'im';
   PFX_REFERENCE_LOOT_TEMPLATE       = 'ir';
-  PFX_PAGE_TEXT                     = 'pt';
-  PFX_PAGE_TEXT_LOCALE              = 'ptloc';
+  PFX_BROADCAST_TEXT                = 'btt';
+  PFX_BROADCAST_TEXT_LOCALE         = 'bttloc';
   PFX_CREATURE_TEXT                 = 'ctt';
   PFX_CREATURE_TEXT_LOCALE          = 'cttloc';
+  PFX_PAGE_TEXT                     = 'pt';
+  PFX_PAGE_TEXT_LOCALE              = 'ptloc';
   PFX_FISHING_LOOT_TEMPLATE         = 'ot';
   PFX_CHARACTER                     = 'ht';
   PFX_CHARACTER_INVENTORY           = 'hi';
@@ -1737,7 +1739,7 @@ type
     btSearchCreatureText: TBitBtn;
     edSearchCreatureText: TLabeledEdit;
     edSearchCreatureTextCreatureID: TLabeledEdit;
-    cttSearchCreatureText: TJvListView;
+    lvSearchCreatureText: TJvListView;
     cttPanel13: TPanel;
     edcttCreatureId: TLabeledEdit;
     edcttGroupID: TLabeledEdit;
@@ -1767,8 +1769,53 @@ type
     btScriptCreatureTextLocale: TButton;
     edcttlocID: TLabeledEdit;
     edcttlocLocale: TLabeledEdit;
-    cttlocSearchCreatureText: TJvListView;
+    lvSearchCreatureTextLocale: TJvListView;
     btGoCreatureText: TButton;
+    tsBroadcastText: TTabSheet;
+    tsBroadcastTextLocale: TTabSheet;
+    GroupBox6: TGroupBox;
+    lbbttAboutID: TLabel;
+    cttClearSearchBroadcastText: TBitBtn;
+    btSearchBroadcastText: TBitBtn;
+    edSearchBroadcastTextMaleText: TLabeledEdit;
+    edSearchBroadcastTextID: TLabeledEdit;
+    edSearchBroadcastTextFemaleText: TLabeledEdit;
+    lvSearchBroadcastText: TJvListView;
+    Panel27: TPanel;
+    lbbttEmoteID1: TLabel;
+    lbbttEmoteID2: TLabel;
+    lbbttEmoteID3: TLabel;
+    edbttID: TLabeledEdit;
+    edbttLanguageID: TLabeledEdit;
+    edbttMaleText: TLabeledEdit;
+    btScriptBroadcastText: TButton;
+    edbttVerifiedBuild: TLabeledEdit;
+    edbttFlags: TLabeledEdit;
+    edbttEmotesID: TLabeledEdit;
+    edbttSoundEntriesId: TLabeledEdit;
+    edbttEmoteDelay3: TLabeledEdit;
+    edbttEmoteDelay1: TLabeledEdit;
+    edbttEmoteDelay2: TLabeledEdit;
+    edbttFemaleText: TLabeledEdit;
+    edbttEmoteID1: TJvComboEdit;
+    edbttEmoteID2: TJvComboEdit;
+    edbttEmoteID3: TJvComboEdit;
+    GroupBox7: TGroupBox;
+    lbbttlocAboutID: TLabel;
+    cttClearSearchBroadcastTextLocale: TBitBtn;
+    btSearchBroadcastTextLocale: TBitBtn;
+    edSearchBroadcastTextLocaleMaleText: TLabeledEdit;
+    edSearchBroadcastTextLocaleID: TLabeledEdit;
+    edSearchBroadcastTextLocaleFemaleText: TLabeledEdit;
+    edSearchBroadcastTextLocalelocale: TLabeledEdit;
+    lvSearchBroadcastTextLocale: TJvListView;
+    Panel28: TPanel;
+    edbttlocID: TLabeledEdit;
+    edbttloclocale: TLabeledEdit;
+    edbttlocMaleText: TLabeledEdit;
+    btScriptBroadcastTextLocale: TButton;
+    edbttlocVerifiedBuild: TLabeledEdit;
+    edbttlocFemaleText: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -2005,13 +2052,22 @@ type
     procedure edqtQuestSortIDChange(Sender: TObject);
     procedure edQuestSortIDSearchButtonClick(Sender: TObject);
 
+    procedure btSearchBroadcastTextClick(Sender: TObject);
+    procedure lvSearchBroadcastTextSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btScriptBroadcastTextClick(Sender: TObject);
+    procedure btSearchBroadcastTextLocaleClick(Sender: TObject);
+    procedure lvSearchBroadcastTextLocaleSelectItem(Sender: TObject; Item: TListItem;
+      Selected: Boolean);
+    procedure btScriptBroadcastTextLocaleClick(Sender: TObject);
+
     procedure btSearchCreatureTextClick(Sender: TObject);
-    procedure cttSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem;
+    procedure lvSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btScriptCreatureTextClick(Sender: TObject);
 
     procedure btSearchCreatureTextLocaleClick(Sender: TObject);
-    procedure cttlocSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem;
+    procedure lvSearchCreatureTextLocaleSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btScriptCreatureTextLocaleClick(Sender: TObject);
 
@@ -2295,6 +2351,11 @@ type
     procedure SaveToReg;
     procedure LoadFromReg;
     procedure SetDBSpellList;
+
+    procedure SearchBroadcastText;
+    procedure CompleteBroadcastTextScript;
+    procedure SearchBroadcastTextLocale;
+    procedure CompleteBroadcastTextLocaleScript;
 
     {creatures}
     procedure SearchCreature;
@@ -4315,7 +4376,7 @@ end;
 
 procedure TMainForm.btClearClick(Sender: TObject);
 begin
-  edgeholiday.Clear;
+edgeholiday.Clear;
   edgeholidayStage.Clear;
   edgedescription.Clear;
   edSearchGameEventEntry.Clear;
@@ -4326,9 +4387,6 @@ begin
   edgeoccurence.Clear;
   edgeworld_event.Clear;
   edgeannounce.Clear;
-  edSearchPageTextText.Clear;
-  edSearchPageTextNextPage.Clear;
-  edSearchPageTextLocaleText.Clear;
   edQuestID.Clear;
   edQuestTitle.Clear;
   edQuestStarterSearch.Clear;
@@ -4336,12 +4394,30 @@ begin
   edQuestSortIDSearch.Clear;
   edQuestFlagsSearch.Clear;
   lvQuest.Clear;
+  meqtScript.Clear;
+  edSearchBroadcastTextID.Clear;
+  edSearchBroadcastTextMaleText.Clear;
+  edSearchBroadcastTextFemaleText.Clear;
+  lvSearchBroadcastText.Clear;
+  edSearchBroadcastTextLocaleID.Clear;
+  edSearchBroadcastTextLocaleMaleText.Clear;
+  edSearchBroadcastTextLocaleFemaleText.Clear;
+  lvSearchBroadcastTextLocale.Clear;
   edSearchCreatureTextCreatureID.Clear;
   edSearchCreatureText.Clear;
-  cttSearchCreatureText.Clear;
+  lvSearchCreatureText.Clear;
   edSearchCreatureTextLocaleCreatureID.Clear;
   edSearchCreatureTextLocaleText.Clear;
-  cttlocSearchCreatureText.Clear;
+  lvSearchCreatureTextLocale.Clear;
+  edSearchPageTextText.Clear;
+  edSearchPageTextNextPage.Clear;
+  lvSearchPageText.Clear;
+  edSearchPageTextLocaleEntry.Clear;
+  edSearchPageTextLocaleText.Clear;
+  lvSearchPageTextLocale.Clear;
+  meotLog.Clear;
+  meotScript.Clear;
+  mecScript.Clear;
 end;
 
 {---------- Creature stuff --------------}
@@ -10346,11 +10422,13 @@ begin
   case PageControl6.ActivePageIndex of
     0: CompleteFishingLootScript;
     1: CompleteGameEventScript;
-    2: CompletePageTextScript;
-    3: CompletePageTextLocaleScript;
+    2: CompleteBroadcastTextScript;
+    3: CompleteBroadcastTextLocaleScript;
     4: CompleteCreatureTextScript;
     5: CompleteCreatureTextLocaleScript;
-    6: {Script tab - do nothing}
+    6: CompletePageTextScript;
+    7: CompletePageTextLocaleScript;
+    8: {Script tab - do nothing}
   end;
 end;
 
@@ -10545,10 +10623,276 @@ begin
     GetValueFromSimpleList(Sender, 11, 'QuestSort', false);
 end;
 
+// Broadcast text
+procedure TMainForm.btSearchBroadcastTextClick(Sender: TObject);
+begin
+  SearchBroadcastText();
+  with lvSearchBroadcastText do
+    if Items.Count > 0 then
+    begin
+      SetFocus;
+      Selected := Items[0];
+    end;
+end;
+
+procedure TMainForm.lvSearchBroadcastTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    edbttID.Text := Item.Caption;
+    edbttLanguageID.Text := Item.SubItems[0];
+    edbttMaleText.Text := Item.SubItems[1];
+    edbttFemaleText.Text := Item.SubItems[2];
+    edbttEmoteID1.Text := Item.SubItems[3];
+    edbttEmoteID2.Text := Item.SubItems[4];
+    edbttEmoteID3.Text := Item.SubItems[5];
+    edbttEmoteDelay1.Text := Item.SubItems[6];
+    edbttEmoteDelay2.Text := Item.SubItems[7];
+    edbttEmoteDelay3.Text := Item.SubItems[8];
+    edbttSoundEntriesId.Text := Item.SubItems[9];
+    edbttEmotesID.Text := Item.SubItems[10];
+    edbttFlags.Text := Item.SubItems[11];
+    edbttVerifiedBuild.Text := Item.SubItems[12];
+  end;
+end;
+
+procedure TMainForm.btScriptBroadcastTextClick(Sender: TObject);
+begin
+  PageControl6.ActivePageIndex := SCRIPT_TAB_NO_OTHER;
+end;
+
+procedure TMainForm.CompleteBroadcastTextScript;
+var
+  ID, Fields, Values: string;
+begin
+  meotLog.Clear;
+  ID :=  edbttID.Text;
+  if (ID='') then Exit;
+  SetFieldsAndValues(Fields, Values, 'broadcast_text', PFX_BROADCAST_TEXT, meotLog);
+  case SyntaxStyle of
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `broadcast_text` WHERE `ID`=%s ;'#13#10+
+      'INSERT INTO `broadcast_text` (%s) VALUES '#13#10+'(%s);'#13#10,[ID,  Fields, Values]);
+    ssReplace: meotScript.Text := Format('REPLACE INTO `broadcast_text` (%s) VALUES '#13#10+'(%s);'#13#10,[Fields, Values]);
+    ssUpdate: meotScript.Text := MakeUpdate('broadcast_text', PFX_BROADCAST_TEXT, 'ID', ID) ;
+  end;
+end;
+
+procedure TMainForm.SearchBroadcastText;
+var
+  i: integer;
+  ID, MaleText, FemaleText, QueryStr, WhereStr, t: string;
+  Field: TField;
+begin
+  ID :=   edSearchBroadcastTextID.Text;
+  MaleText := edSearchBroadcastTextMaleText.Text;
+  MaleText := StringReplace(MaleText, '''', '\''', [rfReplaceAll]);
+  MaleText := StringReplace(MaleText, ' ', '%', [rfReplaceAll]);
+  MaleText := '%'+MaleText+'%';
+  FemaleText := edSearchBroadcastTextFemaleText.Text;
+  FemaleText := StringReplace(FemaleText, '''', '\''', [rfReplaceAll]);
+  FemaleText := StringReplace(FemaleText, ' ', '%', [rfReplaceAll]);
+  FemaleText := '%'+FemaleText+'%';
+  QueryStr := '';
+  WhereStr := '';
+
+  if ID<>'' then
+  begin
+    if pos('-', ID)=0 then
+      WhereStr := Format('WHERE (`ID` in (%s))',[ID])
+    else
+      WhereStr := Format('WHERE (`ID` >= %s) AND (`ID` <= %s)',[MidStr(ID,1,pos('-',ID)-1), MidStr(ID,pos('-',ID)+1,length(ID))]);
+  end;
+
+  if MaleText<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`MaleText` LIKE ''%s'')',[WhereStr, MaleText])
+    else
+      WhereStr := Format('WHERE (`MaleText` LIKE ''%s'')',[MaleText]);
+  end;
+
+  if FemaleText<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`FemaleText` LIKE ''%s'')',[WhereStr, FemaleText])
+    else
+      WhereStr := Format('WHERE (`FemaleText` LIKE ''%s'')',[FemaleText]);
+  end;
+
+  if Trim(WhereStr)='' then
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+
+  QueryStr := Format('SELECT * FROM `broadcast_text` %s',[WhereStr]);
+  MyQuery.SQL.Text := QueryStr;
+  lvSearchBroadcastText.Items.BeginUpdate;
+  try
+    MyQuery.Open;
+    lvSearchBroadcastText.Clear;
+    while (MyQuery.Eof=false) do
+    begin
+      with lvSearchBroadcastText.Items.Add do
+      begin
+        for i := 0 to lvSearchBroadcastText.Columns.Count - 1 do
+        begin
+          Field := MyQuery.FindField(lvSearchBroadcastText.Columns[i].Caption);
+          t := '';
+          if Assigned(Field) then
+          begin
+            t := Field.AsString;
+            if i=0 then Caption := t;
+          end;
+          if i<>0 then SubItems.Add(t);
+        end;
+        MyQuery.Next;
+      end;
+    end;
+  finally
+    lvSearchBroadcastText.Items.EndUpdate;
+    MyQuery.Close;
+  end;
+end;
+
+// Broadcast text locale
+procedure TMainForm.btSearchBroadcastTextLocaleClick(Sender: TObject);
+begin
+  SearchBroadcastTextLocale();
+  with lvSearchBroadcastTextLocale do
+    if Items.Count > 0 then
+    begin
+      SetFocus;
+      Selected := Items[0];
+    end;
+end;
+
+procedure TMainForm.lvSearchBroadcastTextLocaleSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+begin
+  if Selected then
+  begin
+    edbttlocID.Text := Item.Caption;
+    edbttloclocale.Text := Item.SubItems[0];
+    edbttlocMaleText.Text := Item.SubItems[1];
+    edbttlocFemaleText.Text := Item.SubItems[2];
+    edbttlocVerifiedBuild.Text := Item.SubItems[3];
+  end;
+end;
+
+procedure TMainForm.btScriptBroadcastTextLocaleClick(Sender: TObject);
+begin
+  PageControl6.ActivePageIndex := SCRIPT_TAB_NO_OTHER;
+end;
+
+procedure TMainForm.CompleteBroadcastTextLocaleScript;
+var
+  ID, Fields, loc, Values: string;
+begin
+  meotLog.Clear;
+  ID := edbttlocID.Text;
+  loc:= edptloclocale.Text;
+  if (ID='') then Exit;
+  if (loc='') then loc:=LoadLocales();
+  SetFieldsAndValues(Fields, Values, 'broadcast_text_locale', PFX_BROADCAST_TEXT_LOCALE, meotLog);
+  case SyntaxStyle of
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `broadcast_text_locale` WHERE `ID`=%s AND `locale`=''%s'';'#13#10+
+      'INSERT INTO `broadcast_text_locale` (%s) VALUES '#13#10+'(%s);'#13#10,[ID, loc,  Fields, Values]);
+    ssReplace: meotScript.Text := Format('REPLACE INTO `broadcast_text_locale` (%s) VALUES '#13#10+'(%s);'#13#10,[Fields, Values]);
+    ssUpdate: meotScript.Text := MakeUpdatelocales('broadcast_text_locale', PFX_BROADCAST_TEXT_LOCALE, 'ID', ID, loc) ;
+  end;
+end;
+
+procedure TMainForm.SearchBroadcastTextLocale;
+var
+  i: integer;
+  ID, MaleText, FemaleText, loc, QueryStr, WhereStr, t: string;
+  Field: TField;
+begin
+  loc:=LoadLocales();
+
+if loc<>'enUS' then begin
+  ID :=  edSearchBroadcastTextLocaleID.Text;
+  MaleText := edSearchBroadcastTextLocaleMaleText.Text;
+  MaleText := StringReplace(MaleText, '''', '\''', [rfReplaceAll]);
+  MaleText := StringReplace(MaleText, ' ', '%', [rfReplaceAll]);
+  MaleText := '%'+MaleText+'%';
+  FemaleText := edSearchBroadcastTextLocaleFemaleText.Text;
+  FemaleText := StringReplace(FemaleText, '''', '\''', [rfReplaceAll]);
+  FemaleText := StringReplace(FemaleText, ' ', '%', [rfReplaceAll]);
+  FemaleText := '%'+FemaleText+'%';
+  QueryStr := '';
+  WhereStr := '';
+  loc:=LoadLocales();
+  edSearchBroadcastTextLocaleLocale.Text:=loc;
+
+  if ID<>'' then
+  begin
+    if pos('-', ID)=0 then
+      WhereStr := Format('WHERE (`ID` in (%s))',[ID])
+    else
+      WhereStr := Format('WHERE (`ID` >= %s) AND (`ID` <= %s)',[MidStr(ID,1,pos('-',ID)-1), MidStr(ID,pos('-',ID)+1,length(ID))]);
+  end;
+
+  if MaleText<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`MaleText` LIKE ''%s'')',[WhereStr, MaleText])
+    else
+      WhereStr := Format('WHERE (`MaleText` LIKE ''%s'')',[MaleText]);
+  end;
+
+  if FemaleText<>'%%' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`FemaleText` LIKE ''%s'')',[WhereStr, FemaleText])
+    else
+      WhereStr := Format('WHERE (`FemaleText` LIKE ''%s'')',[FemaleText]);
+  end;
+
+  if Trim(WhereStr)='' then
+    if MessageDlg(dmMain.Text[134], mtConfirmation, mbYesNoCancel, -1)<>mrYes then Exit;
+
+  if loc<>'' then
+  begin
+    if WhereStr<> '' then
+      WhereStr := Format('%s AND (`locale` = ''%s'') ORDER BY `ID`',[WhereStr, loc])
+    else
+      WhereStr := Format('WHERE (`locale` = ''%s'') ORDER BY `ID`',[loc]);
+  end;
+
+  QueryStr := Format('SELECT * FROM `broadcast_text_locale` %s',[WhereStr]);
+  MyQuery.SQL.Text := QueryStr;
+  lvSearchBroadcastTextLocale.Items.BeginUpdate;
+  try
+    MyQuery.Open;
+    lvSearchBroadcastTextLocale.Clear;
+    while (MyQuery.Eof=false) do
+    begin
+      with lvSearchBroadcastTextLocale.Items.Add do
+      begin
+        for i := 0 to lvSearchBroadcastTextLocale.Columns.Count - 1 do
+        begin
+          Field := MyQuery.FindField(lvSearchBroadcastTextLocale.Columns[i].Caption);
+          t := '';
+          if Assigned(Field) then
+          begin
+            t := Field.AsString;
+            if i=0 then Caption := t;
+          end;
+          if i<>0 then SubItems.Add(t);
+        end;
+        MyQuery.Next;
+      end;
+    end;
+  finally
+    lvSearchBroadcastTextLocale.Items.EndUpdate;
+    MyQuery.Close;
+  end;
+end
+    else ShowMessage(dmMain.Text[160]);
+end;
+
 procedure TMainForm.btSearchCreatureTextClick(Sender: TObject);
 begin
   SearchCreatureText();
-  with cttSearchCreatureText do
+  with lvSearchCreatureText do
     if Items.Count > 0 then
     begin
       SetFocus;
@@ -10592,17 +10936,17 @@ begin
   QueryStr := Format('SELECT * FROM `creature_text` %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
-  cttSearchCreatureText.Items.BeginUpdate;
+  lvSearchCreatureText.Items.BeginUpdate;
   try
     MyQuery.Open;
-    cttSearchCreatureText.Clear;
+    lvSearchCreatureText.Clear;
     while (MyQuery.Eof=false) do
     begin
-      with cttSearchCreatureText.Items.Add do
+      with lvSearchCreatureText.Items.Add do
       begin
-        for i := 0 to cttSearchCreatureText.Columns.Count - 1 do
+        for i := 0 to lvSearchCreatureText.Columns.Count - 1 do
         begin
-          Field := MyQuery.FindField(cttSearchCreatureText.Columns[i].Caption);
+          Field := MyQuery.FindField(lvSearchCreatureText.Columns[i].Caption);
           t := '';
           if Assigned(Field) then
           begin
@@ -10615,12 +10959,12 @@ begin
       end;
     end;
   finally
-    cttSearchCreatureText.Items.EndUpdate;
+    lvSearchCreatureText.Items.EndUpdate;
     MyQuery.Close;
   end;
 end;
 
-procedure TMainForm.cttSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+procedure TMainForm.lvSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   if Selected then
   begin
@@ -10668,7 +11012,7 @@ end;
 procedure TMainForm.btSearchCreatureTextLocaleClick(Sender: TObject);
 begin
   SearchCreatureTextLocale();
-  with cttlocSearchCreatureText do
+  with lvSearchCreatureText do
     if Items.Count > 0 then
     begin
       SetFocus;
@@ -10682,6 +11026,9 @@ var
   CreatureID, Name, loc, QueryStr, WhereStr, t: string;
   Field: TField;
 begin
+  loc:=loadLocales();
+
+if loc<>'enUS' then begin
   CreatureID :=  edSearchCreatureTextLocaleCreatureID.Text;
   Name := edSearchCreatureTextLocaleText.Text;
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
@@ -10722,17 +11069,17 @@ begin
   QueryStr := Format('SELECT * FROM `creature_text_locale` %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
-  cttlocSearchCreatureText.Items.BeginUpdate;
+  lvSearchCreatureTextLocale.Items.BeginUpdate;
   try
     MyQuery.Open;
-    cttlocSearchCreatureText.Clear;
+    lvSearchCreatureTextLocale.Clear;
     while (MyQuery.Eof=false) do
     begin
-      with cttlocSearchCreatureText.Items.Add do
+      with lvSearchCreatureTextLocale.Items.Add do
       begin
-        for i := 0 to cttlocSearchCreatureText.Columns.Count - 1 do
+        for i := 0 to lvSearchCreatureTextLocale.Columns.Count - 1 do
         begin
-          Field := MyQuery.FindField(cttlocSearchCreatureText.Columns[i].Caption);
+          Field := MyQuery.FindField(lvSearchCreatureTextLocale.Columns[i].Caption);
           t := '';
           if Assigned(Field) then
           begin
@@ -10745,12 +11092,14 @@ begin
       end;
     end;
   finally
-    cttlocSearchCreatureText.Items.EndUpdate;
+    lvSearchCreatureTextLocale.Items.EndUpdate;
     MyQuery.Close;
   end;
+end
+    else ShowMessage(dmMain.Text[160]);
 end;
 
-procedure TMainForm.cttlocSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+procedure TMainForm.lvSearchCreatureTextLocaleSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   if Selected then
   begin
