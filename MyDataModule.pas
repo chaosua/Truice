@@ -363,7 +363,7 @@ begin
   Text[157]:='The error has accured while loading Creature EventAI:';
   Text[158]:='Please specify a source type!';
   Text[159]:='The error has accured while loading Creature Template Movement:';
-  Text[160]:='Detected enUS locale. Nothing to search. Please select locale in Settings language tab or use default enUS tab instead!';
+  Text[160]:='Detected enUS locale. Nothing to search. Please select locale in Settings language section or use another tab instead!';
 end;
 
 procedure TdmMain.SetLanguage(const Value: string);

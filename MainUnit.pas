@@ -10744,6 +10744,7 @@ var
   ID, MaleText, FemaleText, loc, QueryStr, WhereStr, t: string;
   Field: TField;
 begin
+  loc:=LoadLocales();
 if loc<>'enUS' then begin
   ID :=  edSearchBroadcastTextLocaleID.Text;
   MaleText := edSearchBroadcastTextLocaleMaleText.Text;
@@ -10957,6 +10958,8 @@ var
   CreatureID, Name, loc, QueryStr, WhereStr, t: string;
   Field: TField;
 begin
+  loc:=LoadLocales();
+if loc<>'enUS' then begin
   CreatureID :=  edSearchCreatureTextLocaleCreatureID.Text;
   Name := edSearchCreatureTextLocaleText.Text;
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
@@ -11023,6 +11026,8 @@ begin
     lvSearchCreatureTextLocale.Items.EndUpdate;
     MyQuery.Close;
   end;
+end
+    else ShowMessage(dmMain.Text[160]);
 end;
 
 procedure TMainForm.lvSearchCreatureTextLocaleSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
@@ -11124,10 +11129,10 @@ var
   ID, Name, loc, QueryStr, WhereStr, t: string;
   Field: TField;
 begin
-  ID :=  edSearchPageTextLocaleEntry.Text;
   loc:=LoadLocales();
 
 if loc<>'enUS' then begin
+  ID :=  edSearchPageTextLocaleEntry.Text;
   Name := edSearchPageTextLocaleText.Text;
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
   Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);

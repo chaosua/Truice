@@ -253,7 +253,7 @@ TEXT130=Klasse
 TEXT131=SubKlasse
 TEXT132=GegenstandsSet
 TEXT133=Karte
-TEXT160=EnUS-Gebietsschema erkannt. Nichts zu suchen. Bitte wahlen Sie auf der Registerkarte „Einstellungen“ das Gebietsschema aus oder verwenden Sie stattdessen die Registerkarte 'Page Text'!
+TEXT160=Erkanntes Gebietsschema enUS. Nichts zu suchen. Bitte wahlen Sie das Gebietsschema im Abschnitt Einstellungen Sprache oder verwenden Sie stattdessen eine andere Registerkarte!
 
 [MAIN]
 Caption=Truice

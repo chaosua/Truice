@@ -275,7 +275,7 @@ TEXT153=Error: Character (guid = %d) nenalezen
 TEXT154=Vyskytl se error pøi nahrávání tabulky character:
 TEXT155=AreaTrigger
 TEXT156=LootCondition
-TEXT160=Zjisteno narodni prostredi enUS. Neni co hledat. Vyberte narodni prostredi na karte Jazyk nastaveni nebo pouzijte 'Page Text' misto toho kartu!
+TEXT160=Erkanntes Gebietsschema enUS. Nichts zu suchen. Bitte wahlen Sie das Gebietsschema im Abschnitt Einstellungen Sprache oder verwenden Sie stattdessen eine andere Registerkarte!
 
 [MAIN]
 Caption=Truice
