@@ -1777,9 +1777,9 @@ type
     lbbttAboutID: TLabel;
     cttClearSearchBroadcastText: TBitBtn;
     btSearchBroadcastText: TBitBtn;
-    edSearchBroadcastTextMaleText: TLabeledEdit;
+    edSearchBroadcastTextText: TLabeledEdit;
     edSearchBroadcastTextID: TLabeledEdit;
-    edSearchBroadcastTextFemaleText: TLabeledEdit;
+    edSearchBroadcastTextText1: TLabeledEdit;
     lvSearchBroadcastText: TJvListView;
     Panel27: TPanel;
     lbbttEmoteID1: TLabel;
@@ -1787,7 +1787,7 @@ type
     lbbttEmoteID3: TLabel;
     edbttID: TLabeledEdit;
     edbttLanguageID: TLabeledEdit;
-    edbttMaleText: TLabeledEdit;
+    edbttText: TLabeledEdit;
     btScriptBroadcastText: TButton;
     edbttVerifiedBuild: TLabeledEdit;
     edbttFlags: TLabeledEdit;
@@ -1796,7 +1796,7 @@ type
     edbttEmoteDelay3: TLabeledEdit;
     edbttEmoteDelay1: TLabeledEdit;
     edbttEmoteDelay2: TLabeledEdit;
-    edbttFemaleText: TLabeledEdit;
+    edbttText1: TLabeledEdit;
     edbttEmoteID1: TJvComboEdit;
     edbttEmoteID2: TJvComboEdit;
     edbttEmoteID3: TJvComboEdit;
@@ -1804,18 +1804,18 @@ type
     lbbttlocAboutID: TLabel;
     cttClearSearchBroadcastTextLocale: TBitBtn;
     btSearchBroadcastTextLocale: TBitBtn;
-    edSearchBroadcastTextLocaleMaleText: TLabeledEdit;
+    edSearchBroadcastTextLocaleText: TLabeledEdit;
     edSearchBroadcastTextLocaleID: TLabeledEdit;
-    edSearchBroadcastTextLocaleFemaleText: TLabeledEdit;
+    edSearchBroadcastTextLocaleText1: TLabeledEdit;
     edSearchBroadcastTextLocalelocale: TLabeledEdit;
     lvSearchBroadcastTextLocale: TJvListView;
     Panel28: TPanel;
     edbttlocID: TLabeledEdit;
     edbttloclocale: TLabeledEdit;
-    edbttlocMaleText: TLabeledEdit;
+    edbttlocText: TLabeledEdit;
     btScriptBroadcastTextLocale: TButton;
     edbttlocVerifiedBuild: TLabeledEdit;
-    edbttlocFemaleText: TLabeledEdit;
+    edbttlocText1: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -4396,12 +4396,12 @@ edgeholiday.Clear;
   lvQuest.Clear;
   meqtScript.Clear;
   edSearchBroadcastTextID.Clear;
-  edSearchBroadcastTextMaleText.Clear;
-  edSearchBroadcastTextFemaleText.Clear;
+  edSearchBroadcastTextText.Clear;
+  edSearchBroadcastTextText1.Clear;
   lvSearchBroadcastText.Clear;
   edSearchBroadcastTextLocaleID.Clear;
-  edSearchBroadcastTextLocaleMaleText.Clear;
-  edSearchBroadcastTextLocaleFemaleText.Clear;
+  edSearchBroadcastTextLocaleText.Clear;
+  edSearchBroadcastTextLocaleText1.Clear;
   lvSearchBroadcastTextLocale.Clear;
   edSearchCreatureTextCreatureID.Clear;
   edSearchCreatureText.Clear;
@@ -10641,8 +10641,8 @@ begin
   begin
     edbttID.Text := Item.Caption;
     edbttLanguageID.Text := Item.SubItems[0];
-    edbttMaleText.Text := Item.SubItems[1];
-    edbttFemaleText.Text := Item.SubItems[2];
+    edbttText.Text := Item.SubItems[1];
+    edbttText1.Text := Item.SubItems[2];
     edbttEmoteID1.Text := Item.SubItems[3];
     edbttEmoteID2.Text := Item.SubItems[4];
     edbttEmoteID3.Text := Item.SubItems[5];
@@ -10684,11 +10684,11 @@ var
   Field: TField;
 begin
   ID :=   edSearchBroadcastTextID.Text;
-  MaleText := edSearchBroadcastTextMaleText.Text;
+  MaleText := edSearchBroadcastTextText.Text;
   MaleText := StringReplace(MaleText, '''', '\''', [rfReplaceAll]);
   MaleText := StringReplace(MaleText, ' ', '%', [rfReplaceAll]);
   MaleText := '%'+MaleText+'%';
-  FemaleText := edSearchBroadcastTextFemaleText.Text;
+  FemaleText := edSearchBroadcastTextText1.Text;
   FemaleText := StringReplace(FemaleText, '''', '\''', [rfReplaceAll]);
   FemaleText := StringReplace(FemaleText, ' ', '%', [rfReplaceAll]);
   FemaleText := '%'+FemaleText+'%';
@@ -10706,17 +10706,17 @@ begin
   if MaleText<>'%%' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND (`MaleText` LIKE ''%s'')',[WhereStr, MaleText])
+      WhereStr := Format('%s AND (`Text` LIKE ''%s'')',[WhereStr, MaleText])
     else
-      WhereStr := Format('WHERE (`MaleText` LIKE ''%s'')',[MaleText]);
+      WhereStr := Format('WHERE (`Text` LIKE ''%s'')',[MaleText]);
   end;
 
   if FemaleText<>'%%' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND (`FemaleText` LIKE ''%s'')',[WhereStr, FemaleText])
+      WhereStr := Format('%s AND (`Text1` LIKE ''%s'')',[WhereStr, FemaleText])
     else
-      WhereStr := Format('WHERE (`FemaleText` LIKE ''%s'')',[FemaleText]);
+      WhereStr := Format('WHERE (`Text1` LIKE ''%s'')',[FemaleText]);
   end;
 
   if Trim(WhereStr)='' then
@@ -10770,8 +10770,8 @@ begin
   begin
     edbttlocID.Text := Item.Caption;
     edbttloclocale.Text := Item.SubItems[0];
-    edbttlocMaleText.Text := Item.SubItems[1];
-    edbttlocFemaleText.Text := Item.SubItems[2];
+    edbttlocText.Text := Item.SubItems[1];
+    edbttlocText1.Text := Item.SubItems[2];
     edbttlocVerifiedBuild.Text := Item.SubItems[3];
   end;
 end;
@@ -10809,11 +10809,11 @@ begin
 
 if loc<>'enUS' then begin
   ID :=  edSearchBroadcastTextLocaleID.Text;
-  MaleText := edSearchBroadcastTextLocaleMaleText.Text;
+  MaleText := edSearchBroadcastTextLocaleText.Text;
   MaleText := StringReplace(MaleText, '''', '\''', [rfReplaceAll]);
   MaleText := StringReplace(MaleText, ' ', '%', [rfReplaceAll]);
   MaleText := '%'+MaleText+'%';
-  FemaleText := edSearchBroadcastTextLocaleFemaleText.Text;
+  FemaleText := edSearchBroadcastTextLocaleText1.Text;
   FemaleText := StringReplace(FemaleText, '''', '\''', [rfReplaceAll]);
   FemaleText := StringReplace(FemaleText, ' ', '%', [rfReplaceAll]);
   FemaleText := '%'+FemaleText+'%';
@@ -10833,17 +10833,17 @@ if loc<>'enUS' then begin
   if MaleText<>'%%' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND (`MaleText` LIKE ''%s'')',[WhereStr, MaleText])
+      WhereStr := Format('%s AND (`Text` LIKE ''%s'')',[WhereStr, MaleText])
     else
-      WhereStr := Format('WHERE (`MaleText` LIKE ''%s'')',[MaleText]);
+      WhereStr := Format('WHERE (`Text` LIKE ''%s'')',[MaleText]);
   end;
 
   if FemaleText<>'%%' then
   begin
     if WhereStr<> '' then
-      WhereStr := Format('%s AND (`FemaleText` LIKE ''%s'')',[WhereStr, FemaleText])
+      WhereStr := Format('%s AND (`Text1` LIKE ''%s'')',[WhereStr, FemaleText])
     else
-      WhereStr := Format('WHERE (`FemaleText` LIKE ''%s'')',[FemaleText]);
+      WhereStr := Format('WHERE (`Text1` LIKE ''%s'')',[FemaleText]);
   end;
 
   if Trim(WhereStr)='' then
