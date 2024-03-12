@@ -21,7 +21,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '17';
+  VERSION_4   = '19';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -1756,20 +1756,6 @@ type
     edcttTextRange: TLabeledEdit;
     edcttcomment: TLabeledEdit;
     tsCreatureTextLocale: TTabSheet;
-    cttlocGroupBox: TGroupBox;
-    cttlocClearSearchCreatureText: TBitBtn;
-    btSearchCreatureTextLocale: TBitBtn;
-    edSearchCreatureTextLocaleText: TLabeledEdit;
-    edSearchCreatureTextLocaleCreatureID: TLabeledEdit;
-    edSearchCreatureTextLocaleLocale: TLabeledEdit;
-    cttlocPanel: TPanel;
-    edcttlocCreatureID: TLabeledEdit;
-    edcttlocGroupID: TLabeledEdit;
-    edcttlocText: TLabeledEdit;
-    btScriptCreatureTextLocale: TButton;
-    edcttlocID: TLabeledEdit;
-    edcttlocLocale: TLabeledEdit;
-    lvSearchCreatureTextLocale: TJvListView;
     btGoCreatureText: TButton;
     tsBroadcastText: TTabSheet;
     tsBroadcastTextLocale: TTabSheet;
@@ -1816,6 +1802,25 @@ type
     btScriptBroadcastTextLocale: TButton;
     edbttlocVerifiedBuild: TLabeledEdit;
     edbttlocText1: TLabeledEdit;
+    edSearchPageTextLocalelocale: TLabeledEdit;
+    lbpttlocAboutID: TLabel;
+    GroupBox5: TGroupBox;
+    cttlocClearSearchCreatureText: TBitBtn;
+    btSearchCreatureTextLocale: TBitBtn;
+    edSearchCreatureTextLocaleText: TLabeledEdit;
+    edSearchCreatureTextLocaleCreatureID: TLabeledEdit;
+    edSearchCreatureTextLocaleLocale: TLabeledEdit;
+    lvSearchCreatureTextLocale: TJvListView;
+    Panel23: TPanel;
+    edcttlocCreatureID: TLabeledEdit;
+    edcttlocGroupID: TLabeledEdit;
+    edcttlocText: TLabeledEdit;
+    btScriptCreatureTextLocale: TButton;
+    edcttlocID: TLabeledEdit;
+    edcttlocLocale: TLabeledEdit;
+    lbcttAboutID: TLabel;
+    lbcttlocAboutID: TLabel;
+    lbpttAboutID: TLabel;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -11196,15 +11201,15 @@ var
   ID, Name, loc, QueryStr, WhereStr, t: string;
   Field: TField;
 begin
-  ID :=  edSearchPageTextLocaleEntry.Text;
   loc:=LoadLocales();
 
 if loc<>'enUS' then begin
+  ID :=  edSearchPageTextLocaleEntry.Text;
   Name := edSearchPageTextLocaleText.Text;
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
   Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
   Name := '%'+Name+'%';
-
+  edSearchPageTextLocalelocale.Text:=loc;
   QueryStr := '';
   WhereStr := '';
 

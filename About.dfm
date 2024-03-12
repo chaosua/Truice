@@ -29,14 +29,11 @@ object AboutBox: TAboutBox
       296)
     object Bevel1: TBevel
       Left = 1
-      Top = 248
+      Top = 261
       Width = 407
-      Height = 47
+      Height = 34
       Align = alBottom
       Shape = bsTopLine
-      ExplicitLeft = 2
-      ExplicitTop = 245
-      ExplicitWidth = 408
     end
     object Image1: TImage
       Left = 1
@@ -1964,14 +1961,14 @@ object AboutBox: TAboutBox
     end
     object Panel1: TPanel
       Left = 0
-      Top = 51
+      Top = 50
       Width = 409
       Height = 196
       BevelOuter = bvNone
       Color = clWhite
       TabOrder = 1
       object lblVersion: TLabel
-        Left = 19
+        Left = 10
         Top = 6
         Width = 91
         Height = 13
@@ -1986,7 +1983,7 @@ object AboutBox: TAboutBox
         IsControl = True
       end
       object lblAutorName: TLabel
-        Left = 19
+        Left = 10
         Top = 137
         Width = 106
         Height = 15
@@ -2002,7 +1999,7 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object LinkSite: TLabel
-        Left = 100
+        Left = 90
         Top = 98
         Width = 146
         Height = 13
@@ -2017,26 +2014,27 @@ object AboutBox: TAboutBox
         OnClick = LinkSiteClick
       end
       object lbdbversion: TLabel
-        Left = 19
+        Left = 10
         Top = 43
         Width = 54
         Height = 13
         Caption = 'lbdbversion'
       end
       object JvPoweredByJVCL1: TJvPoweredByJVCL
-        Left = 191
+        Left = 203
         Top = 6
+        Width = 203
         URL = 'http://jvcl.delphi-jedi.org/'
       end
       object lbprojectwebsite: TLabel
-        Left = 19
+        Left = 10
         Top = 98
         Width = 75
         Height = 13
         Caption = 'Project website:'
       end
       object Label2: TLabel
-        Left = 19
+        Left = 10
         Top = 158
         Width = 106
         Height = 15
@@ -2052,7 +2050,7 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object Label1: TLabel
-        Left = 19
+        Left = 10
         Top = 179
         Width = 92
         Height = 15
@@ -2100,21 +2098,21 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object Label4: TLabel
-        Left = 19
-        Top = 60
-        Width = 108
+        Left = 10
+        Top = 24
+        Width = 178
         Height = 13
-        Caption = 'WoTLK 3.3.5a support'
+        Caption = 'Support WoTLK 3.3.5a for TrinityCore'
       end
       object Label5: TLabel
-        Left = 19
+        Left = 10
         Top = 79
-        Width = 226
+        Width = 216
         Height = 13
-        Caption = 'Support the project with patch/fixes/bugreports!'
+        Caption = 'Support the project with fixes and bugreports !'
       end
       object LinkSiteNew: TLabel
-        Left = 100
+        Left = 90
         Top = 118
         Width = 169
         Height = 13
@@ -2134,7 +2132,7 @@ object AboutBox: TAboutBox
         Width = 117
         Height = 15
         AutoSize = False
-        Caption = #169' chaosua, 2023-'
+        Caption = #169' chaosua, 2023-2024'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clGray
         Font.Height = -11
@@ -2146,8 +2144,8 @@ object AboutBox: TAboutBox
       end
     end
     object OKButton: TButton
-      Left = 316
-      Top = 261
+      Left = 312
+      Top = 267
       Width = 75
       Height = 25
       Anchors = [akRight, akBottom]
@@ -2156,8 +2154,6 @@ object AboutBox: TAboutBox
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 312
-      ExplicitTop = 260
     end
   end
   object ActionList1: TActionList
