@@ -22,7 +22,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '16';
+  VERSION_4   = '18';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -1822,6 +1822,11 @@ type
     edSearchBroadcastTextLocaleID: TLabeledEdit;
     edSearchBroadcastTextLocaleFemaleText: TLabeledEdit;
     edSearchBroadcastTextLocalelocale: TLabeledEdit;
+    lbcttAboutID: TLabel;
+    lbcttlocAboutID: TLabel;
+    lbpttAboutID: TLabel;
+    lbpttlocAboutID: TLabel;
+    edSearchPageTextLocalelocale: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -11137,7 +11142,7 @@ if loc<>'enUS' then begin
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
   Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
   Name := '%'+Name+'%';
-
+  edSearchPageTextLocalelocale.Text:=loc;
   QueryStr := '';
   WhereStr := '';
 

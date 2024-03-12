@@ -1963,15 +1963,15 @@ object AboutBox: TAboutBox
       ExplicitWidth = 406
     end
     object Panel1: TPanel
-      Left = 0
-      Top = 51
+      Left = -1
+      Top = 46
       Width = 409
       Height = 196
       BevelOuter = bvNone
       Color = clWhite
       TabOrder = 1
       object lblVersion: TLabel
-        Left = 19
+        Left = 10
         Top = 10
         Width = 91
         Height = 13
@@ -1986,7 +1986,7 @@ object AboutBox: TAboutBox
         IsControl = True
       end
       object lblAutorName: TLabel
-        Left = 19
+        Left = 10
         Top = 137
         Width = 106
         Height = 15
@@ -2002,7 +2002,7 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object LinkSite: TLabel
-        Left = 100
+        Left = 91
         Top = 98
         Width = 146
         Height = 13
@@ -2017,7 +2017,7 @@ object AboutBox: TAboutBox
         OnClick = LinkSiteClick
       end
       object lbdbversion: TLabel
-        Left = 19
+        Left = 10
         Top = 43
         Width = 54
         Height = 13
@@ -2029,14 +2029,14 @@ object AboutBox: TAboutBox
         URL = 'http://jvcl.delphi-jedi.org/'
       end
       object lbprojectwebsite: TLabel
-        Left = 19
+        Left = 10
         Top = 98
         Width = 75
         Height = 13
         Caption = 'Project website:'
       end
       object Label2: TLabel
-        Left = 19
+        Left = 10
         Top = 158
         Width = 106
         Height = 15
@@ -2052,7 +2052,7 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object Label1: TLabel
-        Left = 19
+        Left = 10
         Top = 179
         Width = 92
         Height = 15
@@ -2100,18 +2100,18 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object Label4: TLabel
-        Left = 19
+        Left = 10
         Top = 60
         Width = 204
         Height = 13
         Caption = 'Support WoTLK 3.3.5a DB for AzerothCore'
       end
       object Label5: TLabel
-        Left = 19
+        Left = 10
         Top = 79
-        Width = 226
+        Width = 213
         Height = 13
-        Caption = 'Support the project with patch/fixes/bugreports!'
+        Caption = 'Support the project with fixes and bugreports!'
       end
       object Label7: TLabel
         Left = 142
@@ -2130,7 +2130,7 @@ object AboutBox: TAboutBox
         WordWrap = True
       end
       object LinkSiteNew: TLabel
-        Left = 100
+        Left = 91
         Top = 117
         Width = 157
         Height = 13
@@ -2146,7 +2146,7 @@ object AboutBox: TAboutBox
       end
     end
     object OKButton: TButton
-      Left = 304
+      Left = 300
       Top = 261
       Width = 75
       Height = 25
@@ -2156,7 +2156,7 @@ object AboutBox: TAboutBox
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 300
+      ExplicitLeft = 296
       ExplicitTop = 260
     end
   end
