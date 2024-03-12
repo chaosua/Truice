@@ -1756,13 +1756,13 @@ type
     edcttTextRange: TLabeledEdit;
     edcttcomment: TLabeledEdit;
     tsCreatureTextLocale: TTabSheet;
-    GroupBox5: TGroupBox;
+    cttlocGroupBox: TGroupBox;
     cttlocClearSearchCreatureText: TBitBtn;
     btSearchCreatureTextLocale: TBitBtn;
     edSearchCreatureTextLocaleText: TLabeledEdit;
     edSearchCreatureTextLocaleCreatureID: TLabeledEdit;
     edSearchCreatureTextLocaleLocale: TLabeledEdit;
-    Panel23: TPanel;
+    cttlocPanel: TPanel;
     edcttlocCreatureID: TLabeledEdit;
     edcttlocGroupID: TLabeledEdit;
     edcttlocText: TLabeledEdit;
@@ -10819,8 +10819,7 @@ if loc<>'enUS' then begin
   FemaleText := '%'+FemaleText+'%';
   QueryStr := '';
   WhereStr := '';
-  loc:=LoadLocales();
-  edSearchBroadcastTextLocaleLocale.Text:=loc;
+  edSearchBroadcastTextLocalelocale.Text:=loc;
 
   if ID<>'' then
   begin
@@ -11034,7 +11033,6 @@ if loc<>'enUS' then begin
   Name := StringReplace(Name, '''', '\''', [rfReplaceAll]);
   Name := StringReplace(Name, ' ', '%', [rfReplaceAll]);
   Name := '%'+Name+'%';
-  loc:=LoadLocales();
   edSearchCreatureTextLocaleLocale.Text:=loc;
   QueryStr := '';
   WhereStr := '';
