@@ -4,3 +4,6 @@
 3;DF_QUEST (DungeonFinder)
 4;Quest monthly
 5;RequiredOrNpcGo killcredit (a spell cast)
+6;NO_REP_SPILLOVER
+7;CAN_FAIL_IN_ANY_STATE
+8;No Loremaster Count
