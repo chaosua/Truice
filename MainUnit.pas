@@ -4491,9 +4491,9 @@ begin
   begin
     if loc<>'enUS' then begin
       if WhereStr<> '' then
-        WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CName, loc])
+        WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`Name` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CName, loc])
       else
-        WhereStr := Format('WHERE ((ct.`name` LIKE ''%s'') OR (lc.`name` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CName, loc]);
+        WhereStr := Format('WHERE ((ct.`bname` LIKE ''%s'') OR (lc.`Name` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CName, loc]);
     end else begin
       if WhereStr<> '' then
         WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, CName])
@@ -4506,9 +4506,9 @@ begin
   begin
     if loc<>'enUS' then begin
       if WhereStr<> '' then
-        WhereStr := Format('%s AND ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CSubName, loc])
+        WhereStr := Format('%s AND ((ct.`subname` LIKE ''%s'') OR (lc.`Title` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CSubName, loc])
       else
-        WhereStr := Format('WHERE ((ct.`subname` LIKE ''%s'') OR (lc.`subname` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CSubName, loc]);
+        WhereStr := Format('WHERE ((ct.`subname` LIKE ''%s'') OR (lc.`Title` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CSubName, loc]);
     end else begin
       if WhereStr<> '' then
         WhereStr := Format('%s AND `subname` LIKE ''%s'' ',[WhereStr, CSubName])

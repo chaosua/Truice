@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 668
-    ActivePage = tsOther
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -33,8 +33,6 @@ object MainForm: TMainForm
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 884
-    ExplicitHeight = 667
     object tsQuest: TTabSheet
       Caption = 'Quest'
       ImageIndex = 1
@@ -52,7 +50,7 @@ object MainForm: TMainForm
         Top = 9
         Width = 880
         Height = 631
-        ActivePage = tsSearch
+        ActivePage = tsScriptTab
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -25469,18 +25467,15 @@ object MainForm: TMainForm
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 876
       end
       object PageControl6: TPageControl
         Left = 0
         Top = 13
         Width = 880
         Height = 627
-        ActivePage = tsPageTextLocale
+        ActivePage = tsGameEvents
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 876
-        ExplicitHeight = 626
         object tsFishingLoot: TTabSheet
           Caption = 'Fishing Loot'
           DesignSize = (
@@ -27105,7 +27100,6 @@ object MainForm: TMainForm
             Height = 89
             Align = alTop
             TabOrder = 0
-            ExplicitWidth = 868
             DesignSize = (
               872
               89)
@@ -27133,7 +27127,6 @@ object MainForm: TMainForm
               Caption = 'Clear'
               TabOrder = 2
               OnClick = btClearClick
-              ExplicitLeft = 719
             end
             object btSearchBroadcastText: TBitBtn
               Left = 723
@@ -27189,7 +27182,6 @@ object MainForm: TMainForm
               Margin = 4
               TabOrder = 3
               OnClick = btSearchBroadcastTextClick
-              ExplicitLeft = 719
             end
             object edSearchBroadcastTextMaleText: TLabeledEdit
               Left = 11
@@ -27313,8 +27305,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitWidth = 868
-            ExplicitHeight = 268
           end
           object Panel27: TPanel
             Left = 0
@@ -27324,8 +27314,6 @@ object MainForm: TMainForm
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 357
-            ExplicitWidth = 868
             DesignSize = (
               872
               241)
