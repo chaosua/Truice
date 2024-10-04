@@ -375,10 +375,6 @@ type
     edctdifficulty_entry_3: TJvComboEdit;
     edctKillCredit1: TLabeledEdit;
     edctKillCredit2: TLabeledEdit;
-    edctmodelid1: TLabeledEdit;
-    edctmodelid2: TLabeledEdit;
-    edctmodelid4: TLabeledEdit;
-    edctmodelid3: TLabeledEdit;
     edctname: TLabeledEdit;
     edctsubname: TLabeledEdit;
     edctIconName: TLabeledEdit;
@@ -5152,8 +5148,8 @@ procedure TMainForm.tsCreatureModelInfoShow(Sender: TObject);
 var
   model: string;
 begin
-  model := '';
-    if (edctmodelid1.Text <> '') and (edctmodelid1.Text <> '0')  then
+  model := edctmCreatureDisplayID.Text;
+   { if (edctmCreatureDisplayID.Text <> '') and (edctmodelid1.Text <> '0')  then
       model := edctmodelid1.Text;
     if (edctmodelid2.Text <> '') and (edctmodelid2.Text <> '0')  then
     begin
@@ -5161,7 +5157,9 @@ begin
         model := Format('%s,%s',[model, edctmodelid2.Text])
       else
         model := edctmodelid2.Text;
+
   end;
+  }
   if model <> '' then
   begin
     edCreatureDisplayIDSearch.Text := model;

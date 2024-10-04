@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 668
-    ActivePage = tsItem
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6653,10 +6653,10 @@ object MainForm: TMainForm
             Caption = 'spell_school_immune_mask'
           end
           object lbctGoToSmartAI: TLabel
-            Left = 129
-            Top = 507
-            Width = 408
-            Height = 30
+            Left = 114
+            Top = 460
+            Width = 432
+            Height = 26
             Caption = 
               'Jump to SmartAI-Tab and load current creature.'#13#10'If there is alre' +
               'ady something loaded in SmartAI-Tab, all unsaved changes will be' +
@@ -6666,7 +6666,7 @@ object MainForm: TMainForm
             Left = -4
             Top = 8
             Width = 345
-            Height = 290
+            Height = 248
             Caption = 'Creature I'
             TabOrder = 0
             object lbctEntry: TLabel
@@ -6752,30 +6752,6 @@ object MainForm: TMainForm
               Text = ''
               OnButtonClick = edctEntryButtonClick
             end
-            object edctmodelid1: TLabeledEdit
-              Left = 8
-              Top = 182
-              Width = 75
-              Height = 21
-              Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 42
-              EditLabel.Height = 13
-              EditLabel.Caption = 'modelid1'
-              TabOrder = 3
-              Text = ''
-            end
-            object edctmodelid2: TLabeledEdit
-              Left = 176
-              Top = 182
-              Width = 75
-              Height = 21
-              Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 42
-              EditLabel.Height = 13
-              EditLabel.Caption = 'modelid2'
-              TabOrder = 19
-              Text = ''
-            end
             object edctname: TLabeledEdit
               Left = 8
               Top = 102
@@ -6801,8 +6777,8 @@ object MainForm: TMainForm
               Text = ''
             end
             object edctminlevel: TLabeledEdit
-              Left = 176
-              Top = 219
+              Left = 178
+              Top = 179
               Width = 75
               Height = 21
               Hint = 
@@ -6811,12 +6787,12 @@ object MainForm: TMainForm
               EditLabel.Width = 38
               EditLabel.Height = 13
               EditLabel.Caption = 'minlevel'
-              TabOrder = 9
+              TabOrder = 6
               Text = ''
             end
             object edctmaxlevel: TLabeledEdit
-              Left = 256
-              Top = 219
+              Left = 258
+              Top = 179
               Width = 75
               Height = 21
               Hint = 
@@ -6825,79 +6801,55 @@ object MainForm: TMainForm
               EditLabel.Width = 41
               EditLabel.Height = 13
               EditLabel.Caption = 'maxlevel'
-              TabOrder = 10
+              TabOrder = 7
               Text = ''
             end
             object edctHealthModifier: TLabeledEdit
-              Left = 8
-              Top = 256
+              Left = 10
+              Top = 216
               Width = 73
               Height = 21
               Hint = 'Creature'#39's Mana Mod'
               EditLabel.Width = 68
               EditLabel.Height = 13
               EditLabel.Caption = 'HealthModifier'
-              TabOrder = 20
+              TabOrder = 16
               Text = ''
             end
             object edctManaModifier: TLabeledEdit
-              Left = 88
-              Top = 256
+              Left = 90
+              Top = 216
               Width = 75
               Height = 21
               Hint = 'Creature'#39's Mana Mod'
               EditLabel.Width = 64
               EditLabel.Height = 13
               EditLabel.Caption = 'ManaModifier'
-              TabOrder = 5
+              TabOrder = 3
               Text = ''
             end
             object edctmingold: TLabeledEdit
-              Left = 8
-              Top = 219
+              Left = 10
+              Top = 179
               Width = 73
               Height = 21
               Hint = 'Minimum gold drop'
               EditLabel.Width = 36
               EditLabel.Height = 13
               EditLabel.Caption = 'mingold'
-              TabOrder = 7
+              TabOrder = 4
               Text = ''
             end
             object edctmaxgold: TLabeledEdit
-              Left = 88
-              Top = 219
+              Left = 90
+              Top = 179
               Width = 75
               Height = 21
               Hint = 'Maximum gold drop. 0 = creature don'#39't drop any gold.'
               EditLabel.Width = 39
               EditLabel.Height = 13
               EditLabel.Caption = 'maxgold'
-              TabOrder = 8
-              Text = ''
-            end
-            object edctmodelid4: TLabeledEdit
-              Left = 256
-              Top = 182
-              Width = 75
-              Height = 21
-              Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 42
-              EditLabel.Height = 13
-              EditLabel.Caption = 'modelid4'
-              TabOrder = 6
-              Text = ''
-            end
-            object edctmodelid3: TLabeledEdit
-              Left = 88
-              Top = 182
-              Width = 75
-              Height = 21
-              Hint = 'Graphical model that client must apply on this creature.'
-              EditLabel.Width = 42
-              EditLabel.Height = 13
-              EditLabel.Caption = 'modelid3'
-              TabOrder = 4
+              TabOrder = 5
               Text = ''
             end
             object edctIconName: TLabeledEdit
@@ -6908,7 +6860,7 @@ object MainForm: TMainForm
               EditLabel.Width = 49
               EditLabel.Height = 13
               EditLabel.Caption = 'IconName'
-              TabOrder = 11
+              TabOrder = 8
               Text = ''
             end
             object edctdifficulty_entry_1: TJvComboEdit
@@ -6961,7 +6913,7 @@ object MainForm: TMainForm
                 072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
                 1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
                 0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 12
+              TabOrder = 9
               Text = ''
               OnButtonClick = edctEntryButtonClick
             end
@@ -6974,7 +6926,7 @@ object MainForm: TMainForm
               EditLabel.Width = 46
               EditLabel.Height = 13
               EditLabel.Caption = 'KillCredit1'
-              TabOrder = 13
+              TabOrder = 10
               Text = ''
             end
             object edctKillCredit2: TLabeledEdit
@@ -6986,7 +6938,7 @@ object MainForm: TMainForm
               EditLabel.Width = 46
               EditLabel.Height = 13
               EditLabel.Caption = 'KillCredit2'
-              TabOrder = 14
+              TabOrder = 11
               Text = ''
             end
             object edctdifficulty_entry_2: TJvComboEdit
@@ -7039,7 +6991,7 @@ object MainForm: TMainForm
                 072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
                 1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
                 0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 15
+              TabOrder = 12
               Text = ''
               OnButtonClick = edctEntryButtonClick
             end
@@ -7093,13 +7045,13 @@ object MainForm: TMainForm
                 072D342A3C4A4A4A4A4A4A4A4A4A420D322005374A4A4A4A4A4A4A4A4A1B4018
                 1C26174A4A4A4A4A4A4A4A4A4A4A2E082F2C4A4A4A4A4A4A4A4A4A4A4A4A4A10
                 0E4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A4A}
-              TabOrder = 16
+              TabOrder = 13
               Text = ''
               OnButtonClick = edctEntryButtonClick
             end
             object edctVehicleId: TLabeledEdit
-              Left = 176
-              Top = 256
+              Left = 178
+              Top = 216
               Width = 75
               Height = 21
               Hint = 'Creature'#39's VehicleID'
@@ -7109,12 +7061,12 @@ object MainForm: TMainForm
               EditLabel.Caption = 'VehicleId'
               EditLabel.Transparent = True
               ParentDoubleBuffered = False
-              TabOrder = 17
+              TabOrder = 14
               Text = ''
             end
             object edctexp: TLabeledEdit
-              Left = 256
-              Top = 256
+              Left = 258
+              Top = 216
               Width = 75
               Height = 21
               Hint = 
@@ -7126,7 +7078,7 @@ object MainForm: TMainForm
               EditLabel.Caption = 'exp'
               EditLabel.Transparent = True
               ParentDoubleBuffered = False
-              TabOrder = 18
+              TabOrder = 15
               Text = ''
             end
           end
@@ -7620,7 +7572,7 @@ object MainForm: TMainForm
           end
           object gbLoot: TGroupBox
             Left = -4
-            Top = 298
+            Top = 262
             Width = 345
             Height = 61
             Caption = 'Loot'
@@ -8195,7 +8147,7 @@ object MainForm: TMainForm
           end
           object btScriptCreatureTemplate: TButton
             Left = 623
-            Top = 481
+            Top = 471
             Width = 217
             Height = 25
             Caption = 'Show Creature Template Script'
@@ -8332,7 +8284,7 @@ object MainForm: TMainForm
           end
           object gbCreatureLocale: TGroupBox
             Left = -4
-            Top = 362
+            Top = 326
             Width = 345
             Height = 108
             Caption = 'Creature locale'
@@ -8401,7 +8353,7 @@ object MainForm: TMainForm
           end
           object btGoCreatureText: TButton
             Left = 3
-            Top = 476
+            Top = 440
             Width = 105
             Height = 25
             Caption = 'Goto creature_text'
@@ -8410,7 +8362,7 @@ object MainForm: TMainForm
           end
           object btctGoToSmartAI: TButton
             Left = 3
-            Top = 507
+            Top = 471
             Width = 105
             Height = 25
             Caption = 'Goto SmartAI'
