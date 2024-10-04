@@ -4493,7 +4493,7 @@ begin
       if WhereStr<> '' then
         WhereStr := Format('%s AND ((ct.`name` LIKE ''%s'') OR (lc.`Name` LIKE ''%1:s'' AND lc.`locale`=''%2:s''))',[WhereStr, CName, loc])
       else
-        WhereStr := Format('WHERE ((ct.`bname` LIKE ''%s'') OR (lc.`Name` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CName, loc]);
+        WhereStr := Format('WHERE ((ct.`name` LIKE ''%s'') OR (lc.`Name` LIKE ''%0:s'' AND lc.`locale`=''%1:s''))',[CName, loc]);
     end else begin
       if WhereStr<> '' then
         WhereStr := Format('%s AND `name` LIKE ''%s'' ',[WhereStr, CName])
@@ -15205,7 +15205,7 @@ begin
             lbcyaction_param5.Hint := 'of the cone';
             edcyaction_param5.Hint := lbcyaction_param5.Hint;
             lbcyaction_param5.Caption := 'Length (yards)';
-            lbcyaction_param6.Hint := 'angle 1°-360°';
+            lbcyaction_param6.Hint := 'angle 1Â°-360Â°';
             edcyaction_param6.Hint := lbcyaction_param6.Hint;
             lbcyaction_param6.Caption := 'Width of the cone ';
             lbcyaction_type.Hint := 'Allows you to spawn creatures in a cone (As seen in later expansions). Useful for custom cone aoes';
