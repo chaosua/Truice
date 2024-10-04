@@ -828,7 +828,6 @@ edclcurmana=curmana
 ^edclcurmana=Current creature's mana points.
 edclMovementType=MovementType
 btScriptCreatureLocation=Show Creature Location Script
-btScriptCreatureLocationCustomToAll=Add to all
 btFullScriptCreatureLocation=Show FULL Creature Location Script
 edclequipment_id=equipment_id
 edclCreateObject=CreateObject

@@ -463,7 +463,6 @@ type
     edclMovementType: TLabeledEdit;
     edclCreateObject: TLabeledEdit;
     btScriptCreatureLocation: TButton;
-    btScriptCreatureLocationCustomToAll: TButton;
     tsCreatureLoot: TTabSheet;
     lbcoitem: TLabel;
     btCreatureLootAdd: TSpeedButton;
@@ -842,7 +841,6 @@ type
     meitScript: TMemo;
     meitLog: TMemo;
     btCopyToClipboardItem: TButton;
-    btExecuteItemScript: TButton;
     tsOther: TTabSheet;
     Panel12: TPanel;
     PageControl6: TPageControl;
@@ -1897,7 +1895,6 @@ type
     procedure GetRace(Sender: TObject);
     procedure GetClass(Sender: TObject);
     procedure edcttypeButtonClick(Sender: TObject);
-    procedure btScriptCreatureClick(Sender: TObject);
     procedure btcyScriptSmartAIClick(Sender: TObject);
     procedure btcScriptConditionsClick(Sender: TObject);
     procedure edgtentryButtonClick(Sender: TObject);
@@ -2079,7 +2076,6 @@ type
     procedure btScriptPageTextlocaleClick(Sender: TObject);
     procedure LoadPageTextLocale(Sender: TObject);
     procedure btSQLOpenClick(Sender: TObject);
-    procedure btScriptCreatureLocationCustomToAllClick(Sender: TObject);
     procedure btFullScriptProsLootClick(Sender: TObject);
     procedure btProsLootAddClick(Sender: TObject);
     procedure btProsLootUpdClick(Sender: TObject);
@@ -2297,10 +2293,9 @@ type
     procedure btCreatureQuestItemDelClick(Sender: TObject);
     procedure lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
-    procedure lvcqiCreatureQuestItemlSelectItem(Sender: TObject; Item: TListItem;
+    procedure lvcqiCreatureQuestItemSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btFullQuestItemScriptClick(Sender: TObject);
-    procedure btScriptCreatureQuestItemClick(Sender: TObject);
     // Creature Quest Item tab end
 
     // Creature Equip Template tab begin
@@ -2312,7 +2307,6 @@ type
     procedure lvceCreatureEquipTemplateSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btFullCreatureEquipTemplateScriptClick(Sender: TObject);
-    procedure btScriptCreatureEquipTemplateClick(Sender: TObject);
     // Creature Equip Template tab end
 
     // Creature Template Resistance tab begin
@@ -2324,7 +2318,6 @@ type
     procedure lvctrCreatureTemplateResistanceSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure btFullCreatureTemplateResistanceScriptClick(Sender: TObject);
-    procedure btScriptCreatureTemplateResistanceClick(Sender: TObject);
     // Creature Template Resistance tab end
 
     // Creature Template Spell tab begin
@@ -6201,11 +6194,6 @@ begin
     '(%s);'#13#10,[ceentry, ceid, Fields, Values])
 end;
 
-procedure TMainForm.btScriptCreatureEquipTemplateClick(Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-end;
-
 procedure TMainForm.btCreatureEquipTemplateAddClick(Sender: TObject);
 begin
   with lvceCreatureEquipTemplate.Items.Add do
@@ -6325,11 +6313,6 @@ begin
   mectScript.Text := Format('DELETE FROM `creature_template_resistance` WHERE (`CreatureID`=%s) AND (`School`=%s);'#13#10+
     'INSERT INTO `creature_template_resistance` (%s) VALUES '#13#10+
     '(%s);'#13#10,[ceentry, ceschool, Fields, Values])
-end;
-
-procedure TMainForm.btScriptCreatureTemplateResistanceClick(Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
 end;
 
 procedure TMainForm.btCreatureTemplateResistanceAddClick(Sender: TObject);
@@ -9386,11 +9369,6 @@ begin
     mectScript.Text := Format('DELETE FROM `creature_questitem` WHERE `CreatureEntry`= %s;',[entry]);
 end;
 
-procedure TMainForm.btScriptCreatureQuestItemClick(Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-end;
-
 procedure TMainForm.lvcqiCreatureQuestItemChange(Sender: TObject; Item: TListItem;
   Change: TItemChange);
 begin
@@ -9398,7 +9376,7 @@ begin
   btCreatureQuestItemDel.Enabled := Assigned(TJvListView(Sender).Selected);
 end;
 
-procedure TMainForm.lvcqiCreatureQuestItemlSelectItem(Sender: TObject;
+procedure TMainForm.lvcqiCreatureQuestItemSelectItem(Sender: TObject;
   Item: TListItem; Selected: Boolean);
 begin
   if Selected then
@@ -9903,11 +9881,6 @@ begin
   meitScript.SelLength := 0;
 end;
 
-procedure TMainForm.btScriptCreatureClick(Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-end;
-
 procedure TMainForm.btExecuteCreatureScriptClick(Sender: TObject);
 begin
   if MessageDlg(dmMain.Text[9], mtConfirmation, mbYesNoCancel, -1)=mrYes then
@@ -10164,6 +10137,9 @@ begin
     5: CompleteMillingLootScript;
     6: CompleteReferenceLootScript;
     7: CompleteItemEnchScript;
+    8: {looted from tab};
+    9: {involved in tab};
+    10: {script tab};
   end;
 end;
 
@@ -11531,12 +11507,6 @@ begin
   MyQuery.Close;
   MyQuery.SQL.Text := SQLEdit.Text;
   MyQuery.Open;
-end;
-
-procedure TMainForm.btScriptCreatureLocationCustomToAllClick(
-  Sender: TObject);
-begin
-  PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
 end;
 
 procedure TMainForm.SetGOdataNames(t: integer);

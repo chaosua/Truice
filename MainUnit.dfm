@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 668
-    ActivePage = tsCreature
+    ActivePage = tsItem
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -5887,7 +5887,7 @@ object MainForm: TMainForm
         Top = 9
         Width = 880
         Height = 631
-        ActivePage = tsCreatureModel
+        ActivePage = tsEditCreature
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -8613,7 +8613,7 @@ object MainForm: TMainForm
             EditLabel.Width = 72
             EditLabel.Height = 13
             EditLabel.Caption = 'spawntimesecs'
-            TabOrder = 25
+            TabOrder = 24
             Text = ''
           end
           object edclwander_distance: TLabeledEdit
@@ -8628,7 +8628,7 @@ object MainForm: TMainForm
             EditLabel.Width = 81
             EditLabel.Height = 13
             EditLabel.Caption = 'wander_distance'
-            TabOrder = 15
+            TabOrder = 14
             Text = ''
           end
           object edclcurrentwaypoint: TLabeledEdit
@@ -8640,7 +8640,7 @@ object MainForm: TMainForm
             EditLabel.Width = 75
             EditLabel.Height = 13
             EditLabel.Caption = 'currentwaypoint'
-            TabOrder = 16
+            TabOrder = 15
             Text = ''
           end
           object edclcurhealth: TLabeledEdit
@@ -8652,7 +8652,7 @@ object MainForm: TMainForm
             EditLabel.Width = 44
             EditLabel.Height = 13
             EditLabel.Caption = 'curhealth'
-            TabOrder = 17
+            TabOrder = 16
             Text = ''
           end
           object edclcurmana: TLabeledEdit
@@ -8664,7 +8664,7 @@ object MainForm: TMainForm
             EditLabel.Width = 41
             EditLabel.Height = 13
             EditLabel.Caption = 'curmana'
-            TabOrder = 18
+            TabOrder = 17
             Text = ''
           end
           object edclMovementType: TLabeledEdit
@@ -8675,34 +8675,21 @@ object MainForm: TMainForm
             EditLabel.Width = 74
             EditLabel.Height = 13
             EditLabel.Caption = 'MovementType'
-            TabOrder = 27
+            TabOrder = 26
             Text = ''
           end
           object btScriptCreatureLocation: TButton
             Left = 10
-            Top = 544
+            Top = 528
             Width = 169
             Height = 25
             Caption = 'Show Creature Location Script'
-            TabOrder = 26
+            TabOrder = 25
             OnClick = btScriptCreatureTemplateClick
           end
-          object btScriptCreatureLocationCustomToAll: TButton
-            Left = 198
-            Top = 544
-            Width = 169
-            Height = 25
-            Hint = 
-              'Add / Replace entered values to all creatures at list.'#13#10'Press th' +
-              'is button to generate UPDATE script for this.'
-            Caption = 'Add to all'
-            TabOrder = 14
-            Visible = False
-            OnClick = btScriptCreatureLocationCustomToAllClick
-          end
           object btFullScriptCreatureLocation: TButton
-            Left = 547
-            Top = 544
+            Left = 607
+            Top = 528
             Width = 210
             Height = 25
             Hint = 
@@ -8710,7 +8697,7 @@ object MainForm: TMainForm
               'ipt for location, then execute it first.'
             Anchors = [akTop, akRight]
             Caption = 'Show FULL Creature Location Script'
-            TabOrder = 19
+            TabOrder = 18
             OnClick = btFullScriptCreatureLocationClick
           end
           object edclequipment_id: TLabeledEdit
@@ -8816,7 +8803,7 @@ object MainForm: TMainForm
             EditLabel.Width = 55
             EditLabel.Height = 13
             EditLabel.Caption = 'ScriptName'
-            TabOrder = 23
+            TabOrder = 22
             Text = ''
           end
           object edclVerifiedBuild: TLabeledEdit
@@ -8827,7 +8814,7 @@ object MainForm: TMainForm
             EditLabel.Width = 58
             EditLabel.Height = 13
             EditLabel.Caption = 'VerifiedBuild'
-            TabOrder = 24
+            TabOrder = 23
             Text = ''
           end
           object edclspawnMask: TJvComboEdit
@@ -8900,7 +8887,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 20
+            TabOrder = 19
             Text = ''
             OnButtonClick = edctnpcflagButtonClick
           end
@@ -8936,7 +8923,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 21
+            TabOrder = 20
             Text = ''
             OnButtonClick = GetUnitFlags
           end
@@ -8972,7 +8959,7 @@ object MainForm: TMainForm
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-            TabOrder = 22
+            TabOrder = 21
             Text = ''
             OnButtonClick = GetCreatureDynamicFlags
           end
@@ -8985,7 +8972,7 @@ object MainForm: TMainForm
             EditLabel.Width = 14
             EditLabel.Height = 13
             EditLabel.Caption = 'id2'
-            TabOrder = 28
+            TabOrder = 27
             Text = ''
           end
           object edclid3: TLabeledEdit
@@ -8997,7 +8984,7 @@ object MainForm: TMainForm
             EditLabel.Width = 14
             EditLabel.Height = 13
             EditLabel.Caption = 'id3'
-            TabOrder = 29
+            TabOrder = 28
             Text = ''
           end
           object edclComment: TLabeledEdit
@@ -9008,7 +8995,7 @@ object MainForm: TMainForm
             EditLabel.Width = 44
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
-            TabOrder = 30
+            TabOrder = 29
             Text = ''
           end
         end
@@ -9019,7 +9006,7 @@ object MainForm: TMainForm
             872
             585)
           object btCreatureTemplateModelAdd: TSpeedButton
-            Left = 419
+            Left = 429
             Top = 342
             Width = 23
             Height = 22
@@ -9069,7 +9056,7 @@ object MainForm: TMainForm
             OnClick = btCreatureTemplateModelAddClick
           end
           object btCreatureTemplateModelUpd: TSpeedButton
-            Left = 464
+            Left = 474
             Top = 342
             Width = 23
             Height = 22
@@ -9129,7 +9116,7 @@ object MainForm: TMainForm
             OnClick = btCreatureTemplateModelUpdClick
           end
           object btCreatureTemplateModelDel: TSpeedButton
-            Left = 505
+            Left = 515
             Top = 342
             Width = 23
             Height = 22
@@ -9191,7 +9178,7 @@ object MainForm: TMainForm
           object lvctmCreatureTemplateModel: TJvListView
             Left = 28
             Top = 22
-            Width = 500
+            Width = 510
             Height = 259
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -9211,10 +9198,12 @@ object MainForm: TMainForm
                 ImageIndex = 2
               end
               item
+                AutoSize = True
                 Caption = 'DisplayScale'
                 ImageIndex = 3
               end
               item
+                AutoSize = True
                 Caption = 'Probability'
                 ImageIndex = 4
               end
@@ -9230,7 +9219,7 @@ object MainForm: TMainForm
             ViewStyle = vsReport
             OnChange = lvctmCreatureTemplateModelChange
             OnSelectItem = lvctmCreatureTemplateModelSelectItem
-            ColumnsOrder = '0=99,1=50,2=105,5=50,4=50,3=99'
+            ColumnsOrder = '0=103,1=101,2=101,5=50,4=50,3=101'
             ExtendedColumns = <
               item
               end
@@ -9257,7 +9246,7 @@ object MainForm: TMainForm
             Text = ''
           end
           object edctmIdx: TLabeledEdit
-            Left = 120
+            Left = 114
             Top = 303
             Width = 80
             Height = 21
@@ -9268,7 +9257,7 @@ object MainForm: TMainForm
             Text = ''
           end
           object edctmVerifiedBuild: TLabeledEdit
-            Left = 218
+            Left = 458
             Top = 303
             Width = 80
             Height = 21
@@ -9279,7 +9268,7 @@ object MainForm: TMainForm
             Text = ''
           end
           object btFullCreatureTemplateModelScript: TButton
-            Left = 312
+            Left = 322
             Top = 381
             Width = 216
             Height = 25
@@ -9297,8 +9286,8 @@ object MainForm: TMainForm
             OnClick = btScriptCreatureTemplateClick
           end
           object edctmCreatureDisplayID: TLabeledEdit
-            Left = 28
-            Top = 343
+            Left = 200
+            Top = 303
             Width = 80
             Height = 21
             EditLabel.Width = 85
@@ -9308,8 +9297,8 @@ object MainForm: TMainForm
             Text = ''
           end
           object edctmDisplayScale: TLabeledEdit
-            Left = 120
-            Top = 343
+            Left = 286
+            Top = 303
             Width = 80
             Height = 21
             EditLabel.Width = 61
@@ -9319,8 +9308,8 @@ object MainForm: TMainForm
             Text = ''
           end
           object edctmProbability: TLabeledEdit
-            Left = 218
-            Top = 343
+            Left = 372
+            Top = 303
             Width = 80
             Height = 21
             EditLabel.Width = 48
@@ -9787,7 +9776,7 @@ object MainForm: TMainForm
             Height = 25
             Caption = 'Show EquipTemplate Script'
             TabOrder = 1
-            OnClick = btScriptCreatureEquipTemplateClick
+            OnClick = btScriptCreatureTemplateClick
           end
           object btFullCreatureEquipTemplate: TButton
             Left = 428
@@ -10333,7 +10322,7 @@ object MainForm: TMainForm
             Height = 25
             Caption = 'Show Creature Loot Script'
             TabOrder = 11
-            OnClick = btScriptCreatureClick
+            OnClick = btScriptCreatureTemplateClick
           end
           object btFullScriptCreatureLoot: TButton
             Left = 593
@@ -13122,7 +13111,7 @@ object MainForm: TMainForm
           object lvcqiCreatureQuestItem: TJvListView
             Left = 20
             Top = 14
-            Width = 460
+            Width = 500
             Height = 300
             Anchors = [akLeft, akTop, akRight]
             Columns = <
@@ -13148,8 +13137,8 @@ object MainForm: TMainForm
             TabOrder = 0
             ViewStyle = vsReport
             OnChange = lvcqiCreatureQuestItemChange
-            OnSelectItem = lvcqiCreatureQuestItemlSelectItem
-            ColumnsOrder = '0=121,1=121,2=121,3=121'
+            OnSelectItem = lvcqiCreatureQuestItemSelectItem
+            ColumnsOrder = '0=124,1=124,2=124,3=124'
             ExtendedColumns = <
               item
               end
@@ -13238,7 +13227,7 @@ object MainForm: TMainForm
             Height = 25
             Caption = 'Show CreatureQuestItem Script'
             TabOrder = 5
-            OnClick = btScriptCreatureQuestItemClick
+            OnClick = btScriptCreatureTemplateClick
           end
           object btFullQuestItemScript: TButton
             Left = 359
@@ -13489,7 +13478,7 @@ object MainForm: TMainForm
             Height = 25
             Caption = 'Show Creature Resistance Script'
             TabOrder = 3
-            OnClick = btScriptCreatureTemplateResistanceClick
+            OnClick = btScriptCreatureTemplateClick
           end
           object edctrSchool: TLabeledEdit
             Left = 112
@@ -16719,7 +16708,7 @@ object MainForm: TMainForm
         Top = 9
         Width = 880
         Height = 631
-        ActivePage = tsItemLootedFrom
+        ActivePage = tsItemScript
         Align = alClient
         TabOrder = 1
         object tsSearchItem: TTabSheet
@@ -20908,7 +20897,7 @@ object MainForm: TMainForm
         end
         object tsItemLoot: TTabSheet
           Caption = 'Item Loot'
-          ImageIndex = 4
+          ImageIndex = 2
           OnShow = tsItemLootShow
           DesignSize = (
             872
@@ -21281,8 +21270,8 @@ object MainForm: TMainForm
             OnButtonClick = GetItem
           end
           object btScriptItemLoot: TButton
-            Left = 8
-            Top = 524
+            Left = 3
+            Top = 517
             Width = 169
             Height = 25
             Caption = 'Show Item Loot Script'
@@ -21372,7 +21361,7 @@ object MainForm: TMainForm
         end
         object tsDisenchantLoot: TTabSheet
           Caption = 'Disenchant Loot'
-          ImageIndex = 4
+          ImageIndex = 3
           OnShow = tsDisenchantLootShow
           DesignSize = (
             872
@@ -21837,7 +21826,7 @@ object MainForm: TMainForm
         end
         object tsProspectingLoot: TTabSheet
           Caption = 'Prospecting Loot'
-          ImageIndex = 5
+          ImageIndex = 4
           OnShow = tsProspectingLootShow
           DesignSize = (
             872
@@ -22302,7 +22291,7 @@ object MainForm: TMainForm
         end
         object tsMillingLoot: TTabSheet
           Caption = 'Milling Loot'
-          ImageIndex = 9
+          ImageIndex = 5
           OnShow = tsMillingLootShow
           DesignSize = (
             872
@@ -22758,7 +22747,7 @@ object MainForm: TMainForm
         end
         object tsReferenceLoot: TTabSheet
           Caption = 'Reference Loot'
-          ImageIndex = 10
+          ImageIndex = 6
           DesignSize = (
             872
             603)
@@ -23263,7 +23252,7 @@ object MainForm: TMainForm
         end
         object tsEnchantment: TTabSheet
           Caption = 'Enchantment'
-          ImageIndex = 6
+          ImageIndex = 7
           OnShow = tsEnchantmentShow
           DesignSize = (
             872
@@ -23544,7 +23533,7 @@ object MainForm: TMainForm
         end
         object tsItemLootedFrom: TTabSheet
           Caption = 'Looted From'
-          ImageIndex = 7
+          ImageIndex = 8
           OnShow = tsItemLootedFromShow
           object lvitItemLootedFrom: TJvListView
             Left = 0
@@ -23617,7 +23606,7 @@ object MainForm: TMainForm
         end
         object tsItemInvolvedIn: TTabSheet
           Caption = 'Involved in'
-          ImageIndex = 8
+          ImageIndex = 9
           OnShow = tsItemInvolvedInShow
           object Panel22: TPanel
             Left = 0
@@ -23633,7 +23622,7 @@ object MainForm: TMainForm
             Top = 41
             Width = 872
             Height = 417
-            ActivePage = tsItemSourceFor
+            ActivePage = tsItemRewardFrom
             Align = alTop
             TabOrder = 1
             object tsItemStarts: TTabSheet
@@ -23692,7 +23681,7 @@ object MainForm: TMainForm
             end
             object tsItemObjectiveOf: TTabSheet
               Caption = 'Objective of'
-              ImageIndex = 2
+              ImageIndex = 1
               object lvItemObjectiveOf: TJvListView
                 Left = 0
                 Top = 0
@@ -23914,7 +23903,7 @@ object MainForm: TMainForm
         end
         object tsItemScript: TTabSheet
           Caption = 'Script'
-          ImageIndex = 3
+          ImageIndex = 10
           OnShow = tsItemScriptShow
           DesignSize = (
             872
@@ -23961,7 +23950,6 @@ object MainForm: TMainForm
             Anchors = [akTop, akRight]
             Caption = 'Execute script'
             TabOrder = 3
-            OnClick = btScriptCreatureClick
           end
         end
       end
