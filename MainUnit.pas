@@ -4362,12 +4362,21 @@ procedure TMainForm.btDeleteQuestClick(Sender: TObject);
 begin
   PageControl2.ActivePageIndex := SCRIPT_TAB_NO_QUEST;
   meqtScript.Text := Format(
-  'DELETE FROM `quest_template` WHERE (`Id`=%0:s);'#13#10+
+  'DELETE FROM `quest_template` WHERE (`ID`=%0:s);'#13#10+
   'DELETE FROM `creature_queststarter` WHERE (`quest`=%0:s);'#13#10+
-  'DELETE FROM `gameobject_queststarter` WHERE (`quest`=%0:s);'#13#10+
   'DELETE FROM `creature_questender` WHERE (`quest`=%0:s);'#13#10+
+  'DELETE FROM `gameobject_queststarter` WHERE (`quest`=%0:s);'#13#10+
   'DELETE FROM `gameobject_questender` WHERE (`quest`=%0:s);'#13#10+
-  'DELETE FROM `areatrigger_involvedrelation` WHERE (`quest`=%0:s);'#13#10
+  'DELETE FROM `areatrigger_involvedrelation` WHERE (`quest`=%0:s);'#13#10+
+  'DELETE FROM `quest_details` WHERE (`ID`=%0:s);'#13#10+
+  'DELETE FROM `quest_greeting` WHERE (`ID`=%0:s);'#13#10+
+  'DELETE FROM `quest_mail_sender` WHERE (`QuestId`=%0:s);'#13#10+
+  'DELETE FROM `quest_offer_reward` WHERE (`ID`=%0:s);'#13#10+
+  'DELETE FROM `quest_poi` WHERE (`QuestId`=%0:s);'#13#10+
+  'DELETE FROM `quest_poi_points` WHERE (`QuestId`=%0:s);'#13#10+
+  'DELETE FROM `quest_request_items` WHERE (`ID`=%0:s);'#13#10+
+  'DELETE FROM `quest_template_addon` WHERE (`ID`=%0:s);'#13#10+
+  'UPDATE `item_template` SET `StartQuest`=0 WHERE (`startquest`=%0:s);'#13#10
    ,[lvQuest.Selected.Caption]);
 end;
 
