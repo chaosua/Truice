@@ -192,12 +192,7 @@ type
     tsQuestPart1: TTabSheet;
     gbqtKeys: TGroupBox;
     lbID: TLabel;
-    lbPrevQuestID: TLabel;
-    lbNextQuestID: TLabel;
     lbRewardNextQuest: TLabel;
-
-    //quest_details
-    edqdID: TLabeledEdit;
     edqdEmote1: TJvComboEdit;
     edqdEmote2: TJvComboEdit;
     edqdEmote3: TJvComboEdit;
@@ -211,42 +206,7 @@ type
     lbqdDetailsEmote2: TLabel;
     lbqdDetailsEmote3: TLabel;
     lbqdDetailsEmote4: TLabel;
-
-    //quest_request_items
-    edqriID: TLabeledEdit;
-    edqriEmoteOnIncomplete: TJvComboEdit;
-    edqriEmoteOnComplete: TJvComboEdit;
     edqriCompletionText: TMemo;
-    edqriVerifiedBuild: TLabeledEdit;
-    lbqriIncompleteEmote: TLabel;
-    lbqriEmoteOnComplete: TLabel;
-
-    //quest_template_addon
-    edqtaID: TLabeledEdit;
-    edqtaMaxLevel: TLabeledEdit;
-    edqtaAllowableClasses: TJvComboEdit;
-    edqtaSourceSpellID: TJvComboEdit;
-    edqtaPrevQuestID: TJvComboEdit;
-    edqtaNextQuestID: TJvComboEdit;
-    edqtaExclusiveGroup: TLabeledEdit;
-    edqtaBreadcrumbForQuestId: TLabeledEdit;
-    edqtaRequiredSkillID: TJvComboEdit;
-    edqtaRequiredSkillPoints: TLabeledEdit;
-    edqtaRequiredMinRepFaction: TJvComboEdit;
-    edqtaRequiredMaxRepFaction: TJvComboEdit;
-    edqtaRequiredMinRepValue: TLabeledEdit;
-    edqtaRequiredMaxRepValue: TLabeledEdit;
-    edqtaProvidedItemCount: TLabeledEdit;
-    edqtaSpecialFlags: TJvComboEdit;
-
-    //quest_mail_sender
-    edqmsRewardMailSenderEntry: TLabeledEdit;
-
-    edqtaRewardMailTemplateID: TLabeledEdit;
-    edqtaRewardMailDelay: TLabeledEdit;
-
-    //quest_offer_reward
-    edqorID: TLabeledEdit;
     edqorEmote1: TJvComboEdit;
     edqorEmote2: TJvComboEdit;
     edqorEmote3: TJvComboEdit;
@@ -272,19 +232,12 @@ type
     edqtTimeAllowed: TLabeledEdit;
     edqtQuestType: TJvComboEdit;
     edqtFlags: TJvComboEdit;
-    gbRequirementsBegin: TGroupBox;
-    lbAllowableRaces: TLabel;
-    lbRequiredMinRepFaction: TLabel;
     gbSource: TGroupBox;
-    lbStartItem: TLabel;
-    lbSourceSpellID: TLabel;
-    edqtStartItem: TJvComboEdit;
     gbDescription: TGroupBox;
     lDetails: TLabel;
     lObjectives: TLabel;
     lRewardText: TLabel;
     lCompletionText: TLabel;
-    lEndText: TLabel;
     edqtLogTitle: TLabeledEdit;
     edqtAreaDescription: TLabeledEdit;
     edqtQuestDescription: TMemo;
@@ -375,8 +328,6 @@ type
     edqtRewardFactionID5: TJvComboEdit;
     gbOther: TGroupBox;
     gbAreatrigger: TGroupBox;
-    lbAreatrigger: TLabel;
-    edqtAreatrigger: TJvComboEdit;
     tsQuestStarter: TTabSheet;
     lbQuestStarterInfo: TLabel;
     lbLocationOrLoot: TLabel;
@@ -1067,12 +1018,10 @@ type
     btDelQuestStarter: TSpeedButton;
     btAddQuestEnder: TSpeedButton;
     btDelQuestEnder: TSpeedButton;
-    lbRequiredMaxRepFaction: TLabel;
     UpDown2: TUpDown;
     UpDown1: TUpDown;
     edqtQuestLevel: TLabeledEdit;
     edqtMinLevel: TLabeledEdit;
-    edqtAllowableRaces: TJvComboEdit;
     nReconnect: TMenuItem;
     N3: TMenuItem;
     editspellppmRate_5: TLabeledEdit;
@@ -1231,7 +1180,6 @@ type
     lbillootmode: TLabel;
     lbidlootmode: TLabel;
     lbiplootmode: TLabel;
-    lbqtSpecialFlags: TLabel;
     edqtRequiredFactionValue1: TLabeledEdit;
     lbqtRequiredFactionId1: TLabel;
     edqtRequiredFactionId1: TJvComboEdit;
@@ -1369,7 +1317,6 @@ type
     lbctgossip_menu_id: TLabel;
     edqtQuestCompletionLog: TLabeledEdit;
     edqtlocCompletedText: TLabeledEdit;
-    edqtRewardXPDifficulty: TLabeledEdit;
     edqtRewardKillHonor: TLabeledEdit;
     edqtRewardFactionOverride1: TLabeledEdit;
     edqtRewardFactionOverride2: TLabeledEdit;
@@ -1381,7 +1328,6 @@ type
     edcavisibilityDistanceType: TLabeledEdit;
     edcdpath_id: TLabeledEdit;
     edcdvisibilityDistanceType: TLabeledEdit;
-    UpDown3: TUpDown;
     edqtQuestInfoID: TLabeledEdit;
     edqtRequiredFactionValue2: TLabeledEdit;
     edqtRequiredFactionId2: TJvComboEdit;
@@ -1581,8 +1527,6 @@ type
     edhttaximask: TLabeledEdit;
     edhtis_logout_resting: TCheckBox;
     edhtgrantableLevels: TLabeledEdit;
-    lbRequiredSkillId: TLabel;
-    lbAllowableClasses: TLabel;
     editflagsCustom: TJvComboEdit;
     lbitflagsCustom: TLabel;
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
@@ -1821,6 +1765,50 @@ type
     lbcttAboutID: TLabel;
     lbcttlocAboutID: TLabel;
     lbpttAboutID: TLabel;
+    GroupBox8: TGroupBox;
+    edqtaID: TLabeledEdit;
+    edqtaMaxLevel: TLabeledEdit;
+    UpDown3: TUpDown;
+    edqtaAllowableClasses: TJvComboEdit;
+    lbAllowableClasses: TLabel;
+    edqtaSourceSpellID: TJvComboEdit;
+    lbSourceSpellID: TLabel;
+    lbPrevQuestID: TLabel;
+    edqtaPrevQuestID: TJvComboEdit;
+    edqtaNextQuestID: TJvComboEdit;
+    lbNextQuestId: TLabel;
+    edqtaExclusiveGroup: TLabeledEdit;
+    edqtaBreadcrumbForQuestId: TLabeledEdit;
+    edqtaRewardMailDelay: TLabeledEdit;
+    edqtaRewardMailTemplateID: TLabeledEdit;
+    edqtaRequiredSkillID: TJvComboEdit;
+    lbRequiredSkillId: TLabel;
+    edqtaRequiredSkillPoints: TLabeledEdit;
+    edqtaRequiredMinRepFaction: TJvComboEdit;
+    edqtaRequiredMinRepValue: TLabeledEdit;
+    lbRequiredMinRepFaction: TLabel;
+    lbRequiredMaxRepFaction: TLabel;
+    edqtaRequiredMaxRepValue: TLabeledEdit;
+    edqtaRequiredMaxRepFaction: TJvComboEdit;
+    edqtaProvidedItemCount: TLabeledEdit;
+    edqtaSpecialFlags: TJvComboEdit;
+    lbqtSpecialFlags: TLabel;
+    edqtAllowableRaces: TJvComboEdit;
+    lbAllowableRaces: TLabel;
+    edqtRewardXPDifficulty: TLabeledEdit;
+    edqtStartItem: TJvComboEdit;
+    lbStartItem: TLabel;
+    edqtAreatrigger: TJvComboEdit;
+    lbAreatrigger: TLabel;
+    edqmsRewardMailSenderEntry: TLabeledEdit;
+    edqriID: TLabeledEdit;
+    edqriEmoteOnComplete: TJvComboEdit;
+    lbqriEmoteOnComplete: TLabel;
+    lbqriIncompleteEmote: TLabel;
+    edqriEmoteOnIncomplete: TJvComboEdit;
+    edqriVerifiedBuild: TLabeledEdit;
+    edqdID: TLabeledEdit;
+    edqorID: TLabeledEdit;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
