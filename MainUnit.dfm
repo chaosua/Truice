@@ -50,7 +50,7 @@ object MainForm: TMainForm
         Top = 5
         Width = 925
         Height = 649
-        ActivePage = tsQuestPart2
+        ActivePage = tsSearch
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -1729,7 +1729,7 @@ object MainForm: TMainForm
           object GroupBox8: TGroupBox
             Left = 3
             Top = 115
-            Width = 854
+            Width = 831
             Height = 96
             Caption = 'Quest Template Addon'
             TabOrder = 5
@@ -2052,8 +2052,8 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtaRewardMailDelay: TLabeledEdit
-              Left = 767
-              Top = 30
+              Left = 675
+              Top = 70
               Width = 81
               Height = 21
               Color = clMoneyGreen
@@ -2064,7 +2064,7 @@ object MainForm: TMainForm
               Text = ''
             end
             object edqtaRewardMailTemplateID: TLabeledEdit
-              Left = 659
+              Left = 675
               Top = 30
               Width = 102
               Height = 21
@@ -30473,8 +30473,8 @@ object MainForm: TMainForm
     ResourceOptions.AutoConnect = False
     ResourceOptions.AutoReconnect = True
     LoginPrompt = False
-    Left = 836
-    Top = 152
+    Left = 804
+    Top = 96
   end
   object MyQuery: TFDQuery
     Connection = MyTrinityConnection
