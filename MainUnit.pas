@@ -193,26 +193,7 @@ type
     tsQuestPart1: TTabSheet;
     gbqtKeys: TGroupBox;
     lbID: TLabel;
-    lbPrevQuestID: TLabel;
-    lbNextQuestID: TLabel;
     lbRewardNextQuest: TLabel;
-
-    //quest_template_addon
-    edqtaID: TLabeledEdit;
-    edqtaPrevQuestID: TJvComboEdit;
-    edqtaNextQuestID: TJvComboEdit;
-    edqtaExclusiveGroup: TLabeledEdit;
-    edqtaRequiredMinRepValue: TLabeledEdit;
-    edqtaRequiredMinRepFaction: TJvComboEdit;
-    edqtaProvidedItemCount: TLabeledEdit;
-    edqtaSourceSpellID: TJvComboEdit;
-    edqtaRequiredMaxRepFaction: TJvComboEdit;
-    edqtaRequiredMaxRepValue: TLabeledEdit;
-    edqtaRequiredSkillPoints: TLabeledEdit;
-    edqtaSpecialFlags: TJvComboEdit;
-    edqtaRequiredSkillID: TJvComboEdit;
-    edqtaMaxLevel: TLabeledEdit;
-    edqtaAllowableClasses: TJvComboEdit;
 
     //quest_template
     edqtID: TJvComboEdit;
@@ -224,21 +205,12 @@ type
     edqtTimeAllowed: TLabeledEdit;
     edqtQuestType: TJvComboEdit;
     edqtFlags: TJvComboEdit;
-    gbRequirementsBegin: TGroupBox;
-    lbAllowableRaces: TLabel;
-    lbRequiredMinRepFaction: TLabel;
-    gbSource: TGroupBox;
-    lbStartItem: TLabel;
-    lbSourceSpellID: TLabel;
-    edqtStartItem: TJvComboEdit;
     gbDescription: TGroupBox;
     lDetails: TLabel;
     lObjectives: TLabel;
-    lRewardText: TLabel;
     lCompletionText: TLabel;
     edqtLogTitle: TLabeledEdit;
     edqtAreaDescription: TLabeledEdit;
-    edqtAllowableRaces: TJvComboEdit;
     edqtQuestDescription: TMemo;
     edqtLogDescription: TMemo;
     edqtObjectiveText1: TLabeledEdit;
@@ -327,8 +299,6 @@ type
     gbOther: TGroupBox;
 
     gbAreatrigger: TGroupBox;
-    lbAreatrigger: TLabel;
-    edqtAreatrigger: TJvComboEdit;
     tsQuestStarter: TTabSheet;
     lbQuestStarterInfo: TLabel;
     lbLocationOrLoot: TLabel;
@@ -1016,7 +986,6 @@ type
     btDelQuestStarter: TSpeedButton;
     btAddQuestEnder: TSpeedButton;
     btDelQuestEnder: TSpeedButton;
-    lbRequiredMaxRepFaction: TLabel;
     UpDown2: TUpDown;
     UpDown1: TUpDown;
     edqtQuestLevel: TLabeledEdit;
@@ -1070,15 +1039,7 @@ type
     edcmrooted: TLabeledEdit;
     edcmChase: TLabeledEdit;
     edcmRandom: TLabeledEdit;
-
-    //quest_request_items
-    edqriID: TLabeledEdit;
-    lbqriIncompleteEmote: TLabel;
-    lbqriEmoteOnComplete: TLabel;
-    edqriEmoteOnComplete: TJvComboEdit;
-    edqriEmoteOnIncomplete: TJvComboEdit;
     edqriCompletionText: TMemo;
-    edqriVerifiedBuild: TLabeledEdit;
 
     lbqtOfferRewardEmote1: TLabel;
     lbqtOfferRewardEmote2: TLabel;
@@ -1193,7 +1154,6 @@ type
     lbillootmode: TLabel;
     lbidlootmode: TLabel;
     lbiplootmode: TLabel;
-    lbqtSpecialFlags: TLabel;
     edqtRequiredFactionValue1: TLabeledEdit;
     lbqtRequiredFactionId1: TLabel;
     edqtRequiredFactionId1: TJvComboEdit;
@@ -1308,7 +1268,6 @@ type
     lbqdDetailsEmote2: TLabel;
     lbqdDetailsEmote3: TLabel;
     lbqdDetailsEmote4: TLabel;
-    edqdID: TLabeledEdit;
     edqdEmote1: TJvComboEdit;
     edqdEmote2: TJvComboEdit;
     edqdEmote3: TJvComboEdit;
@@ -1318,9 +1277,6 @@ type
     edqdEmoteDelay3: TLabeledEdit;
     edqdEmoteDelay4: TLabeledEdit;
     edqdVerifiedBuild: TLabeledEdit;
-
-    //quest_offer_reward
-    edqorID: TLabeledEdit;
     edqorEmote1: TJvComboEdit;
     edqorEmote2: TJvComboEdit;
     edqorEmote3: TJvComboEdit;
@@ -1329,7 +1285,6 @@ type
     edqorEmoteDelay2: TLabeledEdit;
     edqorEmoteDelay3: TLabeledEdit;
     edqorEmoteDelay4: TLabeledEdit;
-    edqorRewardText: TMemo;
     edqorVerifiedBuild: TLabeledEdit;
 
     editHolidayId: TLabeledEdit;
@@ -1376,7 +1331,6 @@ type
     lbctgossip_menu_id: TLabel;
     edqtQuestCompletionLog: TLabeledEdit;
     edqtlocCompletedText: TLabeledEdit;
-    edqtRewardXPDifficulty: TLabeledEdit;
     edqtRewardKillHonor: TLabeledEdit;
     edqtRewardFactionOverride1: TLabeledEdit;
     edqtRewardFactionOverride2: TLabeledEdit;
@@ -1388,7 +1342,6 @@ type
     edcavisibilityDistanceType: TLabeledEdit;
     edcdpath_id: TLabeledEdit;
     edcdvisibilityDistanceType: TLabeledEdit;
-    UpDown3: TUpDown;
 
     edqtQuestInfoID: TLabeledEdit;
     edqtRequiredFactionValue2: TLabeledEdit;
@@ -1589,8 +1542,6 @@ type
     edhttaximask: TLabeledEdit;
     edhtis_logout_resting: TCheckBox;
     edhtgrantableLevels: TLabeledEdit;
-    lbRequiredSkillId: TLabel;
-    lbAllowableClasses: TLabel;
     editflagsCustom: TJvComboEdit;
     lbitflagsCustom: TLabel;
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
@@ -1598,12 +1549,6 @@ type
     FDScript1: TFDScript;
     btExecuteCreatureScript: TButton;
     edqtRewardMoneyDifficulty: TLabeledEdit;
-
-    //quest_mail_sender
-    edqmsRewardMailSenderEntry: TLabeledEdit;
-
-    edqtaRewardMailTemplateID: TLabeledEdit;
-    edqtaRewardMailDelay: TLabeledEdit;
 
     // Creature Quest_Item tab
     tsQuestItem: TTabSheet;
@@ -1834,6 +1779,52 @@ type
     edctmCreatureDisplayID: TLabeledEdit;
     edctmDisplayScale: TLabeledEdit;
     edctmProbability: TLabeledEdit;
+    edqriEmoteOnComplete: TJvComboEdit;
+    edqriEmoteOnIncomplete: TJvComboEdit;
+    lbqriIncompleteEmote: TLabel;
+    lbqriEmoteOnComplete: TLabel;
+    edqriVerifiedBuild: TLabeledEdit;
+    edqriID: TLabeledEdit;
+    edqdID: TLabeledEdit;
+    edqorID: TLabeledEdit;
+    gbQuestTemplateAddon: TGroupBox;
+    edqtaID: TLabeledEdit;
+    edqtaSpecialFlags: TJvComboEdit;
+    edqtaRewardMailDelay: TLabeledEdit;
+    edqtaRewardMailTemplateID: TLabeledEdit;
+    lbqtSpecialFlags: TLabel;
+    edqtaMaxLevel: TLabeledEdit;
+    edqtaAllowableClasses: TJvComboEdit;
+    lbAllowableClasses: TLabel;
+    lbSourceSpellID: TLabel;
+    edqtaSourceSpellID: TJvComboEdit;
+    edqtaPrevQuestID: TJvComboEdit;
+    lbPrevQuestID: TLabel;
+    edqtaNextQuestID: TJvComboEdit;
+    lbNextQuestId: TLabel;
+    edqtaExclusiveGroup: TLabeledEdit;
+    edqtaRequiredSkillID: TJvComboEdit;
+    lbRequiredSkillId: TLabel;
+    edqtaRequiredSkillPoints: TLabeledEdit;
+    edqtaRequiredMinRepFaction: TJvComboEdit;
+    edqtaRequiredMinRepValue: TLabeledEdit;
+    lbRequiredMinRepFaction: TLabel;
+    edqtaRequiredMaxRepFaction: TJvComboEdit;
+    edqtaRequiredMaxRepValue: TLabeledEdit;
+    lbRequiredMaxRepFaction: TLabel;
+    edqtaProvidedItemCount: TLabeledEdit;
+    UpDown3: TUpDown;
+    edqtAllowableRaces: TJvComboEdit;
+    lbAllowableRaces: TLabel;
+    lbStartItem: TLabel;
+    edqtStartItem: TJvComboEdit;
+    edqtRewardXPDifficulty: TLabeledEdit;
+    GroupBox8: TGroupBox;
+    edqtAreatrigger: TJvComboEdit;
+    lbAreatrigger: TLabel;
+    edqmsRewardMailSenderEntry: TLabeledEdit;
+    edqorRewardText: TMemo;
+    lRewardText: TLabel;
 
     procedure FormActivate(Sender: TObject);
     procedure btSearchClick(Sender: TObject);
@@ -3880,11 +3871,11 @@ begin
            (Pos('ed'+s+'g',Components[i].Name)=1)  or (Pos('ed'+s+'x',Components[i].Name)=1)  or (Pos('ed'+s+'m',Components[i].Name)=1)  or
            (Pos('ed'+s+'s',Components[i].Name)=1) or (Pos('ed'+s+'r',Components[i].Name)=1) or (Pos('ed'+s+'i',Components[i].Name)=1) or
            (Pos('ed'+s+'e',Components[i].Name)=1) or (Pos('ed'+s+'n',Components[i].Name)=1) or (Pos('ed'+s+'qi',Components[i].Name)=1) or
-           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1) {or} ) then
+           (Pos('ed'+s+'tr',Components[i].Name)=1) or (Pos('ed'+s+'ts',Components[i].Name)=1) or (Pos('ed'+s+'tm',Components[i].Name)=1) {or} ) then
             TCustomEdit(Components[i]).Clear;
         if (Components[i] is TJvListView) and ((Pos('lv'+s+'v',Components[i].Name)=1) or (Pos('lv'+s+'r',Components[i].Name)=1) or (Pos('lv'+s+'n',Components[i].Name)=1) or
            (Pos('lv'+s+'m',Components[i].Name)=1) or (Pos('lv'+s+'qi',Components[i].Name)=1) or (Pos('lv'+s+'e',Components[i].Name)=1) or (Pos('lv'+s+'i',Components[i].Name)=1) or
-           (Pos('lv'+s+'tr',Components[i].Name)=1) or (Pos('lv'+s+'ts',Components[i].Name)=1)) then
+           (Pos('lv'+s+'tr',Components[i].Name)=1) or (Pos('lv'+s+'ts',Components[i].Name)=1) or (Pos('lv'+s+'tm',Components[i].Name)=1) {or} ) then
              TCustomListView(Components[i]).Clear;
     end;
     if s='i' then
@@ -6023,7 +6014,7 @@ begin
   MyTempQuery.SQL.Text  :=
     Format('SELECT gec.guid, gec.eventEntry, ct.entry, ct.name FROM `game_event_creature` gec '+
           'LEFT OUTER JOIN creature c on c.guid = gec.guid ' +
-          'LEFT OUTER JOIN creature_template ct on ct.entry = c.id ' +
+          'LEFT OUTER JOIN creature_template ct on ct.entry = c.id1 ' +
           'WHERE abs(`eventEntry`) = %s',[entry]);
   MyTempQuery.Open;
   lvGameEventCreature.Items.BeginUpdate;
