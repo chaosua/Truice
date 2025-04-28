@@ -2911,7 +2911,7 @@ begin
   if QuestID<1 then exit;
 
   // load full description for quest
-  MyQuery.SQL.Text := Format('SELECT * FROM `quest_template` WHERE `ID`=%d', [QuestID]);
+  MyQuery.SQL.Text := Format('SELECT * FROM `quest_template` WHERE `ID`=''%d''', [QuestID]);
 
   MyQuery.Open;
   try
@@ -2922,7 +2922,7 @@ begin
     MyQuery.Close;
 
     // load data for quest from addon table
-    MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_addon` WHERE `ID`=%d', [QuestID]);
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_template_addon` WHERE `ID`=''%d''', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then
       edqtaID.Text := MyQuery.FieldByName('ID').AsString;
@@ -2943,7 +2943,7 @@ begin
       edqtaProvidedItemCount.Text := MyQuery.FieldByName('ProvidedItemCount').AsString;
       edqtaSpecialFlags.Text := MyQuery.FieldByName('SpecialFlags').AsString;
     MyQuery.Close;
-    MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=%d', [QuestID]);
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_request_items` WHERE `ID`=''%d''', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then
     edqriID.Text := edqtID.Text;
@@ -2952,7 +2952,7 @@ begin
       edqriCompletionText.Text := MyQuery.FieldByName('CompletionText').AsString;
       edqriVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
-    MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=%d', [QuestID]);
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_offer_reward` WHERE `ID`=''%d''', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then
       edqorID.Text := MyQuery.FieldByName('ID').AsString;
@@ -2967,7 +2967,7 @@ begin
       edqorRewardText.Text := MyQuery.FieldByName('RewardText').AsString;
       edqorVerifiedBuild.Text := MyQuery.FieldByName('VerifiedBuild').AsString;
     MyQuery.Close;
-    MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=%d', [QuestID]);
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_details` WHERE `ID`=''%d''', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then begin
       edqdID.Text := MyQuery.FieldByName('ID').AsString;
@@ -2983,14 +2983,14 @@ begin
     end;
     MyQuery.Close;
 
-    MyQuery.SQL.Text := Format('SELECT * FROM `quest_mail_sender` WHERE `Questid`=%d', [QuestID]);
+    MyQuery.SQL.Text := Format('SELECT * FROM `quest_mail_sender` WHERE `Questid`=''%d''', [QuestID]);
       MyQuery.Open;
     if (MyQuery.Eof=false) then
       edqmsRewardMailSenderEntry.Text := MyQuery.FieldByName('RewardMailSenderEntry').AsString
     else edqmsRewardMailSenderEntry.Clear;
     MyQuery.Close;
 
-    MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=%d', [QuestID]);
+    MyQuery.SQL.Text := Format('SELECT * FROM `areatrigger_involvedrelation` WHERE `quest`=''%d''', [QuestID]);
     MyQuery.Open;
     if (MyQuery.Eof=false) then
       edqtAreatrigger.Text := MyQuery.FieldByName('id').AsString
@@ -3157,7 +3157,7 @@ begin
       lvList.Items[i].SubItems[7],
       lvList.Items[i].SubItems[8]
     ]);
-    Result := Format('DELETE FROM `%0:s` WHERE `id`=%1:s;'#13#10+
+    Result := Format('DELETE FROM `%0:s` WHERE `id`=''%1:s'';'#13#10+
       'INSERT INTO `%0:s` (`id`, `delay`, `command`, `datalong`, `datalong2`, '+
         '`dataint`, `x`, `y`, `z`, `o`) VALUES '#13#10'%2:s'#13#10,
       [tn, id, Result]);
@@ -3176,12 +3176,12 @@ begin
   if quest='' then exit;
   meqtLog.Clear;
 
-  s1 := Format('DELETE FROM `creature_queststarter` WHERE `quest` = %0:s;'#13#10+
-             'DELETE FROM `gameobject_queststarter` WHERE `quest` = %0:s;'#13#10+
-             'UPDATE `item_template` SET `StartQuest`=0 WHERE `StartQuest` = %0:s;'#13#10,
+  s1 := Format('DELETE FROM `creature_queststarter` WHERE `quest`=''%0:s'';'#13#10+
+             'DELETE FROM `gameobject_queststarter` WHERE `quest`=''%0:s'';'#13#10+
+             'UPDATE `item_template` SET `StartQuest`=''0'' WHERE `StartQuest`=''%0:s'';'#13#10,
               [quest]);
-  s2 := Format('DELETE FROM `creature_questender` WHERE `quest` = %0:s;'#13#10+
-             'DELETE FROM `gameobject_questender` WHERE `quest` = %0:s;'#13#10,
+  s2 := Format('DELETE FROM `creature_questender` WHERE `quest`=''%0:s'';'#13#10+
+             'DELETE FROM `gameobject_questender` WHERE `quest`=''%0:s'';'#13#10,
               [quest]);
 
   if lvqtStarterTemplate.Items.Count=0 then meqtLog.Lines.Add(dmMain.Text[4])   //'Error: QuestStarter is not set'
@@ -3193,7 +3193,7 @@ begin
 
       if who = 'creature' then
         s1 := Format('%0:sINSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (%1:s, %2:s);'#13#10+
-          'UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry` = %1:s;'#13#10,
+          'UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry`=''%1:s'';'#13#10,
           [s1, id, quest])
       else
       if who = 'gameobject' then
@@ -3201,7 +3201,7 @@ begin
           [s1, id, quest])
       else
       if who='item' then
-        s1 := Format('%sUPDATE `item_template` SET `startquest`=%s WHERE `entry` = %s;'#13#10,
+        s1 := Format('%sUPDATE `item_template` SET `startquest`=''%s'' WHERE `entry`=''%s'';'#13#10,
           [s1, quest, id])
     end;
 
@@ -3226,14 +3226,14 @@ begin
   SetFieldsAndValues(Fields, Values, 'quest_template', PFX_QUEST_TEMPLATE, meqtLog);
 
   case SyntaxStyle of
-    ssInsertDelete: s3 := Format('DELETE FROM `quest_template` WHERE `ID` = %s;'#13#10+
+    ssInsertDelete: s3 := Format('DELETE FROM `quest_template` WHERE `ID`=''%s'';'#13#10+
                       'INSERT INTO `quest_template` (%s) VALUES (%s);'#13#10,[quest, Fields, Values]);
     ssReplace: s3 := Format('REPLACE INTO `quest_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: s3 := MakeUpdate('quest_template', PFX_QUEST_TEMPLATE, 'ID', quest);
   end;
 
   if edqtAreatrigger.Text<>'' then
-    s4 := Format('DELETE FROM `areatrigger_involvedrelation` WHERE `quest` = %1:s;'#13#10+
+    s4 := Format('DELETE FROM `areatrigger_involvedrelation` WHERE `quest`=''%1:s'';'#13#10+
       'INSERT INTO `areatrigger_involvedrelation` (`id`, `quest`) VALUES (%0:s, %1:s);'#13#10,
       [edqtAreatrigger.Text, quest]);
 
@@ -3243,7 +3243,7 @@ begin
   SetFieldsAndValues(Fields, Values, 'quest_details', PFX_QUEST_DETAILS, meqtLog);
    case SyntaxStyle of
     ssInsertDelete: s5 := Format(#13#10+
-                      'DELETE FROM `quest_details` WHERE `ID` = %s;'#13#10+
+                      'DELETE FROM `quest_details` WHERE `ID`=''%s'';'#13#10+
                       'INSERT INTO `quest_details` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s5 := Format(#13#10+
@@ -3259,7 +3259,7 @@ begin
   SetFieldsAndValues(Fields, Values, 'quest_template_addon', PFX_QUEST_TEMPLATE_ADDON, meqtLog);
    case SyntaxStyle of
     ssInsertDelete: s6 := Format(#13#10+
-                      'DELETE FROM `quest_template_addon` WHERE `ID` = %s;'#13#10+
+                      'DELETE FROM `quest_template_addon` WHERE `ID`=''%s'';'#13#10+
                       'INSERT INTO `quest_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s6 := Format(#13#10+
@@ -3275,7 +3275,7 @@ begin
   SetFieldsAndValues(Fields, Values, 'quest_request_items', PFX_QUEST_REQUEST_ITEMS, meqtLog);
    case SyntaxStyle of
     ssInsertDelete: s7 := Format(#13#10+
-                      'DELETE FROM `quest_request_items` WHERE `ID` = %s;'#13#10+
+                      'DELETE FROM `quest_request_items` WHERE `ID`=''%s'';'#13#10+
                       'INSERT INTO `quest_request_items` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s7 := Format(#13#10+
@@ -3288,11 +3288,11 @@ begin
   //quest_mail_sender
   if edqmsRewardMailSenderEntry.Text<>'' then
     s8 := Format(#13#10+
-      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %1:s;'#13#10+
+      'DELETE FROM `quest_mail_sender` WHERE `Questid`=''%1:s'';'#13#10+
       'INSERT INTO `quest_mail_sender` (`Questid`, `RewardMailSenderEntry`) VALUES (%0:s, %1:s);'#13#10#13#10,
       [quest, edqmsRewardMailSenderEntry.Text])
   else s8 := Format(#13#10+
-      'DELETE FROM `quest_mail_sender` WHERE `Questid` = %s;'#13#10,
+      'DELETE FROM `quest_mail_sender` WHERE `Questid`=''%s'';'#13#10,
       [quest]);
 
   // quest_offer_reward
@@ -3301,7 +3301,7 @@ begin
   SetFieldsAndValues(Fields, Values, 'quest_offer_reward', PFX_QUEST_OFFER_REWARD, meqtLog);
    case SyntaxStyle of
     ssInsertDelete: s9 := Format(#13#10+
-                      'DELETE FROM `quest_offer_reward` WHERE `ID` = %s;'#13#10+
+                      'DELETE FROM `quest_offer_reward` WHERE `ID`=''%s'';'#13#10+
                       'INSERT INTO `quest_offer_reward` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, Fields, Values]);
     ssReplace: s9 := Format(#13#10+
@@ -4945,7 +4945,7 @@ begin
   if ctentry='' then exit;
   SetFieldsAndValues(Fields, Values, 'creature_template', PFX_CREATURE_TEMPLATE, mectLog);
   case SyntaxStyle of
-    ssInsertDelete: s1 := Format('DELETE FROM `creature_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `creature_template` WHERE `entry`=''%s'';'#13#10+
       'INSERT INTO `creature_template` (%s) VALUES (%s);'#13#10,[ctentry, Fields, Values]);
     ssReplace: s1 := Format('REPLACE INTO `creature_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: s1 := MakeUpdate('creature_template', PFX_CREATURE_TEMPLATE, 'entry', ctentry);
@@ -4960,7 +4960,7 @@ begin
     SetFieldsAndValues(Fields, Values, 'creature_template_locale', PFX_CREATURE_TEMPLATE_LOCALE, mectLog);
     case SyntaxStyle of
       ssInsertDelete: s2 := Format(#13#10+
-                      'DELETE FROM `creature_template_locale` WHERE `entry` = %s AND locale=''%s'';'#13#10+
+                      'DELETE FROM `creature_template_locale` WHERE `entry`=''%s'' AND `locale`=''%s'';'#13#10+
                       'INSERT INTO `creature_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
                       ,[ctentry, loc, Fields, Values]);
       ssReplace: s2 := Format(#13#10+
@@ -6157,7 +6157,7 @@ begin
   if guid='' then exit;
   SetFieldsAndValues(MyQuery, Fields, Values, ''+CharDBName+'`.`characters', PFX_CHARACTER, mehtLog);
   case SyntaxStyle of
-    ssInsertDelete: mehtScript.Text := Format('DELETE FROM `'+CharDBName+'`.`characters` WHERE (`guid`=%s);'#13#10+
+    ssInsertDelete: mehtScript.Text := Format('DELETE FROM `'+CharDBName+'`.`characters` WHERE `guid`=''%s'';'#13#10+
       'INSERT INTO `'+CharDBName+'`.`characters` (%s) VALUES (%s);'#13#10,[guid, Fields, Values]);
     ssReplace: mehtScript.Text := Format('REPLACE INTO `'+CharDBName+'`.`characters` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: mehtScript.Text := MakeUpdate(''+CharDBName+'`.`characters', PFX_CHARACTER, 'guid', guid);
@@ -6543,7 +6543,7 @@ begin
     SetFieldsAndValues(Fields, Values, 'quest_template_locale', PFX_QUEST_TEMPLATE_LOCALE, meqtLog);
     case SyntaxStyle of
       ssInsertDelete: s1 := Format(#13#10 +
-                      'DELETE FROM `quest_template_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10 +
+                      'DELETE FROM `quest_template_locale` WHERE `ID`=''%s'' AND `locale`=''%s'';'#13#10 +
                       'INSERT INTO `quest_template_locale` (%s) VALUES (%s);'#13#10#13#10
                       ,[quest, loc, Fields, Values]);
       ssReplace: s1 := Format(#13#10+
@@ -6562,7 +6562,7 @@ begin
     SetFieldsAndValues(Fields, Values, 'quest_offer_reward_locale', PFX_QUEST_OFFER_REWARD_LOCALE, meqtLog);
     case SyntaxStyle of
       ssInsertDelete: s2 := Format(#13#10+
-                      'DELETE FROM `quest_offer_reward_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
+                      'DELETE FROM `quest_offer_reward_locale` WHERE `ID`=''%s'' AND locale=''%s'';'#13#10+
                       'INSERT INTO `quest_offer_reward_locale` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, loc, Fields, Values]);
       ssReplace: s2 := Format(#13#10+
@@ -6581,7 +6581,7 @@ begin
     SetFieldsAndValues(Fields, Values, 'quest_request_items_locale', PFX_QUEST_REQUEST_ITEMS_LOCALE, meqtLog);
     case SyntaxStyle of
       ssInsertDelete: s3 := Format(#13#10+
-                      'DELETE FROM `quest_request_items_locale` WHERE `ID` = ''%s'' AND locale = ''%s'';'#13#10+
+                      'DELETE FROM `quest_request_items_locale` WHERE `ID`=''%s'' AND `locale`=''%s'';'#13#10+
                       'INSERT INTO `quest_request_items_locale` (%s) VALUES (%s);'#13#10+#13#10
                       ,[quest, loc, Fields, Values]);
       ssReplace: s3 := Format(#13#10+
@@ -6605,7 +6605,7 @@ begin
   if id='' then exit;
   SetFieldsAndValues(MyQuery, Fields, Values, 'conditions', PFX_CONDITIONS, mecLog);
   case SyntaxStyle of
-    ssInsertDelete: mecScript.Text := Format('DELETE FROM `conditions` WHERE (`id`=%s);'#13#10+
+    ssInsertDelete: mecScript.Text := Format('DELETE FROM `conditions` WHERE `id`=''%s'';'#13#10+
       'INSERT INTO `conditions` (%s) VALUES (%s);'#13#10,[id, Fields, Values]);
     ssReplace: mecScript.Text := Format('REPLACE INTO `conditions` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: mecScript.Text := MakeUpdate('conditions', PFX_CONDITIONS, 'SourceTypeOrReferenceId', id);
@@ -6632,7 +6632,7 @@ begin
   creatureid := trim(edcmcreatureid.Text);
   if creatureid='' then exit;
   SetFieldsAndValues(Fields, Values, 'creature_template_movement', PFX_CREATURE_TEMPLATE_MOVEMENT, mectLog);
-  mectScript.Text := Format('DELETE FROM `creature_template_movement` WHERE (`creatureid`=%s);'#13#10+
+  mectScript.Text := Format('DELETE FROM `creature_template_movement` WHERE `creatureid`=''%s'';'#13#10+
       'INSERT INTO `creature_template_movement` (%s) VALUES (%s);'#13#10,[creatureid, Fields, Values]);
 end;
 
@@ -6645,7 +6645,7 @@ begin
   if entry='' then exit;
   SetFieldsAndValues(Fields, Values, 'creature_onkill_reputation', PFX_CREATURE_ONKILL_REPUTATION, mectLog);
   case SyntaxStyle of
-    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature_onkill_reputation` WHERE (`creature_id`=%s);'#13#10+
+    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature_onkill_reputation` WHERE `creature_id`=''%s'';'#13#10+
       'INSERT INTO `creature_onkill_reputation` (%s) VALUES (%s);'#13#10,[entry, Fields, Values]);
     ssReplace: mectScript.Text := Format('REPLACE INTO `creature_onkill_reputation` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: mectScript.Text := MakeUpdate('creature_onkill_reputation', PFX_CREATURE_ONKILL_REPUTATION, 'creature_id', entry);
@@ -6661,7 +6661,7 @@ begin
   if clguid='' then exit;
   SetFieldsAndValues(Fields, Values, 'creature', PFX_CREATURE, mectLog);
   case SyntaxStyle of
-    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature` WHERE (`guid`=%s);'#13#10+
+    ssInsertDelete: mectScript.Text := Format('DELETE FROM `creature` WHERE `guid`=''%s'';'#13#10+
       'INSERT INTO `creature` (%s) VALUES (%s);'#13#10,[clguid, Fields, Values]);
     ssReplace: mectScript.Text := Format('REPLACE INTO `creature` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: mectScript.Text := MakeUpdate('creature', PFX_CREATURE, 'guid', clguid);
@@ -6677,7 +6677,7 @@ begin
   coitem := edcoItem.Text;
   if (coentry='') or (coitem='') then Exit;
   SetFieldsAndValues(Fields, Values, 'creature_loot_template', PFX_CREATURE_LOOT_TEMPLATE, mectLog);
-  mectScript.Text := Format('DELETE FROM `creature_loot_template` WHERE (`entry`=%s) AND (`item`=%s);'#13#10+
+  mectScript.Text := Format('DELETE FROM `creature_loot_template` WHERE `entry`=''%s'' AND `item`=''%s'';'#13#10+
     'INSERT INTO `creature_loot_template` (%s) VALUES '#13#10+
     '(%s);'#13#10,[coentry, coitem, Fields, Values])
 end;
@@ -7268,7 +7268,7 @@ begin
   if gtentry='' then exit;
   SetFieldsAndValues(Fields, Values, 'gameobject_template', PFX_GAMEOBJECT_TEMPLATE, megoLog);
   case SyntaxStyle of
-    ssInsertDelete: s1 := Format('DELETE FROM `gameobject_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `gameobject_template` WHERE `entry`=''%s'';'#13#10+
       'INSERT INTO `gameobject_template` (%s) VALUES (%s);'#13#10,[gtentry, Fields, Values]);
     ssReplace: s1 := Format('REPLACE INTO `gameobject_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: s1 := MakeUpdate('gameobject_template', PFX_GAMEOBJECT_TEMPLATE, 'entry', gtentry);
@@ -7283,7 +7283,7 @@ begin
     SetFieldsAndValues(Fields, Values, 'gameobject_template_locale', PFX_GAMEOBJECT_TEMPLATE_LOCALE, megoLog);
     case SyntaxStyle of
       ssInsertDelete: s2 := Format(#13#10+
-                      'DELETE FROM `gameobject_template_locale` WHERE `entry` = %s AND locale=''%s'';'#13#10+
+                      'DELETE FROM `gameobject_template_locale` WHERE `entry`=''%s'' AND `locale`=''%s'';'#13#10+
                       'INSERT INTO `gameobject_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
                       ,[gtentry, loc, Fields, Values]);
       ssReplace: s2 := Format(#13#10+
@@ -7300,7 +7300,7 @@ begin
   SetFieldsAndValues(Fields, Values, 'gameobject_template_addon', PFX_GAMEOBJECT_TEMPLATE_ADDON, megoLog);
    case SyntaxStyle of
     ssInsertDelete: s3 := Format(#13#10+
-                      'DELETE FROM `gameobject_template_addon` WHERE `entry` = %s;'#13#10+
+                      'DELETE FROM `gameobject_template_addon` WHERE `entry`=''%s'';'#13#10+
                       'INSERT INTO `gameobject_template_addon` (%s) VALUES (%s);'#13#10+#13#10
                       ,[gtentry, Fields, Values]);
     ssReplace: s3 := Format(#13#10+
@@ -7564,14 +7564,14 @@ begin
   if (entry='') then Exit;
   SetFieldsAndValues(Fields, Values, 'game_event', PFX_GAME_EVENT, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: s1 := Format('DELETE FROM `game_event` WHERE (`eventEntry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `game_event` WHERE `eventEntry`=''%s'';'#13#10+
       'INSERT INTO `game_event` (%s) VALUES (%s);'#13#10,[entry, Fields, Values]);
     ssReplace: s1 := Format('REPLACE INTO `game_event` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: s1 := MakeUpdate('game_event', PFX_GAME_EVENT, 'eventEntry', entry);
   end;
 
-  s2 := Format('DELETE FROM `game_event_creature` WHERE abs(`eventEntry`) = %s;'#13#10,[entry]);
-  s3 := Format('DELETE FROM `game_event_gameobject` WHERE abs(`eventEntry`) = %s;'#13#10,[entry]);
+  s2 := Format('DELETE FROM `game_event_creature` WHERE abs(`eventEntry`)=''%s'';'#13#10,[entry]);
+  s3 := Format('DELETE FROM `game_event_gameobject` WHERE abs(`eventEntry`)=''%s'';'#13#10,[entry]);
 
   if lvGameEventCreature.Items.Count > 0 then
   begin
@@ -7607,7 +7607,7 @@ begin
   if glguid='' then exit;
   SetFieldsAndValues(Fields, Values, 'gameobject', PFX_GAMEOBJECT, megoLog);
   case SyntaxStyle of
-    ssInsertDelete: meGOScript.Text := Format('DELETE FROM `gameobject` WHERE (`guid`=%s);'#13#10+
+    ssInsertDelete: meGOScript.Text := Format('DELETE FROM `gameobject` WHERE `guid`=''%s'';'#13#10+
       'INSERT INTO `gameobject` (%s) VALUES (%s);'#13#10,[glguid, Fields, Values]);
     ssReplace: meGOScript.Text := Format('REPLACE INTO `gameobject` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: meGOScript.Text := MakeUpdate('gameobject', PFX_GAMEOBJECT, 'guid', glguid);
@@ -7623,7 +7623,7 @@ begin
   goitem := edgoItem.Text;
   if (goentry='') or (goitem='') then Exit;
   SetFieldsAndValues(Fields, Values, 'gameobject_loot_template', PFX_GAMEOBJECT_LOOT_TEMPLATE, megoLog);
-  meGOScript.Text := Format('DELETE FROM `gameobject_loot_template` WHERE (`Entry`=%s) AND (`Item`=%s);'#13#10+
+  meGOScript.Text := Format('DELETE FROM `gameobject_loot_template` WHERE `Entry`=''%s'' AND `Item`=''%s'';'#13#10+
     'INSERT INTO `gameobject_loot_template` (%s) VALUES (%s);'#13#10,[goentry, goitem, Fields, Values])
 end;
 
@@ -8664,7 +8664,7 @@ begin
   if link='' then exit;
   SetFieldsAndValues(MyQuery, Fields, Values, 'smart_scripts', PFX_CREATURE_SMARTAI, mecyLog);
   case SyntaxStyle of
-    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE `entryorguid`=%s AND `source_type`=%s AND `id`=%s AND `link`=%s ;'#13#10+
+    ssInsertDelete: mecyScript.Text := Format('DELETE FROM `smart_scripts` WHERE `entryorguid`=''%s'' AND `source_type`=''%s'' AND `id`=''%s'' AND `link`=''%s'';'#13#10+
       'INSERT INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[entryorguid, source_type, id, link, Fields, Values]);
     ssReplace: mecyScript.Text := Format('REPLACE INTO `smart_scripts` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: mecyScript.Text := MakeUpdate('smart_scripts', PFX_CREATURE_SMARTAI, 'entryorguid', entryorguid);
@@ -9633,7 +9633,7 @@ begin
   if entry='' then exit;
   SetFieldsAndValues(Fields, Values, 'item_template', PFX_ITEM_TEMPLATE, meitLog);
   case SyntaxStyle of
-    ssInsertDelete: s1 := Format('DELETE FROM `item_template` WHERE (`entry`=%s);'#13#10+
+    ssInsertDelete: s1 := Format('DELETE FROM `item_template` WHERE `entry`=''%s'';'#13#10+
       'INSERT INTO `item_template` (%s) VALUES (%s);'#13#10,[entry, Fields, Values]);
     ssReplace: s1 := Format('REPLACE INTO `item_template` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: s1 := MakeUpdate('item_template', PFX_ITEM_TEMPLATE, 'entry', entry)
@@ -9649,7 +9649,7 @@ begin
     SetFieldsAndValues(Fields, Values, 'item_template_locale', PFX_ITEM_TEMPLATE_LOCALE, meitLog);
     case SyntaxStyle of
       ssInsertDelete: s2 := Format(#13#10+
-                      'DELETE FROM `item_template_locale` WHERE `ID` = %s AND locale=''%s'';'#13#10+
+                      'DELETE FROM `item_template_locale` WHERE `ID`=''%s'' AND `locale`=''%s'';'#13#10+
                       'INSERT INTO `item_template_locale` (%s) VALUES '#13#10+'(%s);'#13#10
                       ,[entry, loc, Fields, Values]);
       ssReplace: s2 := Format(#13#10+
@@ -10737,7 +10737,7 @@ begin
   if (ID='') then Exit;
   SetFieldsAndValues(Fields, Values, 'broadcast_text', PFX_BROADCAST_TEXT, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: meotScript.Text := Format('DELETE FROM `broadcast_text` WHERE `ID`=%s ;'#13#10+
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `broadcast_text` WHERE `ID`=''%s'';'#13#10+
       'INSERT INTO `broadcast_text` (%s) VALUES '#13#10+'(%s);'#13#10,[ID,  Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `broadcast_text` (%s) VALUES '#13#10+'(%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdate('broadcast_text', PFX_BROADCAST_TEXT, 'ID', ID) ;
@@ -10859,7 +10859,7 @@ begin
   if (loc='') then loc:=LoadLocales();
   SetFieldsAndValues(Fields, Values, 'broadcast_text_locale', PFX_BROADCAST_TEXT_LOCALE, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: meotScript.Text := Format('DELETE FROM `broadcast_text_locale` WHERE `ID`=%s AND `locale`=''%s'';'#13#10+
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `broadcast_text_locale` WHERE `ID`=''%s'' AND `locale`=''%s'';'#13#10+
       'INSERT INTO `broadcast_text_locale` (%s) VALUES '#13#10+'(%s);'#13#10,[ID, loc,  Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `broadcast_text_locale` (%s) VALUES '#13#10+'(%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdatelocales('broadcast_text_locale', PFX_BROADCAST_TEXT_LOCALE, 'ID', ID, loc) ;
@@ -11003,7 +11003,7 @@ begin
   if (ID='') then Exit;
   SetFieldsAndValues(Fields, Values, 'creature_text', PFX_CREATURE_TEXT, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: meotScript.Text := Format('DELETE FROM `creature_text` WHERE `CreatureID`=%s AND `GroupID`=%s AND `ID`=%s ;'#13#10+
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `creature_text` WHERE `CreatureID`=''%s'' AND `GroupID`=''%s'' AND `ID`=''%s'';'#13#10+
       'INSERT INTO `creature_text` (%s) VALUES (%s);'#13#10,[CreatureID, GroupID, ID,  Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `creature_text` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdate('creature_text', PFX_CREATURE_TEXT, 'CreatureID', CreatureID) ;
@@ -11190,7 +11190,7 @@ begin
   if (loc='') then loc:=LoadLocales();
   SetFieldsAndValues(Fields, Values, 'creature_text_locale', PFX_CREATURE_TEXT_LOCALE, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: meotScript.Text := Format('DELETE FROM `creature_text_locale` WHERE `CreatureID`=%s AND `GroupID`=%s AND `ID`=%s AND `locale`=''%s'' ;'#13#10+
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `creature_text_locale` WHERE `CreatureID`=''%s'' AND `GroupID`=''%s'' AND `ID`=''%s'' AND `locale`=''%s'';'#13#10+
       'INSERT INTO `creature_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[CreatureID, GroupID, ID, loc, Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `creature_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdateLocales('creature_text_locale', PFX_CREATURE_TEXT_LOCALE, 'CreatureID', CreatureID, loc) ;
@@ -11233,7 +11233,7 @@ begin
   if (ID='') then Exit;
   SetFieldsAndValues(Fields, Values, 'page_text', PFX_PAGE_TEXT, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: meotScript.Text := Format('DELETE FROM `page_text` WHERE (`ID`=%s);'#13#10+
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `page_text` WHERE `ID`=''%s'';'#13#10+
       'INSERT INTO `page_text` (%s) VALUES (%s);'#13#10,[ID, Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `page_text` (%s) VALUES (%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdate('page_text', PFX_PAGE_TEXT, 'ID', ID) ;
@@ -11376,7 +11376,7 @@ begin
   if (loc='') then loc:=LoadLocales();
   SetFieldsAndValues(Fields, Values, 'page_text_locale', PFX_PAGE_TEXT_LOCALE, meotLog);
   case SyntaxStyle of
-    ssInsertDelete: meotScript.Text := Format('DELETE FROM `page_text_locale` WHERE (`ID`=%s) AND (`locale`=''%s'');'#13#10+
+    ssInsertDelete: meotScript.Text := Format('DELETE FROM `page_text_locale` WHERE `ID`=''%s'' AND `locale`=''%s'';'#13#10+
                                   'INSERT INTO `page_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[ID, loc, Fields, Values]);
     ssReplace: meotScript.Text := Format('REPLACE INTO `page_text_locale` (%s) VALUES '#13#10'(%s);'#13#10,[Fields, Values]);
     ssUpdate: meotScript.Text := MakeUpdateLocales('page_text_locale', PFX_PAGE_TEXT_LOCALE, 'ID', ID, loc) ;
