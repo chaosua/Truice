@@ -16,7 +16,8 @@ uses
   FireDAC.Phys, FireDAC.Phys.MySQL, FireDAC.VCLUI.Wait, FireDAC.Comp.UI,
   FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Script,
-  FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util, FireDAC.VCLUI.Login;
+  FireDAC.Comp.ScriptCommands, FireDAC.Stan.Util, FireDAC.VCLUI.Login,
+  JvExStdCtrls, JvListBox, Vcl.CheckLst, JvExCheckLst, JvCheckListBox;
 
 const
   VERSION_1   = '2'; //*10000
@@ -1759,7 +1760,7 @@ type
     edSearchBroadcastTextLocaleMaleText: TLabeledEdit;
     edSearchBroadcastTextLocaleID: TLabeledEdit;
     edSearchBroadcastTextLocaleFemaleText: TLabeledEdit;
-    edSearchBroadcastTextLocalelocale: TLabeledEdit;
+    edSearchBroadcastTextLocaleAllLocales: TCheckBox;
     lbcttAboutID: TLabel;
     lbcttlocAboutID: TLabel;
     lbpttAboutID: TLabel;
@@ -10872,9 +10873,16 @@ var
   ID, MaleText, FemaleText, loc, QueryStr, WhereStr, t: string;
   Field: TField;
 begin
-  loc:=LoadLocales();
+
+  //If search locale was set
+  if edSearchBroadcastTextLocaleAllLocales.Checked then
+      loc := ''
+  else
+  //load locale defined in config
+      loc:=LoadLocales();
+
 if loc<>'enUS' then begin
-  ID :=  edSearchBroadcastTextLocaleID.Text;
+  ID := edSearchBroadcastTextLocaleID.Text;
   MaleText := edSearchBroadcastTextLocaleMaleText.Text;
   MaleText := StringReplace(MaleText, '''', '\''', [rfReplaceAll]);
   MaleText := StringReplace(MaleText, ' ', '%', [rfReplaceAll]);
@@ -10885,8 +10893,6 @@ if loc<>'enUS' then begin
   FemaleText := '%'+FemaleText+'%';
   QueryStr := '';
   WhereStr := '';
-  loc:=LoadLocales();
-  edSearchBroadcastTextLocaleLocale.Text:=loc;
 
   if ID<>'' then
   begin
@@ -10965,6 +10971,7 @@ begin
       Selected := Items[0];
     end;
 end;
+
 procedure TMainForm.lvSearchCreatureTextSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
 begin
   if Selected then
