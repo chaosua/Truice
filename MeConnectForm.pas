@@ -83,7 +83,9 @@ begin
 
     // Встановлюємо кодування до Open
   if Trim(edCharSet.Text) <> '' then
-    MainForm.MyTrinityConnection.Params.Values['CharacterSet'] := edCharSet.Text;
+    MainForm.MyTrinityConnection.Params.Values['CharacterSet'] := edCharSet.Text
+  else
+    MainForm.MyTrinityConnection.Params.Values['CharacterSet'] := 'utf8';
 
   try
     if (MainForm.MyTrinityConnection.Connected=true) then
