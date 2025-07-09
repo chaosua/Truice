@@ -80,15 +80,17 @@ begin
   edExit(nil);
   MainForm.CharDBName := edcDatabase.Text;
   MainForm.RealmDBName := edrDatabase.Text;
+
+    // Встановлюємо кодування до Open
+  if Trim(edCharSet.Text) <> '' then
+    MainForm.MyTrinityConnection.Params.Values['CharacterSet'] := edCharSet.Text;
+
   try
     if (MainForm.MyTrinityConnection.Connected=true) then
       MainForm.MyTrinityConnection.Close;
+
     MainForm.MyTrinityConnection.Open;
-    if Trim(edCharSet.Text) <> '' then
-    begin
-      MainForm.MyTempQuery.SQL.Text := Format('SET NAMES %s',[edCharSet.Text]);
-      MainForm.MyTempQuery.ExecSQL;
-    end;
+
     ModalResult := mrOk;
   except
     ModalResult := mrNone;
