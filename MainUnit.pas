@@ -3179,7 +3179,7 @@ begin
 
   s1 := Format('DELETE FROM `creature_queststarter` WHERE `quest`=''%0:s'';'#13#10+
              'DELETE FROM `gameobject_queststarter` WHERE `quest`=''%0:s'';'#13#10+
-             'UPDATE `item_template` SET `StartQuest`=''0'' WHERE `StartQuest`=''%0:s'';'#13#10,
+             'UPDATE `item_template` SET `startquest`=''0'' WHERE `StartQuest`=''%0:s'';'#13#10,
               [quest]);
   s2 := Format('DELETE FROM `creature_questender` WHERE `quest`=''%0:s'';'#13#10+
              'DELETE FROM `gameobject_questender` WHERE `quest`=''%0:s'';'#13#10,
@@ -4377,7 +4377,7 @@ begin
   'DELETE FROM `quest_poi_points` WHERE (`QuestId`=%0:s);'#13#10+
   'DELETE FROM `quest_request_items` WHERE (`ID`=%0:s);'#13#10+
   'DELETE FROM `quest_template_addon` WHERE (`ID`=%0:s);'#13#10+
-  'UPDATE `item_template` SET `StartQuest`=0 WHERE (`startquest`=%0:s);'#13#10
+  'UPDATE `item_template` SET `startquest`=0 WHERE (`startquest`=%0:s);'#13#10
    ,[lvQuest.Selected.Caption]);
 end;
 
@@ -9837,10 +9837,10 @@ begin
   if loc<>'enUS' then
     QueryStr := Format('SELECT it.`entry`, MAX(it.`name`) as `name`, it.`class`, it.`subclass`, it.`Quality`, it.`InventoryType`, '+
       'it.`itemset`, it.`RequiredLevel` '+
-      'FROM `item_template` it LEFT OUTER JOIN `item_template_locale` li ON it.`entry`=li.`ID` %s'+
+      'FROM `item_template` it LEFT OUTER JOIN `item_template_locale` li ON it.`entry`=li.`ID` %s '+
       'GROUP BY it.`entry`',[WhereStr])
   else QueryStr := Format('SELECT `entry`, `name`, `class`, `subclass`, `Quality`, `InventoryType`, '+
-      '`itemset`, `RequiredLevel` FROM `item_template` %s',[WhereStr]);
+      '`itemset`, `RequiredLevel` FROM `item_template` it %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvSearchItem.Items.BeginUpdate;
