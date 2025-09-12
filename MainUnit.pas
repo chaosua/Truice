@@ -9773,10 +9773,10 @@ begin
   if loc<>'enUS' then
     QueryStr := Format('SELECT it.`entry`, MAX(it.`name`) as `name`, it.`class`, it.`subclass`, it.`Quality`, it.`InventoryType`, '+
       'it.`itemset`, it.`RequiredLevel` '+
-      'FROM `item_template` it LEFT OUTER JOIN `item_template_locale` li ON it.`entry`=li.`ID` %s'+
-      'GROUP BY it.`entry`',[WhereStr])
+      'FROM `item_template` it LEFT OUTER JOIN `item_template_locale` li ON it.`entry`=li.`ID` %s '+
+      'GROUP BY it.`entry` ',[WhereStr])
   else QueryStr := Format('SELECT `entry`, `name`, `class`, `subclass`, `Quality`, `InventoryType`, '+
-      '`itemset`, `RequiredLevel` FROM `item_template` %s',[WhereStr]);
+      '`itemset`, `RequiredLevel` FROM `item_template` it %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
   lvSearchItem.Items.BeginUpdate;
