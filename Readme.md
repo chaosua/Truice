@@ -21,8 +21,8 @@ this fork updates https://github.com/chaosua/Truice/releases
 <img src="images/torun.png" width="120" height="100">
 
 **To compile use:** 
-Delphi XE2+ (current Embarcadero® Delphi 11 Version 28.0.48361.3236 )
-(there is Community Edition of Delphi what is completely free https://www.embarcadero.com/products/delphi/starter)
+Delphi XE2+, current free Embarcadero® Delphi 12 CE:
+Community Edition of Delphi what is completely free https://www.embarcadero.com/products/delphi/starter
 
 and these additional components:
 
@@ -31,16 +31,42 @@ http://jvcl.delphi-jedi.org/
 http://jvcl.sourceforge.net/daily/
 http://github.com/project-jedi/jvcl
 
-B) JEDI Code Library 2.8.0
+B) JEDI Code Library 2.8.0.5677
 http://sourceforge.net/projects/jcl/
 http://jcl.sourceforge.net/daily/
 http://github.com/project-jedi/jcl
 
 C) Droping ZeosLib to use Delphi internal db component FireDAC (from 22.08.2018).
-
 ZeosDBO 7.3 from testing branch (SVN rev4068) (last commit with ZeosLib https://github.com/Faq/Truice/commit/3e74ac4aececd7b4c55b607ca9c3b63eb85f3a17)
 http://sourceforge.net/projects/zeoslib/ (new link)
 http://svn.code.sf.net/p/zeoslib/code-0
+
+Installation not sure in order (package or installer first):
+1.Install Delphi 12 CE
+2.Download JCl/JVCL package JVCL350CompleteJCL28-Build9330.zip from https://github.com/project-jedi/jvcl/releases
+
+3 Compile JCL packages and Installer
+3.1 Run Delphi 12, and open from menu File-Open Project-> Navigate
+ \JVCL350CompleteJCL28-Build9330\jcl\install\JediInstaller.dpoj
+3.2 Build JCL Installer and Run it
+3.3 Close Delphi 12 IDE, Accept MPL1.1 license, press Install button (JCL for Delphi 12 32/64bit)
+
+3.4 Run Delphi 12, and open from menu File-Open Project-> Navigate 
+\JVCL350CompleteJCL28-Build9330\jcl\packages\JclPackagesD290.groupproj
+3.5 Select all folders in project tab , and right click menu - Build all
+3.6 Select only "green ones" in project tab and right click menu - Install
+
+4 Compile JVCL packages and Installer
+4.1 Run Delphi 12, and open from menu File-Open Project-> Navigate
+ \JVCL350CompleteJCL28-Build9330\jvcl\install\JVCLInstall\JVCLInstall.dproj
+4.2 Build JCL Installer and Run it
+4.3 Close Delphi 12 IDE, Accept MPL1.1 license, press Install button (JCL for Delphi 12 32/64bit)
+
+4.4 Run Delphi 12, and open from menu File-Open Project-> Navigate 
+ \JVCL350CompleteJCL28-Build9330\jvcl\packages\D29 Packages.groupproj 
+(or D29_x64 Packages.groupproj for  x64 support aplications)
+4.5 Select all folders in project tab , and right click menu - Build all
+4.6 Select only "green ones" in project tab and right click menu - Install
 
 **Original topic on AC forum:**
 https://github.com/azerothcore/azerothcore-wotlk/discussions/18241

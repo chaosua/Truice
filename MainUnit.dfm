@@ -24,7 +24,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 888
     Height = 668
-    ActivePage = tsOther
+    ActivePage = tsCreature
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -5887,7 +5887,7 @@ object MainForm: TMainForm
         Top = 9
         Width = 880
         Height = 631
-        ActivePage = tsEditCreature
+        ActivePage = tsCreatureLocation
         Align = alClient
         MultiLine = True
         TabOrder = 0
@@ -8493,15 +8493,15 @@ object MainForm: TMainForm
             TabOrder = 1
             Text = ''
           end
-          object edclid1: TLabeledEdit
+          object edclid: TLabeledEdit
             Left = 89
             Top = 400
             Width = 75
             Height = 21
             Hint = 'The id is the same as creature_template.entry'
-            EditLabel.Width = 14
+            EditLabel.Width = 8
             EditLabel.Height = 13
-            EditLabel.Caption = 'id1'
+            EditLabel.Caption = 'id'
             TabOrder = 2
             Text = ''
           end
@@ -8915,30 +8915,6 @@ object MainForm: TMainForm
             Text = ''
             OnButtonClick = GetCreatureDynamicFlags
           end
-          object edclid2: TLabeledEdit
-            Left = 170
-            Top = 400
-            Width = 75
-            Height = 21
-            Hint = 'The id is the same as creature_template.entry'
-            EditLabel.Width = 14
-            EditLabel.Height = 13
-            EditLabel.Caption = 'id2'
-            TabOrder = 27
-            Text = ''
-          end
-          object edclid3: TLabeledEdit
-            Left = 251
-            Top = 400
-            Width = 75
-            Height = 21
-            Hint = 'The id is the same as creature_template.entry'
-            EditLabel.Width = 14
-            EditLabel.Height = 13
-            EditLabel.Caption = 'id3'
-            TabOrder = 28
-            Text = ''
-          end
           object edclComment: TLabeledEdit
             Left = 516
             Top = 488
@@ -8947,7 +8923,7 @@ object MainForm: TMainForm
             EditLabel.Width = 44
             EditLabel.Height = 13
             EditLabel.Caption = 'Comment'
-            TabOrder = 29
+            TabOrder = 27
             Text = ''
           end
         end
@@ -27999,7 +27975,6 @@ object MainForm: TMainForm
               end
               item
               end>
-            ExplicitTop = 87
           end
           object GroupBox7: TGroupBox
             Left = 0

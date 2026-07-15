@@ -23,7 +23,7 @@ const
   VERSION_1   = '2'; //*10000
   VERSION_2   = '1'; //*100
   VERSION_3   = '6';
-  VERSION_4   = '22';
+  VERSION_4   = '24';
   VERSION_EXE = VERSION_1 + '.' + VERSION_2 + '.' + VERSION_3 + '.' + VERSION_4;
 
   SCRIPT_TAB_NO_QUEST       = 6;
@@ -414,9 +414,7 @@ type
     tsCreatureLocation: TTabSheet;
     lvclCreatureLocation: TJvListView;
     edclguid: TLabeledEdit;
-    edclid1: TLabeledEdit;
-    edclid2: TLabeledEdit;
-    edclid3: TLabeledEdit;
+    edclid: TLabeledEdit;
     edclequipment_id: TLabeledEdit;
     edclposition_x: TLabeledEdit;
     edclposition_y: TLabeledEdit;
@@ -3524,7 +3522,7 @@ var
 begin
   if objtype = 'creature' then
   begin
-    SQLText := Format('SELECT `guid`, `id1`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry]);
+    SQLText := Format('SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id`=%s)',[entry]);
     lbLocationOrLoot.Caption := dmMain.Text[17]; //'Creature location'
   end
   else
@@ -3674,7 +3672,7 @@ var
   SQLText: string;
 begin
   if objtype = 'creature' then
-    SQLText := Format('SELECT `guid`, `id1`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id1`=%s)',[entry])
+    SQLText := Format('SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''creature'' as `table` FROM `creature` WHERE (`id`=%s)',[entry])
   else
   if objtype = 'gameobject' then
     SQLText := Format('SELECT `guid`, `id`, `map`, `position_x`,`position_y`,`position_z`,`orientation`, `ScriptName`,''gameobject'' as `table` FROM `gameobject` WHERE (`id`=%s)',[entry])
@@ -4575,12 +4573,12 @@ begin
 
   if loc<>'enUS' then
     QueryStr := Format('SELECT ct.`entry`, MAX(ct.`name`) as `name`, MAX(ct.`subname`) as `subname`, ct.`npcflag`, ct.`minlevel`, ct.`maxlevel`, '+
-      '(SELECT count(guid) from `creature` where creature.`id1` = ct.`entry`) as `Count`, '+
+      '(SELECT count(guid) from `creature` where creature.`id` = ct.`entry`) as `Count`, '+
       '(SELECT `Title` FROM `creature_template_locale` WHERE `entry` = ct.`entry` AND `locale` = ''%0:s'') AS Title '+
       'FROM `creature_template` ct LEFT OUTER JOIN creature_template_locale lc ON ct.`entry`=lc.`entry` %s'+
       'GROUP BY ct.`entry`',[loc, WhereStr])
   else QueryStr := Format('SELECT `entry`, `name`, `subname`, `npcflag`, `minlevel`, `maxlevel`, '+
-      '(SELECT count(guid) from `creature` where creature.`id1` = ct.`entry`) as `Count` '+
+      '(SELECT count(guid) from `creature` where creature.`id` = ct.`entry`) as `Count` '+
       'FROM `creature_template` ct %s',[WhereStr]);
 
   MyQuery.SQL.Text := QueryStr;
@@ -4856,8 +4854,8 @@ begin
 
     MyQuery.Close;
 
-    LoadQueryToListView(Format('SELECT `guid`, `id1`, `map`, `zoneId`, `areaId`, `position_x`,'+
-      ' `position_y`,`position_z`,`orientation` FROM `creature` WHERE (`id1`=%d)', [entry]),lvclCreatureLocation);
+    LoadQueryToListView(Format('SELECT `guid`, `id`, `map`, `zoneId`, `areaId`, `position_x`,'+
+      ' `position_y`,`position_z`,`orientation` FROM `creature` WHERE (`id`=%d)', [entry]),lvclCreatureLocation);
 
     LoadQueryToListView(Format('SELECT clt.*, i.`name` FROM `creature_loot_template`'+
      ' clt LEFT OUTER JOIN `item_template` i ON i.`entry` = clt.`Item`'+
@@ -4911,9 +4909,7 @@ begin
     tsNPCTrainer.TabVisible := istrainer;
     LoadCreatureTemplateAddon(Entry);
     LoadCreatureTemplateMovement(Entry);
-    edclid1.Text := IntToStr(Entry);
-  //  edclid2.Text := IntToStr(Entry);
-  //  edclid3.Text := IntToStr(Entry);
+    edclid.Text := IntToStr(Entry);
     edcoEntry.Text := edctlootid.Text;
     edcpEntry.Text := edctpickpocketloot.Text;
     edcsEntry.Text := edctskinloot.Text;
@@ -8555,7 +8551,7 @@ end;
 procedure TMainForm.btFullScriptCreatureLocationClick(Sender: TObject);
 begin
   PageControl3.ActivePageIndex := SCRIPT_TAB_NO_CREATURE;
-  mectScript.Text := FullScript('creature', 'id1', edctEntry.Text);
+  mectScript.Text := FullScript('creature', 'id', edctEntry.Text);
 end;
 
 function TMainForm.FullScript(TableName, KeyName, KeyValue: string): string;
