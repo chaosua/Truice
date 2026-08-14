@@ -10414,33 +10414,94 @@ var
 begin
   ShowHourGlassCursor;
   MyTempQuery.SQL.Text :=
-  'SELECT `SourceSpellId` FROM `quest_template_addon` WHERE `SourceSpellId`<>0 '+
+  'SELECT `Spell` FROM `creature_template_spell` WHERE `Spell`>0 '+
   'UNION ' +
-  'SELECT `spell1` FROM `creature_template` WHERE `spell1`<>0 '+
+  'SELECT `requiredspell` FROM `item_template` WHERE `requiredspell`>0 '+
   'UNION ' +
-  'SELECT `spell2` FROM `creature_template` WHERE `spell2`<>0 '+
+  'SELECT `spellid_1` FROM `item_template` WHERE `spellid_1`>0 '+
   'UNION ' +
-  'SELECT `spell3` FROM `creature_template` WHERE `spell3`<>0 '+
+  'SELECT `spellid_2` FROM `item_template` WHERE `spellid_2`>0 '+
   'UNION ' +
-  'SELECT `spell4` FROM `creature_template` WHERE `spell4`<>0 '+
+  'SELECT `spellid_3` FROM `item_template` WHERE `spellid_3`>0 '+
   'UNION ' +
-  'SELECT `trainer_spell` FROM `creature_template` WHERE `trainer_spell`<>0 '+
+  'SELECT `spellid_4` FROM `item_template` WHERE `spellid_4`>0 '+
   'UNION ' +
-  'SELECT `SpellID` FROM `npc_trainer` WHERE `SpellID`<>0 '+
+  'SELECT `spellid_5` FROM `item_template` WHERE `spellid_5`>0 '+
   'UNION ' +
-  'SELECT `requiredspell` FROM `item_template` WHERE `requiredspell`<>0 '+
+  'SELECT `spell_id` FROM `npc_spellclick_spells` WHERE `spell_id`>0 '+
   'UNION ' +
-  'SELECT `spellid_1` FROM `item_template` WHERE `spellid_1`<>0 '+
+  'SELECT `SpellId` FROM `npc_trainer` WHERE `SpellId`>0 '+
   'UNION ' +
-  'SELECT `spellid_2` FROM `item_template` WHERE `spellid_2`<>0 '+
+  'SELECT `ReqSpell` FROM `npc_trainer` WHERE `ReqSpell`>0 '+
   'UNION ' +
-  'SELECT `spellid_3` FROM `item_template` WHERE `spellid_3`<>0 '+
+  'SELECT `alliance_id` FROM `player_factionchange_spells` WHERE `alliance_id`>0 '+
   'UNION ' +
-  'SELECT `spellid_4` FROM `item_template` WHERE `spellid_4`<>0 '+
+  'SELECT `horde_id` FROM `player_factionchange_spells` WHERE `horde_id`>0 '+
   'UNION ' +
-  'SELECT `spellid_5` FROM `item_template` WHERE `spellid_5`<>0 '+
+  'SELECT `spell` FROM `playercreateinfo_cast_spell` WHERE `spell`>0 '+
   'UNION ' +
-  'SELECT `RewardSpell` FROM `quest_template` WHERE `RewardSpell`<>0 ';
+  'SELECT `Spell` FROM `playercreateinfo_spell_custom` WHERE `Spell`>0 '+
+  'UNION ' +
+  'SELECT `RewardSpell` FROM `quest_template` WHERE `RewardSpell`>0 '+
+  'UNION ' +
+  'SELECT `SourceSpellId` FROM `quest_template_addon` WHERE `SourceSpellId`>0 '+
+  'UNION ' +
+  'SELECT `spellId` FROM `skill_discovery_template` WHERE `spellId`>0 '+
+  'UNION ' +
+  'SELECT `spellId` FROM `skill_extra_item_template` WHERE `spellId`>0 '+
+  'UNION ' +
+  'SELECT `spellId` FROM `skill_perfect_item_template` WHERE `spellId`>0 '+
+  'UNION ' +
+  'SELECT `spell` FROM `spell_area` WHERE `spell`>0 '+
+  'UNION ' +
+  'SELECT `aura_spell` FROM `spell_area` WHERE `aura_spell`>0 '+
+  'UNION ' +
+  'SELECT `entry` FROM `spell_bonus_data` WHERE `entry`>0 '+
+  'UNION ' +
+  'SELECT `ID` FROM `spell_cone` WHERE `ID`>0 '+
+  'UNION ' +
+  'SELECT `ID` FROM `spell_cooldown_overrides` WHERE `ID`>0 '+
+  'UNION ' +
+  'SELECT `spell_id` FROM `spell_custom_attr` WHERE `spell_id`>0 '+
+  'UNION ' +
+  'SELECT `entry` FROM `spell_enchant_proc_data` WHERE `entry`>0 '+
+  'UNION ' +
+  'SELECT `spell_id` FROM `spell_group` WHERE `spell_id`>0 '+
+  'UNION ' +
+  'SELECT `ID` FROM `spell_jump_distance` WHERE `ID`>0 '+
+  'UNION ' +
+  'SELECT `spell_trigger` FROM `spell_linked_spell` WHERE `spell_trigger`>0 '+
+  'UNION ' +
+  'SELECT `spell_effect` FROM `spell_linked_spell` WHERE `spell_effect`>0 '+
+  'UNION ' +
+  'SELECT `Entry` FROM `spell_loot_template` WHERE `Entry`>0 '+
+  'UNION ' +
+  'SELECT `entry` FROM `spell_mixology` WHERE `entry`>0 '+
+  'UNION ' +
+  'SELECT `spell` FROM `spell_pet_auras` WHERE `spell`>0 '+
+  'UNION ' +
+  'SELECT `SpellID` FROM `spell_proc` WHERE `SpellID`>0 '+
+  'UNION ' +
+  'SELECT `entry` FROM `spell_proc_event` WHERE `entry`>0 '+
+  'UNION ' +
+  'SELECT `first_spell_id` FROM `spell_ranks` WHERE `first_spell_id`>0 '+
+  'UNION ' +
+  'SELECT `spell_id` FROM `spell_ranks` WHERE `spell_id`>0 '+
+  'UNION ' +
+  'SELECT `spell_id` FROM `spell_required` WHERE `spell_id`>0 '+
+  'UNION ' +
+  'SELECT `req_spell` FROM `spell_required` WHERE `req_spell`>0 '+
+  'UNION ' +
+  'SELECT `spell_id` FROM `spell_script_names` WHERE `spell_id`>0 '+
+  'UNION ' +
+  'SELECT `id` FROM `spell_scripts` WHERE `id`>0 '+
+  'UNION ' +
+  'SELECT `id` FROM `spell_target_position` WHERE `id`>0 '+
+  'UNION ' +
+  'SELECT `entry` FROM `spell_threat` WHERE `entry`>0 '+
+  'UNION ' +
+  'SELECT `SpellId` FROM `trainer_spell` WHERE `SpellId`>0 '+
+  'ORDER BY `Spell` ASC';
   MyTempQuery.Open;
   list := TStringList.Create;
   try

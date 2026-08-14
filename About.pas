@@ -45,14 +45,11 @@ type
     Panel1: TPanel;
     lblVersion: TLabel;
     lblAutorName: TLabel;
-    LinkSite: TLabel;
-    LinkSiteNew: TLabel;
     BrowseURL1: TBrowseURL;
     BrowseURL2: TBrowseURL;
     Image1: TImage;
     lbdbversion: TLabel;
     JvPoweredByJVCL1: TJvPoweredByJVCL;
-    lbprojectwebsite: TLabel;
     Label2: TLabel;
     Label1: TLabel;
     Label3: TLabel;
@@ -60,6 +57,9 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    lbprojectwebsite: TLabel;
+    LinkSite: TLabel;
+    LinkSiteNew: TLabel;
     procedure FormShow(Sender: TObject);
     procedure LinkSiteClick(Sender: TObject);
     procedure LinkSiteNewClick(Sender: TObject);

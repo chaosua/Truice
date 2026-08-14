@@ -22,8 +22,6 @@ object AboutBox: TAboutBox
     Height = 296
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 405
-    ExplicitHeight = 295
     DesignSize = (
       409
       296)
@@ -1960,13 +1958,51 @@ object AboutBox: TAboutBox
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-      ExplicitWidth = 406
+      ExplicitLeft = 3
+      ExplicitTop = 7
+    end
+    object lbprojectwebsite: TLabel
+      Left = 0
+      Top = 255
+      Width = 75
+      Height = 13
+      Caption = 'Project website:'
+    end
+    object LinkSite: TLabel
+      Left = 81
+      Top = 255
+      Width = 146
+      Height = 13
+      Cursor = crHandPoint
+      Caption = 'https://github.com/Faq/Truice'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      OnClick = LinkSiteClick
+    end
+    object LinkSiteNew: TLabel
+      Left = 81
+      Top = 275
+      Width = 169
+      Height = 13
+      Cursor = crHandPoint
+      Caption = 'https://github.com/chaosua/Truice'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      OnClick = LinkSiteNewClick
     end
     object Panel1: TPanel
-      Left = -1
-      Top = 46
+      Left = 1
+      Top = 51
       Width = 409
-      Height = 196
+      Height = 198
       BevelOuter = bvNone
       Color = clWhite
       TabOrder = 1
@@ -2001,39 +2037,19 @@ object AboutBox: TAboutBox
         Transparent = True
         WordWrap = True
       end
-      object LinkSite: TLabel
-        Left = 91
-        Top = 98
-        Width = 146
-        Height = 13
-        Cursor = crHandPoint
-        Caption = 'https://github.com/Faq/Truice'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clNavy
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsUnderline]
-        ParentFont = False
-        OnClick = LinkSiteClick
-      end
       object lbdbversion: TLabel
         Left = 10
         Top = 43
-        Width = 54
-        Height = 13
+        Width = 390
+        Height = 30
+        AutoSize = False
         Caption = 'lbdbversion'
+        WordWrap = True
       end
       object JvPoweredByJVCL1: TJvPoweredByJVCL
         Left = 191
         Top = 6
         URL = 'http://jvcl.delphi-jedi.org/'
-      end
-      object lbprojectwebsite: TLabel
-        Left = 10
-        Top = 98
-        Width = 75
-        Height = 13
-        Caption = 'Project website:'
       end
       object Label2: TLabel
         Left = 10
@@ -2101,14 +2117,14 @@ object AboutBox: TAboutBox
       end
       object Label4: TLabel
         Left = 10
-        Top = 60
+        Top = 79
         Width = 204
         Height = 13
         Caption = 'Support WoTLK 3.3.5a DB for AzerothCore'
       end
       object Label5: TLabel
         Left = 10
-        Top = 79
+        Top = 110
         Width = 213
         Height = 13
         Caption = 'Support the project with fixes and bugreports!'
@@ -2119,7 +2135,7 @@ object AboutBox: TAboutBox
         Width = 117
         Height = 15
         AutoSize = False
-        Caption = #169' chaosua, 2023-2024'
+        Caption = #169' chaosua, 2023-2026'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clGray
         Font.Height = -11
@@ -2128,21 +2144,6 @@ object AboutBox: TAboutBox
         ParentFont = False
         Transparent = True
         WordWrap = True
-      end
-      object LinkSiteNew: TLabel
-        Left = 91
-        Top = 117
-        Width = 157
-        Height = 13
-        Cursor = crHandPoint
-        Caption = 'https://github.com/chaos/Truice'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clNavy
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsUnderline]
-        ParentFont = False
-        OnClick = LinkSiteNewClick
       end
     end
     object OKButton: TButton
@@ -2156,8 +2157,6 @@ object AboutBox: TAboutBox
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 296
-      ExplicitTop = 260
     end
   end
   object ActionList1: TActionList
